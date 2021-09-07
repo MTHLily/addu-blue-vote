@@ -28,4 +28,14 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/faqs', function() {
+    return Inertia::render('FAQs', 
+        [
+            'faqs' => [
+                'question' => 'where to register',
+                'answer' => 'here in the philippines'
+            ]
+        ]);
+});
+
 require __DIR__.'/auth.php';

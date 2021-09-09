@@ -1,62 +1,21 @@
 <template>
 <GuestLayout />
     <Head title="Welcome" />
-    <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        
-
-       
-        </div>
-    </div> -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="https://www.addu.edu.ph/blog/2020/08/03/university-seal-white/" alt="" width="30" height="24">
-              </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Voters Registration</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav> -->
+    <div>
 
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" class="d-block w-100" alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg">
+                    <img src="https://scontent.fdvo4-1.fna.fbcdn.net/v/t1.6435-9/60694193_2283893781667971_6190575172496392192_n.png?_nc_cat=106&ccb=1-5&_nc_sid=973b4a&_nc_ohc=K9KXd5nJACYAX8YNrRZ&_nc_ht=scontent.fdvo4-1.fna&oh=3285a122e9552a0fb5e5e06d44584822&oe=6160E7DE" class="d-block w-100" alt="1">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/03/Among-Us-Random-Name-Generator.jpg" class="d-block w-100" alt="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/03/Among-Us-Random-Name-Generator.jpg">
+                    <img src="https://scontent.fdvo4-1.fna.fbcdn.net/v/t31.18172-8/12291787_981972371860125_5608758377325314852_o.png?_nc_cat=104&ccb=1-5&_nc_sid=973b4a&_nc_ohc=5FEyFSh8m2cAX9PgpJk&_nc_ht=scontent.fdvo4-1.fna&oh=482b086a5aa9cdda76f068958f26db0e&oe=616162B6" class="d-block w-100" alt="2">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://www.kickassfacts.com/wp-content/uploads/2021/04/bear.jpg" class="d-block w-100" alt="https://www.kickassfacts.com/wp-content/uploads/2021/04/bear.jpg">
+                    <img src="https://scontent.fdvo4-1.fna.fbcdn.net/v/t1.6435-9/65932238_2354332941290721_9038293276070772736_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=MARoGMRJnzoAX9gLUXP&_nc_ht=scontent.fdvo4-1.fna&oh=b845a75990a59a7faf2442f35da6e7cc&oe=6161A2B9" class="d-block w-100" alt="3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://scontent.fdvo4-1.fna.fbcdn.net/v/t1.6435-9/65856258_2354333537957328_2038116639429361664_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=730e14&_nc_ohc=g5UPTITnr8cAX-BdDlo&_nc_ht=scontent.fdvo4-1.fna&oh=65bcf11a9397ca58f960cec393b937f0&oe=616106AC" class="d-block w-100" alt="4">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -68,8 +27,9 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
-        <div>
+        <Map />
+    </div>
+        <!-- <div>
             <p>
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Link with href
@@ -82,9 +42,9 @@
                 <div class="card card-body">
                 Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
                 </div>
-            </div>
-        <Map />
-        </div>
+            </div> -->
+        <!-- <Map /> -->
+        <!-- </div> -->
 </template>
 
 <style scoped>

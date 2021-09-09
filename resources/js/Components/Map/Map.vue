@@ -3,10 +3,48 @@
         <div class="d-flex flex-column">
             <h3 class="text-primary text-center">Voters Registration Sites</h3>
             <div class="row">
-                <div class="col-sm-12">
+                <!-- map -->
+                <div class=" col-sm-12">
                     <div class="map container bg-secondary justify-content-md-center">
-                        
-                        <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" class="img-fluid rounded-center justify-content-md-center" alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg">
+                        <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map">
+                    </div>
+                </div>
+                
+                <div class="row overlap">    
+                    <!-- filters -->
+                    <div class="header row">
+                        <div class="filters row col-8">
+                            <div class="btn-group col-2 px-2">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Barangay
+                                </button>
+                                <ul class="dropdown-menu">
+                                    ...
+                                </ul>
+                            </div>
+                            <div class="btn-group col-2 px-2">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    District
+                                </button>
+                                <ul class="dropdown-menu">
+                                    ...
+                                </ul>
+                            </div>
+                        </div>
+                        <form class="d-flex col-4 w-25">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                    </div>
+
+                    <!-- legend -->
+                    <div class="legend gy-2 col-auto mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <b-icon icon="bi bi-app">District 1</b-icon>
+                                <i class="bi bi-app">District 2</i>
+                                <i class="bi bi-app">District 3</i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -39,6 +77,9 @@ import Card from './Card'
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
     components: {
@@ -79,5 +120,16 @@ export default {
 
 
 <style scoped>
-    
+
+    .map{
+        position: relative;
+    }
+    .overlap{
+        position: absolute;
+    }
+    .legend{
+        align-content: flex-end;
+        width: 150px;
+        height: 20px;
+    }
 </style>

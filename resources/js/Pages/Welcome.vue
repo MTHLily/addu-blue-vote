@@ -27,6 +27,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        <FAQs />
         <Map />
     </div>
         <!-- <div>
@@ -45,6 +46,7 @@
             </div> -->
         <!-- <Map /> -->
         <!-- </div> -->
+<GuestLayout />
 </template>
 
 <style scoped>
@@ -115,6 +117,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import GuestLayout from '../Layouts/Guest'
 import Map from '../Components/Map/Map'
+import FAQs from './FAQs'
 
 export default {
     components: {
@@ -122,6 +125,7 @@ export default {
       Link,
       GuestLayout,
       Map,
+      FAQs,
     },
     props: {
         canLogin: Boolean,

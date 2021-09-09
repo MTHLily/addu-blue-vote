@@ -22711,10 +22711,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Card */ "./resources/js/Components/Map/Card.vue");
+/* harmony import */ var vue3_carousel_dist_carousel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue3-carousel/dist/carousel.css */ "./node_modules/vue3-carousel/dist/carousel.css");
+/* harmony import */ var vue3_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue3-carousel */ "./node_modules/vue3-carousel/dist/carousel.es.js");
+ // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Card: _Card__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Card: _Card__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Carousel: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Carousel,
+    Slide: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Slide,
+    Pagination: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Pagination,
+    Navigation: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Navigation
   }
 });
 
@@ -23561,17 +23570,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
+  "class": "container"
+};
+var _hoisted_2 = {
   "class": "d-flex flex-column"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Voters Registration Sites", -1
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "text-primary text-center"
+}, "Voters Registration Sites", -1
 /* HOISTED */
 );
 
+var _hoisted_4 = {
+  "class": "row"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "mapcontainer bg-white"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" add map here ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "col-12"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Card");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card)]);
+  var _component_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("slide");
+
+  var _component_navigation = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("navigation");
+
+  var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
+
+  var _component_carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("carousel");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_carousel, {
+    "items-to-show": 1.5
+  }, {
+    addons: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navigation), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination)];
+    }),
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(10, function (slide) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_slide, {
+          key: slide
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card)];
+          }),
+          _: 2
+          /* DYNAMIC */
+
+        }, 1024
+        /* DYNAMIC_SLOTS */
+        );
+      }), 64
+      /* STABLE_FRAGMENT */
+      ))];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["items-to-show"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"d-flex flex-column\">\r\n            <h3>Voters Registration Sites</h3>\r\n            <Card />\r\n        </div> ")]);
 }
 
 /***/ }),
@@ -30016,6 +30082,30 @@ if ($defineProperty) {
 } else {
 	module.exports.apply = applyBind;
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue3-carousel/dist/carousel.css":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue3-carousel/dist/carousel.css ***!
+  \**************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  /* Colors */\n  --carousel-color-primary: #642afb;\n  --carousel-color-secondary: #8e98f3;\n  --carousel-color-white: #ffffff;\n  \n  /* Navigation */\n  --carousel-nav-width: 30px;\n}.carousel {\n  position: relative;\n  text-align: center;\n  box-sizing: border-box;\n}\n\n.carousel * {\n  box-sizing: border-box;\n}\n\n.carousel__track {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  position: relative;\n}\n\n.carousel__viewport {\n  overflow: hidden;\n}\n.carousel__pagination {\n  display: flex;\n  justify-content: center;\n  list-style: none;\n}\n.carousel__pagination-button {\n  margin: 5px;\n  width: 10px;\n  height: 5px;\n  border: 0;\n  cursor: pointer;\n  background-color: var(--carousel-color-secondary);\n}\n\n.carousel__pagination-button--active {\n  background-color: var(--carousel-color-primary);\n}\n.carousel__slide {\n  scroll-snap-stop: auto;\n  flex-shrink: 0;\n  margin: 0;\n  position: relative;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.carousel__icon {\n  width: 1.2em;\n  height: 1.2em;\n  fill: currentColor;\n}\n.carousel__prev,\n.carousel__next {\n  background-color: var(--carousel-color-primary);\n  border-radius: var(--carousel-nav-width);\n  width: var(--carousel-nav-width);\n  height: var(--carousel-nav-width);\n  text-align: center;\n  font-size: calc(var(--carousel-nav-width) * 2 / 3);\n  padding: 0;\n  color: var(--carousel-color-white);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  border: 0;\n  cursor: pointer;\n}\n\n.carousel__prev {\n  top: 50%;\n  left: 0;\n  transform: translate(-50%, -50%);\n}\n\n.carousel__next {\n  top: 50%;\n  right: 0;\n  transform: translate(50%, -50%);\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
@@ -53830,6 +53920,36 @@ module.exports = function getSideChannel() {
 
 /***/ }),
 
+/***/ "./node_modules/vue3-carousel/dist/carousel.css":
+/*!******************************************************!*\
+  !*** ./node_modules/vue3-carousel/dist/carousel.css ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_carousel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./carousel.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue3-carousel/dist/carousel.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_carousel_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_carousel_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Layouts/Guest.vue?vue&type=style&index=0&id=5421e404&lang=css&scoped=true":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Layouts/Guest.vue?vue&type=style&index=0&id=5421e404&lang=css&scoped=true ***!
@@ -55515,6 +55635,555 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Welcome_vue_vue_type_style_index_0_id_317d1a6e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue3-carousel/dist/carousel.es.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue3-carousel/dist/carousel.es.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Carousel": () => (/* binding */ Carousel),
+/* harmony export */   "Icon": () => (/* binding */ Icon),
+/* harmony export */   "Navigation": () => (/* binding */ Navigation),
+/* harmony export */   "Pagination": () => (/* binding */ Pagination),
+/* harmony export */   "Slide": () => (/* binding */ Slide)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/**
+ * Vue 3 Carousel 0.1.25
+ * (c) 2021
+ * @license MIT
+ */
+
+
+function counterFactory() {
+    return new Proxy({ value: 0, read: 0 }, {
+        get(obj, prop) {
+            if (!(prop in obj))
+                return 0;
+            if (prop === 'read') {
+                return obj[prop];
+            }
+            return obj[prop]++;
+        },
+        set(obj, prop, value) {
+            obj[prop] = Math.max(value, 0);
+            return true;
+        },
+    });
+}
+
+/**
+ * return a debounced version of the function
+ * @param fn
+ * @param delay
+ */
+function debounce(fn, delay) {
+    let timerId;
+    return function (...args) {
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+        timerId = setTimeout(() => {
+            fn(...args);
+            timerId = null;
+        }, delay);
+    };
+}
+/**
+ * return a throttle version of the function
+ * Throttling
+ *
+ */
+function throttle(fn, limit) {
+    let inThrottle;
+    return function (...args) {
+        const self = this;
+        if (!inThrottle) {
+            fn.apply(self, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+        }
+    };
+}
+function getSlides(vNode) {
+    var _a, _b, _c;
+    // Return empty array if there's any node
+    if (!vNode)
+        return [];
+    // Check if the Slides components are added directly without v-for (#72)
+    if (((_b = (_a = vNode[0]) === null || _a === void 0 ? void 0 : _a.type) === null || _b === void 0 ? void 0 : _b.name) === 'CarouselSlide')
+        return vNode;
+    return ((_c = vNode[0]) === null || _c === void 0 ? void 0 : _c.children) || [];
+}
+
+var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+    name: 'Carousel',
+    props: {
+        // count of items to showed per view
+        itemsToShow: {
+            default: 1,
+            type: Number,
+        },
+        // count of items to be scrolled
+        itemsToScroll: {
+            default: 1,
+            type: Number,
+        },
+        // control infinite scrolling mode
+        wrapAround: {
+            default: false,
+            type: Boolean,
+        },
+        // control snap position alignment
+        snapAlign: {
+            default: 'center',
+            validator(value) {
+                // The value must match one of these strings
+                return ['start', 'end', 'center'].includes(value);
+            },
+        },
+        // sliding transition time in ms
+        transition: {
+            default: 300,
+            type: Number,
+        },
+        // an object to pass all settings
+        settings: {
+            default() {
+                return {};
+            },
+            type: Object,
+        },
+        // an object to store breakpoints
+        breakpoints: {
+            default: null,
+            type: Object,
+        },
+        // time to auto advance slides in ms
+        autoplay: {
+            default: 0,
+            type: Number,
+        },
+        // pause autoplay when mouse hover over the carousel
+        pauseAutoplayOnHover: {
+            default: false,
+            type: Boolean,
+        },
+        // slide number number of initial slide
+        modelValue: {
+            default: undefined,
+            type: Number,
+        },
+        // toggle mouse dragging.
+        mouseDrag: {
+            default: true,
+            type: Boolean,
+        },
+        // toggle mouse dragging.
+        touchDrag: {
+            default: true,
+            type: Boolean,
+        },
+    },
+    setup(props, { slots, emit }) {
+        var _a;
+        const root = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+        const slides = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+        const slidesBuffer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+        const slideWidth = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
+        const slidesCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
+        const paginationCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
+        const slidesCounter = counterFactory();
+        // current config
+        const config = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({});
+        // generate carousel configs
+        let defaultConfig = {};
+        let breakpoints = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({});
+        initDefaultConfigs();
+        updateConfig();
+        // Update the carousel on props change
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(props, () => {
+            initDefaultConfigs();
+            updateConfig();
+            updateSlidesData();
+            updateSlideWidth();
+        });
+        // slides
+        const currentSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_a = config.currentSlide) !== null && _a !== void 0 ? _a : 0);
+        const prevSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
+        const middleSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('config', config);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('slidesBuffer', slidesBuffer);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('slidesCount', slidesCount);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('currentSlide', currentSlide);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('slidesCounter', slidesCounter);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('paginationCount', paginationCount);
+        /**
+         * Configs
+         */
+        function initDefaultConfigs() {
+            // generate carousel configs
+            defaultConfig = Object.assign(Object.assign(Object.assign({}, props), props.settings), { currentSlide: props.modelValue });
+            // Set breakpoints
+            breakpoints = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(Object.assign({}, defaultConfig.breakpoints));
+            // remove extra values
+            defaultConfig = Object.assign(Object.assign({}, defaultConfig), { settings: undefined, breakpoints: undefined });
+        }
+        function updateConfig() {
+            const breakpointsArray = Object.keys(breakpoints.value)
+                .map((key) => Number(key))
+                .sort((a, b) => +b - +a);
+            let newConfig = Object.assign({}, defaultConfig);
+            breakpointsArray.some((breakpoint) => {
+                const isMatched = window.matchMedia(`(min-width: ${breakpoint}px)`).matches;
+                if (isMatched) {
+                    newConfig = Object.assign(Object.assign({}, newConfig), breakpoints.value[breakpoint]);
+                    return true;
+                }
+                return false;
+            });
+            Object.keys(newConfig).forEach((key) => (config[key] = newConfig[key]));
+        }
+        const handleWindowResize = debounce(() => {
+            if (breakpoints.value) {
+                updateConfig();
+                updateSlidesData();
+            }
+            updateSlideWidth();
+        }, 16);
+        /**
+         * Setup functions
+         */
+        function updateSlideWidth() {
+            if (!root.value)
+                return;
+            const rect = root.value.getBoundingClientRect();
+            slideWidth.value = rect.width / config.itemsToShow;
+        }
+        function updateSlidesData() {
+            paginationCount.value = slides.value.length;
+            slidesCount.value = slides.value.length;
+            middleSlide.value = Math.ceil((slidesCount.value - 1) / 2);
+            currentSlide.value = Math.min(slidesCount.value - 1, currentSlide.value);
+        }
+        function updateSlidesBuffer() {
+            const slidesArray = [...Array(slidesCount.value).keys()];
+            if (config.wrapAround) {
+                const shifts = currentSlide.value + middleSlide.value + 1;
+                for (let i = 0; i < shifts; i++) {
+                    slidesArray.push(Number(slidesArray.shift()));
+                }
+            }
+            slidesBuffer.value = slidesArray;
+        }
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+            if (breakpoints.value) {
+                updateConfig();
+                updateSlidesData();
+            }
+            updateSlideWidth();
+            if (config.autoplay > 0)
+                initializeAutoplay();
+            // @ts-ignore
+            window.addEventListener('resize', handleWindowResize, { passive: true });
+        });
+        /**
+         * Carousel Event listeners
+         */
+        let isTouch = false;
+        const startPosition = { x: 0, y: 0 };
+        const endPosition = { x: 0, y: 0 };
+        const dragged = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({ x: 0, y: 0 });
+        const isDragging = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+        const isHover = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+        const handleMouseEnter = () => {
+            isHover.value = true;
+        };
+        const handleMouseLeave = () => {
+            isHover.value = false;
+        };
+        const handleDrag = throttle((event) => {
+            if (!isTouch)
+                event.preventDefault();
+            endPosition.x = isTouch ? event.touches[0].clientX : event.clientX;
+            endPosition.y = isTouch ? event.touches[0].clientY : event.clientY;
+            const deltaX = endPosition.x - startPosition.x;
+            const deltaY = endPosition.y - startPosition.y;
+            dragged.y = deltaY;
+            dragged.x = deltaX;
+        }, 16);
+        function handleDragStart(event) {
+            if (!isTouch)
+                event.preventDefault();
+            isTouch = event.type === 'touchstart';
+            if ((!isTouch && event.button !== 0) || isSliding.value) {
+                return;
+            }
+            isDragging.value = true;
+            startPosition.x = isTouch ? event.touches[0].clientX : event.clientX;
+            startPosition.y = isTouch ? event.touches[0].clientY : event.clientY;
+            // @ts-ignore
+            document.addEventListener(isTouch ? 'touchmove' : 'mousemove', handleDrag);
+            document.addEventListener(isTouch ? 'touchend' : 'mouseup', handleDragEnd);
+        }
+        function handleDragEnd() {
+            isDragging.value = false;
+            const tolerance = Math.sign(dragged.x) * 0.4;
+            const draggedSlides = Math.round(dragged.x / slideWidth.value + tolerance);
+            let newSlide = currentSlide.value - draggedSlides;
+            if (!config.wrapAround)
+                newSlide = Math.max(Math.min(newSlide, slidesCount.value - 1), 0);
+            slideTo(newSlide);
+            dragged.x = 0;
+            dragged.y = 0;
+            // @ts-ignore
+            document.removeEventListener(isTouch ? 'touchmove' : 'mousemove', handleDrag);
+            document.removeEventListener(isTouch ? 'touchend' : 'mouseup', handleDragEnd);
+        }
+        /**
+         * Autoplay
+         */
+        function initializeAutoplay() {
+            setInterval(() => {
+                if (config.pauseAutoplayOnHover && isHover.value) {
+                    return;
+                }
+                next();
+            }, config.autoplay);
+        }
+        /**
+         * Navigation function
+         */
+        const isSliding = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+        function slideTo(slideIndex, mute = false) {
+            if (currentSlide.value === slideIndex || isSliding.value) {
+                return;
+            }
+            // Wrap slide index
+            const lastSlideIndex = slidesCount.value - 1;
+            if (slideIndex > lastSlideIndex) {
+                return slideTo(slideIndex - slidesCount.value);
+            }
+            if (slideIndex < 0) {
+                return slideTo(slideIndex + slidesCount.value);
+            }
+            isSliding.value = true;
+            prevSlide.value = currentSlide.value;
+            currentSlide.value = slideIndex;
+            if (!mute) {
+                emit('update:modelValue', currentSlide.value);
+            }
+            setTimeout(() => {
+                if (config.wrapAround)
+                    updateSlidesBuffer();
+                isSliding.value = false;
+            }, config.transition);
+        }
+        function next() {
+            let nextSlide = currentSlide.value + config.itemsToScroll;
+            if (!config.wrapAround) {
+                nextSlide = Math.min(nextSlide, paginationCount.value - 1);
+            }
+            slideTo(nextSlide);
+        }
+        function prev() {
+            let prevSlide = currentSlide.value - config.itemsToScroll;
+            if (!config.wrapAround) {
+                prevSlide = Math.max(prevSlide, 0);
+            }
+            slideTo(prevSlide);
+        }
+        const nav = { slideTo, next, prev };
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('nav', nav);
+        /**
+         * Track style
+         */
+        const slidesToScroll = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            let output = slidesBuffer.value.indexOf(currentSlide.value);
+            if (config.snapAlign === 'center') {
+                output -= (config.itemsToShow - 1) / 2;
+            }
+            if (config.snapAlign === 'end') {
+                output -= config.itemsToShow - 1;
+            }
+            if (!config.wrapAround) {
+                const max = slidesCount.value - config.itemsToShow;
+                const min = 0;
+                output = Math.max(Math.min(output, max), min);
+            }
+            return output;
+        });
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('slidesToScroll', slidesToScroll);
+        const trackStyle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            const xScroll = dragged.x - slidesToScroll.value * slideWidth.value;
+            return {
+                transform: `translateX(${xScroll}px)`,
+                transition: `${isSliding.value ? config.transition : 0}ms`,
+            };
+        });
+        const slotsProps = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({ slideWidth, slidesCount, currentSlide });
+        const slotSlides = slots.default || slots.slides;
+        const slotAddons = slots.addons;
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watchEffect)(() => {
+            slides.value = getSlides(slotSlides === null || slotSlides === void 0 ? void 0 : slotSlides(slotsProps));
+            // Handel when slides added/removed
+            const needToUpdate = slidesCount.value !== slides.value.length;
+            const currentSlideUpdated = props.modelValue !== undefined && currentSlide.value !== props.modelValue;
+            if (currentSlideUpdated) {
+                slideTo(Number(props.modelValue), true);
+            }
+            if (needToUpdate) {
+                updateSlidesData();
+                updateSlidesBuffer();
+            }
+            if (slidesCounter.read) {
+                slidesCounter.value = slides.value.length - 1;
+            }
+        });
+        updateSlidesBuffer();
+        return () => {
+            const slidesElements = getSlides(slotSlides === null || slotSlides === void 0 ? void 0 : slotSlides(slotsProps));
+            const addonsElements = (slotAddons === null || slotAddons === void 0 ? void 0 : slotAddons(slotsProps)) || [];
+            // Bind slide order
+            slidesElements.forEach((el, index) => (el.props.index = index));
+            const trackEl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('ol', {
+                class: 'carousel__track',
+                style: trackStyle.value,
+                onMousedown: config.mouseDrag ? handleDragStart : null,
+                onTouchstart: config.touchDrag ? handleDragStart : null,
+            }, slidesElements);
+            const viewPortEl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', { class: 'carousel__viewport' }, trackEl);
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('section', {
+                ref: root,
+                class: 'carousel',
+                'aria-label': 'Gallery',
+                onMouseenter: handleMouseEnter,
+                onMouseleave: handleMouseLeave,
+            }, [viewPortEl, addonsElements]);
+        };
+    },
+});
+
+const icons = {
+    arrowUp: 'M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z',
+    arrowDown: 'M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z',
+    arrowRight: 'M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z',
+    arrowLeft: 'M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z',
+};
+
+const Icon = (props) => {
+    const iconName = props.name;
+    if (!iconName || typeof iconName !== 'string') {
+        return;
+    }
+    const path = icons[iconName];
+    const pathEl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('path', { d: path });
+    props.title || iconName;
+    const titleEl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('title', null, iconName);
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('svg', {
+        class: 'carousel__icon',
+        viewBox: '0 0 24 24',
+        role: 'img',
+    }, [titleEl, pathEl]);
+};
+Icon.props = { name: String, title: String };
+
+const Navigation = (props, { slots, attrs }) => {
+    const { next: slotNext, prev: slotPrev } = slots;
+    const nav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('nav', {});
+    const prevButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('button', { class: ['carousel__prev', attrs === null || attrs === void 0 ? void 0 : attrs.class], onClick: nav.prev }, (slotPrev === null || slotPrev === void 0 ? void 0 : slotPrev()) || (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(Icon, { name: 'arrowLeft' }));
+    const nextButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('button', { class: ['carousel__next', attrs === null || attrs === void 0 ? void 0 : attrs.class], onClick: nav.next }, (slotNext === null || slotNext === void 0 ? void 0 : slotNext()) || (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(Icon, { name: 'arrowRight' }));
+    return [prevButton, nextButton];
+};
+
+var Slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+    name: 'CarouselSlide',
+    props: {
+        index: {
+            type: Number,
+            default: 1,
+        },
+    },
+    setup(props, { slots }) {
+        const config = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('config', (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({}));
+        const slidesBuffer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slidesBuffer', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]));
+        const slidesCounter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slidesCounter');
+        const currentSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('currentSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0));
+        const slidesToScroll = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slidesToScroll', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0));
+        const slideOrder = slidesCounter.value;
+        const wrapOrder = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(slideOrder);
+        if (config.wrapAround) {
+            updateOrder();
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.watchEffect)(updateOrder);
+        }
+        function updateOrder() {
+            wrapOrder.value = slidesBuffer.value.indexOf(slideOrder);
+        }
+        const slideStyle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            const items = config.itemsToShow;
+            const width = `${(1 / items) * 100}%`;
+            return {
+                width,
+                order: wrapOrder.value.toString(),
+            };
+        });
+        const isActive = () => props.index === currentSlide.value;
+        const isVisible = () => {
+            const min = Math.ceil(slidesToScroll.value);
+            const max = Math.floor(slidesToScroll.value + config.itemsToShow);
+            const current = slidesBuffer.value.slice(min, max);
+            return current.includes(props.index);
+        };
+        const isPrev = () => props.index === slidesBuffer.value[Math.ceil(slidesToScroll.value) - 1];
+        const isNext = () => props.index ===
+            slidesBuffer.value[Math.floor(slidesToScroll.value + config.itemsToShow)];
+        return () => {
+            var _a;
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('li', {
+                style: slideStyle.value,
+                class: {
+                    carousel__slide: true,
+                    'carousel__slide--active': isActive(),
+                    'carousel__slide--visible': isVisible(),
+                    'carousel__slide--prev': isPrev(),
+                    'carousel__slide--next': isNext(),
+                },
+            }, (_a = slots.default) === null || _a === void 0 ? void 0 : _a.call(slots));
+        };
+    },
+});
+
+const Pagination = () => {
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slidesCount', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
+    const paginationCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('paginationCount', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
+    const currentSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('currentSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
+    const nav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('nav', {});
+    function handleButtonClick(slideNumber) {
+        nav.slideTo(slideNumber);
+    }
+    const children = [];
+    for (let slide = 0; slide < paginationCount.value; slide++) {
+        const button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('button', {
+            class: {
+                'carousel__pagination-button': true,
+                'carousel__pagination-button--active': currentSlide.value === slide,
+            },
+            onClick: () => handleButtonClick(slide),
+        });
+        const item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('li', { class: 'carousel__pagination-item', key: slide }, button);
+        children.push(item);
+    }
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('ol', { class: 'carousel__pagination' }, children);
+};
+
+
 
 
 /***/ }),

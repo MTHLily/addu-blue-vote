@@ -13,8 +13,7 @@
                     <div class="container-fluid mx-auto">
                         <a class="navbar-brand" href="#">
                             <img src="https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySealWhite-1024x1020.png" class="me-2" width="60" height="60">
-                            <div>
-                                Ateneo de Davao University | Blue Vote
+                            Ateneo de Davao University | Blue Vote
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

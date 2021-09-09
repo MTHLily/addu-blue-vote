@@ -22724,6 +22724,33 @@ __webpack_require__.r(__webpack_exports__);
     Slide: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Slide,
     Pagination: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Pagination,
     Navigation: vue3_carousel__WEBPACK_IMPORTED_MODULE_2__.Navigation
+  },
+  data: function data() {
+    return {
+      // carousel settings
+      settings: {
+        itemsToShow: 3.5,
+        snapAlign: 'center'
+      },
+      // breakpoints are mobile first
+      // any settings not specified will fallback to the carousel settings
+      breakpoints: {
+        // 700px and up
+        300: {
+          itemsToShow: 1.5,
+          snapAlign: 'center'
+        },
+        700: {
+          itemsToShow: 3.5,
+          snapAlign: 'center'
+        },
+        // 1024 and up
+        1024: {
+          itemsToShow: 5,
+          snapAlign: 'start'
+        }
+      }
+    };
   }
 });
 
@@ -23547,7 +23574,7 @@ var _hoisted_1 = {
   }
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row g-0\"><div class=\"col-md-4\"><img src=\"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg\" class=\"img-fluid rounded-start\" alt=\"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg\"></div><div class=\"col-md-8\"><div class=\"card-body\"><h5 class=\"card-title\">District: </h5><p class=\"card-text\">Ateneo de Davao University</p><p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p></div></div></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<button type=\"button\" class=\"btn btn-light \"><div class=\"row g-0 mh-15\"><div class=\"col-md-4\"><img src=\"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg\" class=\"img-fluid rounded-start\" alt=\"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg\"></div><div class=\"col-md-8\"><div class=\"card-body text-start\"><h5 class=\"card-title\">District: </h5><p class=\"card-text\">Ateneo de Davao University</p><p class=\"card-text\"><small class=\"text-muted\">Address</small></p><p class=\"card-text\"><small class=\"text-muted\">TEl.no.</small></p></div></div><div class=\"row-2 bg-primary text-white\">here</div></div></button>", 1);
 
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -23589,8 +23616,12 @@ var _hoisted_4 = {
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col-sm-12"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mapcontainer bg-white"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" add map here ")])], -1
+  "class": "map container bg-secondary justify-content-md-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+  "class": "img-fluid rounded-center justify-content-md-center",
+  alt: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+})])], -1
 /* HOISTED */
 );
 
@@ -23609,7 +23640,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("carousel");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_carousel, {
-    "items-to-show": 1.5
+    "items-to-show": 3.5
   }, {
     addons: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navigation), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination)];
@@ -23620,7 +23651,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           key: slide
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card)];
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card)];
+          }),
+          _: 2
+          /* DYNAMIC */
+
+        }, 1024
+        /* DYNAMIC_SLOTS */
+        );
+      }), 64
+      /* STABLE_FRAGMENT */
+      )), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(10, function (slide) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_slide, {
+          key: slide
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card)];
           }),
           _: 2
           /* DYNAMIC */

@@ -4,19 +4,19 @@
             <h3 class="text-primary text-center">Voters Registration Sites</h3>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="mapcontainer bg-white">
-                        <!-- add map here -->
+                    <div class="map container bg-secondary justify-content-md-center">
+                        
+                        <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" class="img-fluid rounded-center justify-content-md-center" alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg">
                     </div>
                 </div>
                 <div class="col-12">
-                    <carousel :items-to-show="1.5">
+                    <carousel :items-to-show="3.5">
                         <slide v-for="slide in 10" :key="slide">
                             <Card />
+                        </slide>
+                        <slide v-for="slide in 10" :key="slide">
                             <Card />
                         </slide>
-                        <!-- <slide v-for="slide in 10" :key="slide">
-                            <Card />
-                        </slide> -->
                         <template #addons>
                             <navigation />
                             <pagination />
@@ -48,6 +48,31 @@ export default {
         Pagination,
         Navigation,
     },
+        data: () => ({
+            // carousel settings
+            settings: {
+            itemsToShow: 3.5,
+            snapAlign: 'center',
+        },
+        // breakpoints are mobile first
+        // any settings not specified will fallback to the carousel settings
+        breakpoints: {
+        // 700px and up
+            300: {
+                itemsToShow: 1.5,
+                snapAlign: 'center',
+            },
+            700: {
+                itemsToShow: 3.5,
+                snapAlign: 'center',
+            },
+            // 1024 and up
+            1024: {
+                itemsToShow: 5,
+                snapAlign: 'start',
+            },
+        },
+    }),
 }
 </script>
 

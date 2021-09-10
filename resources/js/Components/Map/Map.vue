@@ -4,8 +4,8 @@
             <h3 class="text-primary text-center">Voters Registration Sites</h3>
             <div class="row">
                 <!-- map -->
-                <div class=" col-sm-12">
-                    <div class="map container bg-secondary justify-content-md-center">
+                <div class=" col-12">
+                    <div class="map container bg-secondary">
                         <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map">
                     </div>
                 </div>
@@ -32,18 +32,18 @@
                             </div>
                         </div>
                         <form class="d-flex col-4 w-25">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" type="search" placeholder="Search 🔎" aria-label="Search">
                         </form>
                     </div>
 
                     <!-- legend -->
                     <div class="legend gy-2 col-auto mb-3">
                         <div class="card">
-                            <div class="card-body">
-                                <b-icon icon="bi bi-app">District 1</b-icon>
-                                <i class="bi bi-app">District 2</i>
-                                <i class="bi bi-app">District 3</i>
-                            </div>
+                            <!-- <div class="card-body"> -->
+                                <h5>❤ District 1</h5>
+                                <h5>💛 District 2</h5>
+                                <h5>💙 District 3</h5>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>

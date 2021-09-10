@@ -40,9 +40,9 @@
                     <div class="legend gy-2 col-auto mb-3">
                         <div class="card">
                             <!-- <div class="card-body"> -->
-                                <h5>❤ District 1</h5>
-                                <h5>💛 District 2</h5>
-                                <h5>💙 District 3</h5>
+                                <h5>🔴 District 1</h5>
+                                <h5>🟡 District 2</h5>
+                                <h5>🔵 District 3</h5>
                             <!-- </div> -->
                         </div>
                     </div>

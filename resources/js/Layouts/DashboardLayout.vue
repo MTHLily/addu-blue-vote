@@ -4,7 +4,7 @@
             <nav>
                 <ul class="list-group">
                     <Link
-                        href="/"
+                        href="/dashboard/information"
                         class="list-group-item list-group-item-action"
                         >Information</Link
                     >

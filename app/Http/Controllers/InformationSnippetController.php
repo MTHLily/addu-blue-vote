@@ -16,6 +16,7 @@ class InformationSnippetController extends Controller
      */
     public function index()
     {
+        return Inertia::render('Information');
 
     }    
 
@@ -26,7 +27,7 @@ class InformationSnippetController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Information');
+        
     }
 
     /**

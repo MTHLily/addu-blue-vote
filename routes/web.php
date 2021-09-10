@@ -17,6 +17,9 @@ use App\Http\Controllers\DashboardController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+*/
+
+//for authorization
 
 Route::get('/login', function () {
     return Inertia::render('Welcome', [
@@ -25,35 +28,15 @@ Route::get('/login', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});*/
+});
 
-Route::resource('/dashboard', DashboardController::class);
+//admin resources
 
+//admin dashboard
+Route::get('/dashboard', [DashboardController::class, 'index']);
+//edit FAQs
 Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
-
+//edit Information
 Route::resource('/dashboard/information', InformationSnippetController::class);
-
-
-/*
-Route::get('/dashboard/faqtest', function () {
-    return Inertia::render('FAQs');
-});Route::get('/dashboard/information', function () {
-    return Inertia::render('Information');
-});//->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/dashboard/faqs', function () {
-    return Inertia::render('FAQs');
-});//->middleware(['auth', 'verified'])->name('dashboard');
-
-//
-/*Route::get('/faqs', function() {
-    return Inertia::render('FAQs', 
-        [
-            'faqs' => [
-                'question' => 'where to register',
-                'answer' => 'here in the philippines'
-            ]
-        ]);
-});*/
 
 require __DIR__.'/auth.php';

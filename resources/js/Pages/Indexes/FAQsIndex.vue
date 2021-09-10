@@ -1,7 +1,7 @@
 <template>
 <h1>FAQ Index Page</h1>
     <Head title="Dashboard" />
-    <DashboardLayout> content</DashboardLayout>
+    <DashboardLayout>content</DashboardLayout>
 </template>
 
 <script>

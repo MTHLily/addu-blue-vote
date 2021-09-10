@@ -1,7 +1,7 @@
 <template>
 <h1>Information Admin Edit Page</h1>
     <Head title="Dashboard" />
-    <DashboardLayout> content</DashboardLayout>
+    <DashboardLayout> content </DashboardLayout>
 </template>
 
 <script>

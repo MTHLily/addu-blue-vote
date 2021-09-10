@@ -9,7 +9,7 @@
                         >Information</Link
                     >
                     <Link
-                        href="/"
+                        href="/dashboard/faqs/create"
                         class="list-group-item list-group-item-action"
                         >FAQs</Link
                     >

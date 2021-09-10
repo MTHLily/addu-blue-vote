@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InformationSnippet;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 
-class InformationSnippetController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class InformationSnippetController extends Controller
     public function index()
     {
 
-    }    
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +25,8 @@ class InformationSnippetController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Information');
+       
+
     }
 
     /**
@@ -43,10 +43,10 @@ class InformationSnippetController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\InformationSnippet  $informationSnippet
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(InformationSnippet $informationSnippet)
+    public function show($id)
     {
         //
     }
@@ -54,10 +54,10 @@ class InformationSnippetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\InformationSnippet  $informationSnippet
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(InformationSnippet $informationSnippet)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +66,10 @@ class InformationSnippetController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InformationSnippet  $informationSnippet
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InformationSnippet $informationSnippet)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +77,10 @@ class InformationSnippetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\InformationSnippet  $informationSnippet
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InformationSnippet $informationSnippet)
+    public function destroy($id)
     {
         //
     }

@@ -1,7 +1,8 @@
 <template>
     <div>
+        <h1>FAQ Admin Edit Page</h1>
         <ul>
-            <li class="btn btn-primary">{{ faqs.question }}</li>
+            <li >{{ faqs.question }}</li>
             <li>{{ faqs.answer }}</li>
         </ul>
     </div>

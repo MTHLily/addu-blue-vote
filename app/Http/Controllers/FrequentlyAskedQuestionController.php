@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\FrequentlyAskedQuestion;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 
 class FrequentlyAskedQuestionController extends Controller
 {
@@ -14,7 +16,7 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +26,8 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('FAQs');
+
     }
 
     /**

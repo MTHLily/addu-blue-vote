@@ -44,7 +44,7 @@ class FrequentlyAskedQuestionController extends Controller
     {
         FrequentlyAskedQuestion::create( $request->validated());
 
-        return Redirect::route('faqs.index')->with('success', 'Frequently Asked Question Added!');
+        return Redirect::route('faqs.index')->with('success', 'FAQ Added!');
     }
 
     /**
@@ -78,9 +78,16 @@ class FrequentlyAskedQuestionController extends Controller
      * @param  \App\Models\FrequentlyAskedQuestion  $frequentlyAskedQuestion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FrequentlyAskedQuestion $frequentlyAskedQuestion)
+    public function update(FrequentlyAnsweredQuestionRequest $request, FrequentlyAskedQuestion $faq)
     {
-        //
+        $faq->update($request->validated());
+
+        return Redirect::route('faqs.index')->with('success', 'FAQ updated!');
+        // return redirect()->route('faqs.index')->with('success', 'FAQ updated!');
+
+        // return Inertia::render( 'FAQs/Index', [
+        //     'faqs' => FrequentlyAskedQuestion::all()
+        // ])->with('success', 'FAQ updated!');
     }
 
     /**
@@ -93,7 +100,7 @@ class FrequentlyAskedQuestionController extends Controller
     {
         $faq->delete();
         
-        return Redirect::back()->with('message', 'Frequently answered question deleted.');
+        return Redirect::back()->with('message', 'FAQ deleted!');
         
     }
 }

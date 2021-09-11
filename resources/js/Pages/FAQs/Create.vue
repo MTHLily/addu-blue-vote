@@ -11,7 +11,6 @@
           <Link href="/dashboard/faqs" class="btn btn-danger">Cancel</Link>
         </div>
       </form>
-      <pre>{{ faq }}</pre>
     </div>
   </DashboardLayout>
 </template>

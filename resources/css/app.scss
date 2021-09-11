@@ -59,6 +59,7 @@ $enable-shadows: true;
 // Utilities
 @import "~bootstrap/scss/utilities/api";
 
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 .is-invalid .toastui-editor-defaultUI {
   border-color: $danger;
 }

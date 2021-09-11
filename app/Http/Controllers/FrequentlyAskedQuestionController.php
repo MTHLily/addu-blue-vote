@@ -42,11 +42,9 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function store(FrequentlyAnsweredQuestionRequest $request)
     {
-        // dd($request->validated());
         FrequentlyAskedQuestion::create( $request->validated());
 
-        return Redirect::route('faqs.index');
-
+        return Redirect::route('faqs.index')->with('success', 'Frequently Asked Question Added!');
     }
 
     /**
@@ -66,9 +64,11 @@ class FrequentlyAskedQuestionController extends Controller
      * @param  \App\Models\FrequentlyAskedQuestion  $frequentlyAskedQuestion
      * @return \Illuminate\Http\Response
      */
-    public function edit(FrequentlyAskedQuestion $frequentlyAskedQuestion)
+    public function edit(FrequentlyAskedQuestion $faq)
     {
-        //
+        return Inertia::render('FAQs/Edit', [
+            'faq' => $faq
+        ]);
     }
 
     /**
@@ -89,8 +89,11 @@ class FrequentlyAskedQuestionController extends Controller
      * @param  \App\Models\FrequentlyAskedQuestion  $frequentlyAskedQuestion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FrequentlyAskedQuestion $frequentlyAskedQuestion)
+    public function destroy(FrequentlyAskedQuestion $faq)
     {
-        //
+        $faq->delete();
+        
+        return Redirect::back()->with('message', 'Frequently answered question deleted.');
+        
     }
 }

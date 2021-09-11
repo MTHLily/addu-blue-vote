@@ -1,6 +1,31 @@
 <template>
   <Head title="Frequently Asked Questions"></Head>
 
+  <div
+    class="position-fixed mt-4 start-50 translate-middle"
+    style="z-index: 11"
+  >
+    <div
+      class="toast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      ref="messageToast"
+    >
+      <div class="toast-header">
+        <i class="me-1" :class="toastMessage.icon"></i>
+        <strong class="me-auto">{{ toastMessage.title }}</strong>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body">{{ toastMessage.message }}</div>
+    </div>
+  </div>
+
   <DashboardLayout>
     <div class="flex flex-column">
       <div class="navbar navbar-dark bg-primary rounded shadow mb-4">
@@ -24,7 +49,21 @@
           <tr v-for="question in faqs" :key="question.id">
             <td>{{ question.question }}</td>
             <td>{{ question.answer }}</td>
-            <td>Actions Go here</td>
+            <td>
+              <form @submit.prevent="submitDelete(question.id)">
+                <div class="btn-group">
+                  <Link
+                    :href="`/dashboard/faqs/${question.id}/edit`"
+                    class="btn btn-primary"
+                  >
+                    <i class="bi-pencil-square"></i>
+                  </Link>
+                  <button class="btn btn-danger">
+                    <i class="bi-trash"></i>
+                  </button>
+                </div>
+              </form>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -35,6 +74,8 @@
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
+import Toast from "bootstrap/js/dist/toast";
+import { Inertia } from "@inertiajs/inertia";
 
 export default {
   props: {
@@ -50,6 +91,32 @@ export default {
     },
   },
   components: { Link, Head, DashboardLayout },
+  computed: {
+    toastMessage() {
+      return {
+        icon: this.$page.props.flash.success
+          ? "bi-check-circle text-success"
+          : "bi-exclamation-circle text-warning",
+        title: this.$page.props.flash.success ? "Success" : "Warning",
+        message:
+          this.$page.props.flash.success || this.$page.props.flash.message,
+      };
+    },
+  },
+  mounted() {
+    const message = new Toast(this.$refs.messageToast);
+    if (this.$page.props.flash.success || this.$page.props.flash.message)
+      message.show();
+  },
+  methods: {
+    submitDelete(id) {
+      Inertia.delete(`/dashboard/faqs/${id}`);
+      // Inertia.post(`/dashboard/faqs/${id}`, {
+      //   _token: this.$page.props.csrf_token,
+      //   _method: "DELETE",
+      // });
+    },
+  },
 };
 </script>
 

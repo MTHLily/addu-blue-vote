@@ -33,7 +33,7 @@ Route::get('/login', function () {
 //admin resources
 
 //admin dashboard
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //edit FAQs
 Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
 //edit Information

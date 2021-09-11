@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FrequentlyAnsweredQuestionRequest;
 use App\Models\FrequentlyAskedQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 
@@ -16,7 +18,9 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function index()
     {
-
+        return Inertia::render( 'FAQs/Index', [
+            'faqs' => FrequentlyAskedQuestion::all()
+        ]);
     }
 
     /**
@@ -26,7 +30,7 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function create()
     {
-        return Inertia::render('FAQs');
+        return Inertia::render('FAQs/Create');
 
     }
 
@@ -36,9 +40,13 @@ class FrequentlyAskedQuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FrequentlyAnsweredQuestionRequest $request)
     {
-        //
+        // dd($request->validated());
+        FrequentlyAskedQuestion::create( $request->validated());
+
+        return Redirect::route('faqs.index');
+
     }
 
     /**

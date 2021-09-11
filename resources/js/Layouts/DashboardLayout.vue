@@ -1,44 +1,40 @@
 <template>
-    <div class="container d-flex min-vh-100 my-4 gap-4">
-        <aside class="w-25">
-            <nav>
-                <ul class="list-group">
-                    <Link
-                        href="/dashboard/information"
-                        class="list-group-item list-group-item-action"
-                        >Information</Link
-                    >
-                    <Link
-                        href="/dashboard/faqs/create"
-                        class="list-group-item list-group-item-action"
-                        >FAQs</Link
-                    >
-                    <Link
-                        href="/"
-                        class="list-group-item list-group-item-action"
-                        >Points of Interest</Link
-                    >
-                    <Link
-                        href="/"
-                        class="list-group-item list-group-item-action"
-                        >Go Back</Link
-                    >
-                </ul>
-            </nav>
-        </aside>
-        <div class="flex-1">
-            <slot />
-        </div>
+  <div class="container d-flex min-vh-100 my-4 gap-4">
+    <aside class="w-25 flex-shrink-0">
+      <nav>
+        <ul class="list-group">
+          <Link
+            href="/dashboard/information"
+            class="list-group-item list-group-item-action"
+            >Information</Link
+          >
+          <Link
+            href="/dashboard/faqs"
+            class="list-group-item list-group-item-action"
+            >FAQs</Link
+          >
+          <Link href="/" class="list-group-item list-group-item-action"
+            >Points of Interest</Link
+          >
+          <Link href="/" class="list-group-item list-group-item-action"
+            >Go Back</Link
+          >
+        </ul>
+      </nav>
+    </aside>
+    <div class="flex-grow-1">
+      <slot />
     </div>
+  </div>
 </template>
 
 <script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
 
 export default {
-    components: {
-        Head,
-        Link,
-    },
+  components: {
+    Head,
+    Link,
+  },
 };
 </script>

@@ -4,16 +4,18 @@
       <nav>
         <ul class="list-group">
           <Link
-            href="/dashboard/information"
+            :href="route('information.index')"
             class="list-group-item list-group-item-action"
             >Information</Link
           >
           <Link
-            href="/dashboard/faqs"
+            :href="route('faqs.index')"
             class="list-group-item list-group-item-action"
             >FAQs</Link
           >
-          <Link href="/" class="list-group-item list-group-item-action"
+          <Link
+            :href="route('poi.index')"
+            class="list-group-item list-group-item-action"
             >Points of Interest</Link
           >
           <Link href="/" class="list-group-item list-group-item-action"

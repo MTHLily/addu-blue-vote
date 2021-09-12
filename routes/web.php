@@ -6,7 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\PointOfInterestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +38,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
 //edit Information
 Route::resource('/dashboard/information', InformationSnippetController::class);
+
+Route::resource('dashboard/poi', PointOfInterestController::class);
 
 require __DIR__.'/auth.php';

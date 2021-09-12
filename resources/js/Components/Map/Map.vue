@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div class="container" id="Map">
         <div class="d-flex flex-column">
-            <h3 class="text-primary text-center">Voters Registration Sites</h3>
+            <h2 class="text-primary text-center p-3"><b>Voters Registration Sites</b></h2>
             <div class="row">
                 <!-- map -->
                 <div class=" col-12">
@@ -131,5 +131,9 @@ export default {
         align-content: flex-end;
         width: 150px;
         height: 20px;
+    }
+    :target{
+        padding-top:120px;
+        margin-top:-120px;
     }
 </style>

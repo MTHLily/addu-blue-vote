@@ -1,14 +1,12 @@
 <template>
-    <div>
+    <div id="FAQs">
         <div class="container p-5">
             <div class="row">
-                <div class="col-3">
-                    <div class="text-primary">
-                        <!-- <p>VOTERS REGISTRATION</p><br> -->
-                        <h1>FAQs</h1>
-                    </div>
-                </div>
-                <div class="col-9">
+                <div class="col-3 mx-auto text-primary">
+                    <div>VOTERS REGISTRATION</div>
+                    <div><h1><b>FAQs</b></h1></div>
+                </div>                        
+                <div class="col-9 d-flex flex-column">
                     <p>
                         <a class="btn btn-primary me-3" data-bs-toggle="collapse" href="#faq1" role="button" aria-expanded="false" aria-controls="faq1">
                             +
@@ -19,18 +17,11 @@
                     </p>
                     <div class="collapse" id="faq1">
                         <div class="card card-body w-75">
-                            <b>People may register if they meet the following requirements:</b>
-                            <ol>
-                                <li> Filipino citizen </li>
-                                <li> At least 18 years old on or before Election Day (May 9, 2022) </li>
-                                <li> A resident of the Philippines for at least one year and a resident of the place in which you intend to vote for at least 6 months immediately preceding May 9, 2022. </li>
-                                <li> Not otherise disqualified by law. </li>
-                            </ol>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                            Et pharetra pharetra massa massa ultricies mi quis hendrerit. Interdum posuere lorem ipsum dolor.
                         </div>
                     </div>
-                </div>
-                <div class="col-3"></div>
-                <div class="col-9 mx-auto">
+
                     <p>
                         <a class="btn btn-primary me-3" data-bs-toggle="collapse" href="#faq2" role="button" aria-expanded="false" aria-controls="faq2">
                             +
@@ -45,9 +36,7 @@
                             Et pharetra pharetra massa massa ultricies mi quis hendrerit. Interdum posuere lorem ipsum dolor.
                         </div>
                     </div>
-                </div>
-                <div class="col-3"></div>
-                <div class="col-9 mx-auto">
+
                     <p>
                         <a class="btn btn-primary me-3" data-bs-toggle="collapse" href="#faq3" role="button" aria-expanded="false" aria-controls="faq3">
                             +
@@ -62,9 +51,7 @@
                             Et pharetra pharetra massa massa ultricies mi quis hendrerit. Interdum posuere lorem ipsum dolor.
                         </div>
                     </div>
-                </div>
-                <div class="col-3"></div>
-                <div class="col-9 mx-auto">
+
                     <p>
                         <a class="btn btn-primary me-3" data-bs-toggle="collapse" href="#faq4" role="button" aria-expanded="false" aria-controls="faq4">
                             +
@@ -79,9 +66,7 @@
                             Et pharetra pharetra massa massa ultricies mi quis hendrerit. Interdum posuere lorem ipsum dolor.
                         </div>
                     </div>
-                </div>
-                <div class="col-3"></div>
-                <div class="col-9 mx-auto">
+
                     <p>
                         <a class="btn btn-primary me-3" data-bs-toggle="collapse" href="#faq5" role="button" aria-expanded="false" aria-controls="faq5">
                             +
@@ -96,7 +81,8 @@
                             Et pharetra pharetra massa massa ultricies mi quis hendrerit. Interdum posuere lorem ipsum dolor.
                         </div>
                     </div>
-                </div>
+
+                </div>               
             </div>
         </div>
     </div>
@@ -122,5 +108,14 @@ export default {
     .card-body{
         margin-left:52px;
         margin-bottom:15px;
+    }
+
+    :target{
+        padding-top:90px; 
+        margin-top:-90px;
+    }
+
+    #FAQs{
+        margin-left:150px;
     }
 </style>

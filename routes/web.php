@@ -21,14 +21,14 @@ use App\Http\Controllers\DashboardController;
 
 //for authorization
 
-Route::get('/login', function () {
+/*Route::get('/login', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+});*/
 
 //admin resources
 

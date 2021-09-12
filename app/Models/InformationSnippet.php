@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class InformationSnippet extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'content'
+    ];
 }

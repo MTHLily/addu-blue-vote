@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-3 mx-auto text-primary">
                     <div>VOTERS REGISTRATION</div>
-                    <div><h1><b>FAQs</b></h1></div>
+                    <div class="h1 fw-bolder">FAQs</div>
                 </div>                        
                 <div class="col-9 d-flex flex-column">
                     <p>

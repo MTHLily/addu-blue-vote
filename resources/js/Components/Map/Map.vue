@@ -1,5 +1,5 @@
 <template>
-    <div class="map container" id="Map">
+    <div class="map container p-3" id="Map">
         <div class="d-flex flex-column">
             <h2 class="text-primary text-center fw-bolder">Voters Registration Sites</h2>
             <div class="row">
@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 
-                <div class="row overlap">    
+                <div class="row overlap justify-content-end p-3">    
                     <!-- filters -->
                     <div class="container header row">
                         <div class="filters row col-8">
@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <form class="d-flex col-2 w-25">
+                        <form class="d-flex col-2 w-25 justify-content-end">
                             <input class="form-control me-2" type="search" placeholder="Search 🔎" aria-label="Search">
                         </form>
                     </div>

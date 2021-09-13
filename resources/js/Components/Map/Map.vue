@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <form class="d-flex col-2 w-25 ">
-                            <input class="form-control me-2" type="search" placeholder="Search 🔎" aria-label="Search">
+                            <input class="form-control" type="search" placeholder="Search 🔎" aria-label="Search">
                         </form>
                     </div>
 

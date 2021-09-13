@@ -12,7 +12,7 @@
                 
                 <div class="row overlap justify-content-end p-3">    
                     <!-- filters -->
-                    <div class="container header row">
+                    <div class="container header row justify-content-between">
                         <div class="filters row col-8">
                             <div class="btn-group col-2 px-2">
                                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

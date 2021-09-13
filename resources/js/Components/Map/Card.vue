@@ -1,19 +1,19 @@
 <template lang="">
     <div class="card mb-3 d-flex align-items-center" style="max-width: 540px;">
-        <button type="button" class="btn btn-light ">
+        <button type="button" class="btn btn-light">
             <div class="row g-0 mh-15">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" class="img-fluid rounded-start" alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" style="object-fit:cover">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 align-items-start">
                     <div class="card-body text-start">
-                        <h5 class="card-title">District: </h5>
-                        <p class="card-text">Ateneo de Davao University</p>
+                        <p class="card-title">District: </p>
+                        <h5 class="card-text">Ateneo de Davao University</h5>
                         <p class="card-text"><small class="text-muted">Address</small></p>
                         <p class="card-text"><small class="text-muted">Tel.no.</small></p>
                     </div>
                 </div>
-                <div class="row-2 bg-primary text-white">here</div>
+                <div class="col-md-1 row-2 bg-primary text-white"></div>
             </div>
         </button>
     </div>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    
+    props: ['img','alt','district','name','address','contact'],
 }
 </script>
 

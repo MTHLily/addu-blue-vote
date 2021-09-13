@@ -1,7 +1,7 @@
 <template>
-    <div class="container" id="Map">
+    <div class="container">
         <div class="d-flex flex-column">
-            <h2 class="text-primary text-center p-3"><b>Voters Registration Sites</b></h2>
+            <h3 class="text-primary text-center">Voters Registration Sites</h3>
             <div class="row">
                 <!-- map -->
                 <div class=" col-12">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <carousel :items-to-show="3.5">
+                    <carousel :items-to-show="2">
                         <slide v-for="slide in 10" :key="slide">
                             <Card />
                         </slide>
@@ -92,28 +92,38 @@ export default {
         data: () => ({
             // carousel settings
             settings: {
-            itemsToShow: 3.5,
-            snapAlign: 'center',
-        },
-        // breakpoints are mobile first
-        // any settings not specified will fallback to the carousel settings
-        breakpoints: {
-        // 700px and up
-            300: {
-                itemsToShow: 1.5,
-                snapAlign: 'center',
-            },
-            700: {
                 itemsToShow: 3.5,
                 snapAlign: 'center',
             },
-            // 1024 and up
-            1024: {
-                itemsToShow: 5,
-                snapAlign: 'start',
+            locations:[
+                { 
+                    img:"",
+                    district:"District 1",
+                    name:"Ateneo de Davao University",
+                    address:"",
+                    contact:"",
+                },
+            ],
+
+            // breakpoints are mobile first
+            // any settings not specified will fallback to the carousel settings
+            breakpoints: {
+            // 700px and up
+                300: {
+                    itemsToShow: 1.5,
+                    snapAlign: 'center',
+                },
+                700: {
+                    itemsToShow: 3.5,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 5,
+                    snapAlign: 'start',
+                },
             },
-        },
-    }),
+        }),
 }
 </script>
 
@@ -131,9 +141,5 @@ export default {
         align-content: flex-end;
         width: 150px;
         height: 20px;
-    }
-    :target{
-        padding-top:120px;
-        margin-top:-120px;
     }
 </style>

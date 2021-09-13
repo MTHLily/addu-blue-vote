@@ -1,5 +1,5 @@
 <template>
-    <div class="map container p-3" id="Map">
+    <div class="map container" id="Map">
         <div class="d-flex flex-column">
             <h2 class="text-primary text-center fw-bolder">Voters Registration Sites</h2>
             <div class="row">
@@ -31,13 +31,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <form class="d-flex col-2 w-25 justify-content-end">
+                        <form class="d-flex col-2 w-25 ">
                             <input class="form-control me-2" type="search" placeholder="Search 🔎" aria-label="Search">
                         </form>
                     </div>
 
                     <!-- legend -->
-                    <div class="legend gy-2 col-auto mb-3">
+                    <div class="legend gy-2 col-auto mb-3 justify-content-end">
                         <div class="card">
                             <!-- <div class="card-body"> -->
                                 <h5>🔴 District 1</h5>
@@ -77,10 +77,8 @@ import Card from './Card'
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 export default {
     components: {
         Card,
@@ -104,7 +102,6 @@ export default {
                     contact:"",
                 },
             ],
-
             // breakpoints are mobile first
             // any settings not specified will fallback to the carousel settings
             breakpoints: {
@@ -130,7 +127,6 @@ export default {
 
 
 <style scoped>
-
     .map{
         position: relative;
     }

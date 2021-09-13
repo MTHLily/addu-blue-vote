@@ -14,6 +14,11 @@
             >FAQs</Link
           >
           <Link
+            :href="route('districts.index')"
+            class="list-group-item list-group-item-action"
+            >Districts</Link
+          >
+          <Link
             :href="route('poi.index')"
             class="list-group-item list-group-item-action"
             >Points of Interest</Link

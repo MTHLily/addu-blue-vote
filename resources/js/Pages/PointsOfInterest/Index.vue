@@ -9,7 +9,7 @@
         :options="gMapOptions"
         ref="gMapRef"
         map-type-id="terrain"
-        class="w-100 vh-100"
+        style="width: 100%; height: 40vh"
       >
         <GMapMarker
           v-for="m in filteredMarkers"
@@ -20,13 +20,53 @@
         </GMapMarker>
         <GMapPolygon :editable="true" :paths="paths" />
       </GMapMap>
-      {{ markers }}
-      <select class="custom-select" v-model="markerFilter">
-        <option :value="0">0</option>
-        <option :value="1">1</option>
-        <option :value="2">2</option>
-      </select>
-      <pre>{{ markers }}</pre>
+      <div class="navbar navbar-dark bg-primary rounded shadow mb-4">
+        <div class="container-fluid">
+          <ul class="navbar-nav p-2">
+            <li class="nav-item">
+              <Link :href="route('districts.create')" class="nav-link"
+                >Add District</Link
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <table class="table w-100">
+        <thead>
+          <th scope="col">District</th>
+          <th scope="col">Description</th>
+          <th scope="col">Color</th>
+          <th scope="col">Actions</th>
+        </thead>
+        <tbody>
+          <tr v-for="district in districts" :key="district.id">
+            <td>{{ district.name }}</td>
+            <td>{{ district.description }}</td>
+            <td>
+              <i
+                class="bi bi-circle-fill"
+                :style="`color: ${district.color}`"
+              ></i>
+              {{ district.color }}
+            </td>
+            <td>
+              <form @submit.prevent="submitDelete(district.id)">
+                <div class="btn-group">
+                  <Link
+                    :href="route('districts.edit', district.id)"
+                    class="btn btn-primary"
+                  >
+                    <i class="bi-pencil-square"></i>
+                  </Link>
+                  <button class="btn btn-danger">
+                    <i class="bi-trash"></i>
+                  </button>
+                </div>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </DashboardLayout>
 </template>

@@ -8,7 +8,7 @@
         <FAQForm v-model:faq="faq"></FAQForm>
         <div class="btn-group mx-auto w-100" role="group">
           <button class="btn btn-primary">Save</button>
-          <Link href="/dashboard/faqs" class="btn btn-danger">Cancel</Link>
+          <Link :href="route('faqs.index')" class="btn btn-danger">Cancel</Link>
         </div>
       </form>
     </div>

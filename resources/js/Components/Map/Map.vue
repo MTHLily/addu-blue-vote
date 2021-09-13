@@ -1,18 +1,18 @@
 <template>
-    <div class="container">
+    <div class="map container">
         <div class="d-flex flex-column">
             <h3 class="text-primary text-center">Voters Registration Sites</h3>
             <div class="row">
                 <!-- map -->
                 <div class=" col-12">
-                    <div class="map container bg-secondary">
+                    <div class=" container bg-secondary">
                         <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map">
                     </div>
                 </div>
                 
                 <div class="row overlap">    
                     <!-- filters -->
-                    <div class="header row">
+                    <div class="container header row">
                         <div class="filters row col-8">
                             <div class="btn-group col-2 px-2">
                                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <form class="d-flex col-4 w-25">
+                        <form class="d-flex col-2 w-25">
                             <input class="form-control me-2" type="search" placeholder="Search 🔎" aria-label="Search">
                         </form>
                     </div>

@@ -2,7 +2,7 @@
     <div class="card mb-3 d-flex align-items-center" style="max-width: 540px;">
         <button type="button" class="btn btn-light">
             <div class="row g-0 mh-15">
-                <div class="col-md-3">
+                <div class="container col-md-3">
                     <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" class="img-fluid rounded-start" alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" style="object-fit:cover">
                 </div>
                 <div class="col-md-8 align-items-start">

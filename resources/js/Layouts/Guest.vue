@@ -2,7 +2,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <header>
             <slot name="header">
-                <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+                <nav class="navbar fixed-top navbar-expand-lg bg-primary">
                 <div class="container-fluid mx-auto">
                     <a class="navbar-brand" href="#">
                         <img :src="image" width="230" height="70">
@@ -33,10 +33,10 @@
                         </ul>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Candidate's Profile</a>
+                        <a class="nav-link" href="#" disabled>Candidate's Profile</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Election Results</a>
+                        <a class="nav-link" href="#" disabled>Election Results</a>
                         </li>
                     </ul>
                     </div>
@@ -93,5 +93,23 @@ export default {
     padding-left: 220px;
     padding-right: 220px;
 }
+.dropdown-menu{
+    background-color: #08228d;
+}
 
+.dropdown-item{
+    color:white;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #dee2e6;
+  background-color: #061b71;
+}
+
+.nav-link{
+    color:white;
+}
+.nav-link:hover{
+    color:#dee2e6;
+}
 </style>

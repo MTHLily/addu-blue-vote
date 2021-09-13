@@ -2,7 +2,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <header>
             <slot name="header">
-                <nav class="navbar fixed-top navbar-expand-lg bg-primary">
+                <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
                 <div class="container-fluid mx-auto">
                     <a class="navbar-brand" href="#">
                         <img :src="image" width="230" height="70">
@@ -112,4 +112,5 @@ export default {
 .nav-link:hover{
     color:#dee2e6;
 }
+
 </style>

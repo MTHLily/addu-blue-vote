@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <form class="d-flex col-2 w-25 ">
-                            <input class="form-control" type="search" placeholder="Search 🔎" aria-label="Search">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                         </form>
                     </div>
 
@@ -40,9 +40,9 @@
                     <div class="legend gy-2 col-auto justify-content-end">
                         <div class="card p-3">
                             <!-- <div class="card-body"> -->
-                                <h6>🔴 District 1</h6>
-                                <h6>🟡 District 2</h6>
-                                <h6>🔵 District 3</h6>
+                                <div>🔴 District 1</div>
+                                <div>🟡 District 2</div>
+                                <div>🔵 District 3</div>
                             <!-- </div> -->
                         </div>
                     </div>

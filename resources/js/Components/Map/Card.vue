@@ -6,7 +6,7 @@
                     <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" class="img-fluid rounded-start" alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" style="object-fit:cover">
                 </div>
                 <div class="col-md-8 align-items-start">
-                    <div class="card-body text-start">
+                    <div class="p-3 text-start">
                         <p class="card-title">District: </p>
                         <h5 class="card-text">Ateneo de Davao University</h5>
                         <p class="card-text"><small class="text-muted">Address</small></p>

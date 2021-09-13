@@ -23620,14 +23620,15 @@ __webpack_require__.r(__webpack_exports__);
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-fd4c69e4");
 
 var _hoisted_1 = {
-  "class": "map container"
+  "class": "map container",
+  id: "Map"
 };
 var _hoisted_2 = {
   "class": "d-flex flex-column"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "text-primary text-center"
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "text-primary text-center fw-bolder"
 }, "Voters Registration Sites", -1
 /* HOISTED */
 );

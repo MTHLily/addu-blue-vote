@@ -1,7 +1,7 @@
 <template>
-    <div class="map container">
+    <div class="map container" id="Map">
         <div class="d-flex flex-column">
-            <h3 class="text-primary text-center">Voters Registration Sites</h3>
+            <h2 class="text-primary text-center fw-bolder">Voters Registration Sites</h2>
             <div class="row">
                 <!-- map -->
                 <div class=" col-12">

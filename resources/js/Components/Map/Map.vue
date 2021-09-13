@@ -37,12 +37,12 @@
                     </div>
 
                     <!-- legend -->
-                    <div class="legend gy-2 col-auto mb-3 justify-content-end">
-                        <div class="card">
+                    <div class="legend gy-2 col-auto justify-content-end">
+                        <div class="card p-3">
                             <!-- <div class="card-body"> -->
-                                <h5>🔴 District 1</h5>
-                                <h5>🟡 District 2</h5>
-                                <h5>🔵 District 3</h5>
+                                <h6>🔴 District 1</h6>
+                                <h6>🟡 District 2</h6>
+                                <h6>🔵 District 3</h6>
                             <!-- </div> -->
                         </div>
                     </div>

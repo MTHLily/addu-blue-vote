@@ -6,13 +6,13 @@
                 <!-- map -->
                 <div class=" col-12">
                     <div class=" container bg-secondary">
-                        <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map">
+                        <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map" width="100%">
                     </div>
                 </div>
                 
-                <div class="row overlap">    
+                <div class="row overlap justify-content-end p-3">    
                     <!-- filters -->
-                    <div class="container header row">
+                    <div class="container header row justify-content-between">
                         <div class="filters row col-8">
                             <div class="btn-group col-2 px-2">
                                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,13 +31,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <form class="d-flex col-2 w-25">
+                        <form class="d-flex col-2 w-25 ">
                             <input class="form-control me-2" type="search" placeholder="Search 🔎" aria-label="Search">
                         </form>
                     </div>
 
                     <!-- legend -->
-                    <div class="legend gy-2 col-auto mb-3">
+                    <div class="legend gy-2 col-auto mb-3 justify-content-end">
                         <div class="card">
                             <!-- <div class="card-body"> -->
                                 <h5>🔴 District 1</h5>
@@ -77,10 +77,8 @@ import Card from './Card'
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 export default {
     components: {
         Card,
@@ -104,7 +102,6 @@ export default {
                     contact:"",
                 },
             ],
-
             // breakpoints are mobile first
             // any settings not specified will fallback to the carousel settings
             breakpoints: {
@@ -130,7 +127,6 @@ export default {
 
 
 <style scoped>
-
     .map{
         position: relative;
     }

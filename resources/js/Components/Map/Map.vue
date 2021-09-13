@@ -5,9 +5,9 @@
             <div class="row">
                 <!-- map -->
                 <div class=" col-12">
-                    <div class=" container">
+                    <!-- <div class=" container"> -->
                         <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map" width="100%">
-                    </div>
+                    <!-- </div> -->
                 </div>
                 
                 <div class="row overlap justify-content-end p-3">    

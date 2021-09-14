@@ -3,6 +3,11 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\FrequentlyAskedQuestionController;
+use App\Http\Controllers\InformationSnippetController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\PointOfInterestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,27 +20,28 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+//for authorization
+
+/*Route::get('/login', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+});*/
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//admin resources
 
-Route::get('/faqs', function() {
-    return Inertia::render('FAQs', 
-        [
-            'faqs' => [
-                'question' => 'where to register',
-                'answer' => 'here in the philippines'
-            ]
-        ]);
-});
+//admin dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+//edit FAQs
+Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
+//edit Information
+Route::resource('/dashboard/information', InformationSnippetController::class);
+
+Route::resource('/dashboard/districts', DistrictController::class);
+
+Route::resource('dashboard/poi', PointOfInterestController::class);
 
 require __DIR__.'/auth.php';

@@ -10,15 +10,21 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@fawmi/vue-google-maps": "^0.9.1",
         "@inertiajs/inertia": "^0.10.0",
         "@inertiajs/inertia-vue3": "^0.5.1",
         "@inertiajs/progress": "^0.2.6",
         "@popperjs/core": "^2.10.1",
         "@tailwindcss/forms": "^0.2.1",
+        "@toast-ui/editor": "^3.1.0",
         "@vue/compiler-sfc": "^3.0.5",
         "autoprefixer": "^10.2.4",
         "axios": "^0.21",
         "bootstrap": "^5.1.0",
+        "bootstrap-icons": "^1.5.0",
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.3.0",
+        "dotenv": "^10.0.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.2.13",
@@ -27,11 +33,13 @@
         "sass": "^1.39.0",
         "sass-loader": "^12.1.0",
         "tailwindcss": "^2.1.2",
+        "tui-color-picker": "^2.2.7",
         "vue": "^3.0.5",
-        "vue-loader": "^16.1.2"
+        "vue-loader": "^16.1.2",
+        "vue3-colorpicker": "^1.0.5"
     },
     "dependencies": {
         "postcss-scss": "^4.0.0",
-        "vue3-carousel": "^0.1.25"
+        "vue3-carousel": "^0.1.27"
     }
 }

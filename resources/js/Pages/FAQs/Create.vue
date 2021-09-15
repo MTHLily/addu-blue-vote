@@ -1,4 +1,5 @@
 <template>
+<!-- sample -->
   <Head title="Frequently Asked Questions"></Head>
 
   <DashboardLayout>

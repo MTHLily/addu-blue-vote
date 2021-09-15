@@ -17,7 +17,7 @@
         </button>
         <div ref="collapseEl" class="w-100 mt-2 collapse">
           <div class="card card-body m-0">
-            {{ faq.answer }}
+            <MarkdownViewer :content="faq.answer"></MarkdownViewer>
           </div>
         </div>
       </div>
@@ -27,8 +27,12 @@
 
 <script>
 import Collapse from "bootstrap/js/dist/collapse";
+import MarkdownViewer from "../MarkdownViewer.vue";
 
 export default {
+  components: {
+    MarkdownViewer,
+  },
   props: {
     faq: {
       type: Object,

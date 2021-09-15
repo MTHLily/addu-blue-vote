@@ -5,6 +5,12 @@
       style="height: clamp(200px, 60vh, 1000px)"
     >
       <h1>{{ info.title }}</h1>
+      <!-- <div class="text-white">
+        <MarkdownViewer
+          :content="info.content"
+          class="text-white"
+        ></MarkdownViewer>
+      </div> -->
       <p class="lead">{{ info.content }}</p>
     </div>
   </Slide>
@@ -12,8 +18,10 @@
 
 <script>
 import { Slide } from "vue3-carousel";
+import MarkdownViewer from "../MarkdownViewer.vue";
+
 export default {
-  components: { Slide },
+  components: { Slide, MarkdownViewer },
   props: {
     info: {
       type: Object,

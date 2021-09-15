@@ -19,38 +19,10 @@
 
 
 <script>
-import { reactive } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import InformationForm from "../../Components/Information/InformationForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-
-
-
-/*export default {
-    components: {
-        Head,
-        DashboardLayout,
-    },
-
-    props:{},
-
-    data(){
-      return {
-        form:{
-          title:'',
-          content: '',
-        }
-      }
-    },
-
-    methods: {
-      createInfo(){
-        let data = new FormData();
-        data.append('title', this.form.title);
-        data.append('content', this.form.content);
-*/
 
 
 export default {
@@ -67,23 +39,9 @@ export default {
     }),
   }),
 
- /* setup () {
-    const form = reactive({
-      title: '',
-      content: '',
-     
-    })
 
-    function submit() {
-      Inertia.post('/dashboard/information', form)
-    }
-
-    return { form, submit }
-  },*/
 }
-     /* }
-    }
-};*/
+     
 </script>
 
 <style></style>

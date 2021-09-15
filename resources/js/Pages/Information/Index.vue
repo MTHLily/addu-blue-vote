@@ -46,18 +46,14 @@
           <th scope="col">Actions</th>
         </thead>
         <tbody>
-          <tr v-for="infoSnip in info.data" :key="infoSnip.id">
-            <td>{{ infoSnip.title }}</td>
-            <!-- <td>{{ infoSnip.content }}</td> -->
+          <tr v-for="title in info" :key="title.id">
+            <td>{{ title.title }}</td>
+            <td><MarkdownViewer :content="title.content"></MarkdownViewer></td>
             <td>
-              <MarkdownViewer :content="infoSnip.content"></MarkdownViewer>
-              <!-- <MarkdownViewer></MarkdownViewer> -->
-            </td>
-            <td>
-              <form @submit.prevent="submitDelete(infoSnip.id)">
+              <form @submit.prevent="submitDelete(title.id)">
                 <div class="btn-group">
                   <Link
-                    :href="`/dashboard/information/${infoSnip.id}/edit`"
+                    :href="`/dashboard/information/${title.id}/edit`"
                     class="btn btn-primary"
                   >
                     <i class="bi-pencil-square"></i>
@@ -83,17 +79,24 @@ import Toast from "bootstrap/js/dist/toast";
 import { Inertia } from "@inertiajs/inertia";
 
 export default {
+  props: {
+    info: {
+      type: Array,
+      default: () => [
+        {
+          id: 0,
+          title: "Default Title",
+          conrnt: "Defualt Content",
+        },
+      ],
+    },
+  },
   components: {
     Link,
     Head,
     DashboardLayout,
     MarkdownViewer,
   },
-
-  props: {
-    info: Object,
-  },
-
   computed: {
     toastMessage() {
       return {
@@ -113,11 +116,7 @@ export default {
   },
   methods: {
     submitDelete(id) {
-      Inertia.delete(`/dashboard/faqs/${id}`);
-      // Inertia.post(`/dashboard/faqs/${id}`, {
-      //   _token: this.$page.props.csrf_token,
-      //   _method: "DELETE",
-      // });
+      Inertia.delete(`/dashboard/information/${id}`);
     },
   },
 };

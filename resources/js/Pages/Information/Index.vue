@@ -46,9 +46,13 @@
           <th scope="col">Actions</th>
         </thead>
         <tbody>
-         <tr v-for="infoSnip in info.data" :key="infoSnip.id">
-                <td>{{ infoSnip.title }}</td>
-                <td>{{ infoSnip.content }}</td>
+          <tr v-for="infoSnip in info.data" :key="infoSnip.id">
+            <td>{{ infoSnip.title }}</td>
+            <!-- <td>{{ infoSnip.content }}</td> -->
+            <td>
+              <MarkdownViewer :content="infoSnip.content"></MarkdownViewer>
+              <!-- <MarkdownViewer></MarkdownViewer> -->
+            </td>
             <td>
               <form @submit.prevent="submitDelete(infoSnip.id)">
                 <div class="btn-group">
@@ -71,26 +75,26 @@
   </DashboardLayout>
 </template>
 
-
-
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
+import MarkdownViewer from "../../Components/MarkdownViewer.vue";
 import Toast from "bootstrap/js/dist/toast";
 import { Inertia } from "@inertiajs/inertia";
 
 export default {
-    components: {
-        Link,
-        Head,
-        DashboardLayout,
-    },
+  components: {
+    Link,
+    Head,
+    DashboardLayout,
+    MarkdownViewer,
+  },
 
-    props: {
-        info: Object,
-    },
+  props: {
+    info: Object,
+  },
 
-     computed: {
+  computed: {
     toastMessage() {
       return {
         icon: this.$page.props.flash.success

@@ -26,6 +26,7 @@
           <Link href="/" class="list-group-item list-group-item-action"
             >Go Back</Link
           >
+          <Link href="/logout" method="post">Log out</Link>
         </ul>
       </nav>
     </aside>

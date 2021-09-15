@@ -23,7 +23,7 @@ mix
   .webpackConfig(require("./webpack.config"))
   .browserSync({
     proxy: "laravel.test",
-    // open: false,
+    open: false,
   });
 
 if (mix.inProduction()) {

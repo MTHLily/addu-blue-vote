@@ -48,7 +48,10 @@
         <tbody>
           <tr v-for="question in faqs" :key="question.id">
             <td>{{ question.question }}</td>
-            <td>{{ question.answer }}</td>
+            <!-- <td>{{ question.answer }}</td> -->
+            <td>
+              <MarkdownViewer :content="question.answer"></MarkdownViewer>
+            </td>
             <td>
               <form @submit.prevent="submitDelete(question.id)">
                 <div class="btn-group">
@@ -74,6 +77,7 @@
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
+import MarkdownViewer from "../../Components/MarkdownViewer.vue";
 import Toast from "bootstrap/js/dist/toast";
 import { Inertia } from "@inertiajs/inertia";
 
@@ -90,7 +94,7 @@ export default {
       ],
     },
   },
-  components: { Link, Head, DashboardLayout },
+  components: { Link, Head, DashboardLayout, MarkdownViewer },
   computed: {
     toastMessage() {
       return {

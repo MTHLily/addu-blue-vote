@@ -8,6 +8,8 @@ use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PointOfInterestController;
+use App\Models\FrequentlyAskedQuestion;
+use App\Models\InformationSnippet;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +22,12 @@ use App\Http\Controllers\PointOfInterestController;
 |
 */
 
-//for authorization
-
-/*Route::get('/login', function () {
+Route::get('/', function(){
     return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'faqs' => FrequentlyAskedQuestion::all(),
+        'information' => InformationSnippet::all()
     ]);
-});*/
-
+});
 //admin resources
 
 //admin dashboard

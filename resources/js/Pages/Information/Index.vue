@@ -46,14 +46,14 @@
           <th scope="col">Actions</th>
         </thead>
         <tbody>
-         <tr v-for="infoSnip in info.data" :key="infoSnip.id">
-                <td>{{ infoSnip.title }}</td>
-                <td>{{ infoSnip.content }}</td>
+         <tr v-for="title in info" :key="title.id">
+                <td>{{ title.title }}</td>
+                <td>{{ title.content }}</td>
             <td>
-              <form @submit.prevent="submitDelete(infoSnip.id)">
+              <form @submit.prevent="submitDelete(title.id)">
                 <div class="btn-group">
                   <Link
-                    :href="`/dashboard/information/${infoSnip.id}/edit`"
+                    :href="`/dashboard/information/${title.id}/edit`"
                     class="btn btn-primary"
                   >
                     <i class="bi-pencil-square"></i>
@@ -78,18 +78,27 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import Toast from "bootstrap/js/dist/toast";
 import { Inertia } from "@inertiajs/inertia";
+import { InertiaProgress } from '@inertiajs/progress';
 
 export default {
-    components: {
+
+    props: {
+        info: {
+          type: Array,
+          default: () => [
+            {
+              id: 0,
+              title: "Default Title",
+              conrnt: "Defualt Content",
+            },
+          ],
+        },
+      },
+      components: {
         Link,
         Head,
         DashboardLayout,
     },
-
-    props: {
-        info: Object,
-    },
-
      computed: {
     toastMessage() {
       return {
@@ -109,7 +118,8 @@ export default {
   },
   methods: {
     submitDelete(id) {
-      Inertia.delete(`/dashboard/faqs/${id}`);
+    
+      Inertia.delete(`/dashboard/information/${id}`);
       // Inertia.post(`/dashboard/faqs/${id}`, {
       //   _token: this.$page.props.csrf_token,
       //   _method: "DELETE",

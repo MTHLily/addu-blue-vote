@@ -18,8 +18,9 @@ class InformationSnippetController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Information/Index', ['info' => InformationSnippet::paginate()]);
-
+        return Inertia::render( 'Information/Index', [
+            'info' => InformationSnippet::all()
+        ]);
     }    
 
     /**
@@ -82,9 +83,9 @@ class InformationSnippetController extends Controller
      * @param  \App\Models\InformationSnippet  $informationSnippet
      * @return \Illuminate\Http\Response
      */
-    public function edit(InformationSnippet $info)
-    {
-        return Inertia::render('Information/Edit', [ 'info' =>  $info ]);
+    public function edit(InformationSnippet $information)
+    { 
+        return Inertia::render('Information/Edit', [ 'information' =>  $information ]);
     }
 
     /**
@@ -94,18 +95,18 @@ class InformationSnippetController extends Controller
      * @param  \App\Models\InformationSnippet  $informationSnippet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InformationSnippet $info)
+    public function update(Request $request, InformationSnippet $information)
     {
         $request->validate([
             'title' => 'required',
             'content' => 'required',
            ]);
-        $info->update([
+        $information->update([
             'title' => $request->input('title'),
             'content' => $request->input('content')
         ]);
         
-        return \Redirect::route('information.index');
+        return Redirect::route('information.index');
     }
 
     /**
@@ -114,8 +115,9 @@ class InformationSnippetController extends Controller
      * @param  \App\Models\InformationSnippet  $informationSnippet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InformationSnippet $informationSnippet)
+    public function destroy(InformationSnippet $information)
     {
-        //
+        $information->delete();
+        return Redirect::route('information.index')->with('success', 'Information Snippet Added!');
     }
 }

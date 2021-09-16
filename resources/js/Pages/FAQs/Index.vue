@@ -27,49 +27,70 @@
   </div>
 
   <DashboardLayout>
-    <div class="flex flex-column">
-      <div class="navbar navbar-dark bg-primary rounded shadow mb-4">
-        <div class="container-fluid">
-          <ul class="navbar-nav p-2">
-            <li class="nav-item">
-              <Link href="/dashboard/faqs/create" class="nav-link"
-                >Add FAQ</Link
-              >
-            </li>
-          </ul>
+    <div class="container flex flex-column">
+      <div class="card">
+        <div class="card-header bg-primary text-white fw-bold" >
+          Frequently Asked Questions
+        </div>
+        <div style="overflow-x:auto">
+          <table class="table w-100 table align-middle table-hover table-responsive table-sm">
+            <thead class="text-center  align-middle" style="background-color: #CCDFFF; height: 50px;">
+              <th scope="col"></th>
+              <th scope="col">Question</th>
+              <th scope="col">Answer</th>
+              <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+              <tr v-for="question in faqs" :key="question.id">
+                <td>
+                    <div class="btn-group">
+                      <div class="p-3">
+                        <Link
+                          :href="`/dashboard/faqs/${question.id}/edit`"
+                          class="btn btn-primary"
+                        >
+                          <i class="bi bi-eye-fill"></i>
+                        </Link>
+                      </div>
+                    </div>
+                </td>
+                <td class="text-truncate fw-bold" style="max-width: 400px;">{{ question.question }}</td>
+                <!-- <td>{{ question.answer }}</td> -->
+                <td class="text-truncate fw-bold" style="max-width: 400px;">
+                  <MarkdownViewer :content="question.answer"></MarkdownViewer>
+                </td>
+                <td>
+                  <form @submit.prevent="submitDelete(question.id)">
+                    <div class="btn-group">
+                      <div class="p-3">
+                        <Link
+                          :href="`/dashboard/faqs/${question.id}/edit`"
+                          class="btn btn-success"
+                        >
+                          <i class="bi-pencil-square"></i>
+                        </Link>
+                      </div>
+                      <div class="p-3">
+                        <button class="btn btn-danger">
+                          <i class="bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+            <td colspan="">
+              <div class="card-footer">
+                <div class="bg-primary rounded shadow mb-4 ">
+                  <Link href="/dashboard/faqs/create" class="nav-link text-white">Add</Link>
+                </div>
+              </div>
+            </td>
+            <td colspan="11" class="card-footer table-borderless"></td>
+          </table>
         </div>
       </div>
-      <table class="table w-100">
-        <thead>
-          <th scope="col">Question</th>
-          <th scope="col">Answer</th>
-          <th scope="col">Actions</th>
-        </thead>
-        <tbody>
-          <tr v-for="question in faqs" :key="question.id">
-            <td>{{ question.question }}</td>
-            <!-- <td>{{ question.answer }}</td> -->
-            <td>
-              <MarkdownViewer :content="question.answer"></MarkdownViewer>
-            </td>
-            <td>
-              <form @submit.prevent="submitDelete(question.id)">
-                <div class="btn-group">
-                  <Link
-                    :href="`/dashboard/faqs/${question.id}/edit`"
-                    class="btn btn-primary"
-                  >
-                    <i class="bi-pencil-square"></i>
-                  </Link>
-                  <button class="btn btn-danger">
-                    <i class="bi-trash"></i>
-                  </button>
-                </div>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </DashboardLayout>
 </template>

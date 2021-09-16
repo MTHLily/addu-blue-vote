@@ -27,46 +27,71 @@
   </div>
 
   <DashboardLayout>
-    <div class="flex flex-column">
-      <div class="navbar navbar-dark bg-primary rounded shadow mb-4">
-        <div class="container-fluid">
-          <ul class="navbar-nav p-2">
-            <li class="nav-item">
-              <Link href="/dashboard/information/create" class="nav-link"
-                >Add Information Snippet</Link
-              >
-            </li>
-          </ul>
+    <div class="container flex flex-column">
+      <div class="card">
+        <div class="card-header bg-primary text-white fw-bold" >
+          Information
         </div>
-      </div>
-      <table class="table w-100">
-        <thead>
-          <th scope="col">Title</th>
-          <th scope="col">Content</th>
-          <th scope="col">Actions</th>
-        </thead>
-        <tbody>
-          <tr v-for="title in info" :key="title.id">
-            <td>{{ title.title }}</td>
-            <td><MarkdownViewer :content="title.content"></MarkdownViewer></td>
-            <td>
-              <form @submit.prevent="submitDelete(title.id)">
-                <div class="btn-group">
-                  <Link
-                    :href="`/dashboard/information/${title.id}/edit`"
-                    class="btn btn-primary"
-                  >
-                    <i class="bi-pencil-square"></i>
-                  </Link>
-                  <button class="btn btn-danger">
-                    <i class="bi-trash"></i>
-                  </button>
+        <!-- <div class="card-body" style="overflow-x:auto"> -->
+        <div style="overflow-x:auto">
+          <table class="table w-100 table align-middle table-hover table-responsive table-sm">
+            <thead class="text-center  align-middle" style="background-color: #CCDFFF; height: 50px;">
+              <th scope="col"></th>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+              <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+              <tr v-for="title in info" :key="title.id">
+                <td>
+                  <div class="btn-group">
+                      <div class="p-3">
+                        <Link
+                          :href="`/dashboard/information/${title.id}/edit`"
+                          class="btn btn-primary"
+                        >
+                          <i class="bi bi-eye-fill"></i>
+                        </Link>
+                      </div>
+                  </div>
+                </td>
+                <td class="fw-bold">{{ title.title }}</td>
+                <td class="text-truncate fw-bold" style="max-width: 400px;">
+                  <MarkdownViewer :content="title.content"></MarkdownViewer>
+                </td>
+                <td>
+                  <form @submit.prevent="submitDelete(title.id)">
+                    <div class="btn-group">
+                      <div class="p-3">
+                        <Link
+                          :href="`/dashboard/information/${title.id}/edit`"
+                          class="btn btn-success"
+                        >
+                          <i class="bi-pencil-square"></i>
+                        </Link>
+                      </div>
+                      <div class="p-3">  
+                        <button class="btn btn-danger">
+                          <i class="bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+            <td colspan="">
+              <div class="card-footer" >
+                  <div class="bg-primary rounded shadow mb-4 ">
+                    <Link href="/dashboard/information/create" class="nav-link text-white">Add</Link>
                 </div>
-              </form>
+              </div>
             </td>
-          </tr>
-        </tbody>
-      </table>
+            <td colspan="11" class="card-footer table-borderless"></td>
+          </table>
+        </div>
+
+      </div>
     </div>
   </DashboardLayout>
 </template>

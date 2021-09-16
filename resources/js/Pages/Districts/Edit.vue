@@ -2,22 +2,28 @@
   <Head title="Edit District"></Head>
 
   <DashboardLayout>
-    <div class="d-flex flex-column">
-      <form
-        @submit.prevent="
-          districtForm.put(route('districts.update', district.id))
-        "
-      >
-        <h1>Create District</h1>
-        <DistrictForm v-model:district="districtForm"></DistrictForm>
-        <div class="btn-group mx-auto w-100" role="group">
-          <button class="btn btn-primary">Save</button>
-          <Link :href="route('districts.index')" class="btn btn-danger"
-            >Cancel</Link
-          >
-        </div>
-      </form>
-      <pre>{{ districtForm }}</pre>
+    <div class="rounded" style="background-color: #9ACAB3;">
+      <div class="d-flex flex-column">
+        <form
+          @submit.prevent="
+            districtForm.put(route('districts.update', district.id))
+          "
+        >
+          <h1 class="p-3">Create District</h1>
+          <div class="p-3">
+            <DistrictForm v-model:district="districtForm"></DistrictForm>
+          </div>
+          <div class="btn-group" role="group">
+            <div class="p-3">
+              <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="p-3">
+              <Link :href="route('districts.index')" class="btn btn-danger">Cancel</Link>
+            </div>
+          </div>
+        </form>
+        <pre>{{ districtForm }}</pre>
+      </div>
     </div>
   </DashboardLayout>
 </template>

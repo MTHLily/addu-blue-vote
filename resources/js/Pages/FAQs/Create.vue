@@ -3,15 +3,23 @@
   <Head title="Frequently Asked Questions"></Head>
 
   <DashboardLayout>
-    <div class="d-flex flex-column">
-      <form @submit.prevent="faq.post('/dashboard/faqs')">
-        <h1>Create Frequently Asked Question</h1>
-        <FAQForm v-model:faq="faq"></FAQForm>
-        <div class="btn-group mx-auto w-100" role="group">
-          <button class="btn btn-primary">Save</button>
-          <Link :href="route('faqs.index')" class="btn btn-danger">Cancel</Link>
-        </div>
-      </form>
+    <div class="rounded" style="background-color: #CCDFFF;">  
+      <div class="d-flex flex-column">
+        <form @submit.prevent="faq.post('/dashboard/faqs')">
+          <h1 class="p-3">Create Frequently Asked Question</h1>
+          <div class="p-3">
+            <FAQForm v-model:faq="faq"></FAQForm>
+          </div>
+          <div class="btn-group" role="group">
+            <div class="p-3">
+              <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="p-3">
+              <Link :href="route('faqs.index')" class="btn btn-danger">Cancel</Link>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </DashboardLayout>
 </template>

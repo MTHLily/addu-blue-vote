@@ -1,19 +1,26 @@
-
-
 <template>
   <Head title="Infomation Snippets"></Head>
 
   <DashboardLayout>
-    <div class="d-flex flex-column">
-      <form @submit.prevent="infoForm.put(`/dashboard/information/${information.id}`)">
-        <h1>Edit Information Snippet</h1>
-        <InformationForm v-model:info="infoForm"></InformationForm>
-        <div class="btn-group mx-auto w-100" role="group">
-          <button class="btn btn-primary">Save</button>
-          <Link href="/dashboard/information" class="btn btn-danger">Cancel</Link>
-        </div>
-      </form>
+    <div class="rounded" style="background-color: #9ACAB3;">
+      <div class="d-flex flex-column">
+        <form @submit.prevent="infoForm.put(`/dashboard/information/${information.id}`)">
+          <h1 class="p-3">Edit Information Snippet</h1>
+          <div class="p-3">
+            <InformationForm v-model:info="infoForm"></InformationForm>
+          </div>
+        </form>
+          <div class="btn-group" role="group">
+            <div class="p-3">
+              <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="p-3">
+              <Link href="/dashboard/information" class="btn btn-danger">Cancel</Link>
+            </div>
+          </div>
+      </div>
     </div>
+
   </DashboardLayout>
 </template>
 

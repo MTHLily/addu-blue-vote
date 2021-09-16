@@ -4,15 +4,23 @@
   <Head title="Infomation Snippets"></Head>
 
   <DashboardLayout>
-    <div class="d-flex flex-column">
-      <form @submit.prevent="info.post('/dashboard/information')">
-        <h1>Create Information Snippet</h1>
-        <InformationForm v-model:info="info"></InformationForm>
-        <div class="btn-group mx-auto w-100" role="group">
-          <button class="btn btn-primary">Save</button>
-          <Link href="/dashboard/information" class="btn btn-danger">Cancel</Link>
-        </div>
-      </form>
+    <div class="rounded" style="background-color: #CCDFFF;">
+      <div class="d-flex flex-column">
+        <form @submit.prevent="info.post('/dashboard/information')">
+          <h1 class="p-3">Create Information Snippet</h1>
+          <div class="p-3">
+            <InformationForm v-model:info="info"></InformationForm>
+          </div>
+          <div class="btn-group" role="group">
+            <div class="p-3">
+              <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="p-3">
+              <Link href="/dashboard/information" class="btn btn-danger">Cancel</Link>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </DashboardLayout>
 </template>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PointOfInterestRequest;
+use App\Models\District;
 use App\Models\PointOfInterest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class PointOfInterestController extends Controller
@@ -15,7 +19,11 @@ class PointOfInterestController extends Controller
      */
     public function index()
     {
-        return Inertia::render('PointsOfInterest/Index');
+        return Inertia::render('PointsOfInterest/Index', [
+            'pois' => PointOfInterest::all(),
+            'districts' => District::all(),
+            'poi_types' => PointOfInterest::getTypes(),
+        ]);
     }
 
     /**
@@ -25,7 +33,10 @@ class PointOfInterestController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render( 'PointsOfInterest/Create', [
+            'districts' => District::all(),
+            'poi_types' => PointOfInterest::getTypes(),
+        ]);
     }
 
     /**
@@ -34,9 +45,12 @@ class PointOfInterestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PointOfInterestRequest $request)
     {
-        //
+        $poi = PointOfInterest::create($request->except('image'));
+        
+
+        return Redirect::route('poi.index')->with('success', 'Point of interest created!');
     }
 
     /**

@@ -18,7 +18,6 @@
           :position="m.position"
         >
         </GMapMarker>
-        <GMapPolygon :editable="true" :paths="paths" />
       </GMapMap>
       <div class="navbar navbar-dark bg-primary rounded shadow mb-4">
         <div class="container-fluid">
@@ -31,42 +30,57 @@
           </ul>
         </div>
       </div>
-      <table class="table w-100">
-        <thead>
-          <th scope="col">District</th>
-          <th scope="col">Description</th>
-          <th scope="col">Color</th>
-          <th scope="col">Actions</th>
-        </thead>
-        <tbody>
-          <tr v-for="district in districts" :key="district.id">
-            <td>{{ district.name }}</td>
-            <td>{{ district.description }}</td>
+      <BlueVoteTable title="Points of Interest" :columns="6">
+        <template #header>
+          <tr class="bg-info">
+            <th scrope="col">Name</th>
+            <th scrope="col">Description</th>
+            <th scrope="col">District</th>
+            <th scrope="col">Type</th>
+            <th scrope="col">Image Preview</th>
+            <th scrope="col">Actions</th>
+          </tr>
+        </template>
+        <template #body>
+          <tr v-for="poi in pois" :key="poi.key">
+            <td>{{ poi.name }}</td>
+            <td>{{ poi.description }}</td>
+            <td>{{ poi.district_id }}</td>
+            <td>{{ poi.point_of_interest_type_id }}</td>
             <td>
-              <i
-                class="bi bi-circle-fill"
-                :style="`color: ${district.color}`"
-              ></i>
-              {{ district.color }}
-            </td>
-            <td>
-              <form @submit.prevent="submitDelete(district.id)">
-                <div class="btn-group">
-                  <Link
-                    :href="route('districts.edit', district.id)"
-                    class="btn btn-primary"
-                  >
-                    <i class="bi-pencil-square"></i>
-                  </Link>
-                  <button class="btn btn-danger">
-                    <i class="bi-trash"></i>
-                  </button>
-                </div>
-              </form>
+              <a
+                v-show="poi.image_preview_url"
+                :href="`/${poi.image_preview_url}`"
+                ><i class="bi bi-image"></i
+              ></a>
             </td>
           </tr>
-        </tbody>
-      </table>
+        </template>
+        <template #footer>
+          <tr>
+            <td>
+              <Link :href="route('poi.create')" class="btn btn-primary"
+                >Add</Link
+              >
+            </td>
+            <td colspan="5">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </td>
+          </tr>
+        </template>
+      </BlueVoteTable>
     </div>
   </DashboardLayout>
 </template>
@@ -74,23 +88,30 @@
 <script>
 import { computed, ref } from "@vue/reactivity";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
+import { Link } from "@inertiajs/inertia-vue3";
+import BlueVoteTable from "../../Components/BlueVoteTable.vue";
 import { watch } from "@vue/runtime-core";
-
-// function initializeMap(map) {
-//   console.log(map);
-
-//   map.event.addListener("click", (event) => {
-//     console.log("MAP CLICKED!", event);
-//   });
-
-//   map.addEventListener("click", (event) => {
-//     console.log("MAP CLICKED!", event);
-//   });
-// }
 
 export default {
   components: {
     DashboardLayout,
+    BlueVoteTable,
+    Link,
+  },
+
+  props: {
+    districts: {
+      type: Array,
+      default: [],
+    },
+    poi_types: {
+      type: Array,
+      default: [],
+    },
+    pois: {
+      type: Array,
+      default: [],
+    },
   },
 
   setup() {

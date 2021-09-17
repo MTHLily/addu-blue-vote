@@ -1,40 +1,53 @@
 <template>
+  <Head title="Points of Interest"></Head>
+
+  <div
+    class="position-fixed mt-4 start-50 translate-middle"
+    style="z-index: 11"
+  >
+    <div
+      class="toast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      ref="messageToastDiv"
+    >
+      <div class="toast-header">
+        <i class="me-1" :class="toastMessage.icon"></i>
+        <strong class="me-auto">{{ toastMessage.title }}</strong>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body">{{ toastMessage.message }}</div>
+    </div>
+  </div>
+
   <DashboardLayout>
     <div class="d-flex flex-column h-100">
-      <!-- :click="clickHandler"
-        @click="clickHandler" -->
       <GMapMap
         :zoom="16"
         :center="center"
         :options="gMapOptions"
         ref="gMapRef"
         map-type-id="terrain"
-        style="width: 100%; height: 40vh"
+        style="width: 100%; height: clamp(200px, 50vh, 800px)"
       >
         <GMapMarker
-          v-for="m in filteredMarkers"
-          color="blue"
+          v-for="m in markers"
           :key="m.position.lat"
           :position="m.position"
         >
         </GMapMarker>
       </GMapMap>
-      <div class="navbar navbar-dark bg-primary rounded shadow mb-4">
-        <div class="container-fluid">
-          <ul class="navbar-nav p-2">
-            <li class="nav-item">
-              <Link :href="route('districts.create')" class="nav-link"
-                >Add District</Link
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
       <BlueVoteTable title="Points of Interest" :columns="6">
         <template #header>
           <tr class="bg-info">
             <th scrope="col">Name</th>
-            <th scrope="col">Description</th>
+            <th scrope="col" style="width: 10%">Description</th>
             <th scrope="col">District</th>
             <th scrope="col">Type</th>
             <th scrope="col">Image Preview</th>
@@ -44,15 +57,43 @@
         <template #body>
           <tr v-for="poi in pois" :key="poi.key">
             <td>{{ poi.name }}</td>
-            <td>{{ poi.description }}</td>
-            <td>{{ poi.district_id }}</td>
-            <td>{{ poi.point_of_interest_type_id }}</td>
+            <td>
+              <div
+                class="d-block text-truncate"
+                v-html="convertMarkdown(poi.description)"
+              ></div>
+            </td>
+            <td>{{ poi.district.name }}</td>
+            <td>{{ poi.type }}</td>
             <td>
               <a
                 v-show="poi.image_preview_url"
                 :href="`/${poi.image_preview_url}`"
                 ><i class="bi bi-image"></i
               ></a>
+            </td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  @click="setCenter(poi.longitude, poi.latitude)"
+                >
+                  <i class="bi bi-zoom-in"></i>
+                </button>
+                <Link :href="route('poi.edit', poi.id)" class="btn btn-info">
+                  <i class="bi bi-pencil-square"></i>
+                </Link>
+                <Link
+                  as="button"
+                  method="delete"
+                  :href="route('poi.destroy', poi.id)"
+                  type="button"
+                  class="btn btn-danger"
+                >
+                  <i class="bi bi-trash"></i>
+                </Link>
+              </div>
             </td>
           </tr>
         </template>
@@ -88,15 +129,18 @@
 <script>
 import { computed, ref } from "@vue/reactivity";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, Head } from "@inertiajs/inertia-vue3";
 import BlueVoteTable from "../../Components/BlueVoteTable.vue";
 import { watch } from "@vue/runtime-core";
+import { Toast } from "bootstrap";
+import marked from "marked";
 
 export default {
   components: {
     DashboardLayout,
     BlueVoteTable,
     Link,
+    Head,
   },
 
   props: {
@@ -114,7 +158,7 @@ export default {
     },
   },
 
-  setup() {
+  setup(props, context) {
     const center = ref({ lat: 7.071250196247246, lng: 125.61315274255003 });
     const gMapRef = ref();
     const gMapOptions = ref({
@@ -126,14 +170,21 @@ export default {
       fullscreenControl: true,
     });
     const markerFilter = ref(0);
-    const markers = ref([
-      { position: { lat: 7.071250196247246, lng: 125.61315274255003 } },
-      { position: { lat: 7.072266060926651, lng: 125.61053490655148 } },
-      { position: { lat: 7.071946644596355, lng: 125.61077094094479 } },
-      { position: { lat: 7.072180883260174, lng: 125.61087822930538 } },
-      { position: { lat: 7.072681301825742, lng: 125.61186528222287 } },
-      { position: { lat: 7.072840777778492, lng: 125.61265921609127 } },
-    ]);
+    const messageToastDiv = ref(null);
+    const messageToast = ref(null);
+
+    const markers = computed(() => {
+      if (props.pois)
+        return props.pois.map((poi) => {
+          return {
+            position: {
+              lat: parseFloat(poi.latitude),
+              lng: parseFloat(poi.longitude),
+            },
+          };
+        });
+      else return [];
+    });
 
     const clickHandler = (event) => {
       console.log(event);
@@ -152,13 +203,51 @@ export default {
       }
     });
 
+    watch(messageToastDiv, (toast) => {
+      messageToast.value = new Toast(toast);
+      if (
+        context.attrs.flash.message !== null ||
+        context.attrs.flash.success !== null
+      )
+        messageToast.value.show();
+    });
+
+    watch(
+      () => context.attrs.flash,
+      (flash) => {
+        console.log("FLASH:", flash);
+        if (flash.message == null && flash.success == null) return;
+        messageToast.value.show();
+      }
+    );
+
     const filteredMarkers = computed(() => {
-      if (markers) {
-        if (markerFilter.value == 0) return markers.value;
-        if (markerFilter.value == 1) return markers.value.slice(0, 2);
-        else return markers.value.slice(3);
+      console.log("THE MARKERS: ", markers);
+      if (markers.length != 0) {
+        if (markerFilter.value == 0) return markers;
+        if (markerFilter.value == 1) return markers.slice(0, 2);
+        else return markers.slice(3);
       } else return [];
     });
+
+    const toastMessage = computed(() => {
+      // console.log(context);
+      return {
+        icon: context.attrs.flash.success
+          ? "bi-check-circle text-success"
+          : "bi-exclamation-circle text-warning",
+        title: context.attrs.flash.success ? "Success" : "Warning",
+        message: context.attrs.flash.success || context.attrs.flash.message,
+      };
+    });
+
+    const setCenter = (lng, lat) => {
+      center.value = { lat: parseFloat(lat), lng: parseFloat(lng) };
+    };
+
+    const convertMarkdown = (markedown) => {
+      return marked(markedown);
+    };
 
     return {
       center,
@@ -167,6 +256,11 @@ export default {
       markers,
       markerFilter,
       filteredMarkers,
+      setCenter,
+      toastMessage,
+      messageToast,
+      messageToastDiv,
+      convertMarkdown,
     };
   },
 };

@@ -1,145 +1,207 @@
 <template>
-    <div class="map container" id="Map">
-        <div class="d-flex flex-column">
-            <h2 class="text-primary text-center p-3 fw-bolder">Voters Registration Sites</h2>
-            <div class="row">
-                <!-- map -->
-                <div class=" col-12">
-                    <!-- <div class=" container"> -->
-                        <img src="https://www.google.com/maps/vt/data=3gGHqQyK3Znb6Kx7eE7_nx6P49wJ5EPY2Z2D07DxeIqJZedngTXei4FRI1CoEVkVSBcKJWr0NsabqS03OPfdX70S8Y1BBq1B1j01zNt9Y5RhR_RbeRSRWYG1zDpSgp7Z3UOr1v112VG__LJlFWsHzwqgV0qUddOf4bUfpA6KkeUBgalHl2MYtMhtfcmcywx5d_1DA7-Dla-7BXWhj-7ONgFg9C1lzlkE11cWDZ6uNwr6ADEKenjzIsZI" alt="map" width="100%">
-                    <!-- </div> -->
-                </div>
-                
-                <div class="row overlap justify-content-end p-3">    
-                    <!-- filters -->
-                    <div class="container header row justify-content-between">
-                        <div class="filters row col-8">
-                            <div class="btn-group col-2 px-2">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Barangay
-                                </button>
-                                <ul class="dropdown-menu">
-                                    ...
-                                </ul>
-                            </div>
-                            <div class="btn-group col-2 px-2">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    District
-                                </button>
-                                <ul class="dropdown-menu">
-                                    ...
-                                </ul>
-                            </div>
-                        </div>
-                        <form class="d-flex col-2 w-25 ">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        </form>
-                    </div>
-
-                    <!-- legend -->
-                    <div class="legend gy-2 col-auto justify-content-end">
-                        <div class="card p-3">
-                            <!-- <div class="card-body"> -->
-                                <div>🔴 District 1</div>
-                                <div>🟡 District 2</div>
-                                <div>🔵 District 3</div>
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <carousel :items-to-show="2">
-                        <slide v-for="slide in 10" :key="slide">
-                            <Card />
-                        </slide>
-                        <slide v-for="slide in 10" :key="slide">
-                            <Card />
-                        </slide>
-                        <template #addons>
-                            <navigation />
-                            <pagination />
-                        </template>
-                    </carousel>
-                </div>
+  <div class="map container" id="map">
+    <div class="d-flex flex-column">
+      <h2 class="text-primary text-center p-3 fw-bolder">
+        Voters Registration Sites
+      </h2>
+      <div class="row">
+        <!-- map -->
+        <div class="map--container">
+          <GMapMap
+            :zoom="16"
+            :center="mapOptions.center"
+            :options="mapOptions.opts"
+            ref="gMapRef"
+            map-type-id="terrain"
+            style="width: 100%; height: clamp(200px, 80vh, 800px)"
+          >
+            <GMapMarker
+              v-for="m in filteredMarkers"
+              :key="m.position.lat"
+              :position="m.position"
+              :icon="m.icon"
+            >
+            </GMapMarker>
+          </GMapMap>
+          <div ref="mapTopLeft">
+            <div class="dropdown ms-2 mt-2">
+              <button
+                class="btn btn-light dropdown-toggle"
+                type="button"
+                id="districtDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ filteredDistrict }}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="districtDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#map"
+                    @click="filterDistrictId = null"
+                    >Clear filter</a
+                  >
+                </li>
+                <li v-for="district in districts" :key="district.id">
+                  <a
+                    class="dropdown-item"
+                    href="#map"
+                    @click="filterDistrictId = district.id"
+                    >{{ district.name }}</a
+                  >
+                </li>
+              </ul>
             </div>
+            <!-- legend -->
+          </div>
+          <div ref="mapTopRight">
+            <div
+              class="
+                d-flex
+                flex-column
+                justify-content-end
+                align-items-end
+                gap-2
+              "
+            >
+              <div>
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </div>
+              <div class="w-100">
+                <DistrictLegend :districts="districts"></DistrictLegend>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2">
+            <MapCarousel
+              :pois="filteredPois"
+              @poiClicked="handlePoiClicked"
+            ></MapCarousel>
+          </div>
         </div>
-        <!-- <div class="d-flex flex-column">
-            <h3>Voters Registration Sites</h3>
-            <Card />
-        </div> -->
+      </div>
     </div>
+  </div>
 </template>
 
-
-
 <script>
-import Card from './Card'
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-// import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
+import DistrictLegend from "./DistrictLegend.vue";
+import MapCarousel from "./MapCarousel.vue";
 export default {
-    components: {
-        Card,
-        Carousel,
-        Slide,
-        Pagination,
-        Navigation,
+  components: {
+    DistrictLegend,
+    MapCarousel,
+  },
+  props: {
+    districts: {
+      type: Array,
+      default: [],
     },
-        data: () => ({
-            // carousel settings
-            settings: {
-                itemsToShow: 3.5,
-                snapAlign: 'center',
-            },
-            locations:[
-                { 
-                    img:"",
-                    district:"District 1",
-                    name:"Ateneo de Davao University",
-                    address:"",
-                    contact:"",
-                },
-            ],
-            // breakpoints are mobile first
-            // any settings not specified will fallback to the carousel settings
-            breakpoints: {
-            // 700px and up
-                300: {
-                    itemsToShow: 1.5,
-                    snapAlign: 'center',
-                },
-                700: {
-                    itemsToShow: 3.5,
-                    snapAlign: 'center',
-                },
-                // 1024 and up
-                1024: {
-                    itemsToShow: 5,
-                    snapAlign: 'start',
-                },
-            },
-        }),
-}
+    registrationSites: {
+      type: Array,
+      default: [],
+    },
+  },
+  data: () => ({
+    mapOptions: {
+      center: { lat: 7.071250196247246, lng: 125.61315274255003 },
+      opts: {
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        rotateControl: true,
+        fullscreenControl: true,
+      },
+    },
+    filterDistrictId: null,
+  }),
+  computed: {
+    filteredDistrict() {
+      const district = this.districts.find(
+        (district) => district.id == this.filterDistrictId
+      );
+      if (district) return district.name;
+      else return "Filter districts...";
+    },
+    mapMarkers() {
+      return this.registrationSites.map((site) => ({
+        district: site.district.id,
+        position: {
+          lat: parseFloat(site.latitude),
+          lng: parseFloat(site.longitude),
+        },
+        icon: {
+          url: "/svg/map_marker.svg?color=" + site.district.color.slice(1),
+        },
+      }));
+    },
+    filteredMarkers() {
+      if (this.filterDistrictId == null) return this.mapMarkers;
+      return this.mapMarkers.filter(
+        (marker) => marker.district == this.filterDistrictId
+      );
+    },
+    filteredPois() {
+      if (this.filterDistrictId == null) return this.registrationSites;
+      return this.registrationSites.filter(
+        (site) => site.district_id == this.filterDistrictId
+      );
+    },
+  },
+  methods: {
+    handlePoiClicked(event) {
+      console.log(event);
+      this.$refs.gMapRef.$mapPromise.then((gmap) => {
+        gmap.panTo({
+          lat: parseFloat(event.latitude),
+          lng: parseFloat(event.longitude),
+        });
+      });
+    },
+  },
+  mounted() {
+    this.$refs.gMapRef.$mapPromise.then((gmap) => {
+      console.log("GMAP", gmap);
+      gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
+        this.$refs.mapTopLeft
+      );
+      gmap.controls[google.maps.ControlPosition.RIGHT_TOP].push(
+        this.$refs.mapTopRight
+      );
+    });
+  },
+};
 </script>
 
-
-
 <style scoped>
-    .map{
-        position: relative;
-    }
-    .overlap{
-        position: absolute;
-    }
-    .legend{
-        align-content: flex-end;
-        width: 150px;
-        height: 20px;
-    }
-    :target{
-        padding-top:120px;
-        margin-top:-120px;
-    }
+.map--container {
+  position: relative;
+}
+
+.map--top-left {
+  position: absolute;
+  z-index: 11;
+  top: 1em;
+  left: 1em;
+}
+
+.map--top-right {
+  position: absolute;
+  z-index: 11;
+  top: 3.5em;
+  right: 1em;
+}
+
+.map--bottom-center {
+  position: absolute;
+  z-index: 11;
+  bottom: 0;
+}
 </style>

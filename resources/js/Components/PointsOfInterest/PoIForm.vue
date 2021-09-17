@@ -24,7 +24,7 @@
             rows="4"
             class="form-control"
             :class="{
-              'is-invalid': poi.errors.name,
+              'is-invalid': poi.errors.description,
             }"
             v-model="poi.description"
             placeholder="Description"

@@ -5,7 +5,7 @@
     :options="gMapOptions"
     ref="gMapRef"
     map-type-id="terrain"
-    style="width: 100%; height: clamp(200px, 40vh, 800px)"
+    style="width: 100%; height: clamp(200px, 50vh, 800px)"
   >
     <GMapMarker :position="marker"> </GMapMarker>
   </GMapMap>
@@ -26,6 +26,7 @@ export default {
     },
   },
   setup(props, context) {
+    console.log("MAP PICKER PROPS: ", props);
     const center = ref({ lat: 7.071250196247246, lng: 125.61315274255003 });
     const gMapRef = ref(null);
     const gMapOptions = ref({

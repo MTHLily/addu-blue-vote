@@ -1,6 +1,7 @@
 <template>
   <Head title="Create District"></Head>
 
+<AdminLayout>
   <DashboardLayout>
     <div class="rounded" style="background-color: #CCDFFF;"> 
       <div class="d-flex flex-column">
@@ -22,6 +23,7 @@
       </div>
     </div>
   </DashboardLayout>
+</AdminLayout>
 </template>
 
 <script>
@@ -29,9 +31,10 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import DistrictForm from "../../Components/Districts/DistrictForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
+import AdminLayout from "../../Layouts/admin";
 
 export default {
-  components: { Link, Head, DashboardLayout, DistrictForm },
+  components: { Link, Head, DashboardLayout, DistrictForm,AdminLayout },
   data: () => ({
     district: useForm({
       name: "",

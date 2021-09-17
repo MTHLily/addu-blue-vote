@@ -1,6 +1,7 @@
 <template>
   <Head title="Frequently Asked Questions"></Head>
 
+<AdminLayout>
   <DashboardLayout>
     <div class="rounded" style="background-color: #9ACAB3;">
       <div class="d-flex flex-column">
@@ -21,6 +22,7 @@
       </div>
     </div>
   </DashboardLayout>
+</AdminLayout>
 </template>
 
 <script>
@@ -28,6 +30,7 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import FAQForm from "../../Components/FAQs/FAQForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
+import AdminLayout from "../../Layouts/admin";
 
 export default {
   props: {
@@ -39,7 +42,7 @@ export default {
       }),
     },
   },
-  components: { Link, Head, DashboardLayout, FAQForm },
+  components: { Link, Head, DashboardLayout, FAQForm,AdminLayout, },
   created() {
     this.faqForm = useForm({
       question: this.faq.question,

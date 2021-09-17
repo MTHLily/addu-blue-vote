@@ -1,6 +1,7 @@
 <template>
   <Head title="Infomation Snippets"></Head>
 
+<AdminLayout>
   <DashboardLayout>
     <div class="rounded" style="background-color: #9ACAB3;">
       <div class="d-flex flex-column">
@@ -22,6 +23,7 @@
     </div>
 
   </DashboardLayout>
+</AdminLayout>
 </template>
 
 
@@ -32,7 +34,7 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import InformationForm from "../../Components/Information/InformationForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-
+import AdminLayout from "../../Layouts/admin";
 
 export default {
    props: {
@@ -44,7 +46,7 @@ export default {
       }),
     },
   },
-  components: { Link, Head, DashboardLayout, InformationForm },
+  components: { Link, Head, DashboardLayout, InformationForm, AdminLayout },
   created() {
     this.infoForm = useForm({
       title: this.information.title,

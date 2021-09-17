@@ -26,6 +26,7 @@
     </div>
   </div>
 
+<AdminLayout>
   <DashboardLayout>
     <div class="container flex flex-column">
       <div class="card">
@@ -93,6 +94,7 @@
       </div>
     </div>
   </DashboardLayout>
+</AdminLayout>
 </template>
 
 <script>
@@ -101,6 +103,7 @@ import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import MarkdownViewer from "../../Components/MarkdownViewer.vue";
 import Toast from "bootstrap/js/dist/toast";
 import { Inertia } from "@inertiajs/inertia";
+import AdminLayout from "../../Layouts/admin";
 
 export default {
   props: {
@@ -115,7 +118,7 @@ export default {
       ],
     },
   },
-  components: { Link, Head, DashboardLayout, MarkdownViewer },
+  components: { Link, Head, DashboardLayout, MarkdownViewer,AdminLayout, },
   computed: {
     toastMessage() {
       return {

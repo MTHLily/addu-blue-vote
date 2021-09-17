@@ -2,13 +2,11 @@
 
 use Illuminate\Support\Str;
 
-if( env("APP_ENV") == "production"){
     $url = parse_url( env("DATABASE_URL") );
     $host = $url["host"];
     $username = $url["user"];
     $password = $url["pass"];
     $database=substr($url["path"], 1);
-}
 
 return [
 
@@ -73,11 +71,10 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $host || env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => $database || env('DB_DATABASE', 'forge'),
-            'username' => $username || env('DB_USERNAME', 'forge'),
-            'password' => $password || env('DB_PASSWORD', ''),
+            'host' => $host ,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',

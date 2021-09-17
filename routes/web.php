@@ -9,8 +9,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PointOfInterestController;
+use App\Http\Controllers\SVGController;
+use App\Models\District;
 use App\Models\FrequentlyAskedQuestion;
 use App\Models\InformationSnippet;
+use App\Models\PointOfInterest;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,9 @@ use App\Models\InformationSnippet;
 Route::get('/', function(){
     return Inertia::render('Welcome', [
         'faqs' => FrequentlyAskedQuestion::all(),
-        'information' => InformationSnippet::all()
+        'information' => InformationSnippet::all(),
+        'districts' => District::all(),
+        'registrationSites' => PointOfInterest::where('point_of_interest_type_id', '=', 1 )->with('district')->get()
     ]);
 });
 //admin resources
@@ -43,5 +48,7 @@ Route::resource('/dashboard/cities', CityController::class);
 Route::resource('/dashboard/districts', DistrictController::class);
 
 Route::resource('dashboard/poi', PointOfInterestController::class);
+
+Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
 
 require __DIR__.'/auth.php';

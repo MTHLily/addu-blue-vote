@@ -16,9 +16,7 @@
           {{ faq.question }}
         </button>
         <div ref="collapseEl" class="w-100 mt-2 collapse">
-          <div class="card card-body m-0">
-            <MarkdownViewer :content="faq.answer"></MarkdownViewer>
-          </div>
+          <div class="card card-body m-0" v-html="markedAnswer"></div>
         </div>
       </div>
     </div>
@@ -27,12 +25,9 @@
 
 <script>
 import Collapse from "bootstrap/js/dist/collapse";
-import MarkdownViewer from "../MarkdownViewer.vue";
+import marked from "marked";
 
 export default {
-  components: {
-    MarkdownViewer,
-  },
   props: {
     faq: {
       type: Object,
@@ -50,13 +45,15 @@ export default {
     this.collapse = new Collapse(this.$refs.collapseEl, {
       toggle: false,
     });
-    // this.collapse.toggle();
-    // console.log(this.collapse);
-    this.collapse.hide();
   },
   methods: {
     toggleCollapse() {
       this.collapse.toggle();
+    },
+  },
+  computed: {
+    markedAnswer() {
+      return marked(this.faq.answer);
     },
   },
 };

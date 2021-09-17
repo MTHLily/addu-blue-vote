@@ -4,10 +4,9 @@
     <div>
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
-        <!-- <pre>{{ information }}</pre> -->
       </div>
       <FAQs :faqs="faqs" />
-      <Map />
+      <Map :registrationSites="registrationSites" :districts="districts" />
     </div>
   </GuestLayout>
 </template>
@@ -38,6 +37,14 @@ export default {
       default: [],
     },
     information: {
+      type: Array,
+      default: [],
+    },
+    districts: {
+      type: Array,
+      default: [],
+    },
+    registrationSites: {
       type: Array,
       default: [],
     },

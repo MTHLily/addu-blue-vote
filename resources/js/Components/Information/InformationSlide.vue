@@ -11,17 +11,18 @@
           class="text-white"
         ></MarkdownViewer>
       </div> -->
-      <p class="lead">{{ info.content }}</p>
+      <!-- <p class="lead">{{ info.content }}</p> -->
+      <div v-html="markedContent"></div>
     </div>
   </Slide>
 </template>
 
 <script>
 import { Slide } from "vue3-carousel";
-import MarkdownViewer from "../MarkdownViewer.vue";
+import marked from "marked";
 
 export default {
-  components: { Slide, MarkdownViewer },
+  components: { Slide },
   props: {
     info: {
       type: Object,
@@ -29,6 +30,11 @@ export default {
         title: "Defualt title",
         content: "Default content",
       }),
+    },
+  },
+  computed: {
+    markedContent() {
+      return marked(this.info.content);
     },
   },
 };

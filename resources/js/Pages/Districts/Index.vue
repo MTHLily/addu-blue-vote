@@ -58,19 +58,22 @@
               {{ district.color }}
             </td>
             <td>
-              <form @submit.prevent="submitDelete(district.id)">
-                <div class="btn-group">
-                  <Link
-                    :href="route('districts.edit', district.id)"
-                    class="btn btn-primary"
-                  >
-                    <i class="bi-pencil-square"></i>
-                  </Link>
-                  <button class="btn btn-danger">
-                    <i class="bi-trash"></i>
-                  </button>
-                </div>
-              </form>
+              <div class="btn-group">
+                <Link
+                  :href="route('districts.edit', district.id)"
+                  class="btn btn-primary"
+                >
+                  <i class="bi-pencil-square"></i>
+                </Link>
+                <Link
+                  as="button"
+                  method="delete"
+                  :href="route('districts.destroy', district.id)"
+                  class="btn btn-danger"
+                >
+                  <i class="bi-trash"></i>
+                </Link>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -111,11 +114,20 @@ export default {
       };
     },
   },
+  watch: {
+    "$page.props.flash": function () {
+      this.toast.show();
+    },
+  },
   mounted() {
     const message = new Toast(this.$refs.messageToast);
     if (this.$page.props.flash.success || this.$page.props.flash.message)
       message.show();
+    this.toast = message;
   },
+  data: () => ({
+    toast: null,
+  }),
   methods: {
     submitDelete(id) {
       Inertia.delete(route("districts.destroy", id));

@@ -15,4 +15,10 @@ class District extends Model
         'description',
         'color'
     ];
+
+    // Relationships
+    public function pois(){
+        $this->hasMany(PointOfInterest::class);
+    }
+
 }

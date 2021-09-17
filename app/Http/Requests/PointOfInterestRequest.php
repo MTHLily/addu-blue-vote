@@ -45,10 +45,10 @@ class PointOfInterestRequest extends FormRequest
 
     public function passedValidation(){
         
-        if($this->file('image')->isValid() ){
+        if($this->hasFile('image') && $this->file('image')->isValid() ){
             $path = $this->file('image')->store('public/images/poi_previews');
+            $this->request->add(['image_url' => $path]);
         }
-        $this->request->add(['image_url' => $path]);
     }
 
 }

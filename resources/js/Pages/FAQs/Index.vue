@@ -32,9 +32,7 @@
         <div class="container-fluid">
           <ul class="navbar-nav p-2">
             <li class="nav-item">
-              <Link href="/dashboard/faqs/create" class="nav-link"
-                >Add FAQ</Link
-              >
+              <Link :href="route('faqs.create')" class="nav-link">Add FAQ</Link>
             </li>
           </ul>
         </div>
@@ -48,24 +46,26 @@
         <tbody>
           <tr v-for="question in faqs" :key="question.id">
             <td>{{ question.question }}</td>
-            <!-- <td>{{ question.answer }}</td> -->
             <td>
               <MarkdownViewer :content="question.answer"></MarkdownViewer>
             </td>
             <td>
-              <form @submit.prevent="submitDelete(question.id)">
-                <div class="btn-group">
-                  <Link
-                    :href="`/dashboard/faqs/${question.id}/edit`"
-                    class="btn btn-primary"
-                  >
-                    <i class="bi-pencil-square"></i>
-                  </Link>
-                  <button class="btn btn-danger">
-                    <i class="bi-trash"></i>
-                  </button>
-                </div>
-              </form>
+              <div class="btn-group">
+                <Link
+                  :href="route('faqs.edit', question.id)"
+                  class="btn btn-primary"
+                >
+                  <i class="bi-pencil-square"></i>
+                </Link>
+                <Link
+                  as="button"
+                  method="delete"
+                  :href="route('faqs.destroy', question.id)"
+                  class="btn btn-danger"
+                >
+                  <i class="bi-trash"></i>
+                </Link>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -111,14 +111,19 @@ export default {
     const message = new Toast(this.$refs.messageToast);
     if (this.$page.props.flash.success || this.$page.props.flash.message)
       message.show();
+    this.toast = message;
   },
+  watch: {
+    "$page.props.flash": function () {
+      this.toast.show();
+    },
+  },
+  data: () => ({
+    toast: null,
+  }),
   methods: {
     submitDelete(id) {
       Inertia.delete(`/dashboard/faqs/${id}`);
-      // Inertia.post(`/dashboard/faqs/${id}`, {
-      //   _token: this.$page.props.csrf_token,
-      //   _method: "DELETE",
-      // });
     },
   },
 };

@@ -14,11 +14,31 @@
         </main>
         <footer>
         <slot name="footer">
-            <div class="text-center p-3 text-white bg-primary">
-            <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 |
-            Developed by <b>ARISEn Lab</b>
-            </div>
+            <div class="text-center p-3 text-white bg-primary row">
+                <div class="col-9">
+                    <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 |
+                    Developed by <b>ARISEn Lab</b>
+                </div>
+                <div class="col-1 row">
+                    <div class="col-1">
+                        <a href="https://www.facebook.com/adduarisen/" >
+                            <i class="bi bi-facebook" style="color:#ffffff"></i>
+                        </a>
+                    </div>
+                    <div class="col-1">
+                        <a href="https://twitter.com/addu_arisen?lang=en">
+                            <i class="bi bi-twitter" style="color:#ffffff"></i>
+                        </a>
+                    </div>
+                    <div class="col-1">
+                        <a href="https://twitter.com/addu_arisen?lang=en" >
+                            <i class="bi bi-google" style="color:#ffffff"></i>
+                        </a>
+                    </div>
+                </div>
+            </div> 
         </slot>
+       
         </footer>
     </div>
 </template>

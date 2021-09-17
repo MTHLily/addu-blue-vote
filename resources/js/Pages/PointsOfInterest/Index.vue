@@ -168,6 +168,7 @@ export default {
       streetViewControl: false,
       rotateControl: true,
       fullscreenControl: true,
+      scrollwheel: true,
     });
     const markerFilter = ref(0);
     const messageToastDiv = ref(null);
@@ -187,8 +188,6 @@ export default {
     });
 
     const clickHandler = (event) => {
-      console.log(event);
-      console.log(event.latLng.lat(), event.latLng.lng());
       if (!event.placeId)
         markers.value.push({
           position: { lat: event.latLng.lat(), lng: event.latLng.lng() },
@@ -215,14 +214,12 @@ export default {
     watch(
       () => context.attrs.flash,
       (flash) => {
-        console.log("FLASH:", flash);
         if (flash.message == null && flash.success == null) return;
         messageToast.value.show();
       }
     );
 
     const filteredMarkers = computed(() => {
-      console.log("THE MARKERS: ", markers);
       if (markers.length != 0) {
         if (markerFilter.value == 0) return markers;
         if (markerFilter.value == 1) return markers.slice(0, 2);
@@ -231,7 +228,6 @@ export default {
     });
 
     const toastMessage = computed(() => {
-      // console.log(context);
       return {
         icon: context.attrs.flash.success
           ? "bi-check-circle text-success"
@@ -242,7 +238,9 @@ export default {
     });
 
     const setCenter = (lng, lat) => {
-      center.value = { lat: parseFloat(lat), lng: parseFloat(lng) };
+      gMapRef.value.$mapPromise.then((gmap) => {
+        gmap.panTo({ lat: parseFloat(lat), lng: parseFloat(lng) });
+      });
     };
 
     const convertMarkdown = (markedown) => {

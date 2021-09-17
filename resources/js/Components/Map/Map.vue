@@ -168,7 +168,6 @@ export default {
   },
   mounted() {
     this.$refs.gMapRef.$mapPromise.then((gmap) => {
-      console.log("GMAP", gmap);
       gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
         this.$refs.mapTopLeft
       );

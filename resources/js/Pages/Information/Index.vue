@@ -32,7 +32,7 @@
         <div class="container-fluid">
           <ul class="navbar-nav p-2">
             <li class="nav-item">
-              <Link href="/dashboard/information/create" class="nav-link"
+              <Link :href="route('information.create')" class="nav-link"
                 >Add Information Snippet</Link
               >
             </li>
@@ -50,19 +50,22 @@
             <td>{{ title.title }}</td>
             <td><MarkdownViewer :content="title.content"></MarkdownViewer></td>
             <td>
-              <form @submit.prevent="submitDelete(title.id)">
-                <div class="btn-group">
-                  <Link
-                    :href="`/dashboard/information/${title.id}/edit`"
-                    class="btn btn-primary"
-                  >
-                    <i class="bi-pencil-square"></i>
-                  </Link>
-                  <button class="btn btn-danger">
-                    <i class="bi-trash"></i>
-                  </button>
-                </div>
-              </form>
+              <div class="btn-group">
+                <Link
+                  :href="route('information.edit', title.id)"
+                  class="btn btn-primary"
+                >
+                  <i class="bi-pencil-square"></i>
+                </Link>
+                <Link
+                  as="button"
+                  method="delete"
+                  :href="route('information.destroy', title.id)"
+                  class="btn btn-danger"
+                >
+                  <i class="bi-trash"></i>
+                </Link>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -109,11 +112,18 @@ export default {
       };
     },
   },
+  watch: {
+    "$page.props.flash": function () {
+      this.toast.show();
+    },
+  },
   mounted() {
     const message = new Toast(this.$refs.messageToast);
     if (this.$page.props.flash.success || this.$page.props.flash.message)
       message.show();
+    this.toast = message;
   },
+  data: () => ({ toast: null }),
   methods: {
     submitDelete(id) {
       Inertia.delete(`/dashboard/information/${id}`);

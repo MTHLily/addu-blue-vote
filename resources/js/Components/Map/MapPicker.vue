@@ -36,6 +36,7 @@ export default {
       streetViewControl: false,
       rotateControl: true,
       fullscreenControl: true,
+      scrollwheel: true,
     });
     const markerFilter = ref(0);
     const marker = computed(() => {

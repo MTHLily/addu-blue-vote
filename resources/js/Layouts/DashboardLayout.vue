@@ -14,6 +14,11 @@
             >FAQs</Link
           >
           <Link
+            :href="route('cities.index')"
+            class="list-group-item list-group-item-action"
+            >Cities</Link
+          >
+          <Link
             :href="route('districts.index')"
             class="list-group-item list-group-item-action"
             >Districts</Link

@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Models\FrequentlyAskedQuestion;
@@ -36,6 +37,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
 //edit Information
 Route::resource('/dashboard/information', InformationSnippetController::class);
+
+Route::resource('/dashboard/cities', CityController::class);
 
 Route::resource('/dashboard/districts', DistrictController::class);
 

@@ -89,7 +89,7 @@ export default {
         {
           id: 0,
           title: "Default Title",
-          conrnt: "Defualt Content",
+          content: "Defualt Content",
         },
       ],
     },

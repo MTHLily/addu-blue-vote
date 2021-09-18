@@ -34,21 +34,18 @@ Route::get('/', function(){
         'registrationSites' => PointOfInterest::where('point_of_interest_type_id', '=', 1 )->with('district')->get()
     ]);
 });
+
+Route::get('/login', [RegisteredUserController::class, 'create']);
+
 //admin resources
-
-//admin dashboard
+Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-//edit FAQs
 Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
-//edit Information
 Route::resource('/dashboard/information', InformationSnippetController::class);
-
 Route::resource('/dashboard/cities', CityController::class);
-
 Route::resource('/dashboard/districts', DistrictController::class);
-
 Route::resource('dashboard/poi', PointOfInterestController::class);
-
 Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
+   });
 
 require __DIR__.'/auth.php';

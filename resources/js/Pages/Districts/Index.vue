@@ -22,7 +22,7 @@
                 class="text-center align-middle"
                 style="background-color: #ccdfff; height: 50px"
               >
-                <th scope="col"></th>
+                <!-- <th scope="col"></th> -->
                 <th scope="col"></th>
                 <th scope="col">District</th>
                 <th scope="col">Description</th>
@@ -31,12 +31,14 @@
               </thead>
               <tbody>
                 <tr v-for="district in districts" :key="district.id">
+                  <!-- <td>
+                  </td> -->
                   <td>
-                    <div style="background-color: #369669; height: 50px"></div>
-                  </td>
-                  <td>
-                    <div class="btn-group">
-                      <div class="p-3">
+                    <div class="container btn-group row align-items-center">
+                      <div class="col-1" :style="`background-color: ${district.color}`" style="height: 50px; width:20px">
+
+                      </div>
+                      <div class="col p-3">
                         <Link
                           :href="route('districts.edit', district.id)"
                           class="btn btn-primary"
@@ -84,7 +86,7 @@
                     <Link
                       :href="route('districts.create')"
                       class="nav-link text-white"
-                      >Add District</Link
+                      >Add</Link
                     >
                   </div>
                 </div>

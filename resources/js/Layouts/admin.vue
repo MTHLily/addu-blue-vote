@@ -30,7 +30,7 @@
             </a>
           </div>
           <div class="col-1">
-            <a href="https://twitter.com/addu_arisen?lang=en">
+            <a href="mailto:arisen.lab@addu.edu.ph?subject=subject text">
               <i class="bi bi-google" style="color: #ffffff"></i>
             </a>
           </div>

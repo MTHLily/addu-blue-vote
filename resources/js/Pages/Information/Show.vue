@@ -1,13 +1,13 @@
 <template>
   <div>
-    {{ info }}
+    {{ information }}
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    info: {
+    information: {
       type: Object,
       default: () => ({}),
     },

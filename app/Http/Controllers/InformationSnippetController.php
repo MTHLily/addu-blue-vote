@@ -72,9 +72,12 @@ class InformationSnippetController extends Controller
      * @param  \App\Models\InformationSnippet  $informationSnippet
      * @return \Illuminate\Http\Response
      */
-    public function show(InformationSnippet $informationSnippet)
+    public function show(InformationSnippet $information)
     {
-        //
+        
+        return Inertia::render( "Information/Show", [
+            'information' => $information
+        ]);
     }
 
     /**

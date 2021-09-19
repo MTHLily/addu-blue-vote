@@ -22,17 +22,14 @@
                 class="text-center align-middle"
                 style="background-color: #ccdfff; height: 50px"
               >
-                <!-- <th scope="col"></th> -->
                 <th scope="col"></th>
                 <th scope="col">District</th>
                 <th scope="col">Description</th>
                 <th scope="col">Color</th>
                 <th scope="col">Actions</th>
               </thead>
-              <tbody>
+              <tbody class="text-center align-middle">
                 <tr v-for="district in districts" :key="district.id">
-                  <!-- <td>
-                  </td> -->
                   <td>
                     <div class="container btn-group row align-items-center">
                       <div class="col-1" :style="`background-color: ${district.color}`" style="height: 50px; width:20px">

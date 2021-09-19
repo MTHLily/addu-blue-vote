@@ -24,13 +24,19 @@ class DistrictRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required',
             'description' => 'required',
-            'color' => [
+        ];
+
+        if( $this->district )
+            $rules['color'] = [
                 'required',
                 Rule::unique('districts')->ignore($this->district->id)
-            ]
-        ];
+            ];
+        else
+            $rules['color'] = 'required';
+
+        return $rules;
     }
 }

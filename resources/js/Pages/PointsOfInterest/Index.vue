@@ -76,18 +76,6 @@ import { computed, ref } from "@vue/reactivity";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import { watch } from "@vue/runtime-core";
 
-// function initializeMap(map) {
-//   console.log(map);
-
-//   map.event.addListener("click", (event) => {
-//     console.log("MAP CLICKED!", event);
-//   });
-
-//   map.addEventListener("click", (event) => {
-//     console.log("MAP CLICKED!", event);
-//   });
-// }
-
 export default {
   components: {
     DashboardLayout,

@@ -106,7 +106,7 @@ class InformationSnippetController extends Controller
             'content' => $request->input('content')
         ]);
         
-        return Redirect::route('information.index');
+        return Redirect::route('information.index')->with('success', $information->title . ' has been updated!');
     }
 
     /**
@@ -118,6 +118,6 @@ class InformationSnippetController extends Controller
     public function destroy(InformationSnippet $information)
     {
         $information->delete();
-        return Redirect::route('information.index')->with('success', 'Information Snippet Added!');
+        return Redirect::route('information.index')->with('message', 'Information Snippet Removed!');
     }
 }

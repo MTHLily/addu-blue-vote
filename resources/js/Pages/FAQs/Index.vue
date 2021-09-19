@@ -49,7 +49,7 @@
                     <MarkdownViewer :content="question.answer"></MarkdownViewer>
                   </td>
                   <td>
-                    <form @submit.prevent="submitDelete(question.id)">
+                    <!-- <form @submit.prevent="submitDelete(question.id)"> -->
                       <div class="btn-group">
                         <div class="p-3">
                           <Link
@@ -60,12 +60,34 @@
                           </Link>
                         </div>
                         <div class="p-3">
-                          <button class="btn btn-danger">
+                          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi-trash"></i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    <!-- </form> -->
+                    <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form @submit.prevent="submitDelete(question.id)">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header" style="background-color:#DADEEE">
+                                <h5 class="modal-title text-uppercase" id="exampleModalLabel"><i class="bi bi-exclamation-circle-fill" style="color:#DC3545" ></i> Delete Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-start" style="height:80px">
+                                  <h6 class="p-3">
+                                    Are you sure you want to delete item?
+                                  </h6>
+                              </div>
+                              <div class="modal-footer" style="background-color:#DADEEE">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Delete</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
                   </td>
                 </tr>
               </tbody>

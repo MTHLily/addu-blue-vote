@@ -14,7 +14,7 @@
           >
             <h1 class="p-3">Information Snippet Details</h1>
             <div class="p-3">
-              <InformationForm v-model:info="infoForm"></InformationForm>
+              <InformationForm v-model:info="infoForm" ></InformationForm>
             </div>
             <div class="btn-group" role="group">
               <div class="p-3">
@@ -25,7 +25,7 @@
               </div>
               <div class="p-3">
                 <Link :href="route('information.index')" class="btn btn-danger"
-                  >Cancel</Link
+                  >Back</Link
                 >
               </div>
             </div>

@@ -20,7 +20,7 @@
                 <!-- <button class="btn btn-primary">Save</button> -->
               </div>
               <div class="p-3">
-                <Link href="/dashboard/faqs" class="btn btn-danger">Cancel</Link>
+                <Link href="/dashboard/faqs" class="btn btn-danger">Back</Link>
               </div>
             </div>
           </form>

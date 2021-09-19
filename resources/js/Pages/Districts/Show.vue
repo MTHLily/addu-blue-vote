@@ -1,38 +1,34 @@
 <template>
-  <div>
-    <!-- {{ district }} -->
-      <Head title="Edit District"></Head>
-    <AdminLayout>
-      <DashboardLayout>
-        <div class="rounded" style="background-color: #FBD2B5;">
-          <div class="d-flex flex-column">
-            <form
-              @submit.prevent="
-                districtForm.put(route('districts.update', district.id))
-              "
-            >
-              <h1 class="p-3">Create District</h1>
-              <div class="p-3">
-                <DistrictForm v-model:district="districtForm"></DistrictForm>
-              </div>
-              <div class="btn-group" role="group">
-                <div class="p-3">
-                  <Link :href="route('districts.edit', district.id)" class="btn btn-success"
-                  >Edit</Link
-                >
-                  <!-- <button class="btn btn-primary">Save</button> -->
-                </div>
-                <div class="p-3">
-                  <Link :href="route('districts.index')" class="btn btn-danger">Cancel</Link>
-                </div>
-              </div>
-            </form>
-            <pre>{{ districtForm }}</pre>
+  <Head title="Edit District"></Head>
+<AdminLayout>
+  <DashboardLayout>
+    <div class="rounded" style="background-color: #FBD2B5;">
+      <div class="d-flex flex-column">
+        <form
+          @submit.prevent="
+            districtForm.put(route('districts.update', district.id))
+          "
+        >
+          <h1 class="p-3">District Details</h1>
+          <div class="p-3">
+            <DistrictForm v-model:district="districtForm"></DistrictForm>
           </div>
-        </div>
-      </DashboardLayout>
-    </AdminLayout>
-  </div>
+          <div class="btn-group" role="group">
+            <div class="p-3">
+              <Link :href="route('districts.edit', district.id)" class="btn btn-success"
+                >Edit</Link>
+            
+            </div>
+            <div class="p-3">
+              <Link :href="route('districts.index')" class="btn btn-danger">Back</Link>
+            </div>
+          </div>
+        </form>
+        <pre>{{ districtForm }}</pre>
+      </div>
+    </div>
+  </DashboardLayout>
+</AdminLayout>
 </template>
 
 <script>
@@ -43,6 +39,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AdminLayout from "../../Layouts/admin";
 
 export default {
+  components: { Link, Head, DashboardLayout, DistrictForm,AdminLayout },
   props: {
     district: {
       type: Object,

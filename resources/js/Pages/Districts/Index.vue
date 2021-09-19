@@ -37,7 +37,7 @@
                       </div>
                       <div class="col p-3">
                         <Link
-                          :href="route('districts.edit', district.id)"
+                          :href="route('districts.show', district.id)"
                           class="btn btn-primary"
                         >
                           <i class="bi bi-eye-fill"></i>

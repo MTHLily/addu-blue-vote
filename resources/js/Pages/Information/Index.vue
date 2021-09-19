@@ -28,9 +28,9 @@
                 <th scope="col">Content</th>
                 <th scope="col">Actions</th>
               </thead>
-              <tbody>
+              <tbody class="text-center align-middle">
                 <tr v-for="title in info" :key="title.id">
-                  <td>
+                  <td style="width:15%">
                     <div class="btn-group">
                       <div class="p-3">
                         <Link

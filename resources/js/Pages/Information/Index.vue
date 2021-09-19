@@ -34,7 +34,7 @@
                     <div class="btn-group">
                       <div class="p-3">
                         <Link
-                          :href="`/dashboard/information/${title.id}/edit`"
+                          :href="route('information.show',title.id)"
                           class="btn btn-primary"
                         >
                           <i class="bi bi-eye-fill"></i>
@@ -51,7 +51,7 @@
                       <div class="btn-group">
                         <div class="p-3">
                           <Link
-                            :href="`/dashboard/information/${title.id}/edit`"
+                            :href="`/dashboard/information/${title.id}/edit`"                            
                             class="btn btn-success"
                           >
                             <i class="bi-pencil-square"></i>

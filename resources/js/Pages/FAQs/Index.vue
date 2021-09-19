@@ -33,7 +33,7 @@
                     <div class="btn-group">
                       <div class="p-3">
                         <Link
-                          :href="`/dashboard/faqs/${question.id}/edit`"
+                          :href="route('faqs.show',question.id)"
                           class="btn btn-primary"
                         >
                           <i class="bi bi-eye-fill"></i>

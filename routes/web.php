@@ -39,13 +39,13 @@ Route::get('/login', [RegisteredUserController::class, 'create']);
 
 //admin resources
 Route::middleware(['auth'])->group(function () {
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
-Route::resource('/dashboard/information', InformationSnippetController::class);
-Route::resource('/dashboard/cities', CityController::class);
-Route::resource('/dashboard/districts', DistrictController::class);
-Route::resource('dashboard/poi', PointOfInterestController::class);
-Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
+    Route::resource('/dashboard/information', InformationSnippetController::class);
+    Route::resource('/dashboard/cities', CityController::class);
+    Route::resource('/dashboard/districts', DistrictController::class);
+    Route::resource('dashboard/poi', PointOfInterestController::class);
+    Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
    });
 
 require __DIR__.'/auth.php';

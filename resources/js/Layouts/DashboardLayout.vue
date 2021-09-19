@@ -56,7 +56,7 @@
       </nav>
     </aside>
     <div class="flex-grow-1">
-      {{ $page.props.flash }}
+      <!-- {{ $page.props.flash }} -->
       <slot />
     </div>
   </div>

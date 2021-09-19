@@ -44,7 +44,11 @@
                             />
                             <span class="ml-2 text-sm text-gray-600">Remember me</span>
                         </label>
-                        <a class="form-recovery" href="route('password.request')">Forgot Password?</a>
+                        <Link
+                            :href="route('password.update')"
+                            class="form-recovery"
+                            >Forgot Password?</Link
+                        >
                     </div>
                     <div class="form-group">
                         <button type="submit">LOG IN</button>

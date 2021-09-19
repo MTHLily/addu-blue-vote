@@ -26,7 +26,7 @@
                             autocomplete="username"
                         />
                     </div>
-                    <div class="form-group text-gray-600">
+                    <div class="form-group">
                         <BreezeLabel for="password" value="PASSWORD" />
                         <BreezeInput
                             id="password"
@@ -44,14 +44,21 @@
                             />
                             <span class="ml-2 text-sm text-gray-600">Remember me</span>
                         </label>
-                        <Link
-                            :href="route('password.update')"
+                        <!-- :href="route('password.update')" -->
+                        <Link  
                             class="form-recovery"
                             >Forgot Password?</Link
                         >
                     </div>
                     <div class="form-group">
                         <button type="submit">LOG IN</button>
+                    </div>
+                    <div class="form-group justify-content-center">
+                        <Link 
+                            :href="route('register')" 
+                            class="form-register"
+                            >Not yet registered? <b>Sign Up</b>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -173,6 +180,11 @@ export default {
     .form-group .form-recovery {
         color: #08228D;
         font-size: 12px;
+        text-decoration: none;
+    }
+    .form-group .form-register {
+        color: #08228D;
+        font-size: 14px;
         text-decoration: none;
     }
     .form-panel {

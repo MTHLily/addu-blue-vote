@@ -110,18 +110,18 @@
         </div>
         <div class="col-1 row">
           <div class="col-1">
-            <a href="https://www.facebook.com/adduarisen/">
-              <i class="bi bi-facebook" style="color: #ffffff"></i>
+            <a href="https://www.facebook.com/adduarisen/" target="_blank">
+              <i class="bi bi-facebook text-white"></i>
             </a>
           </div>
           <div class="col-1">
-            <a href="https://twitter.com/addu_arisen?lang=en">
-              <i class="bi bi-twitter" style="color: #ffffff"></i>
+            <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
+              <i class="bi bi-twitter text-white"></i>
             </a>
           </div>
           <div class="col-1">
-            <a href="mailto:arisen.lab@addu.edu.ph?subject=subject text">
-              <i class="bi bi-google" style="color: #ffffff"></i>
+            <a href="mailto:arisen.lab@addu.edu.ph?subject=subject text" target="_blank">
+              <i class="bi bi-google text-white"></i>
             </a>
           </div>
         </div>

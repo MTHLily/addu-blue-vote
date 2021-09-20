@@ -24,101 +24,240 @@
     </div>
   </div>
 
-  <div class="area"></div>
-  <nav class="main-menu">
-    <div class="container">
-        <img :src="image" width="60" height="30" />
-          <span class="header">AdDU Blue Vote</span>
-    </div>
-    <ul>
-      <li>
-        <a data-bs-toggle="collapse" href="#subMenu" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <i class="bi bi-pen-fill p-2"></i>
-          <span class="nav-text">
-            Voters Registration
-          </span>
-        </a>
-        <ul class="sub-menu collapse" id="subMenu">
-          <li>
-            <Link
-              :href="route('information.index')"
-              >Information</Link
-            >
-          </li>
-          <li>
-            <Link
-              :href="route('faqs.index')"
-              >FAQs</Link
-            >
-          </li>
-          <li><a data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
-            <ul class="more-menu collapse" id="moreMenu">
-              <li><a href="#">Cities</a></li>
-              <li>
-                <Link
-                  :href="route('districts.index')"
-                >Districts</Link>
+  <!-- Header -->
+  <div class="min-vh-100 d-flex flex-column">
+    <header>
+      <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <div class="nav-header px-3">
+          <a data-bs-toggle="offcanvas" href="#mainMenu" role="button" aria-controls="main-menu">
+            <i class="bi bi-list"></i>
+          </a> 
+        </div>
+        <div class="container-fluid mx-auto">
+          <Link class="navbar-brand" href="/">
+            <img :src="image2" width="140" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" />
+          </Link>
+          <!-- <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
+            <!-- <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Voters Registration
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li><a class="dropdown-item" href="#FAQs">FAQs</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="https://irehistro.comelec.gov.ph/"
+                      target="_blank"
+                      >iRehistro</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#Map">Registration Sites</a>
+                  </li>
+                </ul>
               </li>
-              <li>
-                <Link
-                  :href="route('poi.index')"
-                >Point of Interest</Link>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Voters Education
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Election Process Information</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Election News and Issues</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Voters Responsibility and Rights</a
+                    >
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
-          
-        </ul>
-      </li>
-      <!-- <li>
-        <a href="#">
-          <i class="bi bi-info-circle-fill p-2"></i>
-          <span class="nav-text">
-            Voters Education
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="bi bi-file-earmark-person-fill p-2"></i>
-          <span class="nav-text">
-            Candidates Profile
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="bi bi-archive-fill p-2"></i>
-          <span class="nav-text">
-            Election Results
-          </span>
-        </a>
-      </li> -->
-    </ul>
-  
-    <ul class="logout">
-      <li>
-        <a href="#">
-          <i class="bi bi-person-circle bi-2x"></i>
-          <span class="nav-text">
-            Logout
-          </span>
-        </a>
-      </li>  
-    </ul>
-  </nav>
-  <div class="flex-grow-1">
-    <!-- {{ $page.props.flash }} -->
-    <slot />
-  </div>
+              <li class="nav-item">
+                <a class="nav-link" href="#" disabled>Candidate's Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" disabled>Election Results</a>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" :href="route('login')">Login</Link>
+              </li>
+            </ul> -->
+          <!-- </div> -->
+        </div>
+      </nav>
+    </header>
+
+    <!-- Content -->
+    <main class="mt-4 flex-grow-1">
+      <slot></slot>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="text-center p-3 text-white bg-primary row">
+        <div class="col-9">
+          <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 |
+          Developed by <b>ARISEn Lab</b>
+        </div>
+        <div class="col-1 row">
+          <div class="col-1">
+            <a href="https://www.facebook.com/adduarisen/" target="_blank">
+              <i class="bi bi-facebook text-white"></i>
+            </a>
+          </div>
+          <div class="col-1">
+            <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
+              <i class="bi bi-twitter text-white"></i>
+            </a>
+          </div>
+          <div class="col-1">
+            <a href="mailto:arisen.lab@addu.edu.ph?subject=subject text" target="_blank">
+              <i class="bi bi-google text-white"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<!-- Sidebar -->
+    <nav class="main-menu offcanvas offcanvas-start" tabindex="-1" id="mainMenu">
+      <div class="container">
+          <img :src="image2" width="60" height="30" />
+            <span class="header">AdDU Blue Vote</span>
+      </div>
+      <ul>
+        <li>
+          <a class="nav-link active" data-bs-toggle="collapse" href="#subMenu" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="bi bi-pen-fill text-primary fs-3 p-2"></i>
+            <span class="nav-text">
+              Voters Registration
+            </span>
+          </a>
+          <ul class="sub-menu collapse" id="subMenu">
+            <li>
+              <Link
+                :href="route('information.index')"
+                >Information</Link
+              >
+            </li>
+            <li>
+              <Link
+                :href="route('faqs.index')"
+                >FAQs</Link
+              >
+            </li>
+            <li><a data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
+              <ul class="more-menu collapse" id="moreMenu">
+                <li><a href="#">Cities</a></li>
+                <li>
+                  <Link
+                    :href="route('districts.index')"
+                  >Districts</Link>
+                </li>
+                <li>
+                  <Link
+                    :href="route('poi.index')"
+                  >Point of Interest</Link>
+                </li>
+              </ul>
+            </li>
+            
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-info-circle-fill text-primary fs-3 p-2"></i>
+            <span class="nav-text">
+              Voters Education
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-file-earmark-person-fill text-primary fs-3 p-2"></i>
+            <span class="nav-text">
+              Candidates Profile
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-archive-fill text-primary fs-3 p-2"></i>
+            <span class="nav-text">
+              Election Results
+            </span>
+          </a>
+        </li>
+      </ul>
+    
+      <ul class="logout">
+        <li>
+          <a href="#">
+            <i class="bi bi-person-circle text-primary fs-3 p-2"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>  
+      </ul>
+    </nav>
+    <!-- <div class="content flex-grow-1">
+      {{ $page.props.flash }}
+      <slot />
+    </div> -->
+</div>
 </template>
 
 <script>
+import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
+import image from "@/Components/assets/addu-bv-logoText.png";
+import image2 from "@/Components/assets/blueVoteLogo.png";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Toast } from "bootstrap";
-import image from "@/Components/assets/Blue_Vote.png";
 
 export default {
   components: {
+    BreezeApplicationLogo,
     Head,
     Link,
   },
@@ -138,6 +277,7 @@ export default {
   data(){
     return {
       image: image,
+      image2: image2,
     };
   },
   mounted() {
@@ -151,20 +291,65 @@ export default {
       this.toast.show();
     },
   },
+  method(){
+     $(document).ready(function(){
+       $(".sub-menu li").on("click",function(){
+                $(".sub-menu li").removeClass("active");
+                $(this).addClass("active");
+            })
+        
+        })
+        $(".sub-menu li a").hover(function(e){
+          /** Remove selected class first **/
+          $(".sub-menu li a").removeClass("selected");
+          /** add selected class on hover**/ 
+          $(this).addClass("selected");
+        });
+  }
 };
 </script>
 
 <style scoped>
+/* Header Navbar */
+.container-fluid {
+  padding-left: 220px;
+  padding-right: 220px;
+}
+.dropdown-menu {
+  background-color: #08228d;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #dee2e6;
+  background-color: #061b71;
+}
+
+.nav-link {
+  color: white;
+}
+.nav-link:hover {
+  color: #dee2e6;
+}
+.titles{
+  font-family: 'Times New Roman', Times, serif;
+}
+.navbar i{
+  color: #fff;
+  font-size: 40px;
+}
 /* Icons */
 .bi {
   position: relative;
   display: table-cell;
-  width: 60px;
-  height: 45px;
   text-align: center;
   vertical-align: middle;
-  font-size:30px;
-  color: #08228D;
+  width: 60px;
+  height: 45px;
 }
 
 /* Header */
@@ -191,13 +376,11 @@ export default {
 .main-menu {
   background:#ECECEC;
   border-right:1px solid #e5e5e5;
-  position:absolute;
   top:0;
   bottom:0;
   height:100%;
   left:0;
   width:300px;
-  float: left;
   overflow:hidden;
 }
 .main-menu>ul {
@@ -232,7 +415,7 @@ export default {
   line-height: 1;
   padding: 10px;
 }
-.main-menu li:hover>a{
+.main-menu li:hover>a, .main-menu li:active>a{
   color:#fff;
   background-color:#D6D6D6;
   border-radius: 10px;
@@ -257,7 +440,7 @@ export default {
   line-height: 1;
   padding: 8px;
 }
-.main-menu .sub-menu li:hover>a{
+.main-menu .sub-menu li:hover>a, .main-menu .sub-menu li:active>a{
   color:#fff;
   background-color:#1E419B;
   border-radius: 5px;
@@ -272,12 +455,11 @@ export default {
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
-
 }
 .more-menu{
   margin-top:8px;
 }
-.sub-menu .more-menu li:hover>a{
+.sub-menu .more-menu li:hover>a, .main-menu .sub-menu li:active>a{
   color:#fff;
   background-color:#061b71;
   border-radius: 6px;
@@ -304,11 +486,10 @@ nav ul,nav li {
   margin:0;
   padding:0;
 }
-
 .area {
-  float: left;
   background: #e2e2e2;
   width: 100%;
   height: 100%;
 }
+
 </style>

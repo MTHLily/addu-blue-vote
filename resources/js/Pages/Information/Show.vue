@@ -3,7 +3,6 @@
     <!-- {{ information }} -->
     <Head title="Infomation Snippets"></Head>
 
-  <AdminLayout>
     <DashboardLayout>
       <div class="rounded" style="background-color: #FBD2B5">
         <div class="d-flex flex-column">
@@ -33,7 +32,6 @@
         </div>
       </div>
     </DashboardLayout>
-  </AdminLayout>
   </div>
 </template>
 

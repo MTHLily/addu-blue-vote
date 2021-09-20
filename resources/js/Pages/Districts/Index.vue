@@ -1,7 +1,5 @@
 <template>
   <Head title="Districts"></Head>
-
-  <AdminLayout>
     <DashboardLayout>
       <div class="container flex flex-column">
         <div class="card">
@@ -116,7 +114,6 @@
         </div>
       </div>
     </DashboardLayout>
-  </AdminLayout>
 </template>
 
 <script>

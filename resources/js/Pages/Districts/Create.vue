@@ -1,7 +1,6 @@
 <template>
   <Head title="Create District"></Head>
 
-<AdminLayout>
   <DashboardLayout>
     <div class="rounded" style="background-color: #CCDFFF;"> 
       <div class="d-flex flex-column">
@@ -23,7 +22,6 @@
       </div>
     </div>
   </DashboardLayout>
-</AdminLayout>
 </template>
 
 <script>

@@ -1,6 +1,5 @@
 <template>
   <Head title="Edit District"></Head>
-<AdminLayout>
   <DashboardLayout>
     <div class="rounded" style="background-color: #FBD2B5;">
       <div class="d-flex flex-column">
@@ -28,7 +27,6 @@
       </div>
     </div>
   </DashboardLayout>
-</AdminLayout>
 </template>
 
 <script>

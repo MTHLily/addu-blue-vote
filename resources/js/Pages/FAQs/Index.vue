@@ -1,7 +1,6 @@
 <template>
   <Head title="Frequently Asked Questions"></Head>
 
-  <AdminLayout>
     <DashboardLayout>
       <div class="container flex flex-column">
         <div class="card">
@@ -108,7 +107,6 @@
         </div>
       </div>
     </DashboardLayout>
-  </AdminLayout>
 </template>
 
 <script>

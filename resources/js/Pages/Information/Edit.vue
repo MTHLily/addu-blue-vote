@@ -1,7 +1,6 @@
 <template>
   <Head title="Infomation Snippets"></Head>
 
-  <AdminLayout>
     <DashboardLayout>
       <div class="rounded" style="background-color: #9acab3">
         <div class="d-flex flex-column">
@@ -28,7 +27,6 @@
         </div>
       </div>
     </DashboardLayout>
-  </AdminLayout>
 </template>
 
 <script>

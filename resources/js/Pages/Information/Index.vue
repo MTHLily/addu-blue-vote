@@ -1,7 +1,6 @@
 <template>
   <Head title="Information Snippets"></Head>
 
-  <AdminLayout>
     <DashboardLayout>
       <div class="container flex flex-column">
         <div class="card">
@@ -105,10 +104,7 @@
           </div>
         </div>
       </div>
-      
     </DashboardLayout>
-  </AdminLayout>
-  
 </template>
 
 <script>

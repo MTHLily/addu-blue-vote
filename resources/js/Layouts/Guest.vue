@@ -4,8 +4,13 @@
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image" width="230" height="70" />
+            <img :src="image2" width="230" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" />
           </Link>
+          <!-- <div class="row ">
+            <h3 class="titles" style="color:white">Ateneo de Davao University</h3>
+            <h4 class="titles" style="color:white">Blue Vote</h4>
+          </div> -->
           <button
             class="navbar-toggler"
             type="button"
@@ -18,7 +23,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
+            <!-- <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -89,7 +94,7 @@
               <li class="nav-item">
                 <Link class="nav-link" :href="route('login')">Login</Link>
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </nav>
@@ -128,7 +133,10 @@
 <script>
 import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/inertia-vue3";
-import image from "@/Components/assets/addu-bv-logo.png";
+// import image from "@/Components/assets/addu-bv-logo.png";
+import image from "@/Components/assets/addu-bv-logoText.png";
+// import image from "@/Components/assets/adduLogo.png";
+import image2 from "@/Components/assets/blueVoteLogo.png";
 
 export default {
   components: {
@@ -138,6 +146,7 @@ export default {
   data: function () {
     return {
       image: image,
+      image2: image2,
     };
   },
 };
@@ -171,5 +180,8 @@ export default {
 }
 .nav-link:hover {
   color: #dee2e6;
+}
+.titles{
+  font-family: 'Times New Roman', Times, serif;
 }
 </style>

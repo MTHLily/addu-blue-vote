@@ -32,13 +32,13 @@
     </div>
     <ul>
       <li>
-        <a href="#">
+        <a data-bs-toggle="collapse" href="#subMenu" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="bi bi-pen-fill p-2"></i>
           <span class="nav-text">
             Voters Registration
           </span>
         </a>
-        <ul class="sub-menu">
+        <ul class="sub-menu collapse" id="subMenu">
           <li>
             <Link
               :href="route('information.index')"
@@ -51,8 +51,8 @@
               >FAQs</Link
             >
           </li>
-          <li><a href="#">Registration Sites</a>
-            <ul class="more-menu">
+          <li><a data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
+            <ul class="more-menu collapse" id="moreMenu">
               <li><a href="#">Cities</a></li>
               <li>
                 <Link
@@ -69,7 +69,7 @@
           
         </ul>
       </li>
-      <li>
+      <!-- <li>
         <a href="#">
           <i class="bi bi-info-circle-fill p-2"></i>
           <span class="nav-text">
@@ -92,7 +92,7 @@
             Election Results
           </span>
         </a>
-      </li>
+      </li> -->
     </ul>
   
     <ul class="logout">

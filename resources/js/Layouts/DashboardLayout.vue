@@ -28,9 +28,9 @@
   <div class="min-vh-100 d-flex flex-column">
     <header>
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-        <div class="nav-header px-3">
+        <div class="nav-header px-4">
           <a data-bs-toggle="offcanvas" href="#mainMenu" role="button" aria-controls="main-menu">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list text-white fs-1"></i>
           </a> 
         </div>
         <div class="container-fluid mx-auto">
@@ -49,8 +49,8 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
-            <!-- <ul class="navbar-nav ms-auto">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -63,20 +63,20 @@
                   Voters Registration
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="#FAQs">FAQs</a></li>
+                  <li><a class="dropdown-item text-white" href="#FAQs">FAQs</a></li>
                   <li>
                     <a
-                      class="dropdown-item"
+                      class="dropdown-item text-white"
                       href="https://irehistro.comelec.gov.ph/"
                       target="_blank"
                       >iRehistro</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#Map">Registration Sites</a>
+                    <a class="dropdown-item text-white" href="#Map">Registration Sites</a>
                   </li>
                 </ul>
               </li>
@@ -92,21 +92,21 @@
                   Voters Education
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Election Process Information</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Election News and Issues</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Voters Responsibility and Rights</a
                     >
                   </li>
@@ -121,8 +121,8 @@
               <li class="nav-item">
                 <Link class="nav-link" :href="route('login')">Login</Link>
               </li>
-            </ul> -->
-          <!-- </div> -->
+            </ul>
+          </div> -->
         </div>
       </nav>
     </header>
@@ -159,44 +159,52 @@
       </div>
     </footer>
 
-<!-- Sidebar -->
+    <!-- Sidebar -->
     <nav class="main-menu offcanvas offcanvas-start" tabindex="-1" id="mainMenu">
-      <div class="container">
+      <Link
+        :href="route('dashboard')"
+        class="text-decoration-none"
+      ><div class="container bg-white mx-auto mt-3 align-middle text-center p-3">
           <img :src="image2" width="60" height="30" />
-            <span class="header">AdDU Blue Vote</span>
-      </div>
-      <ul>
-        <li>
+          <span class="header text-primary align-middle fw-bolder ps-sm-3">AdDU Blue Vote</span>
+        </div></Link
+      >
+      <ul class="mt-3">
+        <li class="ms-4">
           <a class="nav-link active" data-bs-toggle="collapse" href="#subMenu" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="bi bi-pen-fill text-primary fs-3 p-2"></i>
-            <span class="nav-text">
+            <i class="bi bi-pen-fill text-primary text-center align-middle fs-3 p-2"></i>
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
               Voters Registration
             </span>
           </a>
-          <ul class="sub-menu collapse" id="subMenu">
-            <li>
+          <ul class="sub-menu collapse bg-primary p-3 my-2" id="subMenu">
+            <li class="ms-4">
               <Link
                 :href="route('information.index')"
+                class="text-white fs-6 align-middle fw-bold p-2"
                 >Information</Link
               >
             </li>
-            <li>
+            <li class="ms-4">
               <Link
                 :href="route('faqs.index')"
+                class="text-white fs-6 align-middle fw-bold p-2"
                 >FAQs</Link
               >
             </li>
-            <li><a data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
-              <ul class="more-menu collapse" id="moreMenu">
-                <li><a href="#">Cities</a></li>
-                <li>
+            <li class="ms-4"><a class="text-white align-middle fw-bold p-2" data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
+              <ul class="more-menu collapse mt-2" id="moreMenu">
+                <li class="ms-4"><a class="text-white align-middle p-2" href="#">Cities</a></li>
+                <li class="ms-4">
                   <Link
                     :href="route('districts.index')"
+                    class="text-white align-middle p-2"
                   >Districts</Link>
                 </li>
-                <li>
+                <li class="ms-4">
                   <Link
                     :href="route('poi.index')"
+                    class="text-white align-middle p-2"
                   >Point of Interest</Link>
                 </li>
               </ul>
@@ -204,37 +212,37 @@
             
           </ul>
         </li>
-        <li>
+        <li class="ms-4">
           <a href="#">
-            <i class="bi bi-info-circle-fill text-primary fs-3 p-2"></i>
-            <span class="nav-text">
+            <i class="bi bi-info-circle-fill text-primary text-center align-middle fs-3 p-2"></i>
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
               Voters Education
             </span>
           </a>
         </li>
-        <li>
+        <li class="ms-4">
           <a href="#">
-            <i class="bi bi-file-earmark-person-fill text-primary fs-3 p-2"></i>
-            <span class="nav-text">
+            <i class="bi bi-file-earmark-person-fill text-primary text-center align-middle fs-3 p-2"></i>
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
               Candidates Profile
             </span>
           </a>
         </li>
-        <li>
+        <li class="ms-4">
           <a href="#">
-            <i class="bi bi-archive-fill text-primary fs-3 p-2"></i>
-            <span class="nav-text">
+            <i class="bi bi-archive-fill text-primary text-center align-middle fs-3 p-2"></i>
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
               Election Results
             </span>
           </a>
         </li>
       </ul>
     
-      <ul class="logout">
-        <li>
+      <ul class="logout mb-3">
+        <li class="ms-4">
           <a href="#">
-            <i class="bi bi-person-circle text-primary fs-3 p-2"></i>
-            <span class="nav-text">
+            <i class="bi bi-person-circle text-primary text-center align-middle fs-3 p-2"></i>
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
               Logout
             </span>
           </a>
@@ -291,129 +299,56 @@ export default {
       this.toast.show();
     },
   },
-  method(){
-     $(document).ready(function(){
-       $(".sub-menu li").on("click",function(){
-                $(".sub-menu li").removeClass("active");
-                $(this).addClass("active");
-            })
-        
-        })
-        $(".sub-menu li a").hover(function(e){
-          /** Remove selected class first **/
-          $(".sub-menu li a").removeClass("selected");
-          /** add selected class on hover**/ 
-          $(this).addClass("selected");
-        });
-  }
 };
 </script>
 
 <style scoped>
 /* Header Navbar */
 .container-fluid {
-  padding-left: 220px;
-  padding-right: 220px;
+  padding-left: 130px;
+  padding-right: 250px;
 }
-.dropdown-menu {
-  background-color: #08228d;
-}
-
-.dropdown-item {
-  color: white;
-}
-
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #dee2e6;
   background-color: #061b71;
 }
-
-.nav-link {
-  color: white;
-}
 .nav-link:hover {
   color: #dee2e6;
 }
-.titles{
-  font-family: 'Times New Roman', Times, serif;
-}
-.navbar i{
-  color: #fff;
-  font-size: 40px;
-}
-/* Icons */
+/* Sidebar */
 .bi {
-  position: relative;
   display: table-cell;
-  text-align: center;
-  vertical-align: middle;
   width: 60px;
   height: 45px;
 }
-
 /* Header */
 .container{
-  background: #fff;
-  text-align: center;
   border-radius: 10px;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 20px;
-  width: 260px;
+  width: 250px;
 }
 .main-menu .header {
-  position:relative;
-  vertical-align:middle;
-  color: #08228D;
   font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-  padding-left: 15px;
 }
 /* Main Menu */
 .main-menu {
   background:#ECECEC;
-  border-right:1px solid #e5e5e5;
-  top:0;
-  bottom:0;
-  height:100%;
-  left:0;
   width:300px;
-  overflow:hidden;
-}
-.main-menu>ul {
-  margin:10px 0;
 }
 .main-menu li {
-  position:relative;
   display:block;
   width:260px;
-  margin-left: 25px;
 }
 .main-menu li>a {
   position:relative;
   display:table;
   border-collapse:collapse;
-  border-spacing:0;
-  color:#999;
-  font-size: 14px;
   text-decoration:none;
-  -webkit-transform:translateZ(0) scale(1,1);
-  -webkit-transition:all .1s linear;
   transition:all .1s linear;
 }
 .main-menu .nav-text {
-  position:relative;
   display:table-cell;
-  vertical-align:middle;
   width:190px;
-  color: #08228D;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1;
-  padding: 10px;
 }
 .main-menu li:hover>a, .main-menu li:active>a{
   color:#fff;
@@ -422,23 +357,12 @@ export default {
 }
 /* Sub Menu */
 .sub-menu{
-  background: #08228D;
   width: 250px;
-  margin:10px 0px 10px 0px;
   border-radius: 10px;
-  color: #fff;
-  padding: 15px;
 }
 .main-menu .sub-menu a{
-  position:relative;
   display:table-cell;
-  vertical-align:middle;
   width:190px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1;
-  padding: 8px;
 }
 .main-menu .sub-menu li:hover>a, .main-menu .sub-menu li:active>a{
   color:#fff;
@@ -447,17 +371,9 @@ export default {
 }
 /* More Menu */
 .sub-menu .more-menu a{
-  position:relative;
   display:table-cell;
-  vertical-align:middle;
+  font-size:14px;
   width:165px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
-}
-.more-menu{
-  margin-top:8px;
 }
 .sub-menu .more-menu li:hover>a, .main-menu .sub-menu li:active>a{
   color:#fff;
@@ -474,22 +390,10 @@ export default {
 a:hover,a:focus {
   text-decoration:none;
 }
-nav {
--webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
--o-user-select:none;
-user-select:none;
-}
+
 nav ul,nav li {
   outline:0;
   margin:0;
   padding:0;
 }
-.area {
-  background: #e2e2e2;
-  width: 100%;
-  height: 100%;
-}
-
 </style>

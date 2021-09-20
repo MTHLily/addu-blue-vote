@@ -1,4 +1,5 @@
 <template>
+  <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
     <header>
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
@@ -7,11 +8,7 @@
             <img :src="image2" width="140" height="70" />
             <img :src="image" class="image-fluid" width="230" height="70" />
           </Link>
-          <!-- <div class="row ">
-            <h3 class="titles" style="color:white">Ateneo de Davao University</h3>
-            <h4 class="titles" style="color:white">Blue Vote</h4>
-          </div> -->
-          <button
+          <!-- <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -23,7 +20,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <!-- <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -36,20 +33,20 @@
                   Voters Registration
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="#FAQs">FAQs</a></li>
+                  <li><a class="dropdown-item text-white" href="#FAQs">FAQs</a></li>
                   <li>
                     <a
-                      class="dropdown-item"
+                      class="dropdown-item text-white"
                       href="https://irehistro.comelec.gov.ph/"
                       target="_blank"
                       >iRehistro</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#Map">Registration Sites</a>
+                    <a class="dropdown-item text-white" href="#Map">Registration Sites</a>
                   </li>
                 </ul>
               </li>
@@ -65,21 +62,21 @@
                   Voters Education
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Election Process Information</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Election News and Issues</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Voters Responsibility and Rights</a
                     >
                   </li>
@@ -94,14 +91,18 @@
               <li class="nav-item">
                 <Link class="nav-link" :href="route('login')">Login</Link>
               </li>
-            </ul> -->
-          </div>
+            </ul>
+          </div> -->
         </div>
       </nav>
     </header>
+
+    <!-- Content -->
     <main class="mt-4 flex-grow-1">
       <slot></slot>
     </main>
+
+    <!-- Footer -->
     <footer>
       <div class="text-center p-3 text-white bg-primary row">
         <div class="col-9">

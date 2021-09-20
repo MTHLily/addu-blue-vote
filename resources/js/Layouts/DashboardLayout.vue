@@ -173,7 +173,7 @@
         <li class="ms-4">
           <a class="nav-link active" data-bs-toggle="collapse" href="#subMenu" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="bi bi-pen-fill text-primary text-center align-middle fs-3 p-2"></i>
-            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder py-1 px-2">
               Voters Registration
             </span>
           </a>
@@ -181,30 +181,30 @@
             <li class="ms-4">
               <Link
                 :href="route('information.index')"
-                class="text-white fs-6 align-middle fw-bold p-2"
+                class="text-white fs-6 align-middle fw-bold py-1 px-2"
                 >Information</Link
               >
             </li>
             <li class="ms-4">
               <Link
                 :href="route('faqs.index')"
-                class="text-white fs-6 align-middle fw-bold p-2"
+                class="text-white fs-6 align-middle fw-bold py-1 px-2"
                 >FAQs</Link
               >
             </li>
-            <li class="ms-4"><a class="text-white align-middle fw-bold p-2" data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
+            <li class="ms-4"><a class="text-white align-middle fw-bold py-1 px-2" data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="collapseExample">Registration Sites</a>
               <ul class="more-menu collapse mt-2" id="moreMenu">
-                <li class="ms-4"><a class="text-white align-middle p-2" href="#">Cities</a></li>
+                <li class="ms-4"><a class="text-white align-middle py-1 px-2" href="#">Cities</a></li>
                 <li class="ms-4">
                   <Link
                     :href="route('districts.index')"
-                    class="text-white align-middle p-2"
+                    class="text-white align-middle py-1 px-2"
                   >Districts</Link>
                 </li>
                 <li class="ms-4">
                   <Link
                     :href="route('poi.index')"
-                    class="text-white align-middle p-2"
+                    class="text-white align-middle py-1 px-2"
                   >Point of Interest</Link>
                 </li>
               </ul>
@@ -215,7 +215,7 @@
         <li class="ms-4">
           <a href="#">
             <i class="bi bi-info-circle-fill text-primary text-center align-middle fs-3 p-2"></i>
-            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder py-1 px-2">
               Voters Education
             </span>
           </a>
@@ -223,7 +223,7 @@
         <li class="ms-4">
           <a href="#">
             <i class="bi bi-file-earmark-person-fill text-primary text-center align-middle fs-3 p-2"></i>
-            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder py-1 px-2">
               Candidates Profile
             </span>
           </a>
@@ -231,7 +231,7 @@
         <li class="ms-4">
           <a href="#">
             <i class="bi bi-archive-fill text-primary text-center align-middle fs-3 p-2"></i>
-            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder py-1 px-2">
               Election Results
             </span>
           </a>
@@ -242,7 +242,7 @@
         <li class="ms-4">
           <a href="#">
             <i class="bi bi-person-circle text-primary text-center align-middle fs-3 p-2"></i>
-            <span class="nav-text text-primary align-middle fs-6 fw-bolder p-2">
+            <span class="nav-text text-primary align-middle fs-6 fw-bolder py-1 px-2">
               Logout
             </span>
           </a>

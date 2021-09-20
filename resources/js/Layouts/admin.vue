@@ -4,7 +4,7 @@
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image2" width="180" height="70" />
+            <img :src="image2" width="140" height="70" />
             <img :src="image" class="image-fluid" width="230" height="70" />
           </Link>
           <!-- <div class="row ">

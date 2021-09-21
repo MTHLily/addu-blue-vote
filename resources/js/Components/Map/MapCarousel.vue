@@ -16,6 +16,7 @@ import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import Card from "./Card";
 
 export default {
+  emits: ["poiClicked"],
   props: {
     pois: {
       type: Array,
@@ -29,6 +30,9 @@ export default {
     Pagination,
     Navigation,
   },
+  data: () => ({
+    slideIndex: 1,
+  }),
 };
 </script>
 

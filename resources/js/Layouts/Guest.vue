@@ -1,12 +1,14 @@
 <template>
+  <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
     <header>
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image" width="230" height="70" />
+            <img :src="image2" width="140" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" />
           </Link>
-          <button
+          <!-- <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -31,20 +33,20 @@
                   Voters Registration
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="#FAQs">FAQs</a></li>
+                  <li><a class="dropdown-item text-white" href="#FAQs">FAQs</a></li>
                   <li>
                     <a
-                      class="dropdown-item"
+                      class="dropdown-item text-white"
                       href="https://irehistro.comelec.gov.ph/"
                       target="_blank"
                       >iRehistro</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#Map">Registration Sites</a>
+                    <a class="dropdown-item text-white" href="#Map">Registration Sites</a>
                   </li>
                 </ul>
               </li>
@@ -60,21 +62,21 @@
                   Voters Education
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Election Process Information</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Election News and Issues</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"
+                    <a class="dropdown-item text-white" href="#"
                       >Voters Responsibility and Rights</a
                     >
                   </li>
@@ -90,20 +92,41 @@
                 <Link class="nav-link" :href="route('login')">Login</Link>
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </nav>
     </header>
+
+    <!-- Content -->
     <main class="mt-4 flex-grow-1">
       <slot></slot>
     </main>
+
+    <!-- Footer -->
     <footer>
-      <slot name="footer">
-        <div class="text-center p-3 text-white bg-primary">
+      <div class="text-center p-3 text-white bg-primary row">
+        <div class="col-9">
           <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 |
           Developed by <b>ARISEn Lab</b>
         </div>
-      </slot>
+        <div class="col-1 row">
+          <div class="col-1">
+            <a href="https://www.facebook.com/adduarisen/" target="_blank">
+              <i class="bi bi-facebook text-white"></i>
+            </a>
+          </div>
+          <div class="col-1">
+            <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
+              <i class="bi bi-twitter text-white"></i>
+            </a>
+          </div>
+          <div class="col-1">
+            <a href="mailto:arisen.lab@addu.edu.ph?subject=subject text" target="_blank">
+              <i class="bi bi-google text-white"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
   </div>
 </template>
@@ -111,7 +134,10 @@
 <script>
 import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/inertia-vue3";
-import image from "@/Components/assets/addu-bv-logo.png";
+// import image from "@/Components/assets/addu-bv-logo.png";
+import image from "@/Components/assets/addu-bv-logoText.png";
+// import image from "@/Components/assets/adduLogo.png";
+import image2 from "@/Components/assets/blueVoteLogo.png";
 
 export default {
   components: {
@@ -121,6 +147,7 @@ export default {
   data: function () {
     return {
       image: image,
+      image2: image2,
     };
   },
 };
@@ -154,5 +181,8 @@ export default {
 }
 .nav-link:hover {
   color: #dee2e6;
+}
+.titles{
+  font-family: 'Times New Roman', Times, serif;
 }
 </style>

@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\SVGController;
@@ -33,19 +34,18 @@ Route::get('/', function(){
         'registrationSites' => PointOfInterest::where('point_of_interest_type_id', '=', 1 )->with('district')->get()
     ]);
 });
+
+Route::get('/login', [RegisteredUserController::class, 'create']);
+
 //admin resources
-
-//admin dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-//edit FAQs
-Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
-//edit Information
-Route::resource('/dashboard/information', InformationSnippetController::class);
-
-Route::resource('/dashboard/districts', DistrictController::class);
-
-Route::resource('dashboard/poi', PointOfInterestController::class);
-
-Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
+    Route::resource('/dashboard/information', InformationSnippetController::class);
+    Route::resource('/dashboard/cities', CityController::class);
+    Route::resource('/dashboard/districts', DistrictController::class);
+    Route::resource('dashboard/poi', PointOfInterestController::class);
+    Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
+   });
 
 require __DIR__.'/auth.php';

@@ -2,15 +2,23 @@
   <Head title="Frequently Asked Questions"></Head>
 
   <DashboardLayout>
-    <div class="d-flex flex-column">
-      <form @submit.prevent="faqForm.put(`/dashboard/faqs/${faq.id}`)">
-        <h1>Edit Frequently Asked Question</h1>
-        <FAQForm v-model:faq="faqForm"></FAQForm>
-        <div class="btn-group mx-auto w-100" role="group">
-          <button class="btn btn-primary">Save</button>
-          <Link href="/dashboard/faqs" class="btn btn-danger">Cancel</Link>
-        </div>
-      </form>
+    <div class="rounded" style="background-color: #9ACAB3;">
+      <div class="d-flex flex-column">
+        <form @submit.prevent="faqForm.put(`/dashboard/faqs/${faq.id}`)">
+          <h1 class="p-3">Edit Frequently Asked Question</h1>
+          <div class="p-3">
+            <FAQForm v-model:faq="faqForm"></FAQForm>
+          </div>
+          <div class="btn-group" role="group">
+            <div class="p-3">
+              <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="p-3">
+              <Link href="/dashboard/faqs" class="btn btn-danger">Cancel</Link>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </DashboardLayout>
 </template>
@@ -20,6 +28,7 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import FAQForm from "../../Components/FAQs/FAQForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
+import AdminLayout from "../../Layouts/admin";
 
 export default {
   props: {
@@ -31,7 +40,7 @@ export default {
       }),
     },
   },
-  components: { Link, Head, DashboardLayout, FAQForm },
+  components: { Link, Head, DashboardLayout, FAQForm,AdminLayout, },
   created() {
     this.faqForm = useForm({
       question: this.faq.question,

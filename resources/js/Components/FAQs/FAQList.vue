@@ -1,6 +1,6 @@
 <template>
-  <div id="FAQs" class="container-md mt-4">
-    <div class="row">
+  <div id="FAQs" class="page container-md mt-4">
+    <div class="body row">
       <div class="col-3 mx-auto text-primary">
         <div>VOTERS REGISTRATION</div>
         <div class="h1 fw-bolder">FAQs</div>
@@ -42,5 +42,11 @@ export default {
 .card-body {
   margin-left: 52px;
   margin-bottom: 15px;
+}
+.page{
+  border-bottom: solid #08228D;
+}
+.body{
+  margin-bottom: 5%;
 }
 </style>

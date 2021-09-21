@@ -5,6 +5,7 @@
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>
+      <VoterRegistrationProcess></VoterRegistrationProcess>
       <FAQs :faqs="faqs" />
       <Map :registrationSites="registrationSites" :districts="districts" />
     </div>
@@ -15,6 +16,7 @@
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import GuestLayout from "../Layouts/Guest";
 import Map from "../Components/Map/Map";
+import VoterRegistrationProcess from "../Components/VoterRegistrationProcess.vue";
 import FAQs from "../Components/FAQs/FAQList.vue";
 import InformationCarousel from "../Components/Information/InformationCarousel.vue";
 
@@ -26,12 +28,9 @@ export default {
     Map,
     FAQs,
     InformationCarousel,
+    VoterRegistrationProcess,
   },
   props: {
-    canLogin: Boolean,
-    canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
     faqs: {
       type: Array,
       default: [],

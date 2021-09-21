@@ -53,9 +53,11 @@ class FrequentlyAskedQuestionController extends Controller
      * @param  \App\Models\FrequentlyAskedQuestion  $frequentlyAskedQuestion
      * @return \Illuminate\Http\Response
      */
-    public function show(FrequentlyAskedQuestion $frequentlyAskedQuestion)
+    public function show(FrequentlyAskedQuestion $faq)
     {
-        //
+        return Inertia::render("FAQs/Show", [
+            'faq' => $faq
+        ]);
     }
 
     /**

@@ -1,33 +1,8 @@
 <template>
   <Head title="Points of Interest"></Head>
 
-  <div
-    class="position-fixed mt-4 start-50 translate-middle"
-    style="z-index: 11"
-  >
-    <div
-      class="toast"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      ref="messageToastDiv"
-    >
-      <div class="toast-header">
-        <i class="me-1" :class="toastMessage.icon"></i>
-        <strong class="me-auto">{{ toastMessage.title }}</strong>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="toast"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="toast-body">{{ toastMessage.message }}</div>
-    </div>
-  </div>
-
   <DashboardLayout>
-    <div class="d-flex flex-column h-100">
+    <div class="d-flex flex-column h-100 w-75 mx-auto">
       <GMapMap
         :zoom="16"
         :center="center"
@@ -105,7 +80,7 @@
               >
             </td>
             <td colspan="5">
-              <nav aria-label="Page navigation example">
+              <!-- <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
                     <a class="page-link" href="#">Previous</a>
@@ -117,7 +92,7 @@
                     <a class="page-link" href="#">Next</a>
                   </li>
                 </ul>
-              </nav>
+              </nav> -->
             </td>
           </tr>
         </template>
@@ -132,7 +107,6 @@ import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import BlueVoteTable from "../../Components/BlueVoteTable.vue";
 import { watch } from "@vue/runtime-core";
-import { Toast } from "bootstrap";
 import marked from "marked";
 
 export default {
@@ -171,8 +145,6 @@ export default {
       scrollwheel: true,
     });
     const markerFilter = ref(0);
-    const messageToastDiv = ref(null);
-    const messageToast = ref(null);
 
     const markers = computed(() => {
       if (props.pois)
@@ -202,39 +174,12 @@ export default {
       }
     });
 
-    watch(messageToastDiv, (toast) => {
-      messageToast.value = new Toast(toast);
-      if (
-        context.attrs.flash.message !== null ||
-        context.attrs.flash.success !== null
-      )
-        messageToast.value.show();
-    });
-
-    watch(
-      () => context.attrs.flash,
-      (flash) => {
-        if (flash.message == null && flash.success == null) return;
-        messageToast.value.show();
-      }
-    );
-
     const filteredMarkers = computed(() => {
       if (markers.length != 0) {
         if (markerFilter.value == 0) return markers;
         if (markerFilter.value == 1) return markers.slice(0, 2);
         else return markers.slice(3);
       } else return [];
-    });
-
-    const toastMessage = computed(() => {
-      return {
-        icon: context.attrs.flash.success
-          ? "bi-check-circle text-success"
-          : "bi-exclamation-circle text-warning",
-        title: context.attrs.flash.success ? "Success" : "Warning",
-        message: context.attrs.flash.success || context.attrs.flash.message,
-      };
     });
 
     const setCenter = (lng, lat) => {
@@ -255,9 +200,6 @@ export default {
       markerFilter,
       filteredMarkers,
       setCenter,
-      toastMessage,
-      messageToast,
-      messageToastDiv,
       convertMarkdown,
     };
   },

@@ -13,7 +13,7 @@
 <script>
 import "vue3-carousel/dist/carousel.css";
 import InformationSlide from "./InformationSlide.vue";
-import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import { Carousel } from "vue3-carousel";
 
 export default {
   components: {

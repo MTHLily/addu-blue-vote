@@ -52,7 +52,9 @@ class DistrictController extends Controller
      */
     public function show(District $district)
     {
-        //
+        return Inertia::render( "Districts/Show", [
+            'district' => $district
+        ]);
     }
 
     /**

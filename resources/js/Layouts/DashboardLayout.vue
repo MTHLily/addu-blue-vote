@@ -43,91 +43,6 @@
             <img :src="image2" width="140" height="70" />
             <img :src="image" class="image-fluid" width="230" height="70" />
           </Link>
-          <!-- <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Voters Registration
-                </a>
-                <ul
-                  class="dropdown-menu bg-primary"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li><a class="dropdown-item text-white" href="#FAQs">FAQs</a></li>
-                  <li>
-                    <a
-                      class="dropdown-item text-white"
-                      href="https://irehistro.comelec.gov.ph/"
-                      target="_blank"
-                      >iRehistro</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#Map">Registration Sites</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Voters Education
-                </a>
-                <ul
-                  class="dropdown-menu bg-primary"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <a class="dropdown-item text-white" href="#"
-                      >Election Process Information</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#"
-                      >Election News and Issues</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#"
-                      >Voters Responsibility and Rights</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" disabled>Candidate's Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" disabled>Election Results</a>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" :href="route('login')">Login</Link>
-              </li>
-            </ul>
-          </div> -->
         </div>
       </nav>
     </header>
@@ -347,7 +262,7 @@
 
       <ul class="logout mb-3">
         <li class="ms-4">
-          <a href="#">
+          <Link as="a" method="post" :href="route('logout')">
             <i
               class="
                 bi bi-person-circle
@@ -370,7 +285,7 @@
             >
               Logout
             </span>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

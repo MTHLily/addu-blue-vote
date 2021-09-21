@@ -10,8 +10,8 @@
         </div>
         <div class="form-content">
           <div class="form-group">
-            <BreezeLabel for="email" value="EMAIL" />
-            <BreezeInput
+            <label for="email">EMAIL</label>
+            <input
               id="email"
               type="email"
               v-model="form.email"
@@ -21,8 +21,8 @@
             />
           </div>
           <div class="form-group">
-            <BreezeLabel for="password" value="PASSWORD" />
-            <BreezeInput
+            <label for="label">PASSWORD</label>
+            <input
               id="password"
               type="password"
               v-model="form.password"
@@ -32,19 +32,12 @@
           </div>
           <div class="form-group">
             <label class="form-remember">
-              <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-              <span class="ml-2 text-sm text-gray-600">Remember me</span>
+              <input type="checkbox" name="remember" v-model="form.remember" />
+              <span>Remember me</span>
             </label>
-            <!-- :href="route('password.update')" -->
-            <Link class="form-recovery">Forgot Password?</Link>
           </div>
           <div class="form-group">
             <button type="submit">LOG IN</button>
-          </div>
-          <div class="form-group justify-content-center">
-            <Link :href="route('register')" class="form-register"
-              >Not yet registered? <b>Sign Up</b>
-            </Link>
           </div>
         </div>
       </div>

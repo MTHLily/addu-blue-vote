@@ -13,7 +13,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.content);
     new Viewer({
       el: this.$refs.wrapper,
       initialValue: this.content,

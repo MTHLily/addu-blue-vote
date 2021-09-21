@@ -52,7 +52,7 @@
                   <div class="btn-group">
                     <div class="p-3">
                       <Link
-                        :href="`/dashboard/faqs/${question.id}/edit`"
+                        :href="route('faqs.edit', question.id)"
                         class="btn btn-success"
                       >
                         <i class="bi-pencil-square"></i>
@@ -77,61 +77,56 @@
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
                   >
-                    <form @submit.prevent="submitDelete(question.id)">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div
-                            class="modal-header"
-                            style="background-color: #dadeee"
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div
+                          class="modal-header"
+                          style="background-color: #dadeee"
+                        >
+                          <h5 class="modal-title text-uppercase">
+                            <i
+                              class="bi bi-exclamation-circle-fill"
+                              style="color: #dc3545"
+                            ></i>
+                            Delete Item
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body text-start" style="height: 80px">
+                          <h6 class="p-3">
+                            Are you sure you want to delete item?
+                          </h6>
+                        </div>
+                        <div
+                          class="modal-footer"
+                          style="background-color: #dadeee"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
                           >
-                            <h5
-                              class="modal-title text-uppercase"
-                              id="exampleModalLabel"
-                            >
-                              <i
-                                class="bi bi-exclamation-circle-fill"
-                                style="color: #dc3545"
-                              ></i>
-                              Delete Item
-                            </h5>
-                            <button
-                              type="button"
-                              class="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div
-                            class="modal-body text-start"
-                            style="height: 80px"
+                            Cancel
+                          </button>
+                          <Link
+                            type="submit"
+                            as="button"
+                            method="delete"
+                            :href="route('faqs.destroy', question.id)"
+                            class="btn btn-danger"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
                           >
-                            <h6 class="p-3">
-                              Are you sure you want to delete item?
-                            </h6>
-                          </div>
-                          <div
-                            class="modal-footer"
-                            style="background-color: #dadeee"
-                          >
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-bs-dismiss="modal"
-                            >
-                              Cancel
-                            </button>
-                            <button
-                              type="submit"
-                              class="btn btn-danger"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            >
-                              Delete
-                            </button>
-                          </div>
+                            Delete
+                          </Link>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -139,9 +134,7 @@
             <td colspan="">
               <div class="card-footer">
                 <div class="bg-primary rounded shadow mb-4">
-                  <Link
-                    href="/dashboard/faqs/create"
-                    class="nav-link text-white"
+                  <Link :href="route('faqs.create')" class="nav-link text-white"
                     >Add</Link
                   >
                 </div>

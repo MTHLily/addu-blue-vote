@@ -24,8 +24,8 @@
     </div>
   </div>
 
-  <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
+    <!-- Header -->
     <header>
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="nav-header px-4">
@@ -53,32 +53,26 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-      <div class="text-center p-3 text-white bg-primary row">
-        <div class="col-9">
-          <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 |
-          Developed by <b>ARISEn Lab</b>
-        </div>
-        <div class="col-1 row">
-          <div class="col-1">
-            <a href="https://www.facebook.com/adduarisen/" target="_blank">
-              <i class="bi bi-facebook text-white"></i>
-            </a>
-          </div>
-          <div class="col-1">
-            <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
-              <i class="bi bi-twitter text-white"></i>
-            </a>
-          </div>
-          <div class="col-1">
-            <a
-              href="mailto:arisen.lab@addu.edu.ph?subject=subject text"
-              target="_blank"
-            >
-              <i class="bi bi-google text-white"></i>
-            </a>
-          </div>
-        </div>
+    <footer class="text-white bg-primary p-3 d-flex justify-content-around">
+      <div class="">
+        <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 | Developed
+        by <b>ARISEn Lab</b>
+      </div>
+      <div class="d-flex">
+        <a href="https://www.facebook.com/adduarisen/" target="_blank">
+          <i class="bi bi-facebook text-white"></i>
+        </a>
+
+        <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
+          <i class="bi bi-twitter text-white"></i>
+        </a>
+
+        <a
+          href="mailto:arisen.lab@addu.edu.ph?subject=subject text"
+          target="_blank"
+        >
+          <i class="bi bi-google text-white"></i>
+        </a>
       </div>
     </footer>
 
@@ -289,10 +283,6 @@
         </li>
       </ul>
     </nav>
-    <!-- <div class="content flex-grow-1">
-      {{ $page.props.flash }}
-      <slot />
-    </div> -->
   </div>
 </template>
 

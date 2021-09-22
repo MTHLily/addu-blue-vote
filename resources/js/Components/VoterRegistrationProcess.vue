@@ -3,7 +3,9 @@
     class="w-75 mx-auto border-bottom border-primary mt-2"
     id="voter-registration"
   >
-    <h1 class="text-primary fw-bold text-center">Voter Registration Process</h1>
+    <h1 class="text-primary fw-bold text-center" style="margin-top:5%; margin-bottom:5%;">
+      Voter Registration Process
+    </h1>
     <ol class="list-group list-group-numbered list-group-flush w-75 mx-auto">
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
@@ -279,8 +281,8 @@
       </li>
     </ol>
   </div>
-  <div class="w-75 mx-auto border-bottom border-primary mt-2" id="irehistro">
-    <h2 class="text-primary fw-bold text-center">
+  <div class="w-75 mx-auto border-bottom border-primary mt-2" id="irehistro" >
+    <h2 class="text-primary fw-bold text-center" style="margin-top:5%; margin-bottom:5%;">
       COMELEC iRehistro Online Registration
     </h2>
     <div class="w-75 mx-auto">

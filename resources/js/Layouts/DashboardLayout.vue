@@ -65,12 +65,23 @@
     >
       <Link :href="route('dashboard')" class="text-decoration-none"
         ><div
-          class="container bg-white mx-auto mt-3 align-middle text-center p-3"
+          class="
+            bg-white
+            mx-auto
+            mt-3
+            w-75
+            align-middle
+            text-center
+            p-3
+            d-flex
+            rounded
+            align-items-center
+          "
         >
-          <img :src="image" width="60" height="30" />
-          <span class="header text-primary align-middle fw-bolder ps-sm-3"
-            >AdDU Blue Vote</span
-          >
+          <img class="img" :src="image2" height="30" />
+          <div class="text-primary align-middle fw-bolder ps-sm-3">
+            AdDU Blue Vote
+          </div>
         </div></Link
       >
       <ul class="mt-3">
@@ -271,6 +282,7 @@
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Toast } from "bootstrap";
 import image from "@/Components/assets/logo.png";
+import image2 from "@/Components/assets/blue vote logo.png";
 import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
 
 export default {
@@ -295,7 +307,7 @@ export default {
   data() {
     return {
       image: image,
-      // image2: image2,
+      image2: image2,
     };
   },
   mounted() {
@@ -314,10 +326,6 @@ export default {
 
 <style scoped>
 /* Header Navbar */
-.container-fluid {
-  padding-left: 130px;
-  padding-right: 250px;
-}
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #dee2e6;
@@ -333,10 +341,6 @@ export default {
   height: 45px;
 }
 /* Header */
-.container {
-  border-radius: 10px;
-  width: 250px;
-}
 .main-menu .header {
   font-size: 18px;
 }

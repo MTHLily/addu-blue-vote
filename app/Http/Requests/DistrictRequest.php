@@ -27,6 +27,8 @@ class DistrictRequest extends FormRequest
         $rules = [
             'name' => 'required',
             'description' => 'required',
+            "longitude" => 'required',
+	        "latitude" => 'required',
         ];
 
         if( $this->district )

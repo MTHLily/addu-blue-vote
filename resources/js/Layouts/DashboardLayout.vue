@@ -59,6 +59,7 @@
     <!-- Sidebar -->
     <nav
       class="main-menu offcanvas offcanvas-start"
+      data-bs-scroll="true"
       tabindex="-1"
       id="mainMenu"
     >

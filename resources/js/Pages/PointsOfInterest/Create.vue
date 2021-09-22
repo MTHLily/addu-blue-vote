@@ -14,7 +14,6 @@
         <Link :href="route('poi.index')" class="btn btn-danger">Cancel</Link>
       </div>
     </form>
-    <pre>{{ poi }}</pre>
   </DashboardLayout>
 </template>
 

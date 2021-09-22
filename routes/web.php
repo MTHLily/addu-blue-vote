@@ -36,6 +36,7 @@ Route::get('/', function(){
 });
 
 Route::get('/login', [RegisteredUserController::class, 'create']);
+Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
 
 //admin resources
 Route::middleware(['auth'])->group(function () {
@@ -45,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/cities', CityController::class);
     Route::resource('/dashboard/districts', DistrictController::class);
     Route::resource('dashboard/poi', PointOfInterestController::class);
-    Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
+    
    });
 
 require __DIR__.'/auth.php';

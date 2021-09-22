@@ -1,6 +1,6 @@
 <template>
   <GMapMap
-    :zoom="16"
+    :zoom="zoom"
     :center="center"
     :options="gMapOptions"
     ref="gMapRef"
@@ -23,6 +23,14 @@ export default {
     latitude: {
       type: Number,
       default: 7.071250196247246,
+    },
+    zoom: {
+      type: Number,
+      default: 16,
+    },
+    minZoom: {
+      type: Number,
+      default: null,
     },
   },
   setup(props, context) {

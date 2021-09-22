@@ -40,8 +40,9 @@
         </div>
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image2" width="140" height="70" />
-            <img :src="image" class="image-fluid" width="230" height="70" />
+            <!-- <img :src="image2" width="140" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" /> -->
+            <img :src="image" class="image-fluid" width="450" height="70" />
           </Link>
         </div>
       </nav>
@@ -53,28 +54,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-white bg-primary p-3 d-flex justify-content-around">
-      <div class="">
-        <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 | Developed
-        by <b>ARISEn Lab</b>
-      </div>
-      <div class="d-flex">
-        <a href="https://www.facebook.com/adduarisen/" target="_blank">
-          <i class="bi bi-facebook text-white"></i>
-        </a>
-
-        <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
-          <i class="bi bi-twitter text-white"></i>
-        </a>
-
-        <a
-          href="mailto:arisen.lab@addu.edu.ph?subject=subject text"
-          target="_blank"
-        >
-          <i class="bi bi-google text-white"></i>
-        </a>
-      </div>
-    </footer>
+    <ArisenFooter></ArisenFooter>
 
     <!-- Sidebar -->
     <nav
@@ -86,7 +66,7 @@
         ><div
           class="container bg-white mx-auto mt-3 align-middle text-center p-3"
         >
-          <img :src="image2" width="60" height="30" />
+          <img :src="image" width="60" height="30" />
           <span class="header text-primary align-middle fw-bolder ps-sm-3"
             >AdDU Blue Vote</span
           >
@@ -287,17 +267,16 @@
 </template>
 
 <script>
-import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
-import image from "@/Components/assets/addu-bv-logoText.png";
-import image2 from "@/Components/assets/blueVoteLogo.png";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Toast } from "bootstrap";
+import image from "@/Components/assets/logo.png";
+import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
 
 export default {
   components: {
-    BreezeApplicationLogo,
     Head,
     Link,
+    ArisenFooter,
   },
   data: () => ({ toast: null }),
   computed: {
@@ -315,7 +294,7 @@ export default {
   data() {
     return {
       image: image,
-      image2: image2,
+      // image2: image2,
     };
   },
   mounted() {

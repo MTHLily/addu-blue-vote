@@ -5,10 +5,11 @@
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image2" width="140" height="70" />
-            <img :src="image" class="image-fluid" width="230" height="70" />
+            <!-- <img :src="image2" width="140" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" /> -->
+            <img :src="image" class="image-fluid" width="500" height="70" />
           </Link>
-          <!-- <button
+          <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -50,7 +51,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
@@ -90,9 +91,9 @@
               </li>
               <li class="nav-item">
                 <Link class="nav-link" :href="route('login')">Login</Link>
-              </li>
+              </li> -->
             </ul>
-          </div> -->
+          </div>
         </div>
       </nav>
     </header>
@@ -135,9 +136,11 @@
 import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 // import image from "@/Components/assets/addu-bv-logo.png";
-import image from "@/Components/assets/addu-bv-logoText.png";
+// import image from "@/Components/assets/addu-bv-logoText.png";
 // import image from "@/Components/assets/adduLogo.png";
-import image2 from "@/Components/assets/blueVoteLogo.png";
+// import image2 from "@/Components/assets/blueVoteLogo.png";
+import image from "@/Components/assets/logo.png";
+
 
 export default {
   components: {
@@ -147,7 +150,7 @@ export default {
   data: function () {
     return {
       image: image,
-      image2: image2,
+      // image2: image2,
     };
   },
 };

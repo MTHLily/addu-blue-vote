@@ -8,7 +8,7 @@
         <!-- map -->
         <div class="map--container">
           <GMapMap
-            :zoom="16"
+            :zoom="mapOptions.zoom"
             :center="mapOptions.center"
             :options="mapOptions.opts"
             ref="gMapRef"
@@ -32,7 +32,11 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {{ filteredDistrict }}
+                {{
+                  filteredDistrict
+                    ? filteredDistrict.name
+                    : "Filter districts..."
+                }}
               </button>
               <ul class="dropdown-menu" aria-labelledby="districtDropdown">
                 <li>
@@ -47,7 +51,7 @@
                   <a
                     class="dropdown-item"
                     href="#map"
-                    @click="filterDistrictId = district.id"
+                    @click="handleDistrictFilter(district)"
                     >{{ district.name }}</a
                   >
                 </li>
@@ -65,14 +69,14 @@
                 gap-2
               "
             >
-              <div>
+              <!-- <div>
                 <input
                   class="form-control"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                 />
-              </div>
+              </div> -->
               <div class="w-100">
                 <DistrictLegend :districts="districts"></DistrictLegend>
               </div>
@@ -81,7 +85,8 @@
           <div class="mt-2">
             <MapCarousel
               :pois="filteredPois"
-              @poiClicked="handlePoiClicked"
+              @poi-clicked="handlePoiClicked"
+              @district-clicked="handleDistrictClicked"
             ></MapCarousel>
           </div>
         </div>
@@ -111,6 +116,7 @@ export default {
   data: () => ({
     mapOptions: {
       center: { lat: 7.071250196247246, lng: 125.61315274255003 },
+      zoom: 16,
       opts: {
         zoomControl: true,
         mapTypeControl: false,
@@ -121,15 +127,9 @@ export default {
       },
     },
     filterDistrictId: null,
+    filteredDistrict: null,
   }),
   computed: {
-    filteredDistrict() {
-      const district = this.districts.find(
-        (district) => district.id == this.filterDistrictId
-      );
-      if (district) return district.name;
-      else return "Filter districts...";
-    },
     mapMarkers() {
       return this.registrationSites.map((site) => ({
         district: site.district.id,
@@ -143,27 +143,42 @@ export default {
       }));
     },
     filteredMarkers() {
-      if (this.filterDistrictId == null) return this.mapMarkers;
+      if (this.filteredDistrict == null) return this.mapMarkers;
       return this.mapMarkers.filter(
-        (marker) => marker.district == this.filterDistrictId
+        (marker) => marker.district == this.filteredDistrict.id
       );
     },
     filteredPois() {
-      if (this.filterDistrictId == null) return this.registrationSites;
+      if (this.filteredDistrict == null) return this.registrationSites;
       return this.registrationSites.filter(
-        (site) => site.district_id == this.filterDistrictId
+        (site) => site.district_id == this.filteredDistrict.id
       );
     },
   },
   methods: {
     handlePoiClicked(event) {
-      console.log(event);
       this.$refs.gMapRef.$mapPromise.then((gmap) => {
         gmap.panTo({
           lat: parseFloat(event.latitude),
           lng: parseFloat(event.longitude),
         });
+        this.mapOptions.zoom = 16;
       });
+    },
+    handleDistrictClicked(event) {
+      this.$refs.gMapRef.$mapPromise.then((gmap) => {
+        gmap.panTo({
+          lat: parseFloat(event.latitude),
+          lng: parseFloat(event.longitude),
+        });
+        this.mapOptions.zoom = 10;
+      });
+    },
+    handleDistrictFilter(district) {
+      if (district != null) {
+        this.filteredDistrict = district;
+        this.handleDistrictClicked(district);
+      } else this.filteredDistrict = null;
     },
   },
   mounted() {

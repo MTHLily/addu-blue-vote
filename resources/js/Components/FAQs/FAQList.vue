@@ -1,6 +1,6 @@
 <template>
-  <div id="FAQs" class="page container-md mt-4">
-    <div class="body row">
+  <div id="faqs" class="page container-md mt-4" >
+    <div class="body row" style="margin-top:3%">
       <div class="col-3 mx-auto text-primary">
         <div>VOTERS REGISTRATION</div>
         <div class="h1 fw-bolder">FAQs</div>

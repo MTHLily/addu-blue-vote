@@ -24,8 +24,8 @@
     </div>
   </div>
 
-  <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
+    <!-- Header -->
     <header>
       <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="nav-header px-4">
@@ -40,8 +40,9 @@
         </div>
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image2" width="140" height="70" />
-            <img :src="image" class="image-fluid" width="230" height="70" />
+            <!-- <img :src="image2" width="140" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" /> -->
+            <img :src="image" class="image-fluid" width="450" height="70" />
           </Link>
         </div>
       </nav>
@@ -53,38 +54,12 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-      <div class="text-center p-3 text-white bg-primary row">
-        <div class="col-9">
-          <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 |
-          Developed by <b>ARISEn Lab</b>
-        </div>
-        <div class="col-1 row">
-          <div class="col-1">
-            <a href="https://www.facebook.com/adduarisen/" target="_blank">
-              <i class="bi bi-facebook text-white"></i>
-            </a>
-          </div>
-          <div class="col-1">
-            <a href="https://twitter.com/addu_arisen?lang=en" target="_blank">
-              <i class="bi bi-twitter text-white"></i>
-            </a>
-          </div>
-          <div class="col-1">
-            <a
-              href="mailto:arisen.lab@addu.edu.ph?subject=subject text"
-              target="_blank"
-            >
-              <i class="bi bi-google text-white"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <ArisenFooter></ArisenFooter>
 
     <!-- Sidebar -->
     <nav
       class="main-menu offcanvas offcanvas-start"
+      data-bs-scroll="true"
       tabindex="-1"
       id="mainMenu"
     >
@@ -92,7 +67,7 @@
         ><div
           class="container bg-white mx-auto mt-3 align-middle text-center p-3"
         >
-          <img :src="image2" width="60" height="30" />
+          <img :src="image" width="60" height="30" />
           <span class="header text-primary align-middle fw-bolder ps-sm-3"
             >AdDU Blue Vote</span
           >
@@ -289,25 +264,20 @@
         </li>
       </ul>
     </nav>
-    <!-- <div class="content flex-grow-1">
-      {{ $page.props.flash }}
-      <slot />
-    </div> -->
   </div>
 </template>
 
 <script>
-import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
-import image from "@/Components/assets/addu-bv-logoText.png";
-import image2 from "@/Components/assets/blueVoteLogo.png";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Toast } from "bootstrap";
+import image from "@/Components/assets/logo.png";
+import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
 
 export default {
   components: {
-    BreezeApplicationLogo,
     Head,
     Link,
+    ArisenFooter,
   },
   data: () => ({ toast: null }),
   computed: {
@@ -325,7 +295,7 @@ export default {
   data() {
     return {
       image: image,
-      image2: image2,
+      // image2: image2,
     };
   },
   mounted() {

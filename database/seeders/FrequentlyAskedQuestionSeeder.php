@@ -6,13 +6,24 @@ use Illuminate\Database\Seeder;
 
 class FrequentlyAskedQuestionSeeder extends Seeder
 {
+
+
+
     /**
      * Run the database seeds.
      *
      * @return void
      */
     public function run()
-    {
-        //
+    { 
     }
+    /*
+     * Run the database seeds.
+     *
+     * @return void
+     
+    public function run()
+    {
+       
+    }*/
 }

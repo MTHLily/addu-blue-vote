@@ -1,7 +1,7 @@
 <template>
   <Head title="Edit District"></Head>
   <DashboardLayout>
-    <div class="rounded" style="background-color: #9ACAB3;">
+    <div class="rounded" style="background-color: #9acab3">
       <div class="d-flex flex-column">
         <form
           @submit.prevent="
@@ -17,11 +17,12 @@
               <button class="btn btn-primary">Save</button>
             </div>
             <div class="p-3">
-              <Link :href="route('districts.index')" class="btn btn-danger">Cancel</Link>
+              <Link :href="route('districts.index')" class="btn btn-danger"
+                >Cancel</Link
+              >
             </div>
           </div>
         </form>
-        <pre>{{ districtForm }}</pre>
       </div>
     </div>
   </DashboardLayout>
@@ -35,7 +36,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AdminLayout from "../../Layouts/admin";
 
 export default {
-  components: { Link, Head, DashboardLayout, DistrictForm,AdminLayout },
+  components: { Link, Head, DashboardLayout, DistrictForm, AdminLayout },
   props: {
     district: {
       type: Object,
@@ -48,6 +49,8 @@ export default {
       name: this.district.name,
       description: this.district.description,
       color: this.district.color,
+      longitude: parseFloat(this.district.longitude),
+      latitude: parseFloat(this.district.latitude),
     });
   },
 

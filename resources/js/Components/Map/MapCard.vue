@@ -6,7 +6,7 @@
       @click="$emit('poiClicked', poi)"
     >
       <div class="row g-0 mh-15">
-        <div class="container col-md-3">
+        <div class="col-md-3 d-flex align-items-center">
           <img
             v-if="poi.image_url"
             :src="poi.image_preview_url"
@@ -16,16 +16,26 @@
           />
           <img
             v-else
-            src="https://cf.shopee.ph/file/2dfba819d401bc834927518570cfc877"
+            :src="image"
             class="img-fluid rounded-start"
-            alt="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
             style="object-fit: cover"
           />
         </div>
-        <div class="col-md-8 align-items-start">
+        <div class="col-8 align-items-start">
           <div class="p-3 text-start">
             <div>
-              <p class="card-title">District: {{ poi.district.name }}</p>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">District</li>
+                  <li
+                    class="breadcrumb-item"
+                    aria-current="page"
+                    @click.stop="$emit('districtClicked', poi.district)"
+                  >
+                    <a href="#">{{ poi.district.name }}</a>
+                  </li>
+                </ol>
+              </nav>
             </div>
             <div>
               <h5 class="card-text">{{ poi.name }}</h5>
@@ -40,7 +50,7 @@
         <div
           class="col-md-1 row-2 text-white"
           :style="`background-color: ${poi.district.color}`"
-        ></div>
+        />
       </div>
     </button>
   </div>
@@ -48,8 +58,13 @@
 
 <script>
 import marked from "marked";
+import image from "@/Components/assets/blue vote logo.png";
+
 export default {
-  emits: ["poiClicked"],
+  data: () => ({
+    image,
+  }),
+  emits: ["poiClicked", "districtClicked"],
   props: {
     poi: {
       type: Object,

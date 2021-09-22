@@ -38,6 +38,9 @@ export default {
       name: "",
       description: "",
       color: "#ffffff",
+      longitude: null,
+		  latitude: null,
+
     }),
   }),
 };

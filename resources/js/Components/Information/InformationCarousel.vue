@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4" id="information">
+  <div id="information">
     <Carousel :items-to-show="1">
       <InformationSlide
         v-for="info in information"

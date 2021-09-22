@@ -79,6 +79,7 @@ class DistrictController extends Controller
      */
     public function update(DistrictRequest $request, District $district)
     {
+
         $district->update($request->validated());
 
         return Redirect::route('districts.index')->with('success', $district->name.' updated!');

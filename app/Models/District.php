@@ -10,11 +10,7 @@ class District extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'description',
-        'color'
-    ];
+    protected $guarded = [];
 
     // Relationships
     public function pois(){

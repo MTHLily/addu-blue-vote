@@ -492,7 +492,7 @@
         </li>
       </ol>
 
-      <p>
+      <p >
         Note: You won’t be allowed to register if you don’t have a confirmed
         appointment and not wearing a face mask and face shield. For your
         safety, follow the COVID-19 protocols being implemented by the COMELEC.

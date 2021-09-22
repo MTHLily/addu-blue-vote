@@ -25,7 +25,9 @@
         <div class="col-md-8 align-items-start">
           <div class="p-3 text-start">
             <div>
-              <p class="card-title">District: {{ poi.district.name }}</p>
+                <button @click="$emit('districtClicked', poi.district)">
+                  <p class="card-title">District: {{ poi.district.name }}</p>
+                </button>
             </div>
             <div>
               <h5 class="card-text">{{ poi.name }}</h5>
@@ -49,7 +51,7 @@
 <script>
 import marked from "marked";
 export default {
-  emits: ["poiClicked"],
+  emits: ['poiClicked', 'districtClicked'],
   props: {
     poi: {
       type: Object,

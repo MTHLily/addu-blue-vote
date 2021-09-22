@@ -81,7 +81,8 @@
           <div class="mt-2">
             <MapCarousel
               :pois="filteredPois"
-              @poiClicked="handlePoiClicked"
+              @poi-clicked="handlePoiClicked"
+              @district-clicked="handlePoiClicked"
             ></MapCarousel>
           </div>
         </div>

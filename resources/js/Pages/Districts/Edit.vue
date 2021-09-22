@@ -48,6 +48,9 @@ export default {
       name: this.district.name,
       description: this.district.description,
       color: this.district.color,
+      longitude: null,
+		  latitude: null,
+
     });
   },
 

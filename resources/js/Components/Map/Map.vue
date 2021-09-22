@@ -1,5 +1,5 @@
 <template>
-  <div class="map container" id="Map">
+  <div class="map container" id="map">
     <div class="d-flex flex-column">
       <h2 class="text-primary text-center p-3 fw-bolder">
         Voters Registration Sites

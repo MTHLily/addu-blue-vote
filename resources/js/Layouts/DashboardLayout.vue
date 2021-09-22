@@ -40,8 +40,9 @@
         </div>
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
-            <img :src="image2" width="140" height="70" />
-            <img :src="image" class="image-fluid" width="230" height="70" />
+            <!-- <img :src="image2" width="140" height="70" />
+            <img :src="image" class="image-fluid" width="230" height="70" /> -->
+            <img :src="image" class="image-fluid" width="450" height="70" />
           </Link>
         </div>
       </nav>
@@ -298,10 +299,11 @@
 
 <script>
 import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
-import image from "@/Components/assets/addu-bv-logoText.png";
-import image2 from "@/Components/assets/blueVoteLogo.png";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Toast } from "bootstrap";
+// import image from "@/Components/assets/addu-bv-logoText.png";
+import image2 from "@/Components/assets/blue vote logo.png";
+import image from "@/Components/assets/logo.png";
 
 export default {
   components: {
@@ -325,7 +327,7 @@ export default {
   data() {
     return {
       image: image,
-      image2: image2,
+      // image2: image2,
     };
   },
   mounted() {

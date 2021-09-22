@@ -1,5 +1,5 @@
 <template>
-  <div id="FAQs" class="page container-md mt-4">
+  <div id="faqs" class="page container-md mt-4">
     <div class="body row">
       <div class="col-3 mx-auto text-primary">
         <div>VOTERS REGISTRATION</div>

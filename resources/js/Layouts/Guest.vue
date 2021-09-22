@@ -2,12 +2,12 @@
   <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
     <header>
-      <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+      <nav class="navbar fixed-top navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid mx-auto">
           <Link class="navbar-brand" href="/">
             <!-- <img :src="image2" width="140" height="70" />
             <img :src="image" class="image-fluid" width="230" height="70" /> -->
-            <img :src="image" class="image-fluid" width="500" height="70" />
+            <img :src="image" class="image-fluid" width="450" height="70" />
           </Link>
           <button
             class="navbar-toggler"
@@ -37,7 +37,8 @@
                   class="dropdown-menu bg-primary"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item text-white" href="#FAQs">FAQs</a></li>
+                  <li><a class="dropdown-item text-white" href="#voter-registration">Registration Process</a></li>
+                  <li><a class="dropdown-item text-white" href="#faqs">FAQs</a></li>
                   <li>
                     <a
                       class="dropdown-item text-white"
@@ -47,7 +48,7 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item text-white" href="#Map">Registration Sites</a>
+                    <a class="dropdown-item text-white" href="#map">Registration Sites</a>
                   </li>
                 </ul>
               </li>
@@ -187,5 +188,10 @@ export default {
 }
 .titles{
   font-family: 'Times New Roman', Times, serif;
+}
+
+:target{
+  padding-top: 90px;
+  margin-top: -90px;
 }
 </style>

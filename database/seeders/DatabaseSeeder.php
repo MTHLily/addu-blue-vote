@@ -63,27 +63,31 @@ class DatabaseSeeder extends Seeder
              ],
             [ //this is where i stopped
                 'question' =>'How often do I need to register?',
-                'answer' => 'Under the present system of continuing registration, a qualified person needs to register only once. This registration is permanent, unless declared otherwise by law. Registering more than once constitutes an election offense.
+                'answer' => 'Under the present system of continuing registration, a qualified person needs to register only once. This registration is [permanent]( https://comelec.gov.ph/index.html?r=References/RelatedLaws/RegistrationLaws/RA8189#sec4), unless declared otherwise by law. Registering more than once constitutes an [election offence](https://comelec.gov.ph/index.html?r=References/RelatedLaws/OmnibusElectionCode/OECArt22#sec261y).
                             However, in cases when a voter transfers residence, he needs to apply for the transfer of his registration record.
                         There are also instances when a registration record may become deactivated due to some reasons stated by law, the most common of which is the failure to vote in two successive regular elections. When this happens, the concerned voter needs to apply for the reactivation of his registration record.'
             ],
 
             [
                 'question' =>'I am already a registered voter. I voted in the last 2019 Elections. Do I need to register again in order to vote in the 2022 National and Local Elections (NLE)?',
-                'answer' => 'No. As stated in the previous FAQ, registration needs to be done only once. Your registration is good for further elections as long as you keep it active by participating in the elections by voting.
+                'answer' => 'No. As stated in the [previous FAQ](https://comelec.gov.ph/index.html?r=VoterRegistration%2FWhatisVoterRegistration%2Fqnavr#faq5), registration needs to be done only once. Your registration is good for further elections as long as you keep it active by participating in the elections by voting.
                             If your registration record gets deactivated, that is another story.'
             ],
 
 
             [
                 'question' =>'When is the next schedule for registration?',
-                'answer' => 'By law, any qualified registrant may file an application for registration on any day until 120 days before a regular election and 90 days before a special election.
-                            However, for operational and logistical reasons, the COMELEC schedules the period for the conduct of this activity before a scheduled election. For the 09 May 2022 National and Local Elections, it has been scheduled to take place from 20 January 2020 to 30 September 2021'
+                'answer' => 'By [law](https://comelec.gov.ph/index.html?r=References/RelatedLaws/RegistrationLaws/RA8189#sec8), any qualified registrant may file an application for registration on any day until 120 days before a regular election and 90 days before a special election.
+                            However, for operational and logistical reasons, the COMELEC schedules the period for the conduct of this activity before a scheduled election. For the 09 May 2022 National and Local Elections, it has been scheduled to take place from 20 January 2020 to 30 September 2021
+                            <br><br>
+                            To read more, please follow this *[link](https://comelec.gov.ph/index.html?r=VoterRegistration/WhatisVoterRegistration/VoterRegistrationSchedule)* '
+      
+                            
             ],
 
             [
                 'question' =>'When is the registration schedule for the 2022 National and Local Elections?',
-                'answer' => 'The period for filing applications for registration for the 2022 NLE will be from 20 January 2020 to 30 September 2021 pursuant to Section 5 of Resolution No. 10635.'
+                'answer' => 'The period for filing applications for registration for the 2022 NLE will be from 20 January 2020 to 30 September 2021 pursuant to [Section 5 of Resolution No. 10635](https://comelec.gov.ph/VoterRegistration/Resolutions/res10635).'
             ],
 
 

@@ -164,4 +164,9 @@ export default {
 .titles {
   font-family: "Times New Roman", Times, serif;
 }
+
+:target {
+  padding-top: 90px;
+  margin-top: -90px;
+}
 </style>

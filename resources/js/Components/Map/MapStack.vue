@@ -6,7 +6,11 @@
       :key="districtSection.id"
     >
       <div class="d-flex gap-2 flex-column" v-if="districtSection.sites.length">
-        <h3 class="text-primary text-uppercase">{{ districtSection.name }}</h3>
+        <h3 class="text-primary text-uppercase">
+          <a href="#map" @click="$emit('districtClicked', districtSection)">{{
+            districtSection.name
+          }}</a>
+        </h3>
         <div class="row row-cols-2 row-cols-md-3 gy-4">
           <div class="col" v-for="poi in districtSection.sites" :key="poi.id">
             <Card

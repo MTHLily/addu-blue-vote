@@ -26,27 +26,40 @@ use App\Models\PointOfInterest;
 |
 */
 
-Route::get('/', function(){
-    return Inertia::render('Welcome', [
-        'faqs' => FrequentlyAskedQuestion::all(),
-        'information' => InformationSnippet::all(),
-        'districts' => District::all(),
-        'registrationSites' => PointOfInterest::where('point_of_interest_type_id', '=', 1 )->with('district')->get()
+Route::get("/", function () {
+    return Inertia::render("Welcome", [
+        "faqs" => FrequentlyAskedQuestion::all(),
+        "information" => InformationSnippet::all(),
+        "districts" => District::all(),
+        "registrationSites" => PointOfInterest::where(
+            "point_of_interest_type_id",
+            "=",
+            1
+        )
+            ->with("district")
+            ->get(),
     ]);
 });
 
-Route::get('/login', [RegisteredUserController::class, 'create']);
-Route::get('/svg/map_marker.svg', [SVGController::class, 'create']);
+Route::get("/login", [RegisteredUserController::class, "create"]);
+Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
 
 //admin resources
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/dashboard/faqs', FrequentlyAskedQuestionController::class);
-    Route::resource('/dashboard/information', InformationSnippetController::class);
-    Route::resource('/dashboard/cities', CityController::class);
-    Route::resource('/dashboard/districts', DistrictController::class);
-    Route::resource('dashboard/poi', PointOfInterestController::class);
-    
-   });
+Route::middleware(["auth"])->group(function () {
+    Route::get("/dashboard", [DashboardController::class, "index"])->name(
+        "dashboard"
+    );
+    Route::resource(
+        "/dashboard/faqs",
+        FrequentlyAskedQuestionController::class
+    );
+    Route::resource(
+        "/dashboard/information",
+        InformationSnippetController::class
+    );
+    Route::resource("/dashboard/cities", CityController::class);
+    Route::resource("/dashboard/districts", DistrictController::class);
+    Route::resource("dashboard/poi", PointOfInterestController::class);
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . "/auth.php";

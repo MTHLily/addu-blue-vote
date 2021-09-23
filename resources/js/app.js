@@ -12,9 +12,6 @@ import "vue3-colorpicker/bundle.css";
 const appName =
   window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
-console.log("HELLO WORLD!");
-console.log(process.env.MIX_GOOGLE_MAPS_API_KEY);
-
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
   resolve: (name) => require(`./Pages/${name}.vue`),

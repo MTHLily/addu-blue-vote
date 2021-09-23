@@ -1,5 +1,13 @@
 <template>
-  <div class="map container" id="map">
+  <div class="modal" tabindex="-1" ref="mapCardInfoModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <MapCard :poi="selectedPoI"></MapCard>
+      </div>
+    </div>
+  </div>
+
+  <div class="map container" id="map" :attrs="$attrs">
     <div class="d-flex flex-column">
       <h2 class="text-primary text-center p-3 fw-bolder">
         Voters Registration Sites
@@ -21,9 +29,13 @@
               :position="m.position"
               :icon="m.icon"
               :clickable="true"
-              @click="handleMarkerClicked(m.position)"
+              @click="handleMarkerClicked(m)"
             >
             </GMapMarker>
+            <GMapMarker
+              v-show="userLocation"
+              :position="userLocation"
+            ></GMapMarker>
           </GMapMap>
           <div ref="mapTopLeft">
             <div class="dropdown ms-2 mt-2">
@@ -84,6 +96,11 @@
               </div>
             </div>
           </div>
+          <div ref="mapBottomRight">
+            <button class="btn btn-light me-2" @click="handleUserPosition">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
           <div class="mt-2">
             <MapStack
               v-if="stack"
@@ -109,10 +126,14 @@
 import DistrictLegend from "./DistrictLegend.vue";
 import MapCarousel from "./MapCarousel.vue";
 import MapStack from "./MapStack.vue";
+import MapCard from "./MapCard.vue";
+import { Modal } from "bootstrap";
+
 export default {
   components: {
     DistrictLegend,
     MapCarousel,
+    MapCard,
     MapStack,
   },
   props: {
@@ -135,7 +156,7 @@ export default {
       zoom: 16,
       opts: {
         zoomControl: true,
-        mapTypeControl: false,
+        mapTypeControl: true,
         scaleControl: true,
         streetViewControl: false,
         rotateControl: true,
@@ -144,11 +165,14 @@ export default {
     },
     filterDistrictId: null,
     filteredDistrict: null,
+    poiInfoModal: null,
+    selectedPoI: null,
+    userLocation: null,
   }),
   computed: {
     mapMarkers() {
       return this.registrationSites.map((site) => ({
-        district: site.district.id,
+        ...site,
         position: {
           lat: parseFloat(site.latitude),
           lng: parseFloat(site.longitude),
@@ -161,7 +185,7 @@ export default {
     filteredMarkers() {
       if (this.filteredDistrict == null) return this.mapMarkers;
       return this.mapMarkers.filter(
-        (marker) => marker.district == this.filteredDistrict.id
+        (marker) => marker.district.id == this.filteredDistrict.id
       );
     },
     filteredPois() {
@@ -186,11 +210,13 @@ export default {
       document.getElementById("map").scrollIntoView();
       this.$refs.gMapRef.$mapPromise.then((gmap) => {
         gmap.panTo({
-          lat: parseFloat(event.lat),
-          lng: parseFloat(event.lng),
+          lat: parseFloat(event.position.lat),
+          lng: parseFloat(event.position.lng),
         });
         this.mapOptions.zoom = 16;
       });
+      this.selectedPoI = event;
+      this.poiInfoModal.show();
     },
     handleDistrictClicked(event) {
       document.getElementById("map").scrollIntoView();
@@ -208,6 +234,30 @@ export default {
         this.handleDistrictClicked(district);
       } else this.filteredDistrict = null;
     },
+    handleUserPosition() {
+      document.getElementById("map").scrollIntoView();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            this.$refs.gMapRef.$mapPromise.then((gmap) => {
+              gmap.panTo(this.userLocation);
+            });
+          },
+          () => {
+            alert("Error in getting your position");
+          }
+        );
+      } else {
+        alert("Browser does not support Geolocation");
+      }
+    },
+  },
+  created() {
+    this.selectedPoI = this.registrationSites[0];
   },
   mounted() {
     this.$refs.gMapRef.$mapPromise.then((gmap) => {
@@ -217,7 +267,11 @@ export default {
       gmap.controls[google.maps.ControlPosition.RIGHT_TOP].push(
         this.$refs.mapTopRight
       );
+      gmap.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
+        this.$refs.mapBottomRight
+      );
     });
+    this.poiInfoModal = new Modal(this.$refs.mapCardInfoModal);
   },
 };
 </script>

@@ -12,7 +12,7 @@
             :center="mapOptions.center"
             :options="mapOptions.opts"
             ref="gMapRef"
-            map-type-id="terrain"
+            map-type-id="satellite"
             style="width: 100%; height: clamp(200px, 80vh, 800px)"
           >
             <GMapMarker
@@ -20,6 +20,8 @@
               :key="m.position.lat"
               :position="m.position"
               :icon="m.icon"
+              :clickable="true"
+              @click="handleMarkerClicked(m.position)"
             >
             </GMapMarker>
           </GMapMap>
@@ -35,7 +37,7 @@
                 {{
                   filteredDistrict
                     ? filteredDistrict.name
-                    : "Filter districts..."
+                    : "Filter Province..."
                 }}
               </button>
               <ul class="dropdown-menu" aria-labelledby="districtDropdown">
@@ -43,7 +45,7 @@
                   <a
                     class="dropdown-item"
                     href="#map"
-                    @click="filterDistrictId = null"
+                    @click="filteredDistrict = null"
                     >Clear filter</a
                   >
                 </li>
@@ -83,7 +85,15 @@
             </div>
           </div>
           <div class="mt-2">
+            <MapStack
+              v-if="stack"
+              :pois="filteredPois"
+              :districts="filteredDistrict ? [filteredDistrict] : districts"
+              @poi-clicked="handlePoiClicked"
+              @district-clicked="handleDistrictClicked"
+            ></MapStack>
             <MapCarousel
+              v-else
               :pois="filteredPois"
               @poi-clicked="handlePoiClicked"
               @district-clicked="handleDistrictClicked"
@@ -98,10 +108,12 @@
 <script>
 import DistrictLegend from "./DistrictLegend.vue";
 import MapCarousel from "./MapCarousel.vue";
+import MapStack from "./MapStack.vue";
 export default {
   components: {
     DistrictLegend,
     MapCarousel,
+    MapStack,
   },
   props: {
     districts: {
@@ -111,6 +123,10 @@ export default {
     registrationSites: {
       type: Array,
       default: [],
+    },
+    stack: {
+      type: Boolean,
+      default: false,
     },
   },
   data: () => ({
@@ -157,6 +173,7 @@ export default {
   },
   methods: {
     handlePoiClicked(event) {
+      document.getElementById("map").scrollIntoView();
       this.$refs.gMapRef.$mapPromise.then((gmap) => {
         gmap.panTo({
           lat: parseFloat(event.latitude),
@@ -165,7 +182,18 @@ export default {
         this.mapOptions.zoom = 16;
       });
     },
+    handleMarkerClicked(event) {
+      document.getElementById("map").scrollIntoView();
+      this.$refs.gMapRef.$mapPromise.then((gmap) => {
+        gmap.panTo({
+          lat: parseFloat(event.lat),
+          lng: parseFloat(event.lng),
+        });
+        this.mapOptions.zoom = 16;
+      });
+    },
     handleDistrictClicked(event) {
+      document.getElementById("map").scrollIntoView();
       this.$refs.gMapRef.$mapPromise.then((gmap) => {
         gmap.panTo({
           lat: parseFloat(event.latitude),

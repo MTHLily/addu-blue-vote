@@ -343,9 +343,10 @@ class DatabaseSeeder extends Seeder
 
             foreach ($districtData['sites'] as $site ){
                 PointOfInterest::firstOrCreate(
+                    
                     ['name' => $site['name'] ],
                     [
-                        'description' => $site['description'] || "Site Description",
+                        'description' => $site['description'],
                         'longitude' => $site['latitude'],
                         'latitude' => $site['longitude'],
                         'point_of_interest_type_id' => 1,

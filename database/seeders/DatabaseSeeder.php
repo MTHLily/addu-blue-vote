@@ -513,9 +513,9 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        DB::table('point_of_interests')->truncate();
-        DB::table('districts')->truncate();
-        DB::table('point_of_interest_types')->truncate();
+        // DB::table('point_of_interests')->truncate();
+        // DB::table('districts')->truncate();
+        // DB::table('point_of_interest_types')->truncate();
         DB::table('point_of_interest_types')->insert(
             ['type' => 'Registration Site'],
         );
@@ -546,20 +546,20 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        DB::table('information_snippets')->truncate();
+        // DB::table('information_snippets')->truncate();
         DB::table('information_snippets')->insert([
             'title' => 'AdDU BlueVote',
             'content' => 'Official website of the Ateneo de Davao University Blue Vote Campaign'
         ]);
             
-        DB::table('users')->truncate();
+        // DB::table('users')->truncate();
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('adminadmin'),
         ]);
         
-        DB::table('frequently_asked_questions')->truncate();
+        // DB::table('frequently_asked_questions')->truncate();
         foreach( $faqs as $faq ){
             DB::table('frequently_asked_questions')->insert($faq);
         }

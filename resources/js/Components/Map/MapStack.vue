@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div
-      class="row"
+      class="row mt-4"
       v-for="districtSection in districtAndPoi"
       :key="districtSection.id"
     >

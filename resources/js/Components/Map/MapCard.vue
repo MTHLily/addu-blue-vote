@@ -1,58 +1,60 @@
 <template>
-  <div class="card mb-3 d-flex align-items-center" style="max-width: 540px">
-    <button
-      type="button"
-      class="btn btn-light h-100"
-      @click="$emit('poiClicked', poi)"
-    >
-      <div class="row g-0 mh-15">
-        <div class="col-md-3 d-flex align-items-center">
-          <img
-            v-if="poi.image_url"
-            :src="poi.image_preview_url"
-            class="img-fluid rounded-start"
-            :alt="poi.image_preview_url"
-            style="object-fit: cover"
-          />
-          <img
-            v-else
-            :src="image"
-            class="img-fluid rounded-start"
-            style="object-fit: cover"
-          />
-        </div>
-        <div class="col-8 align-items-start">
-          <div class="p-3 text-start">
-            <div>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">City/Province</li>
-                  <li
-                    class="breadcrumb-item"
-                    aria-current="page"
-                    @click.stop="$emit('districtClicked', poi.district)"
-                  >
-                    <a href="#">{{ poi.district.name }}</a>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <div>
-              <h5 class="card-text">{{ poi.name }}</h5>
-            </div>
-            <div>
-              <p class="card-text">
-                <small class="text-muted" v-html="markedDescription"></small>
-              </p>
+  <div class="card d-flex align-items-center" style="max-width: 540px">
+    <div>
+      <button
+        type="button"
+        class="btn btn-light h-100"
+        @click="$emit('poiClicked', poi)"
+      >
+        <div class="row g-0 mh-15">
+          <div class="col-md-3 d-flex align-items-center">
+            <img
+              v-if="poi.image_url"
+              :src="poi.image_preview_url"
+              class="img-fluid rounded-start"
+              :alt="poi.image_preview_url"
+              style="object-fit: cover"
+            />
+            <img
+              v-else
+              :src="image"
+              class="img-fluid rounded-start"
+              style="object-fit: cover"
+            />
+          </div>
+          <div class="col-8 align-items-start">
+            <div class="p-3 text-start">
+              <div>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">City/Province</li>
+                    <li
+                      class="breadcrumb-item"
+                      aria-current="page"
+                      @click.stop="$emit('districtClicked', poi.district)"
+                    >
+                      <a href="#">{{ poi.district.name }}</a>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+              <div>
+                <h5 class="card-text">{{ poi.name }}</h5>
+              </div>
+              <div>
+                <p class="card-text">
+                  <small class="text-muted" v-html="markedDescription"></small>
+                </p>
+              </div>
             </div>
           </div>
+          <div
+            class="col-md-1 row-2 text-white"
+            :style="`background-color: ${poi.district.color}`"
+          />
         </div>
-        <div
-          class="col-md-1 row-2 text-white"
-          :style="`background-color: ${poi.district.color}`"
-        />
-      </div>
-    </button>
+      </button>
+    </div>
   </div>
 </template>
 

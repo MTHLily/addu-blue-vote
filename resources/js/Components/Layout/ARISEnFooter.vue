@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-white bg-primary p-3">
+  <footer class="text-white bg-primary p-3 mt-4">
     <div class="d-flex justify-content-between container">
       <div>
         <b>Ateneo de Davao University Blue Vote</b> Copyright © 2021 | Developed

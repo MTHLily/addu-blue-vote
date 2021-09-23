@@ -1,19 +1,25 @@
 <template>
   <Head title="Dashboard" />
   <DashboardLayout>
-    <div v-for="name in user" :key="name.id">Hello, {{ name.name }}!</div>
+    <div class="d-flex">
+      <DashboardSidebar></DashboardSidebar>
+      <div v-for="name in user" :key="name.id" class="flex-grow-1">
+        Hello, {{ name.name }}!
+      </div>
+    </div>
   </DashboardLayout>
 </template>
 
 <script>
 import { Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../Layouts/DashboardLayout.vue";
-import { Inertia } from "@inertiajs/inertia";
+import DashboardSidebar from "../Components/Layout/DashboardSidebar.vue";
 
 export default {
   components: {
     Head,
     DashboardLayout,
+    DashboardSidebar,
   },
 
   props: {

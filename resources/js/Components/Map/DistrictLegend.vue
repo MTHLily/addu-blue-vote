@@ -1,5 +1,5 @@
 <template>
-  <div class="card p-3">
+  <div class="card p-3 me-2">
     <div class="d-flex align-items-center justify-content-center gap-2">
       <h5 class="m-0 flex-grow-1 text-center">Provinces</h5>
       <button

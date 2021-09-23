@@ -513,13 +513,12 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        //DB::table('point_of_interest_types')->truncate();
+        DB::table('point_of_interests')->truncate();
+        DB::table('districts')->truncate();
+        DB::table('point_of_interest_types')->truncate();
         DB::table('point_of_interest_types')->insert(
             ['type' => 'Registration Site'],
         );
-
-        DB::table('point_of_interests')->truncate();
-        //DB::table('districts')->truncate();
 
         foreach( $districts as $districtData ){
             $district = District::firstOrCreate(

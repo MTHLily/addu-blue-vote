@@ -1,7 +1,7 @@
 <template>
   <div class="card p-3">
-    <div class="d-flex align-items-center justify-content-center">
-      <h5 class="m-0 flex-grow-1 text-center">Districts</h5>
+    <div class="d-flex align-items-center justify-content-center gap-2">
+      <h5 class="m-0 flex-grow-1 text-center">Provinces</h5>
       <button
         class="btn btn-sm btn-primary"
         type="button"

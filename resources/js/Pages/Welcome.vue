@@ -7,7 +7,11 @@
       </div>
       <VoterRegistrationProcess></VoterRegistrationProcess>
       <FAQs :faqs="faqs" />
-      <Map :registrationSites="registrationSites" :districts="districts" />
+      <Map
+        :registrationSites="registrationSites"
+        :districts="districts"
+        :stack="true"
+      />
     </div>
   </GuestLayout>
 </template>

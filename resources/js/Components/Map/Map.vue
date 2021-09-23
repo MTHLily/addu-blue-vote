@@ -20,6 +20,8 @@
               :key="m.position.lat"
               :position="m.position"
               :icon="m.icon"
+              :clickable="true"
+              @click="handleMarkerClicked(m.position)"
             >
             </GMapMarker>
           </GMapMap>
@@ -176,6 +178,16 @@ export default {
         gmap.panTo({
           lat: parseFloat(event.latitude),
           lng: parseFloat(event.longitude),
+        });
+        this.mapOptions.zoom = 16;
+      });
+    },
+    handleMarkerClicked(event) {
+      document.getElementById("map").scrollIntoView();
+      this.$refs.gMapRef.$mapPromise.then((gmap) => {
+        gmap.panTo({
+          lat: parseFloat(event.lat),
+          lng: parseFloat(event.lng),
         });
         this.mapOptions.zoom = 16;
       });

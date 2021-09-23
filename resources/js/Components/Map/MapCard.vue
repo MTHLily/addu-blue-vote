@@ -26,7 +26,7 @@
             <div>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item">District</li>
+                  <li class="breadcrumb-item">City/Province</li>
                   <li
                     class="breadcrumb-item"
                     aria-current="page"

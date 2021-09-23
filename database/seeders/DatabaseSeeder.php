@@ -110,15 +110,15 @@ class DatabaseSeeder extends Seeder
                 'district' => [
                     'name' => 'Davao City',
                     'color' => '#1616c9',
-                    'longitude' => 125.455224275750000,
+                     'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
                     [
                         'name' => 'Davao City',
                         'description' => 'This is davao city.',
-                        'longitude' => 7.0768944670836795, 
-                        'latitude' => 125.64046020683766,
+                         'latitude' => 7.0768944670836795, 
+                        'longitude' => 125.64046020683766,
                         'point_of_interest_type_id' => 1
                     ]
                 ]
@@ -127,78 +127,78 @@ class DatabaseSeeder extends Seeder
                 'district' => [
                     'name' => 'Davao de Oro',
                     'color' => '#ccd9ff',
-                    'longitude' => 125.455224275750000,
+                     'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
                     [
                         'name' => 'Compostela',
                         'description' => 'Compostela Municipal Hall, National Road, Compostela, Davao de Oro ',
-                        'longitude' => '7.668177446', 
-                        'latitude' => '126.0855942',
+                         'latitude' => '7.668177446', 
+                        'longitude' => '126.0855942',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Laak',
                         'description' => 'Laak Municipal Hall, Asuncion-San Isidro-Laak-Veruela Road, Laak, Davao de Oro ',
-                        'longitude' => '7.819321289', 
-                        'latitude' => '125.7931673',
+                         'latitude' => '7.819321289', 
+                        'longitude' => '125.7931673',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Mabini',
                         'description' => 'Mabini Municipal Hall, Surigao-Davao Coastal Road, Mabini, Davao de Oro ',
-                        'longitude' => '7.309820844', 
-                        'latitude' => '125.8553907',
+                         'latitude' => '7.309820844', 
+                        'longitude' => '125.8553907',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Maco',
                         'description' => 'Maco Municipal Hall, Maco, Davao de Oro ',
-                        'longitude' => '7.370604437', 
-                        'latitude' => '125.8620769',
+                         'latitude' => '7.370604437', 
+                        'longitude' => '125.8620769',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Maragusan',
                         'description' => 'Maragusan Municipal Gymnasium, Poblacion, Davao de Oro ',
-                        'longitude' => '7.318022775', 
-                        'latitude' => '126.1247323',
+                         'latitude' => '7.318022775', 
+                        'longitude' => '126.1247323',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Mawab',
                         'description' => 'Mawab Municipal Hall, Mawab, Davao de Oro ',
-                        'longitude' => '7.50993117', 
-                        'latitude' => '125.9226537',
+                         'latitude' => '7.50993117', 
+                        'longitude' => '125.9226537',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Monkayo',
                         'description' => 'Monkayo Municipal Hall, LS, Sarmiento St., Monkayo, Davao de Oro ',
-                        'longitude' => '7.824401973', 
-                        'latitude' => '126.0541731',
+                         'latitude' => '7.824401973', 
+                        'longitude' => '126.0541731',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Montevista',
                         'description' => 'Montevista Municipal Hall, Pan-Philippine Highway, Davao de Oro ',
-                        'longitude' => '7.704554663', 
-                        'latitude' => '125.9885213',
+                         'latitude' => '7.704554663', 
+                        'longitude' => '125.9885213',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'New Bataan',
                         'description' => 'New Bataan Municipal Hall, L A Espanola Ave, New Bataan, Davao de Oro ',
-                        'longitude' => '7.54876254', 
-                        'latitude' => '126.1375616',
+                         'latitude' => '7.54876254', 
+                        'longitude' => '126.1375616',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Pantukan',
                         'description' => 'Pantukan Municipal Hall, Surigao - Davao Coastal Road, Pantukan, Davao de Oro ',
-                        'longitude' => '7.127218068', 
-                        'latitude' => '125.8983279',
+                         'latitude' => '7.127218068', 
+                        'longitude' => '125.8983279',
                         'point_of_interest_type_id' => 1
                     ],
                 ]
@@ -207,85 +207,85 @@ class DatabaseSeeder extends Seeder
                 'district' => [
                     'name' => 'Davao del Norte',
                     'color' => '#7d79fc',
-                    'longitude' => 125.455224275750000,
+                     'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
                     [
                         'name' => 'Asuncion',
                         'description' => 'Asuncion Municipal Hall, Tagum - Panabo Circumferential Road, Asuncion, Davao del Norte ',
-                        'longitude' => '7.53842187', 
-                        'latitude' => '125.7536358',
+                         'latitude' => '7.53842187', 
+                        'longitude' => '125.7536358',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Braulio E. Dujali',
                         'description' => 'Braulio E. Dujali Municipal Hall, Braulio E. Dujali, Davao del Norte ',
-                        'longitude' => '7.448158689', 
-                        'latitude' => '125.690606',
+                         'latitude' => '7.448158689', 
+                        'longitude' => '125.690606',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Carmen',
                         'description' => 'Carmen Municipal Hall, Carmen, Davao del Norte ',
-                        'longitude' => '7.3534157', 
-                        'latitude' => '125.7053',
+                         'latitude' => '7.3534157', 
+                        'longitude' => '125.7053',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Kapalong',
                         'description' => 'Municipal Hall Building, Quezon Boulevard, Maniki, Kapalong, Davao Del Norte ',
-                        'longitude' => '7.605844931', 
-                        'latitude' => '125.6089626',
+                         'latitude' => '7.605844931', 
+                        'longitude' => '125.6089626',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'New Corella',
                         'description' => 'Municipal Hall Building, New Park 2, Poblacion, New Corella, Davao Del Norte ',
-                        'longitude' => '7.59587439', 
-                        'latitude' => '125.8809809',
+                         'latitude' => '7.59587439', 
+                        'longitude' => '125.8809809',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Panabo',
                         'description' => 'Old Regional Trial Court BuildingNew Pandan, Panabo City ',
-                        'longitude' => '7.285439145', 
-                        'latitude' => '125.6738739',
+                         'latitude' => '7.285439145', 
+                        'longitude' => '125.6738739',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Island Garden City of Samal',
                         'description' => 'Samal City Hall, Babak-Samal-Kaputian Road, Samal, Davao del Norte ',
-                        'longitude' => '7.08234575', 
-                        'latitude' => '125.7266342',
+                         'latitude' => '7.08234575', 
+                        'longitude' => '125.7266342',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'San Isidro',
                         'description' => 'San Isidro Municipal Hall, San Isidro, Davao del Norte ',
-                        'longitude' => '7.74651182', 
-                        'latitude' => '125.7239165',
+                         'latitude' => '7.74651182', 
+                        'longitude' => '125.7239165',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Santo Tomas',
                         'description' => 'Sto. Tomas Municipal Hall, Ramon Magsaysay Avenue, Santo Tomas, Davao del Norte ',
-                        'longitude' => '7.532906827', 
-                        'latitude' => '125.6227195',
+                         'latitude' => '7.532906827', 
+                        'longitude' => '125.6227195',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Tagum',
                         'description' => 'Government Center, Tagum, Davao del Norte ',
-                        'longitude' => '7.459040966', 
-                        'latitude' => '125.7831256',
+                         'latitude' => '7.459040966', 
+                        'longitude' => '125.7831256',
                         'point_of_interest_type_id' => 1
                     ],
                     [
                         'name' => 'Talaingod',
                         'description' => 'Talaingod Municipal Hall, Talaingod, Davao del Norte ',
-                        'longitude' => '7.632657054', 
-                        'latitude' => '125.5747554',
+                         'latitude' => '7.632657054', 
+                        'longitude' => '125.5747554',
                         'point_of_interest_type_id' => 1
                     ],
                 ]
@@ -294,7 +294,7 @@ class DatabaseSeeder extends Seeder
                 'district' => [
                     'name' => 'Davao del Sur',
                     'color' => '#015070',
-                    'longitude' => 125.455224275750000,
+                     'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
@@ -304,7 +304,7 @@ class DatabaseSeeder extends Seeder
                 'district' => [
                     'name' => 'Davao Occidental',
                     'color' => '#16b9cc',
-                    'longitude' => 125.455224275750000,
+                     'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
@@ -314,7 +314,7 @@ class DatabaseSeeder extends Seeder
                 'district' => [
                     'name' => 'Davao Oriental',
                     'color' => '#6baee5',
-                    'longitude' => 125.455224275750000,
+                     'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
@@ -336,8 +336,8 @@ class DatabaseSeeder extends Seeder
                 [
                     'color' => $districtData['district']['color'],
                     'description' => "District Descrpition",
-                    'longitude' => $districtData['district']['longitude'],
-                    'latitude' => $districtData['district']['latitude']
+                     'latitude' => $districtData['district']['latitude'],
+                    'longitude' => $districtData['district']['longitude']
                 ],
             );
 
@@ -346,8 +346,8 @@ class DatabaseSeeder extends Seeder
                     ['name' => $site['name'] ],
                     [
                         'description' => $site['description'],
-                        'longitude' => $site['latitude'],
-                        'latitude' => $site['longitude'],
+                         'latitude' => $site['latitude'],
+                        'longitude' => $site['longitude'],
                         'point_of_interest_type_id' => 1,
                         'district_id' => $district->id
                     ]
@@ -357,7 +357,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('information_snippets')->truncate();
         DB::table('information_snippets')->insert([
-            'title' => 'Ateneo de Davao University BlueVote',
+            'title' => 'AdDU BlueVote',
             'content' => 'Official website of the Ateneo de Davao University Blue Vote Campaign'
         ]);
             

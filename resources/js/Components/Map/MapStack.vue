@@ -5,16 +5,13 @@
       v-for="districtSection in districtAndPoi"
       :key="districtSection.id"
     >
-      <div class="d-flex flex-column" v-if="districtSection.sites.length">
+      <div class="d-flex gap-2 flex-column" v-if="districtSection.sites.length">
         <h3 class="text-primary text-uppercase">{{ districtSection.name }}</h3>
-        <div class="row">
-          <div
-            class="col-12 col-sm-6 col-md-4"
-            v-for="poi in districtSection.sites"
-            :key="poi.id"
-          >
+        <div class="row row-cols-2 row-cols-md-3 gy-4">
+          <div class="col" v-for="poi in districtSection.sites" :key="poi.id">
             <Card
               :poi="poi"
+              class="h-100"
               @poi-clicked="$emit('poiClicked', $event)"
               @district-clicked="$emit('districtClicked', $event)"
             />

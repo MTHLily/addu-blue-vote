@@ -109,16 +109,16 @@ class DatabaseSeeder extends Seeder
             [
                 'district' => [
                     'name' => 'Davao City',
-                    'color' => '#1616c9',
-                     'longitude' => 125.455224275750000,
-                    'latitude' => 7.187758712440400,
+                    'color' => '#ff3232',
+                     'longitude' => 125.46614062061063,
+                    'latitude' => 77.193911570962482,
                 ],
                 'sites' => [
                     [
                         'name' => 'Davao City',
-                        'description' => 'This is davao city.',
-                         'latitude' => 7.0768944670836795, 
-                        'longitude' => 125.64046020683766,
+                        'description' => 'Commission on Elections Office, Ramon Magsaysay Ave, Ramon Magsaysay Park, Davao City, 8000 Davao del Sur',
+                         'latitude' => '7.073931421361031', 
+                        'longitude' => '125.62570931245838', 
                         'point_of_interest_type_id' => 1
                     ]
                 ]
@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
             [
                 'district' => [
                     'name' => 'Davao de Oro',
-                    'color' => '#ccd9ff',
+                    'color' => '#ff3232',
                      'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
@@ -188,6 +188,13 @@ class DatabaseSeeder extends Seeder
                         'point_of_interest_type_id' => 1
                     ],
                     [
+                        'name' => 'Nabuntaran',
+                        'description' => 'Municipal Health Office of Nabunturan,  Nabunturan, 8800 Compostela Valley, Davao de Oro',
+                         'latitude' => '7.6035221296833955', 
+                        'longitude' => '125.96931732410262',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
                         'name' => 'New Bataan',
                         'description' => 'New Bataan Municipal Hall, L A Espanola Ave, New Bataan, Davao de Oro ',
                          'latitude' => '7.54876254', 
@@ -206,7 +213,7 @@ class DatabaseSeeder extends Seeder
             [
                 'district' => [
                     'name' => 'Davao del Norte',
-                    'color' => '#7d79fc',
+                    'color' => '#ff3232',
                      'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
@@ -248,7 +255,7 @@ class DatabaseSeeder extends Seeder
                     ],
                     [
                         'name' => 'Panabo',
-                        'description' => 'Old Regional Trial Court BuildingNew Pandan, Panabo City ',
+                        'description' => 'Old Regional Trial Court Building New Pandan, Panabo City ',
                          'latitude' => '7.285439145', 
                         'longitude' => '125.6738739',
                         'point_of_interest_type_id' => 1
@@ -293,42 +300,226 @@ class DatabaseSeeder extends Seeder
             [
                 'district' => [
                     'name' => 'Davao del Sur',
-                    'color' => '#015070',
+                    'color' => '#ff3232',
                      'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
+                    [
+                        'name' => 'Bansalan',
+                        'description' => 'Bansalan Municipal Hall, Davao-Cotabato Roard, Bansalan, Davao del Sur',
+                         'latitude' => '6.787704685113224',  
+                        'longitude' => '125.211508891369',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Digos',
+                        'description' => 'City Hall Compound, Digos City, Davao Del Sur <br> Contact: (082) 553 2650',
+                         'latitude' => '6.744411136949697', 
+                        'longitude' => ' 125.3564230966747',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Hagonoy',
+                        'description' => 'Hagonoy Municipal Hall, R. Sacedon St., Hagonoy, Davao del Sur',
+                         'latitude' => '6.688722257625669', 
+                        'longitude' => '125.29792751078921',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Kiblawan',
+                        'description' => 'Kiblawan Municipal Hall, Kiblawan, Davao del Sur',
+                         'latitude' => '6.622309396772927', 
+                        'longitude' => '125.25597151593428',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Magsaysay',
+                        'description' => 'Magsaysay Municipal Hall, Magsaysay, Davao del Sur',
+                         'latitude' => '6.753514324517428', 
+                        'longitude' => ' 125.1548627562381',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Malalag',
+                        'description' => 'Malalag Municipal Hall, Davao del Sur Provincial Highway, Malalag, Davao del Sur',
+                         'latitude' => '6.591536917393736', 
+                        'longitude' => '125.40130966641901',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Matanao',
+                        'description' => 'Matanao Municipal Hall, Matanao, Davao del Sur',
+                         'latitude' => '6.7097144147570065',   
+                        'longitude' => '125.21909218836547', 
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Padada',
+                        'description' => 'Padada Municipal Hall, Rizal St., Padada, Davao del Sur',
+                         'latitude' => '6.639377577821367', 
+                        'longitude' => '125.3423998754497',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Santa Cruz ',
+                        'description' => 'Sta.Cruz Municipal Compound, Zone 3, Sta. Cruz, Davao City, 8000 Davao del Sur',
+                         'latitude' => '6.8345896841744205', 
+                        'longitude' => '125.41501964872575',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Sulop',
+                        'description' => 'Sulop Municipal Hall, Sulop, Davao del Sur',
+                         'latitude' => '6.600857074981361', 
+                        'longitude' => '125.34417037703689',
+                        'point_of_interest_type_id' => 1
+                    ],
                 ]
             ],
             [
                 'district' => [
                     'name' => 'Davao Occidental',
-                    'color' => '#16b9cc',
+                    'color' => '#ff3232',
                      'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
+                    [
+                        'name' => 'Don Marcelino',
+                        'description' => 'Don Marcelino Municipal Hall, Don Marcelino, Davao Occidental',
+                         'latitude' => '6.197871060022843',  
+                        'longitude' => '125.6951180545738',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Jose Abad Santos', 
+                        'description' => 'Jose Abad Santos Municipal Hall, Jose Abad Santos, Davao Occidental',
+                         'latitude' => '5.912665515658501', 
+                        'longitude' => '125.6447010067082',
+                        'point_of_interest_type_id' => 1 , 
+                    ],
+                    [
+                        'name' => 'Malita',
+                        'description' => 'Malita Municipal Hall, Quirino St., Malita, Davao Occidental',
+                         'latitude' => '6.414934776966255', 
+                        'longitude' => '125.61169041224392', 
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Santa Maria',
+                        'description' => 'Santa Maria Municipal Hall, Davao del Sur Provincial Highway, Davao Occidental',
+                         'latitude' => '6.550534289240736', 
+                        'longitude' => '125.47543684874917',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Sarangani',
+                        'description' => 'Sarangani Municipal Hall, Sarangani, Davao Occidental',
+                         'latitude' => '5.41247506810351',
+                        'longitude' => '125.4229467478799',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    
                 ]
             ],
             [
                 'district' => [
                     'name' => 'Davao Oriental',
-                    'color' => '#6baee5',
+                    'color' => '#ff3232',
                      'longitude' => 125.455224275750000,
                     'latitude' => 7.187758712440400,
                 ],
                 'sites' => [
+                    [
+                        'name' => 'Baganga',
+                        'description' => 'Baganga Municipal Hall, Baganga, Davao Oriental <br> Contact: +639309642135',
+                         'latitude' => '7.575130869088441',  
+                        'longitude' => ' 126.56226804477079',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Banaybanay', 
+                        'description' => 'Banaybanay Municipal Hall, Banaybanay, Davao Oriental <br> Contact: +639083847892',
+                         'latitude' => '6.967338792626727', 
+                        'longitude' => '126.01117197360483',
+                        'point_of_interest_type_id' => 1 , 
+                    ],
+                    [
+                        'name' => 'Boston',
+                        'description' => 'Boston Municipal Hall, Boston, Davao Oriental <br> Contact: +639171381963',
+                         'latitude' => '7.87014250008301', 
+                        'longitude' => '126.37655446807098', 
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Caraga',
+                        'description' => 'Caraga Municipal Hall, Caraga, Davao Oriental <br> Contact: +639504888005 ',
+                         'latitude' => '7.328536115458501', 
+                        'longitude' => ' 126.56625508467617',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Cateel',
+                        'description' => 'Cateel Municipal Hall, Cateel, Davao Oriental <br> Contact: +639389941976 ',
+                         'latitude' => '7.790300739004287',
+                        'longitude' => '126.45421870422456',
+                        'point_of_interest_type_id' => 1
+                    ],
+
+                    [
+                        'name' => 'Governor Generoso',
+                        'description' => 'Governor Generoso Municipal Hall, Governor Generoso, Davao Oriental <br> Contact: +639197441050 ',
+                         'latitude' => '6.653741950376254',  
+                        'longitude' => ' 126.0729338278739',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Lupon', 
+                        'description' => 'Lupon Municipal Hall, E. Aguinaldo St., Lupon, Davao Oriental <br> Contact: +639394273617',
+                         'latitude' => '6.897446626992547', 
+                        'longitude' => '126.01114056231174',
+                        'point_of_interest_type_id' => 1 , 
+                    ],
+                    [
+                        'name' => 'Manay',
+                        'description' => 'Manay Municipal Hall, Manay, Davao Oriental <br> Contact: +639518107229',
+                         'latitude' => '7.210455148675985', 
+                        'longitude' => '126.53989700642002', 
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Mati',
+                        'description' => 'City Hall of Mati, Nazareno St, Mati, Davao Oriental <br> Contact: (087) 3883-416 ',
+                         'latitude' => '6.952019447328853', 
+                        'longitude' => '126.21653684444138',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'San Isidro',
+                        'description' => 'San Isidro Municipal Hall, San Isidro, Davao Oriental <br> Contact: +639533665087 ',
+                         'latitude' => '6.83148838918388',
+                        'longitude' => '126.082540259340996',
+                        'point_of_interest_type_id' => 1
+                    ],
+                    [
+                        'name' => 'Tarragona',
+                        'description' => 'Tarragona Municipal Hall, Tarragona, Davao Oriental <br> Contact: +639773155140',
+                         'latitude' => ' 7.049674610848557',
+                        'longitude' => '126.44881989874978',
+                        'point_of_interest_type_id' => 1
+                    ],
                 ]
             ],
         ];
 
-        DB::table('point_of_interest_types')->truncate();
+        //DB::table('point_of_interest_types')->truncate();
         DB::table('point_of_interest_types')->insert(
             ['type' => 'Registration Site'],
         );
 
         DB::table('point_of_interests')->truncate();
-        DB::table('districts')->truncate();
+        //DB::table('districts')->truncate();
 
         foreach( $districts as $districtData ){
             $district = District::firstOrCreate(

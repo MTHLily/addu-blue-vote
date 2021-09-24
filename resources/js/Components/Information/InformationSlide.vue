@@ -1,15 +1,18 @@
 <template>
   <Slide>
-    <div class="bg-primary text-white vw-100 p-5 info-slide">
-      <h1
-        class="text-uppercase"
-        style="
-          margin-top: 15%;
-          font-size: 7em;
-          font-weight: bold;
-          font-family: Montserrat;
-        "
-      >
+    <div
+      class="
+        d-flex
+        flex-column
+        justify-content-center
+        bg-primary
+        text-white
+        vw-100
+        p-5
+        info-slide
+      "
+    >
+      <h1 class="text-uppercase display-1" style="font-family: Montserrat">
         {{ info.title }}
       </h1>
       <!-- <div class="text-white">
@@ -21,7 +24,8 @@
       <!-- <p class="lead">{{ info.content }}</p> -->
       <div
         v-html="markedContent"
-        style="font-size: 1.5em; font-family: 'Josefin Sans'"
+        style="font-family: 'Josefin Sans'"
+        class="fs-4"
       ></div>
 
       <div>

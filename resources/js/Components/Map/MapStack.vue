@@ -11,7 +11,7 @@
             districtSection.name
           }}</a>
         </h3>
-        <div class="row row-cols-2 row-cols-md-3 gy-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
           <div class="col" v-for="poi in districtSection.sites" :key="poi.id">
             <Card
               :poi="poi"

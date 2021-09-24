@@ -594,7 +594,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table("information_snippets")->truncate();
         DB::table("information_snippets")->insert([
-            "title" => "AdDU BlueVote",
+            "title" => "AdDU Blue Vote",
             "content" =>
                 "Official website of the Ateneo de Davao University Blue Vote Campaign",
         ]);

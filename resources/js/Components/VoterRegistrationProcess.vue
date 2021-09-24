@@ -1,12 +1,15 @@
 <template>
   <div
-    class="w-75 mx-auto border-bottom border-primary mt-2"
+    class="border-bottom border-primary container-md overflow-auto"
     id="voter-registration"
   >
-    <h1 class="text-primary fw-bold text-center" style="margin-top:5%; margin-bottom:5%;">
+    <h1
+      class="text-primary fw-bold text-center"
+      style="margin-top: 5%; margin-bottom: 5%"
+    >
       Voter Registration Process
     </h1>
-    <ol class="list-group list-group-numbered list-group-flush w-75 mx-auto">
+    <ol class="list-group list-group-numbered list-group-flush w-md-75 mx-auto">
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
       >
@@ -281,11 +284,17 @@
       </li>
     </ol>
   </div>
-  <div class="w-75 mx-auto border-bottom border-primary mt-2" id="irehistro" >
-    <h2 class="text-primary fw-bold text-center" style="margin-top:5%; margin-bottom:5%;">
+  <div
+    class="border-bottom border-primary container-md overflow-auto"
+    id="irehistro"
+  >
+    <h2
+      class="text-primary fw-bold text-center"
+      style="margin-top: 5%; margin-bottom: 5%"
+    >
       COMELEC iRehistro Online Registration
     </h2>
-    <div class="w-75 mx-auto">
+    <div class="w-md-75 mx-auto">
       <h4 class="text-primary">What is the COMELEC iRehistro for?</h4>
       <p>
         <a href="https://irehistro.comelec.gov.ph/">
@@ -446,9 +455,10 @@
           Schedule an appointment through any of the following:
           <ul>
             <li>
-              Office for Overseas Voting PH Facebook page
-              (www.facebook.com/overseasvotingph): Click the Book Now button or
-              send a private message.
+              <a href="www.facebook.com/overseasvotingph"
+                >Office for Overseas Voting PH Facebook page</a
+              >
+              Click the Book Now button or send a private message.
             </li>
             <li>Email: overseasvoting@comelec.gov.ph</li>
             <li>Landline: (02) 8521-2952 / 8522-2251</li>
@@ -492,7 +502,7 @@
         </li>
       </ol>
 
-      <p >
+      <p>
         Note: You won’t be allowed to register if you don’t have a confirmed
         appointment and not wearing a face mask and face shield. For your
         safety, follow the COVID-19 protocols being implemented by the COMELEC.

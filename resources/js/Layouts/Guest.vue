@@ -2,40 +2,41 @@
   <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
     <header class="navbar sticky-top navbar-dark bg-primary navbar-expand-md">
-      <div class="container-fluid">
-        <Link class="navbar-brand" href="/">
-          <img :src="image" height="50" />
+      <div class="container-md">
+        <Link class="navbar-brand w-50" href="/">
+          <img :src="image" class="navbar-logo" />
         </Link>
+
         <button
           class="navbar-toggler"
+          @click="navbarCollapse.toggle()"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div
+          class="collapse navbar-collapse flex-shrink-1"
+          ref="navbarCollapse"
+        >
           <ul
             class="navbar-nav navbar-dark bg-primary ms-auto mb-2 mb-lg-0 gap-4"
           >
             <!-- <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="voterRegistrationDropdwon"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Voters Registration
-              </a> -->
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="voterRegistrationDropdwon"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Voters Registration
+                </a> -->
             <!-- <ul
-                class="dropdown-menu bg-primary"
-                aria-labelledby="voterRegistrationDropdwon"
-              > -->
+                  class="dropdown-menu bg-primary"
+                  aria-labelledby="voterRegistrationDropdwon"
+                > -->
             <li class="nav-item">
               <a class="nav-link" href="#voter-registration">
                 Registration Process
@@ -59,43 +60,43 @@
           </ul>
           <!-- </li> -->
           <!-- <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Voters Education
-                </a>
-                <ul
-                  class="dropdown-menu bg-primary"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <a class="dropdown-item text-white" href="#"
-                      >Election Process Information</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#"
-                      >Election News and Issues</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#"
-                      >Voters Responsibility and Rights</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" disabled>Candidate's Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" disabled>Election Results</a>
-              </li> -->
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Voters Education
+                  </a>
+                  <ul
+                    class="dropdown-menu bg-primary"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <li>
+                      <a class="dropdown-item text-white" href="#"
+                        >Election Process Information</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item text-white" href="#"
+                        >Election News and Issues</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item text-white" href="#"
+                        >Voters Responsibility and Rights</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" disabled>Candidate's Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" disabled>Election Results</a>
+                </li> -->
           <!-- </ul> -->
         </div>
       </div>
@@ -115,6 +116,7 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
 import image from "@/Components/assets/logo.png";
+import { Collapse } from "bootstrap";
 
 export default {
   components: {
@@ -124,10 +126,21 @@ export default {
   data: function () {
     return {
       image: image,
+      navbarCollapse: null,
       // image2: image2,
     };
+  },
+  mounted() {
+    this.navbarCollapse = new Collapse(this.$refs.navbarCollapse, {
+      toggle: false,
+    });
   },
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.navbar-logo {
+  max-height: 50px;
+  max-width: 80%;
+}
+</style>

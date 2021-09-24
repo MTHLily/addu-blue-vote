@@ -22,7 +22,11 @@ class PointOfInterest extends Model
     // Calculated Attirbutes
     public function getImagePreviewUrlAttribute()
     {
-        return Storage::url($this->image_url);
+        if (Storage::exists($this->image_url)) {
+            return Storage::url($this->image_url);
+        } else {
+            return $this->image_url;
+        }
     }
 
     public function getTypeAttribute()

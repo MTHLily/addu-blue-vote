@@ -12,7 +12,7 @@
               v-if="poi.image_url"
               :src="poi.image_preview_url"
               class="img-fluid rounded-start"
-              :alt="poi.image_preview_url"
+              :alt="`Logo of ${poi.district.name}`"
               style="object-fit: cover"
             />
             <img

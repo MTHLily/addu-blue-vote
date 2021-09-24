@@ -111,6 +111,7 @@ class DatabaseSeeder extends Seeder
                     "color" => "#ff3232",
                     "longitude" => 125.45522427575,
                     "latitude" => 7.1877587124404,
+                    "logo_url" => "/images/District Logos/Davao City.png",
                 ],
                 "sites" => [
                     [
@@ -129,6 +130,7 @@ class DatabaseSeeder extends Seeder
                     "color" => "#ff3232",
                     "latitude" => "7.50993117",
                     "longitude" => "125.9226537",
+                    "logo_url" => "/images/District Logos/Davao de Oro.png",
                 ],
                 "sites" => [
                     [
@@ -227,6 +229,7 @@ class DatabaseSeeder extends Seeder
                     "color" => "#ff3232",
                     "latitude" => "7.459040966",
                     "longitude" => "125.7831256",
+                    "logo_url" => "/images/District Logos/Davao del Norte.png",
                 ],
                 "sites" => [
                     [
@@ -325,6 +328,7 @@ class DatabaseSeeder extends Seeder
                     "color" => "#ff3232",
                     "latitude" => "6.688722257625669",
                     "longitude" => "125.29792751078921",
+                    "logo_url" => "/images/District Logos/Davao del Sur.png",
                 ],
                 "sites" => [
                     [
@@ -415,6 +419,7 @@ class DatabaseSeeder extends Seeder
                     "color" => "#ff3232",
                     "latitude" => "6.197871060022843",
                     "longitude" => "125.6951180545738",
+                    "logo_url" => "/images/District Logos/Davao Occidental.png",
                 ],
                 "sites" => [
                     [
@@ -465,6 +470,7 @@ class DatabaseSeeder extends Seeder
                     "color" => "#ff3232",
                     "latitude" => " 7.049674610848557",
                     "longitude" => "126.44881989874978",
+                    "logo_url" => "/images/District Logos/Davao Oriental.png",
                 ],
                 "sites" => [
                     [
@@ -587,6 +593,7 @@ class DatabaseSeeder extends Seeder
                         "longitude" => $site["longitude"],
                         "point_of_interest_type_id" => 1,
                         "district_id" => $district->id,
+                        "image_url" => $districtData["district"]["logo_url"],
                     ]
                 );
             }

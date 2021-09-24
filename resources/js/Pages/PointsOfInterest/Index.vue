@@ -8,12 +8,13 @@
         :center="center"
         :options="gMapOptions"
         ref="gMapRef"
-        map-type-id="terrain"
+        map-type-id="hybrid"
         style="width: 100%; height: clamp(200px, 50vh, 800px)"
       >
         <GMapMarker
           v-for="m in markers"
           :key="m.position.lat"
+          :icon="m.icon"
           :position="m.position"
         >
         </GMapMarker>
@@ -137,7 +138,7 @@ export default {
     const gMapRef = ref();
     const gMapOptions = ref({
       zoomControl: true,
-      mapTypeControl: false,
+      mapTypeControl: true,
       scaleControl: true,
       streetViewControl: false,
       rotateControl: true,
@@ -153,6 +154,9 @@ export default {
             position: {
               lat: parseFloat(poi.latitude),
               lng: parseFloat(poi.longitude),
+            },
+            icon: {
+              url: "/svg/map_marker.svg?color=" + poi.district.color.slice(1),
             },
           };
         });

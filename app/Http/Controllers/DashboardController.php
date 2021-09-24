@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-
 
 class DashboardController extends Controller
 {
@@ -15,7 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Dashboard');
+        return Redirect::route("poi.index");
+        // return Inertia::render('Dashboard');
     }
 
     /**
@@ -25,8 +26,6 @@ class DashboardController extends Controller
      */
     public function create()
     {
-       
-
     }
 
     /**

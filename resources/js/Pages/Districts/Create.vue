@@ -2,7 +2,7 @@
   <Head title="Create District"></Head>
 
   <DashboardLayout>
-    <div class="rounded" style="background-color: #CCDFFF;"> 
+    <div class="rounded" style="background-color: #ccdfff">
       <div class="d-flex flex-column">
         <form @submit.prevent="district.post(route('districts.store'))">
           <h1 class="p-3">Create District</h1>
@@ -18,7 +18,6 @@
             </div>
           </div>
         </form>
-        <pre>{{ district }}</pre>
       </div>
     </div>
   </DashboardLayout>
@@ -32,15 +31,14 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AdminLayout from "../../Layouts/admin";
 
 export default {
-  components: { Link, Head, DashboardLayout, DistrictForm,AdminLayout },
+  components: { Link, Head, DashboardLayout, DistrictForm, AdminLayout },
   data: () => ({
     district: useForm({
       name: "",
       description: "",
       color: "#ffffff",
       longitude: null,
-		  latitude: null,
-
+      latitude: null,
     }),
   }),
 };

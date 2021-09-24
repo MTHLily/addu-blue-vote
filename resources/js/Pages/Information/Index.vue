@@ -58,7 +58,7 @@
                       <button
                         class="btn btn-danger"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
+                        :data-bs-target="`#modalDelete${title.id}`"
                       >
                         <i class="bi-trash"></i>
                       </button>
@@ -67,9 +67,9 @@
                   <!-- Modal -->
                   <div
                     class="modal fade"
-                    id="exampleModal"
+                    :id="`modalDelete${title.id}`"
                     tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
+                    :aria-labelledby="`modalDelete${title.id}`"
                     aria-hidden="true"
                   >
                     <form @submit.prevent="submitDelete(title.id)">

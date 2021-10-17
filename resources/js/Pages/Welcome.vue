@@ -2,6 +2,7 @@
   <Head title="Welcome" />
   <GuestLayout>
     <div>
+      <newsCard />
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>
@@ -24,6 +25,9 @@ import VoterRegistrationProcess from "../Components/VoterRegistrationProcess.vue
 import FAQs from "../Components/FAQs/FAQList.vue";
 import InformationCarousel from "../Components/Information/InformationCarousel.vue";
 
+import newsCard from "../Components/newsCard.vue";
+
+
 export default {
   components: {
     Head,
@@ -33,6 +37,7 @@ export default {
     FAQs,
     InformationCarousel,
     VoterRegistrationProcess,
+    newsCard,
   },
   props: {
     faqs: {

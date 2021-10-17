@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\District;
 use App\Models\FrequentlyAskedQuestion;
 use App\Models\InformationSnippet;
+use App\Models\NewsArticle;
 use App\Models\PointOfInterest;
 use App\Services\NewscraperService;
 use Inertia\Inertia;
@@ -29,7 +30,9 @@ class GuestController extends Controller
 
     public function voters_education()
     {
-        $articles = (new NewscraperService())->get();
+        (new NewscraperService())->get();
+
+        $articles = NewsArticle::all()->sortBy("date");
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,

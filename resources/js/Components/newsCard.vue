@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <div class="card" style="width: 50rem;">
+        <div class="p-3 mb-2 mt-2 mx-2" style="width: 50rem;">
             <!-- <div class="card-body">
                 <h5 class="card-title">{{ title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ source }}</h6>
@@ -13,10 +13,10 @@
                     <a href= {{ link }} class="card-text"> READ MORE </a>
                 </button>
             </div> -->
-            <div class="card-body">
+            <div class="card p-3">
                 <h5 class="card-title">title</h5>
-                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2" disabled>source </button>
-                <p class="card-text"> description descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription</p>
+                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2 col-6" disabled>source </button>
+                <p class="card-text text-wrap"> description descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription</p>
                 <div class="d-flex justify-content-between">
                     <p class="card-subtitle mb-2 text-muted"> date </p>
                     <button

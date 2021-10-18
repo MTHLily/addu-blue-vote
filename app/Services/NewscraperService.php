@@ -199,10 +199,46 @@ class NewscraperService
         return $articles;
     }
 
+    public function comelec()
+    {
+        $crawler = Goutte::request(
+            "GET",
+            "https://comelec.gov.ph/html-sys-tpls/homeNews.html"
+        );
+
+        $newsArticles = $crawler
+            ->filter(".list-group-item")
+            ->each(function ($node) {
+                $article = NewsArticle::firstOrNew([
+                    "url" => "https://comelec.gov.ph/" . $node->attr("href"),
+                ]);
+
+                $date = Carbon::parse(
+                    Str::of(
+                        $node->filter(".list-group-item-text")->text()
+                    )->replace(".", "/")
+                );
+
+                if (!$article->exists) {
+                    $article->title = $node
+                        ->filter(".list-group-item-heading")
+                        ->text();
+                    $article->description = "A COMELEC announcement.";
+                    $article->date = $date;
+                    $article->news_source_id = $this->sources_id["comelec"];
+                    $article->save();
+                }
+
+                return $article;
+            });
+
+        return $newsArticles;
+    }
+
     public function get(): array
     {
         $articles = [];
-        $articles = $this->phil_star(false);
+        $articles = $this->comelec();
 
         return $articles;
     }

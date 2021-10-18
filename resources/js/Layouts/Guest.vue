@@ -57,6 +57,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#map">Registration Sites</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/voters-education">Voters Registration</a>
+            </li>
           </ul>
           <!-- </li> -->
           <!-- <li class="nav-item dropdown">

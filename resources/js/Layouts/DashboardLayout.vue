@@ -25,9 +25,8 @@
   </div>
 
   <div class="min-vh-100 d-flex flex-column">
-    <!-- Header -->
-    <header>
-      <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <ArisenHeader>
+      <template #before-logo>
         <div class="nav-header px-4">
           <a
             data-bs-toggle="offcanvas"
@@ -38,15 +37,9 @@
             <i class="bi bi-list text-white fs-1"></i>
           </a>
         </div>
-        <div class="container-fluid mx-auto">
-          <Link class="navbar-brand" href="/">
-            <!-- <img :src="image2" width="140" height="70" />
-            <img :src="image" class="image-fluid" width="230" height="70" /> -->
-            <img :src="image" class="image-fluid" width="450" height="70" />
-          </Link>
-        </div>
-      </nav>
-    </header>
+      </template>
+      <template #collapse-content> </template>
+    </ArisenHeader>
 
     <!-- Content -->
     <main class="mt-4 flex-grow-1">
@@ -57,241 +50,28 @@
     <ArisenFooter></ArisenFooter>
 
     <!-- Sidebar -->
-    <nav
-      class="main-menu offcanvas offcanvas-start"
-      data-bs-scroll="true"
-      tabindex="-1"
-      id="mainMenu"
-    >
-      <Link :href="route('dashboard')" class="text-decoration-none"
-        ><div
-          class="
-            bg-white
-            mx-auto
-            mt-3
-            w-75
-            align-middle
-            text-center
-            p-3
-            d-flex
-            rounded
-            align-items-center
-          "
-        >
-          <img class="img" :src="image2" height="30" />
-          <div class="text-primary align-middle fw-bolder ps-sm-3">
-            AdDU Blue Vote
-          </div>
-        </div></Link
-      >
-      <ul class="mt-3">
-        <li class="ms-4">
-          <a
-            class="nav-link active"
-            data-bs-toggle="collapse"
-            href="#subMenu"
-            role="button"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          >
-            <i
-              class="
-                bi bi-pen-fill
-                text-primary text-center
-                align-middle
-                fs-3
-                p-2
-              "
-            ></i>
-            <span
-              class="
-                nav-text
-                text-primary
-                align-middle
-                fs-6
-                fw-bolder
-                py-1
-                px-2
-              "
-            >
-              Voters Registration
-            </span>
-          </a>
-          <ul class="sub-menu collapse bg-primary p-3 my-2" id="subMenu">
-            <li class="ms-4">
-              <Link
-                :href="route('information.index')"
-                class="text-white fs-6 align-middle fw-bold py-1 px-2"
-                >Information</Link
-              >
-            </li>
-            <li class="ms-4">
-              <Link
-                :href="route('faqs.index')"
-                class="text-white fs-6 align-middle fw-bold py-1 px-2"
-                >FAQs</Link
-              >
-            </li>
-            <li class="ms-4">
-              <a
-                class="text-white align-middle fw-bold py-1 px-2"
-                data-bs-toggle="collapse"
-                href="#moreMenu"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-                >Registration Sites</a
-              >
-              <ul class="more-menu collapse mt-2" id="moreMenu">
-                <li class="ms-4">
-                  <a class="text-white align-middle py-1 px-2" href="#"
-                    >Cities</a
-                  >
-                </li>
-                <li class="ms-4">
-                  <Link
-                    :href="route('districts.index')"
-                    class="text-white align-middle py-1 px-2"
-                    >Districts</Link
-                  >
-                </li>
-                <li class="ms-4">
-                  <Link
-                    :href="route('poi.index')"
-                    class="text-white align-middle py-1 px-2"
-                    >Point of Interest</Link
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="ms-4">
-          <a href="#">
-            <i
-              class="
-                bi bi-info-circle-fill
-                text-primary text-center
-                align-middle
-                fs-3
-                p-2
-              "
-            ></i>
-            <span
-              class="
-                nav-text
-                text-primary
-                align-middle
-                fs-6
-                fw-bolder
-                py-1
-                px-2
-              "
-            >
-              Voters Education
-            </span>
-          </a>
-        </li>
-        <li class="ms-4">
-          <a href="#">
-            <i
-              class="
-                bi bi-file-earmark-person-fill
-                text-primary text-center
-                align-middle
-                fs-3
-                p-2
-              "
-            ></i>
-            <span
-              class="
-                nav-text
-                text-primary
-                align-middle
-                fs-6
-                fw-bolder
-                py-1
-                px-2
-              "
-            >
-              Candidates Profile
-            </span>
-          </a>
-        </li>
-        <li class="ms-4">
-          <a href="#">
-            <i
-              class="
-                bi bi-archive-fill
-                text-primary text-center
-                align-middle
-                fs-3
-                p-2
-              "
-            ></i>
-            <span
-              class="
-                nav-text
-                text-primary
-                align-middle
-                fs-6
-                fw-bolder
-                py-1
-                px-2
-              "
-            >
-              Election Results
-            </span>
-          </a>
-        </li>
-      </ul>
-
-      <ul class="logout mb-3">
-        <li class="ms-4">
-          <Link as="a" method="post" :href="route('logout')">
-            <i
-              class="
-                bi bi-person-circle
-                text-primary text-center
-                align-middle
-                fs-3
-                p-2
-              "
-            ></i>
-            <span
-              class="
-                nav-text
-                text-primary
-                align-middle
-                fs-6
-                fw-bolder
-                py-1
-                px-2
-              "
-            >
-              Logout
-            </span>
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <ArisenDashboardSider :menu-options="menuOptions"></ArisenDashboardSider>
   </div>
 </template>
 
 <script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Toast } from "bootstrap";
-import image from "@/Components/assets/logo.png";
-import image2 from "@/Components/assets/blue vote logo.png";
 import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
+import ArisenHeader from "./Partials/Header.vue";
+import ArisenDashboardSider from "./Partials/DashboardSider.vue";
 
 export default {
   components: {
     Head,
     Link,
     ArisenFooter,
+    ArisenHeader,
+    ArisenDashboardSider,
   },
-  data: () => ({ toast: null }),
+  data: () => ({
+    toast: null,
+  }),
   computed: {
     toastMessage() {
       return {
@@ -303,12 +83,53 @@ export default {
           this.$page.props.flash.success || this.$page.props.flash.message,
       };
     },
-  },
-  data() {
-    return {
-      image: image,
-      image2: image2,
-    };
+    menuOptions() {
+      return [
+        {
+          title: "Voter's Registration",
+          icon: "bi-pen-fill",
+          items: [
+            {
+              title: "Information",
+              route: "information.index",
+            },
+            {
+              title: "FAQs",
+              route: "faqs.index",
+            },
+            {
+              title: "Registration Sites",
+              items: [
+                {
+                  title: "Cities",
+                  route: "cities.index",
+                },
+                {
+                  title: "Districts",
+                  route: "districts.index",
+                },
+                {
+                  title: "Points of Interest",
+                  route: "poi.index",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "Voter's Education",
+          icon: "bi-info-circle-fill",
+          items: [
+            {
+              title: "Candidate Profiles",
+            },
+            {
+              title: "News",
+            },
+          ],
+        },
+      ];
+    },
   },
   mounted() {
     const message = new Toast(this.$refs.messageToast);

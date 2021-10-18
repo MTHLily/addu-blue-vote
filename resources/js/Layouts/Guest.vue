@@ -1,28 +1,12 @@
 <template>
   <!-- Header -->
   <div class="min-vh-100 d-flex flex-column">
-    <header class="navbar sticky-top navbar-dark bg-primary navbar-expand-md">
-      <div class="container-md">
-        <Link class="navbar-brand w-50" href="/">
-          <img :src="image" class="navbar-logo" />
-        </Link>
-
-        <button
-          class="navbar-toggler"
-          @click="navbarCollapse.toggle()"
-          type="button"
-          aria-label="Toggle navigation"
+    <ArisenHeader>
+      <template #collapse-content>
+        <ul
+          class="navbar-nav navbar-dark bg-primary ms-auto mb-2 mb-lg-0 gap-4"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse flex-shrink-1"
-          ref="navbarCollapse"
-        >
-          <ul
-            class="navbar-nav navbar-dark bg-primary ms-auto mb-2 mb-lg-0 gap-4"
-          >
-            <!-- <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
@@ -33,74 +17,33 @@
                 >
                   Voters Registration
                 </a> -->
-            <!-- <ul
+          <!-- <ul
                   class="dropdown-menu bg-primary"
                   aria-labelledby="voterRegistrationDropdwon"
                 > -->
-            <li class="nav-item">
-              <a class="nav-link" href="#voter-registration">
-                Registration Process
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#faqs">FAQs</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="https://irehistro.comelec.gov.ph/"
-                target="_blank"
-              >
-                iRehistro
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#map">Registration Sites</a>
-            </li>
-          </ul>
-          <!-- </li> -->
-          <!-- <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Voters Education
-                  </a>
-                  <ul
-                    class="dropdown-menu bg-primary"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a class="dropdown-item text-white" href="#"
-                        >Election Process Information</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item text-white" href="#"
-                        >Election News and Issues</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item text-white" href="#"
-                        >Voters Responsibility and Rights</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" disabled>Candidate's Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" disabled>Election Results</a>
-                </li> -->
-          <!-- </ul> -->
-        </div>
-      </div>
-    </header>
+          <li class="nav-item">
+            <a class="nav-link" href="#voter-registration">
+              Registration Process
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#faqs">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://irehistro.comelec.gov.ph/"
+              target="_blank"
+            >
+              iRehistro
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#map">Registration Sites</a>
+          </li>
+        </ul>
+      </template>
+    </ArisenHeader>
 
     <!-- Content -->
     <main class="flex-grow-1">
@@ -115,25 +58,13 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
-import image from "@/Components/assets/logo.png";
-import { Collapse } from "bootstrap";
+import ArisenHeader from "./Partials/Header.vue";
 
 export default {
   components: {
     Link,
     ArisenFooter,
-  },
-  data: function () {
-    return {
-      image: image,
-      navbarCollapse: null,
-      // image2: image2,
-    };
-  },
-  mounted() {
-    this.navbarCollapse = new Collapse(this.$refs.navbarCollapse, {
-      toggle: false,
-    });
+    ArisenHeader,
   },
 };
 </script>

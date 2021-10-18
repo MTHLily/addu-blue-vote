@@ -11,10 +11,6 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\SVGController;
-use App\Models\District;
-use App\Models\FrequentlyAskedQuestion;
-use App\Models\InformationSnippet;
-use App\Models\PointOfInterest;
 
 /*
 |--------------------------------------------------------------------------

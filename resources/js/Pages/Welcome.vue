@@ -2,7 +2,6 @@
   <Head title="Welcome" />
   <GuestLayout>
     <div>
-      <newsCard />
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>

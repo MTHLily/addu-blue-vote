@@ -20,7 +20,7 @@
           ref="navbarCollapse"
         >
           <ul
-            class="navbar-nav navbar-dark bg-primary ms-auto mb-2 mb-lg-0 gap-4"
+            class="navbar-nav navbar-dark bg-primary gap-3"
           >
             <!-- <li class="nav-item dropdown">
                 <a
@@ -58,7 +58,7 @@
               <a class="nav-link" href="#map">Registration Sites</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/voters-education">Voters Registration</a>
+              <a class="nav-link" href="/voters-education">Voters Education</a>
             </li>
           </ul>
           <!-- </li> -->

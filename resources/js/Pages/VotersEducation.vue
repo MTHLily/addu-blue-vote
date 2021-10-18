@@ -3,8 +3,11 @@
 
   <!-- <div>Voter's Registration</div> -->
   <!-- <pre>{{ articles }}</pre> -->
-  <div>
+    <div class="container-md overflow-auto">
     <ElectionProcessInfo></ElectionProcessInfo>
+    <h1 class="text-primary fw-bold my-5">
+      Election News and Issues
+    </h1>
     <newsCard></newsCard>
   </div>
 </div>

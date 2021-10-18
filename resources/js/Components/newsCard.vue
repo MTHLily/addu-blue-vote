@@ -27,20 +27,70 @@
                     </button>
                 </div>
             </div> -->
-            <div class="card p-3">
+            <div class="card p-3 mb-2" style="border-radius:20px">
                 <h5 class="card-title">{{ news.title }}</h5>
-                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2 col-6" disabled>{{ news.source }} </button>
+                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2 col-6" style="border-radius:20px" disabled>{{ news.source }} </button>
                 <p class="card-text text-wrap"> {{ news.description }}</p>
                 <div class="d-flex justify-content-between">
                     <p class="card-subtitle mb-2 text-muted"> {{ news.date }} </p>
                     <button
                         type="button"
                         class="btn btn-primary"
+                        style="border-radius:20px"
                     >
-                        <a href="#"  class="text-white text-decoration-none" > READ MORE </a>
+                        <a href="#"  class="text-white text-decoration-none"  > READ MORE </a>
                     </button>
                 </div>
             </div>
+
+
+            <div class="card p-3 mb-2" style="border-radius:20px">
+                <h5 class="card-title">{{ news.title }}</h5>
+                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2 col-6" style="border-radius:20px" disabled>{{ news.source }} </button>
+                <p class="card-text text-wrap"> {{ news.description }}</p>
+                <div class="d-flex justify-content-between">
+                    <p class="card-subtitle mb-2 text-muted"> {{ news.date }} </p>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        style="border-radius:20px"
+                    >
+                        <a href="#"  class="text-white text-decoration-none"  > READ MORE </a>
+                    </button>
+                </div>
+            </div>
+            <div class="card p-3 mb-2" style="border-radius:20px">
+                <h5 class="card-title">{{ news.title }}</h5>
+                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2 col-6" style="border-radius:20px" disabled>{{ news.source }} </button>
+                <p class="card-text text-wrap"> {{ news.description }}</p>
+                <div class="d-flex justify-content-between">
+                    <p class="card-subtitle mb-2 text-muted"> {{ news.date }} </p>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        style="border-radius:20px"
+                    >
+                        <a href="#"  class="text-white text-decoration-none"  > READ MORE </a>
+                    </button>
+                </div>
+            </div>
+            <div class="card p-3 mb-2" style="border-radius:20px">
+                <h5 class="card-title">{{ news.title }}</h5>
+                <button class="btn btn-primary btn-sm text-white card-subtitle mb-2 col-6" style="border-radius:20px" disabled>{{ news.source }} </button>
+                <p class="card-text text-wrap"> {{ news.description }}</p>
+                <div class="d-flex justify-content-between">
+                    <p class="card-subtitle mb-2 text-muted"> {{ news.date }} </p>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        style="border-radius:20px"
+                    >
+                        <a href="#"  class="text-white text-decoration-none"  > READ MORE </a>
+                    </button>
+                </div>
+            </div>
+
+            
         </div>
     </div>
 </template>
@@ -53,8 +103,8 @@ export default {
         default: () => ({
             title: "titleeee",
             source: "ABS-CBN",
-            description:"descriptionsssss",
-            date:"Oct 18,2021",
+            description:"descriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssss",
+            date:"Oct 18, 2021",
             // link:"https://news.abs-cbn.com/",
         }),
         },

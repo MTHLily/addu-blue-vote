@@ -18,14 +18,11 @@
 
 <script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
-import GuestLayout from "../Layouts/Guest";
-import Map from "../Components/Map/Map";
+import GuestLayout from "../Layouts/Guest.vue";
+import Map from "../Components/Map/Map.vue";
 import VoterRegistrationProcess from "../Components/VoterRegistrationProcess.vue";
 import FAQs from "../Components/FAQs/FAQList.vue";
 import InformationCarousel from "../Components/Information/InformationCarousel.vue";
-
-import newsCard from "../Components/newsCard.vue";
-
 
 export default {
   components: {
@@ -36,7 +33,6 @@ export default {
     FAQs,
     InformationCarousel,
     VoterRegistrationProcess,
-    newsCard,
   },
   props: {
     faqs: {

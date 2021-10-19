@@ -69,12 +69,12 @@ class NewscraperService
                         "date" => Carbon::parse(
                             $node->filter(".datetime")->text()
                         ),
+                        "news_source_id" => $this->sources_id["abs_cbn"],
                     ];
 
                     $article = NewsArticle::firstOrCreate(
                         [
-                            "title" => $article["title"],
-                            "news_source_id" => $this->sources_id["abs_cbn"],
+                            "url" => $article["url"],
                         ],
                         $article
                     );
@@ -87,8 +87,8 @@ class NewscraperService
             if ($getOnlyNew) {
                 $articleCollection = collect($newArticles);
 
-                $oldArticles = $articleCollection->map(function ($value) {
-                    return $value->wasRecentlyCreated;
+                $oldArticles = $articleCollection->map(function ($model) {
+                    return $model->wasRecentlyCreated;
                 });
 
                 if ($oldArticles->contains(false)) {
@@ -116,7 +116,9 @@ class NewscraperService
 
         if (!$article->exists) {
             $article->title = $latestArticle->text();
-            $article->description = Str::of($article->url)->limit(252);
+            $article->description = Str::of(
+                $this->getMetaDescriptionFromUrl($article->url)
+            )->limit(252);
             $article->news_source_id = $this->sources_id["rappler"];
             $article->date = Carbon::now();
             $article->save();

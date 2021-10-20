@@ -38,7 +38,7 @@
           </a>
         </div>
       </template>
-      <template #collapse-content> </template>
+      <template #collapse-content></template>
     </ArisenHeader>
 
     <!-- Content -->

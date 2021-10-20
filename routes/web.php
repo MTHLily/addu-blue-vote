@@ -38,6 +38,20 @@ use App\Http\Controllers\SVGController;
 //     ]);
 // });
 
+//admin resources
+Route::middleware(["auth"])->group(function () {
+    Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
+        Route::get("/", [DashboardController::class, "index"])->name(
+            "dashboard"
+        );
+        Route::resource("faqs", FrequentlyAskedQuestionController::class);
+        Route::resource("information", InformationSnippetController::class);
+        Route::resource("cities", CityController::class);
+        Route::resource("districts", DistrictController::class);
+        Route::resource("poi", PointOfInterestController::class);
+    });
+});
+
 Route::get("/", [GuestController::class, "voters_registration"])->name(
     "voters-registration"
 );
@@ -53,23 +67,5 @@ Route::get("/candidate-profiles", [
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
-
-//admin resources
-Route::middleware(["auth"])->group(function () {
-    Route::get("/dashboard", [DashboardController::class, "index"])->name(
-        "dashboard"
-    );
-    Route::resource(
-        "/dashboard/faqs",
-        FrequentlyAskedQuestionController::class
-    );
-    Route::resource(
-        "/dashboard/information",
-        InformationSnippetController::class
-    );
-    Route::resource("/dashboard/cities", CityController::class);
-    Route::resource("/dashboard/districts", DistrictController::class);
-    Route::resource("dashboard/poi", PointOfInterestController::class);
-});
 
 require __DIR__ . "/auth.php";

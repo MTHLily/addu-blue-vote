@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\NewsArticle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class NewsArticleController extends Controller
 {
@@ -12,9 +14,13 @@ class NewsArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return Inertia::render("News/Index", [
+            "articles" => NewsArticle::orderByDesc("date")
+                ->with("newsSource")
+                ->paginate($request->itemsPerPage),
+        ]);
     }
 
     /**
@@ -41,10 +47,10 @@ class NewsArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\NewsArticle  $newsArticle
+     * @param  \App\Models\NewsArticle  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(NewsArticle $newsArticle)
+    public function show(NewsArticle $news)
     {
         //
     }
@@ -52,10 +58,10 @@ class NewsArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\NewsArticle  $newsArticle
+     * @param  \App\Models\NewsArticle  $news
      * @return \Illuminate\Http\Response
      */
-    public function edit(NewsArticle $newsArticle)
+    public function edit(NewsArticle $news)
     {
         //
     }
@@ -64,10 +70,10 @@ class NewsArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NewsArticle  $newsArticle
+     * @param  \App\Models\NewsArticle  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NewsArticle $newsArticle)
+    public function update(Request $request, NewsArticle $news)
     {
         //
     }
@@ -75,11 +81,16 @@ class NewsArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\NewsArticle  $newsArticle
+     * @param  \App\Models\NewsArticle  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NewsArticle $newsArticle)
+    public function destroy(NewsArticle $news)
     {
-        //
+        $news->delete();
+
+        return Redirect::back()->with(
+            "message",
+            $news->title . " was deleted!"
+        );
     }
 }

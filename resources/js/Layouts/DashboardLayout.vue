@@ -125,6 +125,7 @@ export default {
             },
             {
               title: "News",
+              route: "news.index",
             },
           ],
         },
@@ -147,7 +148,7 @@ export default {
 
 <style scoped>
 /* Header Navbar */
-.dropdown-item:hover,
+/* .dropdown-item:hover,
 .dropdown-item:focus {
   color: #dee2e6;
   background-color: #061b71;
@@ -156,17 +157,17 @@ export default {
   color: #dee2e6;
 }
 /* Sidebar */
-.bi {
+/* .bi {
   display: table-cell;
   width: 60px;
   height: 45px;
-}
+}  */
 /* Header */
-.main-menu .header {
+/* .main-menu .header {
   font-size: 18px;
-}
+} */
 /* Main Menu */
-.main-menu {
+/* .main-menu {
   background: #ececec;
   width: 300px;
 }
@@ -190,9 +191,9 @@ export default {
   color: #fff;
   background-color: #d6d6d6;
   border-radius: 10px;
-}
+} */
 /* Sub Menu */
-.sub-menu {
+/* .sub-menu {
   width: 250px;
   border-radius: 10px;
 }
@@ -205,10 +206,10 @@ export default {
   color: #fff;
   background-color: #1e419b;
   border-radius: 5px;
-}
-/* More Menu */
-.sub-menu .more-menu a {
-  display: table-cell;
+} */
+/* More Menu
+.sub-menu .more-menu a { */
+/* display: table-cell;
   font-size: 14px;
   width: 165px;
 }
@@ -217,15 +218,15 @@ export default {
   color: #fff;
   background-color: #061b71;
   border-radius: 6px;
-}
+} */
 /* Log Out */
-.main-menu > ul.logout {
+/* .main-menu > ul.logout {
   position: absolute;
   left: 0;
   bottom: 0;
-}
+} */
 /* General CSS */
-a:hover,
+/* a:hover,
 a:focus {
   text-decoration: none;
 }
@@ -235,5 +236,5 @@ nav li {
   outline: 0;
   margin: 0;
   padding: 0;
-}
+} */
 </style>

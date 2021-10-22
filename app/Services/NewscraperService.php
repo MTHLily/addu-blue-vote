@@ -240,7 +240,9 @@ class NewscraperService
     public function get(): array
     {
         $articles = [];
-        $articles = $this->comelec();
+        // $articles = $this->abs_cbn();
+        // $articles = $this->rappler();
+        // $articles = $this->comelec();
 
         return $articles;
     }

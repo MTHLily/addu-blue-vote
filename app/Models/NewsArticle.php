@@ -10,4 +10,9 @@ class NewsArticle extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function newsSource()
+    {
+        return $this->belongsTo(NewsSource::class);
+    }
 }

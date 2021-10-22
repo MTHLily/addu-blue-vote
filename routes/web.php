@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\SVGController;
 
@@ -49,6 +50,7 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("cities", CityController::class);
         Route::resource("districts", DistrictController::class);
         Route::resource("poi", PointOfInterestController::class);
+        Route::resource("news", NewsArticleController::class);
     });
 });
 

@@ -19,83 +19,52 @@
         >
         </GMapMarker>
       </GMapMap>
-      <BlueVoteTable title="Points of Interest" :columns="6">
-        <template #header>
-          <tr class="bg-info">
-            <th scrope="col">Name</th>
-            <th scrope="col" style="width: 10%">Description</th>
-            <th scrope="col">District</th>
-            <th scrope="col">Type</th>
-            <th scrope="col">Image Preview</th>
-            <th scrope="col">Actions</th>
-          </tr>
+      <BlueVoteTable
+        title="Points of Interest"
+        :columns="tableColumns"
+        :items="pois"
+      >
+        <template #district="{ item }">
+          <td>{{ item.district.name }}</td>
         </template>
-        <template #body>
-          <tr v-for="poi in pois" :key="poi.key">
-            <td>{{ poi.name }}</td>
-            <td>
-              <div
-                class="d-block text-truncate"
-                v-html="convertMarkdown(poi.description)"
-              ></div>
-            </td>
-            <td>{{ poi.district.name }}</td>
-            <td>{{ poi.type }}</td>
-            <td>
-              <a
-                v-show="poi.image_preview_url"
-                :href="`/${poi.image_preview_url}`"
-                ><i class="bi bi-image"></i
-              ></a>
-            </td>
-            <td>
-              <div class="btn-group" role="group">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  @click="setCenter(poi.longitude, poi.latitude)"
-                >
-                  <i class="bi bi-zoom-in"></i>
-                </button>
-                <Link :href="route('poi.edit', poi.id)" class="btn btn-info">
-                  <i class="bi bi-pencil-square"></i>
-                </Link>
-                <Link
-                  as="button"
-                  method="delete"
-                  :href="route('poi.destroy', poi.id)"
-                  type="button"
-                  class="btn btn-danger"
-                >
-                  <i class="bi bi-trash"></i>
-                </Link>
-              </div>
-            </td>
-          </tr>
+        <template #image="{ item }">
+          <td>
+            <a
+              v-show="item.image_preview_url"
+              :href="`/${item.image_preview_url}`"
+              ><i class="bi bi-image"></i
+            ></a>
+          </td>
+        </template>
+        <template #actions="{ item }">
+          <td>
+            <div class="btn-group" role="group">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                @click="setCenter(item.longitude, item.latitude)"
+              >
+                <i class="bi bi-zoom-in"></i>
+              </button>
+              <Link :href="route('poi.edit', item.id)" class="btn btn-info">
+                <i class="bi bi-pencil-square"></i>
+              </Link>
+              <Link
+                as="button"
+                method="delete"
+                :href="route('poi.destroy', item.id)"
+                type="button"
+                class="btn btn-danger"
+              >
+                <i class="bi bi-trash"></i>
+              </Link>
+            </div>
+          </td>
         </template>
         <template #footer>
-          <tr>
-            <td>
-              <Link :href="route('poi.create')" class="btn btn-primary"
-                >Add</Link
-              >
-            </td>
-            <td colspan="5">
-              <!-- <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav> -->
-            </td>
-          </tr>
+          <td>
+            <Link :href="route('poi.create')" class="btn btn-primary">Add</Link>
+          </td>
         </template>
       </BlueVoteTable>
     </div>
@@ -196,6 +165,31 @@ export default {
       return marked(markedown);
     };
 
+    const tableColumns = ref([
+      {
+        label: "Name",
+        value: "name",
+      },
+      {
+        label: "Description",
+        value: "description",
+      },
+      {
+        label: "Type",
+        value: "type",
+      },
+      {
+        label: "District",
+        value: "district",
+        slotName: "district",
+      },
+      {
+        label: "Image",
+        value: "image_url",
+        slotName: "image",
+      },
+    ]);
+
     return {
       center,
       gMapRef,
@@ -205,6 +199,7 @@ export default {
       filteredMarkers,
       setCenter,
       convertMarkdown,
+      tableColumns,
     };
   },
 };

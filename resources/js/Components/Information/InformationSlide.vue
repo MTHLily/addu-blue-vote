@@ -15,13 +15,6 @@
       <h1 class="text-uppercase display-1" style="font-family: Montserrat">
         {{ info.title }}
       </h1>
-      <!-- <div class="text-white">
-        <MarkdownViewer
-          :content="info.content"
-          class="text-white"
-        ></MarkdownViewer>
-      </div> -->
-      <!-- <p class="lead">{{ info.content }}</p> -->
       <div
         v-html="markedContent"
         style="font-family: 'Josefin Sans'"

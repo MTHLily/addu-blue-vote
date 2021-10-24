@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;

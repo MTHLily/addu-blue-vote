@@ -39,7 +39,8 @@ use App\Http\Controllers\SVGController;
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
-    Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
+    // Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
+    Route::prefix("dashboard")->group(function () {
         Route::get("/", [DashboardController::class, "index"])->name(
             "dashboard"
         );
@@ -64,6 +65,11 @@ Route::get("/candidate-profiles", [
     GuestController::class,
     "candidate_profiles_index",
 ])->name("candidate-profiles.index");
+
+Route::get("/candidate-profile/{id}", [
+    GuestController::class,
+    "candidate_profile",
+])->name("candidate-profiles.show");
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);

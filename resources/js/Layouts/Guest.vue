@@ -6,21 +6,6 @@
         <ul
           class="navbar-nav navbar-dark bg-primary ms-auto mb-2 mb-lg-0 gap-4"
         >
-          <!-- <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="voterRegistrationDropdwon"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Voters Registration
-                </a> -->
-          <!-- <ul
-                  class="dropdown-menu bg-primary"
-                  aria-labelledby="voterRegistrationDropdwon"
-                > -->
           <li class="nav-item">
             <a class="nav-link" href="#voter-registration">
               Registration Process
@@ -28,6 +13,16 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#faqs">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" :href="route('candidate-profiles.index')"
+              >Candidate Profiles</Link
+            >
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" :href="route('candidate-profiles.show', 1)"
+              >Individual Profile</Link
+            >
           </li>
           <li class="nav-item">
             <a

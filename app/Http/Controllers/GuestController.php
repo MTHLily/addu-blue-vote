@@ -30,9 +30,9 @@ class GuestController extends Controller
 
     public function voters_education()
     {
-        (new NewscraperService())->get();
-
-        $articles = NewsArticle::all()->sortBy("date");
+        $articles = NewsArticle::with("newsSource")
+            ->orderByDesc("date")
+            ->paginate(10);
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,
@@ -41,6 +41,10 @@ class GuestController extends Controller
 
     public function candidate_profiles_index()
     {
-        return "HELLO WROLD";
+        return Inertia::render("CandidateProfiles/Index");
+    }
+    public function candidate_profile()
+    {
+        return Inertia::render("CandidateProfiles/Show");
     }
 }

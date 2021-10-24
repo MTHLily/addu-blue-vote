@@ -118,14 +118,15 @@ export default {
     },
     pagination: {
       type: Object,
-      default: [],
     },
   },
   computed: {
     tableItems() {
-      return this.pagination.data || this.items;
+      if (this.pagination === undefined) return this.items;
+      return this.pagicnation.data;
     },
     pages() {
+      if (this.pagination === undefined) return;
       const pivot = this.pagination.current_page;
       if (pivot <= 3)
         return _.range(1, Math.min(this.pagination.last_page + 1, 6));

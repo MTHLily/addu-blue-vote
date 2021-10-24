@@ -7,7 +7,7 @@
         <div style="overflow-x: auto">
           <BlueVoteTable title="Information" :columns="columns" :items="info">
             <template #info-content="{ item }">
-              <MarkdownViewer :content="item.content"></MarkdownViewer>
+              <MarkdownViewer :content="item.content" />
             </template>
             <template #actions="{ item }">
               <div class="justify-content-center d-flex">
@@ -30,6 +30,7 @@
                     </button>
                   </div>
                 </div>
+
                 <!-- Modal -->
                 <div
                   class="modal fade"
@@ -104,6 +105,9 @@
         </div>
       </div>
     </div>
+    <pre>
+      {{ info }}
+    </pre>
   </DashboardLayout>
 </template>
 

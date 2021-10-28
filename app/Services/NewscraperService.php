@@ -18,6 +18,8 @@ class NewscraperService
         "manila_times" => 5,
         "cnn_ph" => 6,
         "inquirer_net" => 7,
+        "gma" => 8,
+        "tv_5" => 9,
     ];
 
     private function getMetaDescriptionFromUrl(string $url): null|string
@@ -237,12 +239,218 @@ class NewscraperService
         return $newsArticles;
     }
 
+/*
+    public function manila_times(bool $getOnlyNew = true): array
+    {
+        $articles = [];
+        $crawler = Goutte::request(
+            "GET",
+            "https://www.manilatimes.net/tag/ELECTION/page/1"
+        );
+
+        parse_str(
+            parse_url($crawler->filter("a.item")->attr("href"))["query"],
+            $parsedQuery
+        );
+
+        if (!$parsedQuery["page"]) {
+            return [];
+        }
+
+        $maxPage = (int) $parsedQuery["page"];
+
+        for ($i = 1; $i <= $maxPage; $i++) {
+            $crawler = Goutte::request(
+                "GET",
+                "https://www.manilatimes.net/tag/ELECTION/page/" . $i
+            );
+            $newArticles = $crawler
+                ->filter(".article-title-h4")
+                ->each(function ($node) {
+                    $article = [
+                        "title" => $node->filter(".article-title-h4")->text(),
+                        "description" =>"A Manila Times Article.",
+                        "url" =>
+                        $node->filter("a")->attr("href"),
+                        "date" => Carbon::now(),
+                        
+                        "news_source_id" => $this->sources_id["abs_cbn"],
+                    ];
+
+                    $article = NewsArticle::firstOrCreate(
+                        [
+                            "url" => $article["url"],
+                        ],
+                        $article
+                    );
+
+                    return $article;
+                });
+
+            $articles = array_merge($articles, $newArticles);
+
+            if ($getOnlyNew) {
+                $articleCollection = collect($newArticles);
+
+                $oldArticles = $articleCollection->map(function ($model) {
+                    return $model->wasRecentlyCreated;
+                });
+
+                if ($oldArticles->contains(false)) {
+                    break;
+                }
+            }
+        }
+
+        return $articles;
+    }*/
+    public function manila_times()
+    { 
+        $crawler = Goutte::request(
+            "GET",
+            "https://www.manilatimes.net/tag/ELECTION/page/1"
+        );
+
+        for ($i = 1; $i <= 13; $i++) {
+            $crawler = Goutte::request(
+                "GET",
+                "https://www.manilatimes.net/tag/ELECTION/page/" . $i
+            );
+            $newsArticles = $crawler
+            ->filter(".article-title-h4")
+            ->each(function ($node) {
+                $article = NewsArticle::firstOrNew([
+                    "url" =>
+                    $node->filter("a")->attr("href"),
+                ]);
+
+                if (!$article->exists) {
+                    $article->title = $node
+                        ->filter(".article-title-h4")
+                        ->text();
+                    $article->description = "A Manila Times Article.";
+                    $article->date =  Carbon::now();
+                    $article->news_source_id = $this->sources_id["manila_times"];
+                    $article->save();
+                }
+
+                return $article;
+            });
+        }
+        return $newsArticles;
+    }
+
+
+    public function cnn_ph()
+    {
+        $crawler = Goutte::request(
+            "GET",
+            "https://cnnphilippines.com/thefilipinovotes/"
+        );
+//div.carousel-img-text span
+        $newsArticles = $crawler
+            ->filter("carousel-img-text")
+            ->each(function ($node) {
+                $article = NewsArticle::firstOrNew([
+                    "url" =>
+                    "https://cnnphilippines.com/" .
+                    $node->filter("a")->attr("href"),
+                ]);
+
+                if (!$article->exists) {
+                    $article->title = $node
+                        ->filter("carousel-img-text")
+                        ->text();
+                    $article->description = "A CNN PH Article.";
+                    $article->date =  Carbon::now();
+                    $article->news_source_id = $this->sources_id["cnn_ph"];
+                    $article->save();
+                }
+                return $article;
+            });
+
+        return $newsArticles;
+    }
+
+
+    public function inquirer_net()
+    {
+        $crawler = Goutte::request(
+            "GET",
+            "https://newsinfo.inquirer.net/tag/2022-national-elections"
+        );
+
+        $newsArticles = $crawler
+            ->filter("ch-ls-box")
+            ->each(function ($node) {
+                $article = NewsArticle::firstOrNew([
+                    "url" =>
+                    "https://newsinfo.inquirer.net/" .
+                    $node->filter("a")->attr("href"),
+                ]);
+                
+
+                if (!$article->exists) {
+                    $article->title = $node
+                        ->filter("ch-ls-head")
+                        ->text();
+                    $article->description = "An Inquirer.net Article.";
+                    $article->date = Carbon::now();
+                    $article->news_source_id = $this->sources_id["inquirer_net"];
+                    $article->save();
+                }
+
+                return $article;
+            });
+
+        return $newsArticles;
+    }
+
+
+    public function gma()
+    {
+        $crawler = Goutte::request(
+            "GET",
+            "https://www.gmanetwork.com/news/tracking/eleksyon_2022/"
+        );
+
+        $newsArticles = $crawler
+            ->filter("a.story_link")
+            ->each(function ($node) {
+                $article = NewsArticle::firstOrNew([
+                    "url" => 
+                    "https://www.gmanetwork.com/news/" .
+                    $node->filter("a.story_link")->attr("href"),
+                ]);
+                
+
+                if (!$article->exists) {
+                    $article->title = $node
+                        ->filter("a.story_link")->attr("title")
+                        ->text();
+                    $article->description = "An GMA News Article.";
+                    $article->date = Carbon::now();
+                    $article->news_source_id = $this->sources_id["gma"];
+                    $article->save();
+                }
+
+                return $article;
+            });
+
+        return $newsArticles;
+    }
+
+
+    //https://www.gmanetwork.com/news/tracking/eleksyon_2022/
+    //https://cnnphilippines.com/thefilipinovotes/
+
     public function get(): array
     {
         $articles = [];
-        // $articles = $this->abs_cbn();
-        // $articles = $this->rappler();
-        // $articles = $this->comelec();
+        //$articles = $this->cnn_ph();
+        $articles = $this->manila_times();
+        $articles = $this->inquirer_net();
+        //$articles = $this->gma();
 
         return $articles;
     }

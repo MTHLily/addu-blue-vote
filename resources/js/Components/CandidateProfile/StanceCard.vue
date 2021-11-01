@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="w-25 text-center bg-white p-3 text-primary m-2" style="border-radius: 20px">
+    <div class="col-2 text-center bg-white p-3 text-primary m-2 " style="border-radius: 20px">
         <img :src="`${stance.image}`" class="card-img-top img-fluid" style="max-width: 15%;" :alt="`${stance.name}`">
         <div class="card-body">
             <h5 class="card-title">{{stance.title}}</h5>

@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="card text-white mb-3" style="max-width: 18rem;" :style="{ 'background-color': background.bgcolor || 'blue' }">
+    <div class="card text-white ms-md-auto mb-3 mx-3" style="max-width: 18rem;" :style="{ 'background-color': background.bgcolor || 'blue' }">
         <div class="card-header">{{background.heading}}</div>
         <div class="card-body">
             <h5 class="card-title">

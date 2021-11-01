@@ -1,14 +1,14 @@
 <template>
-    <div class="row">
-        <div class="card mb-3" style="max-width: 100%;">
+    <div class="row text-primary align-self-center">
+        <div class="card" style="max-width: 100%;">
             <div class="row g-0">
                 <div class="col-md-4">
                 <img :src="`${candidate.image}`" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ candidate.name }}</h5>
-                    <p class="card-text">{{candidate.partylist}}</p>
+                <div class="card-body position-relative top-50 start-50 translate-middle">
+                    <h1 class="card-title">{{ candidate.name }}</h1>
+                    <h4 class="card-text text-muted">{{candidate.partylist}}</h4>
                     <button type="button" class="btn btn-primary btn-lg" style="border-radius: 20px" active>
                         {{ candidate.position }}
                     </button>
@@ -36,5 +36,5 @@ export default {
 </script>
 
 <style lang="">
-    
+
 </style>

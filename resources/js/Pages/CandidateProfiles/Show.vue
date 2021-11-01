@@ -26,22 +26,19 @@
   </div> -->
     <div class="row">
       <CandidateHeader></CandidateHeader>
-      <!-- <div class="row justify-content-end">
-        <EducBackground></EducBackground>
-        <ProfBackground></ProfBackground>
-      </div> -->
     </div>
-    <div class="row justify-content-evenly">
-      <div class="col-6">
+    <div class="row cols-2 row-cols-1 row-cols-md-8">
+      <!-- <div class="col-6"> -->
         <EducBackground></EducBackground>
-      </div>
-      <div class="col-6">
+      <!-- </div> -->
+      <!-- <div class="col-6"> -->
         <ProfBackground></ProfBackground>
-      </div>
+      <!-- </div> -->
     </div>
     <div class="col">
       <PolBackground></PolBackground>
       <Stance></Stance>
+      <!-- <NewsArticles></NewsArticles>  -->
     </div>
 
   </div>
@@ -55,6 +52,7 @@ import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue
 import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue"
 import PolBackground from "../../Components/CandidateProfile/LongBackground.vue"
 import Stance from "../../Components/CandidateProfile/LongStanceCard.vue"
+// import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
 import ArisenHeader from "../../Layouts/Partials/Header.vue";
 import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
 
@@ -68,6 +66,7 @@ export default defineComponent({
     Stance,
     ArisenFooter,
     ArisenHeader,
+    // NewsArticles,
 
 
   },

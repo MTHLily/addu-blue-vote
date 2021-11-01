@@ -43,7 +43,6 @@
       <PolBackground></PolBackground>
       <Stance></Stance>
     </div>
-    <Twitter></Twitter>
 
   </div>
 <ArisenFooter></ArisenFooter>
@@ -58,7 +57,7 @@ import PolBackground from "../../Components/CandidateProfile/LongBackground.vue"
 import Stance from "../../Components/CandidateProfile/LongStanceCard.vue"
 import ArisenHeader from "../../Layouts/Partials/Header.vue";
 import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
-import Twitter from "../../Components/CandidateProfile/Twitter.vue"
+
 
 export default defineComponent({
   components: {
@@ -69,7 +68,7 @@ export default defineComponent({
     Stance,
     ArisenFooter,
     ArisenHeader,
-    Twitter,
+
 
   },
 

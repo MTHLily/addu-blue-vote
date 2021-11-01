@@ -19,7 +19,7 @@ export default {
         stance: {
         type: Object,
         default: () => ({
-            cardTitle: "DEFAULT NAME",
+            cardTitle: "CANDIDATE’S STANCE ON ISSUES",
         }),
         },
     },

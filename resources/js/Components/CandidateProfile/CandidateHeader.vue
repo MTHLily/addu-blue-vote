@@ -1,6 +1,6 @@
 <template>
-    <div class="row text-primary align-self-center">
-        <div class="card" style="max-width: 100%;">
+    <!-- <div class="row text-primary align-self-center"> -->
+        <div class="card mb-3 text-primary" style="max-width: 100%;">
             <div class="row g-0">
                 <div class="col-md-4">
                 <img :src="`${candidate.image}`" class="img-fluid rounded-start" alt="...">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>

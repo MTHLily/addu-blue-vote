@@ -22,6 +22,8 @@ class NewsSourceSeeder extends Seeder
             "Manila Times" => "https://www.manilatimes.net/",
             "CNN Philippines" => "https://cnnphilippines.com/",
             "Inquirer.net" => "https://www.inquirer.net/",
+            "GMA News" => "https://www.gmanetwork.com/news/",
+            "TV5" => "https://news.tv5.com.ph/",
         ];
 
         foreach ($sources as $name => $link) {

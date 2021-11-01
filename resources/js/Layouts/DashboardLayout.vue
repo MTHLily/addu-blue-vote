@@ -86,6 +86,11 @@ export default {
     menuOptions() {
       return [
         {
+          title: "Locations",
+          icon: "bi-geo-alt-fill",
+          route: "locations.index",
+        },
+        {
           title: "Voter's Registration",
           icon: "bi-pen-fill",
           items: [
@@ -122,6 +127,7 @@ export default {
           items: [
             {
               title: "Candidate Profiles",
+              route: "candidates.index",
             },
             {
               title: "News",

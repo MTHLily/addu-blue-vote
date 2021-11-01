@@ -14,10 +14,9 @@ class CreateRegionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create("regions", function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(District::class)->constrained();
-            $table->string('name');
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateRegionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('regions');
+        Schema::dropIfExists("regions");
     }
 }

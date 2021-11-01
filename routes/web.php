@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\SVGController;
@@ -45,10 +47,12 @@ Route::middleware(["auth"])->group(function () {
         );
         Route::resource("faqs", FrequentlyAskedQuestionController::class);
         Route::resource("information", InformationSnippetController::class);
+        Route::resource("locations", LocationController::class);
         Route::resource("cities", CityController::class);
         Route::resource("districts", DistrictController::class);
         Route::resource("poi", PointOfInterestController::class);
         Route::resource("news", NewsArticleController::class);
+        Route::resource("candidates", CandidateController::class);
     });
 });
 

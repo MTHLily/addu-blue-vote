@@ -41,6 +41,7 @@
     </div>
     <div class="col">
       <PolBackground></PolBackground>
+      <Stance></Stance>
     </div>
     
 
@@ -54,7 +55,7 @@ import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.v
 import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue"
 import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue"
 import PolBackground from "../../Components/CandidateProfile/LongBackground.vue"
-
+import Stance from "../../Components/CandidateProfile/LongStanceCard.vue"
 import ArisenHeader from "../../Layouts/Partials/Header.vue";
 import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
 export default defineComponent({
@@ -63,6 +64,7 @@ export default defineComponent({
     EducBackground,
     ProfBackground,
     PolBackground,
+    Stance,
     ArisenFooter,
     ArisenHeader,
 

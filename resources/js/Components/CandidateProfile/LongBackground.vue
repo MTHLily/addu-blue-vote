@@ -26,7 +26,7 @@ export default {
                 title: "Default source",
                 description:"Default description",
                 bgcolor: "#FAA728",
-                color:"#08228D",
+                color:"#185EA9",
             }),
         },
     },

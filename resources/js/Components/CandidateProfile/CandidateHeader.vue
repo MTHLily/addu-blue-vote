@@ -7,9 +7,9 @@
                 </div>
                 <div class="col-md-8">
                 <div class="card-body position-relative top-50 start-50 translate-middle">
-                    <h1 class="card-title">{{ candidate.name }}</h1>
+                    <h1 class="card-title fw-bold lh-sm">{{ candidate.name }}</h1>
                     <h4 class="card-text text-muted">{{candidate.partylist}}</h4>
-                    <button type="button" class="btn btn-primary btn-lg" style="border-radius: 20px" active>
+                    <button type="button" class="btn btn-lg text-white fw-bold lh-sm" style="border-radius: 20px;background-color:#FAA728" active>
                         {{ candidate.position }}
                     </button>
                 </div>

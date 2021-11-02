@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-8">
             <div class="card-body position-relative top-50 start-50 translate-middle">
-                <h5 class="card-title">{{ prof.name }}</h5>
+                <h5 class="card-title fw-bold lh-sm">{{ prof.name }}</h5>
                 <p class="card-text text-muted">{{ prof.partylist }}</p>
                 <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 translate-middle-x" style="border-radius: 20px">
                     <a

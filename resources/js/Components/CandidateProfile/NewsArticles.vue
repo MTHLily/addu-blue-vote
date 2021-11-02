@@ -1,6 +1,6 @@
 <template lang="">
-    <div class="card col-6 bg-primary text-white h-auto">
-        <div class="card-title p-3">NEWS ARTICLES</div>
+    <div class="card col-6 text-white h-auto" style="background-color:#FAA728">
+        <div class="card-title p-3 fw-bold lh-sm">NEWS ARTICLES</div>
         <div class="card-body">
             <!-- <NewsCard></NewsCard> -->
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -8,7 +8,7 @@
                     <div class="carousel-item active">
                         <!-- <NewsCard></NewsCard> -->
                     </div>
-                    <div class="carousel-item p-3">
+                    <div class="carousel-item p-3 mb-3">
                         <div class="card-body bg-white" style="border-radius: 20px">
                             <h5 class="card-title">Card title</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>

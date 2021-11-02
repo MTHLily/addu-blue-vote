@@ -38,7 +38,7 @@
     </div>
     
     <div class="" style="position:relative">
-      <div class="row cols-2 w-100 d-flex justify-content-center mb-2" style="position:absolute">
+      <div class="row cols-2 col-12 mb-2 row-cols-1 row-cols-md-8" style="position:absolute">
         <NewsArticles></NewsArticles> 
         <Twitter></Twitter>
       </div>

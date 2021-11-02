@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocationRequest;
 use App\Models\Location;
 use App\Models\LocationType;
+use App\Services\LocationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class LocationController extends Controller
@@ -41,9 +44,14 @@ class LocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LocationRequest $request)
     {
-        //
+        $location = (new LocationService())->updateOrCreate($request);
+
+        return Redirect::route("locations.index")->with(
+            "success",
+            "Location has been created!"
+        );
     }
 
     /**
@@ -54,7 +62,6 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
     }
 
     /**
@@ -65,7 +72,16 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        //
+        $types = LocationType::all();
+        $locations = Location::all()->groupBy("location_type_id");
+
+        $location->load("media");
+
+        return Inertia::render("Locations/Edit", [
+            "location" => $location,
+            "types" => $types,
+            "locations" => $locations,
+        ]);
     }
 
     /**
@@ -75,9 +91,14 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(LocationRequest $request, Location $location)
     {
-        //
+        (new LocationService())->updateOrCreate($request, $location);
+
+        return Redirect::route("locations.index")->with(
+            "success",
+            $location->name . " has been updated!"
+        );
     }
 
     /**
@@ -88,6 +109,11 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location->delete();
+
+        return Redirect::back()->with(
+            "error",
+            $location->name . " has been deleted!"
+        );
     }
 }

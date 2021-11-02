@@ -71,15 +71,29 @@
         ></textarea>
         <div class="invalid-feedback">{{ location.errors.description }}</div>
       </div>
-      <div class="mb-3 p-3">
-        <label for="color" class="form-label">Color</label>
-        <ColorPicker
-          v-model:color="location.color"
-          :class="{
-            'is-invalid': location.errors.color,
-          }"
-        ></ColorPicker>
-        <div class="invalid-feedback">{{ location.errors.color }}</div>
+      <div class="col">
+        <div class="row mb-2">
+          <label for="color" class="form-label">Color</label>
+          <ColorPicker
+            v-model:color="location.color"
+            :class="{
+              'is-invalid': location.errors.color,
+            }"
+          ></ColorPicker>
+          <div class="invalid-feedback">{{ location.errors.color }}</div>
+        </div>
+        <div class="row">
+          <label for="color" class="form-label">Image Upload</label>
+          <FileUploader
+            v-model:value="location.media"
+            :class="{
+              'is-invalid': location.errors['media.file'],
+            }"
+          ></FileUploader>
+          <div class="invalid-feedback">
+            {{ location.errors["media.file"] }}
+          </div>
+        </div>
       </div>
       <div class="mb-3 p-3 col-12">
         <div class="row">
@@ -133,12 +147,14 @@
 
 <script>
 import ColorPicker from "../ColorPicker.vue";
+import FileUploader from "../FileUploader.vue";
 import MapPicker from "../Map/MapPicker.vue";
 
 export default {
   components: {
     ColorPicker,
     MapPicker,
+    FileUploader,
   },
   props: {
     location: {

@@ -4,7 +4,7 @@
   <DashboardLayout>
     <div class="rounded" style="background-color: #ccdfff">
       <div class="d-flex flex-column">
-        <form @submit.prevent="location.post(route('districts.store'))">
+        <form @submit.prevent="location.post(route('locations.store'))">
           <h1 class="p-3">Create Location</h1>
 
           <div class="p-3">
@@ -41,7 +41,7 @@ import AdminLayout from "../../Layouts/admin";
 
 export default {
   props: {
-    locations: Array,
+    locations: Object,
     types: Array,
   },
   components: { Link, Head, DashboardLayout, LocationForm, AdminLayout },
@@ -54,6 +54,7 @@ export default {
       latitude: null,
       location_type_id: null,
       parent_location_id: null,
+      media: null,
     }),
   }),
 };

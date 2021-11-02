@@ -36,9 +36,10 @@
       <PolBackground></PolBackground>
       <Stance></Stance>
     </div>
-      <!-- <NewsArticles></NewsArticles>  -->
+      <NewsArticles></NewsArticles> 
+      <!-- <Twitter></Twitter> -->
   </div>
-<Bground></Bground>
+<Bg></Bg>
 <ArisenFooter></ArisenFooter>
 </template>
 
@@ -52,8 +53,9 @@ import Stance from "../../Components/CandidateProfile/LongStanceCard.vue"
 import ArisenHeader from "../../Layouts/Partials/Header.vue";
 import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
 
-import Bground from "../../Components/CandidateProfile/KnowMoreBg.vue";
-// import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
+import Bg from "../../Components/CandidateProfile/KnowMoreBg.vue";
+import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
+// import Twitter from "../../Components/CandidateProfile/Twitter.vue"
 
 export default defineComponent({
   components: {
@@ -64,8 +66,9 @@ export default defineComponent({
     Stance,
     ArisenFooter,
     ArisenHeader,
-    Bground,
-    // NewsArticles,
+    Bg,
+    NewsArticles,
+    // Twitter,
 
 
   },

@@ -7,7 +7,8 @@
                         {{ background.date }}
                 </button>
             </h5>
-            <ul class="card-text">{{background.description}}</ul>
+            <ul class="card-text fw-bolder lh-sm">{{background.title}}</ul>
+            <ul class="card-text lh-sm">{{background.description}}</ul>
         </div>
     </div>
 
@@ -21,11 +22,11 @@ export default {
             type: Object,
             default: () => ({
                 heading: "DEFAULT BACKROUND",
-                date: "default date",
-                title: "default source",
-                description:"default description",
-                bgcolor: "#2365A1",
-                color:"#CE2029",
+                date: "Default date",
+                title: "Default source",
+                description:"Default description",
+                bgcolor: "#FAA728",
+                color:"#08228D",
             }),
         },
     },

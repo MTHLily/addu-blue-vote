@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <Tweet
     tweet-id="1370027087818461184"
     cards="visible"
@@ -19,6 +20,7 @@
       <span>Sorry, that tweet doesn’t exist!</span>
     </template>
   </Tweet>
+</div>
 </template>
 
 <script>

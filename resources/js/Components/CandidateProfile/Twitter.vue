@@ -1,47 +1,21 @@
 <template>
-<div class="container">
-  <Tweet
-    tweet-id="1370027087818461184"
-    cards="visible"
-    conversation="all"
-    lang="en"
-    theme="light"
-    align="left"
-    :width="400"
-    :dnt="false"
-    @tweet-load-error="onTweetLoadError"
-    @tweet-load-success="onTweetLoadSuccess"
-  >
-    <template v-slot:loading>
-      <span>Loading...</span>
-    </template>
-
-    <template v-slot:error>
-      <span>Sorry, that tweet doesn’t exist!</span>
-    </template>
-  </Tweet>
-</div>
+  <div class="container col-6">
+    <twitter>
+      <a class="twitter-timeline " href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> 
+    </twitter>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import Tweet from "vue-tweet";
+import { twitter } from 'vue-twitter'
+// import twitter from 'vue-twitter/lib/twttr.js'
 
-export default defineComponent({
+export default {
   components: {
-    Tweet,
-  },
-  setup() {
-    function onTweetLoadSuccess(embedNode) {
-      console.log(embedNode);
-    }
-
-    function onTweetLoadError() {
-      alert("Error");
-      console.log("Ops... an error has occurred");
-    }
-
-    return { onTweetLoadSuccess, onTweetLoadError };
-  },
-});
+    twitter,
+  }
+}
 </script>
+<style lang="">
+  
+</style>

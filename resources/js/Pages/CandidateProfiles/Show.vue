@@ -36,8 +36,10 @@
       <PolBackground></PolBackground>
       <Stance></Stance>
     </div>
+    <div class="row cols-2">
       <NewsArticles></NewsArticles> 
-      <!-- <Twitter></Twitter> -->
+      <Twitter></Twitter>
+    </div>
   </div>
 <Bg></Bg>
 <ArisenFooter></ArisenFooter>
@@ -55,7 +57,7 @@ import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
 
 import Bg from "../../Components/CandidateProfile/KnowMoreBg.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
-// import Twitter from "../../Components/CandidateProfile/Twitter.vue"
+import Twitter from "../../Components/CandidateProfile/Twitter.vue"
 
 export default defineComponent({
   components: {
@@ -68,7 +70,7 @@ export default defineComponent({
     ArisenHeader,
     Bg,
     NewsArticles,
-    // Twitter,
+    Twitter,
 
 
   },

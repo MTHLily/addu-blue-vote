@@ -1,6 +1,6 @@
 // TODO: Fix background 
 <template>
-<!-- <Bg> -->
+<Bg>
   <ArisenHeader></ArisenHeader>
   <div class="container bod" style="margin-top: 10%;" >
     <h1 class="text-primary">PRESIDENTIAL CANDIDATES</h1>
@@ -11,7 +11,7 @@
     <SenCarousel></SenCarousel>
   </div>
   <ArisenFooter></ArisenFooter>
-<!-- </Bg> -->
+</Bg>
 </template>
 
 <script>
@@ -21,7 +21,7 @@ import ArisenHeader from "../../Layouts/Partials/Header.vue";
 import PresCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue"
 import ViceCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue"
 import SenCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue"
-// import Bg from "../../Components/CandidateProfile/CandidateProfile.vue"
+import Bg from "../../Components/CandidateProfile/CandidateProfile.vue"
 
 export default {
   components: {
@@ -31,18 +31,17 @@ export default {
     PresCarousel,
     ViceCarousel,
     SenCarousel,
-    // Bg,
+    Bg,
 
   },
 };
 </script>
 
 <style>
-html{
+/* html{
   background-image: url("../../Components/assets/Picture1.png");
-  /* background-size: cover; */
   background-repeat: repeat;
   background-size: cover;
-}
+} */
 
 </style>

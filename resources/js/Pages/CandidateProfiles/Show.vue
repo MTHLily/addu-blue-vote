@@ -35,10 +35,10 @@
     <div class="col">
       <PolBackground></PolBackground>
       <Stance></Stance>
-      <!-- <NewsArticles></NewsArticles>  -->
     </div>
-
+      <!-- <NewsArticles></NewsArticles>  -->
   </div>
+<Bground></Bground>
 <ArisenFooter></ArisenFooter>
 </template>
 
@@ -49,10 +49,11 @@ import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue
 import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue"
 import PolBackground from "../../Components/CandidateProfile/LongBackground.vue"
 import Stance from "../../Components/CandidateProfile/LongStanceCard.vue"
-// import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
 import ArisenHeader from "../../Layouts/Partials/Header.vue";
 import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
 
+import Bground from "../../Components/CandidateProfile/KnowMoreBg.vue";
+// import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
 
 export default defineComponent({
   components: {
@@ -63,6 +64,7 @@ export default defineComponent({
     Stance,
     ArisenFooter,
     ArisenHeader,
+    Bground,
     // NewsArticles,
 
 

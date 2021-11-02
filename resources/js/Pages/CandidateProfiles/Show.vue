@@ -36,12 +36,15 @@
       <PolBackground></PolBackground>
       <Stance></Stance>
     </div>
-    <div class="row cols-2">
-      <NewsArticles></NewsArticles> 
-      <Twitter></Twitter>
+    
+    <div class="" style="position:relative">
+      <div class="row cols-2 w-100 d-flex justify-content-center mb-2" style="position:absolute">
+        <NewsArticles></NewsArticles> 
+        <Twitter></Twitter>
+      </div>
+      <Bg></Bg>
     </div>
   </div>
-<Bg></Bg>
 <ArisenFooter></ArisenFooter>
 </template>
 

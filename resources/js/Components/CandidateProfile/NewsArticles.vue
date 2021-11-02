@@ -1,16 +1,29 @@
 <template lang="">
-    <div class="card col-6 bg-primary text-white">
+    <div class="card col-6 bg-primary text-white h-auto">
         <div class="card-title p-3">NEWS ARTICLES</div>
         <div class="card-body">
             <!-- <NewsCard></NewsCard> -->
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        
-                    
+                        <!-- <NewsCard></NewsCard> -->
                     </div>
-                    <div class="carousel-item">
-                        <div class="card-body">
+                    <div class="carousel-item p-3">
+                        <div class="card-body bg-white" style="border-radius: 20px">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">SAAAAA.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                        <div class="card-body bg-white" style="border-radius: 20px">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">SAAAAA.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                        <div class="card-body bg-white" style="border-radius: 20px">
                             <h5 class="card-title">Card title</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                             <p class="card-text">SAAAAA.</p>
@@ -18,8 +31,8 @@
                             <a href="#" class="card-link">Another link</a>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="card-body">
+                    <div class="carousel-item p-3">
+                        <div class="card-body bg-white" style="border-radius: 20px">
                             <h5 class="card-title">Card title</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                             <p class="card-text">AAnt.</p>

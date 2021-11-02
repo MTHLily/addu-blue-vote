@@ -1,7 +1,7 @@
 <template>
-  <div class="container col-6">
+  <div class="container col-6 h-50">
     <twitter>
-      <a class="twitter-timeline " href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> 
+      <a class="twitter-timeline" data-height="540" data-theme="light" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a>
     </twitter>
   </div>
 </template>

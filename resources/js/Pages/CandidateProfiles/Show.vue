@@ -1,3 +1,4 @@
+// TODO: Fix background,twitter widget, news articles widget
 <template>
 <ArisenHeader></ArisenHeader>
   <div class="container mx-auto" style="margin-top: 10%;">
@@ -28,12 +29,8 @@
       <CandidateHeader></CandidateHeader>
     </div>
     <div class="row cols-2 row-cols-1 row-cols-md-8">
-      <!-- <div class="col-6"> -->
         <EducBackground></EducBackground>
-      <!-- </div> -->
-      <!-- <div class="col-6"> -->
         <ProfBackground></ProfBackground>
-      <!-- </div> -->
     </div>
     <div class="col">
       <PolBackground></PolBackground>

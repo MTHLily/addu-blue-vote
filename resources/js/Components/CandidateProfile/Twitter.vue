@@ -1,7 +1,7 @@
 <template>
   <div class="container col-6 h-50">
     <twitter>
-      <a class="twitter-timeline" data-height="540" data-theme="light" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a>
+      <a class="twitter-timeline" data-height="540" data-theme="light" :href="`${profile.link}`" >Tweets by {{ profile.name }}</a>
     </twitter>
   </div>
 </template>
@@ -13,7 +13,16 @@ import { twitter } from 'vue-twitter'
 export default {
   components: {
     twitter,
-  }
+  },
+  props: {
+    profile: {
+      type: Object,
+      default: () => ({
+        name: "Default Descriptions",
+        link: "https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw",
+      }),
+    },
+  },
 }
 </script>
 <style lang="">

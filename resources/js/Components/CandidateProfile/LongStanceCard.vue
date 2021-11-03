@@ -16,10 +16,21 @@
         row-cols-1 row-cols-md-6 row-cols-lg-12
       "
     >
+    <div >
+      <StanceCard class="col-12"></StanceCard>
+    </div>
+    <div >
+      <StanceCard class="col-12"></StanceCard>
+    </div>
+    <div >
+      <StanceCard class="col-12"></StanceCard>
+    </div>
+    <div >
+      <StanceCard class="col-12"></StanceCard>
+    </div>
+      <!-- <StanceCard></StanceCard>
       <StanceCard></StanceCard>
-      <StanceCard></StanceCard>
-      <StanceCard></StanceCard>
-      <StanceCard></StanceCard>
+      <StanceCard></StanceCard> -->
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="row text-primary align-self-center"> -->
-  <div class="row g-0">
+  <div class="row g-0 mb-3">
     <div class="col-12 col-md-4">
       <img
         :src="`${candidate.image}`"
@@ -13,14 +13,9 @@
         <h1 class="fw-bold lh-sm">{{ candidate.name }}</h1>
         <h4 class="text-muted">{{ candidate.partylist }}</h4>
         <!-- Convert to badge -->
-        <button
-          type="button"
-          class="btn btn-lg text-white fw-bold lh-sm"
-          style="border-radius: 20px; background-color: #faa728"
-          active
-        >
+        <span class="badge text-white fw-bold lh-sm" style="border-radius: 20px; background-color: #faa728">
           {{ candidate.position }}
-        </button>
+        </span>
       </div>
     </div>
   </div>

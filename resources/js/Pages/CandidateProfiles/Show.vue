@@ -1,4 +1,3 @@
-// TODO: Fix background,twitter widget, news articles widget
 <template>
   <Layout>
     <div class="container mx-auto" style="margin-top: 10%">
@@ -18,7 +17,7 @@
       </div>
 
       <div class="row">
-        <Stance></Stance>
+        <Stances></Stances>
       </div>
 
       <div class="row" style="position: relative">
@@ -41,7 +40,7 @@ import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.v
 import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
 import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
 import PolBackground from "../../Components/CandidateProfile/LongBackground.vue";
-import Stance from "../../Components/CandidateProfile/LongStanceCard.vue";
+import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
 
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";
@@ -53,7 +52,7 @@ export default defineComponent({
     EducBackground,
     ProfBackground,
     PolBackground,
-    Stance,
+    Stances,
     Layout,
     NewsArticles,
     Twitter,

@@ -3,17 +3,17 @@
     class="card text-white mb-3"
     style="max-width: 100%; background-color: #bf2234"
   >
-    <div class="card-header text-center fw-bold lh-sm">
+    <div class="card-header border-0 text-center fw-bold lh-sm" style="background: #bf2234">
       {{ stance.cardTitle }}
     </div>
     <div
       class="
         row
-        col-12
+        col
         d-flex
         m-2
         justify-content-evenly
-        row-cols-1 row-cols-sm-1 row-cols-md-6 row-cols-lg-12
+        row-cols-1 row-cols-md-6 row-cols-lg-12
       "
     >
       <StanceCard></StanceCard>

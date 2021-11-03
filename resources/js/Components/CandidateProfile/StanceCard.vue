@@ -16,14 +16,9 @@
       <p class="card-text">
         <small class="text-white">
           <!-- TODO: Convert to Badge -->
-          <button
-            type="button"
-            class="btn btn-primary btn-md"
-            style="border-radius: 20px"
-            active
-          >
+          <span class="badge bg-primary py-2 px-3 fs-6" style="border-radius: 20px">
             {{ stance.decision ? "Yes" : "No" }}
-          </button>
+          </span>
         </small>
       </p>
     </div>

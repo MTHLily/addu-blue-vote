@@ -1,11 +1,11 @@
 <template lang="">
     <div class="card text-white mb-3" style="max-width: 100%;" :style="{ 'background-color': background.bgcolor || 'blue' }">
-        <div class="card-header fw-bold lh-sm">{{background.heading}}</div>
+        <div class="card-header border-0 fw-bold lh-sm" :style="{ 'background-color': background.bgcolor || 'blue' }">{{background.heading}}</div>
         <div class="card-body">
             <h5 class="card-title">
-                <button type="button" class="btn btn-primary btn-lg" style="border-radius: 20px" :style="{ 'background-color': background.color || 'red' }" active>
+                <span class="badge py-2 px-3 fs-6 bg-primary" style="border-radius: 20px" :style="{ 'background-color': background.color || 'red' }">
                         {{ background.date }}
-                </button>
+                </span>
             </h5>
             <ul class="card-text fw-bolder lh-sm">{{background.title}}</ul>
             <ul class="card-text lh-sm">{{background.description}}</ul>

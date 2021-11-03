@@ -19,7 +19,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::with("type", "parent")->paginate();
+        $locations = Location::with("type", "parent", "media")->paginate();
         return Inertia::render("Locations/Index", compact("locations"));
     }
 

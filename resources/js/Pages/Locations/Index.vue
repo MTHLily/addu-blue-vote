@@ -1,16 +1,29 @@
 <template>
-  <Head title="Districts"></Head>
+  <Head title="Locations"></Head>
   <DashboardLayout>
     <div class="container flex flex-column">
       <div class="card">
-        <div class="card-header bg-primary text-white fw-bold">Information</div>
-        <BlueVoteTable :pagination="locations" :columns="columns">
+        <BlueVoteTable
+          :pagination="locations"
+          :columns="columns"
+          title="Locations"
+        >
           <template #location-color="{ item }">
             <i class="bi bi-circle-fill" :style="{ color: item.color }"></i
             >{{ item.color }}
           </template>
           <template #location-type="{ item }">
             {{ item.type.name }}
+          </template>
+          <template #location-media="{ item }">
+            <div class="d-flex justify-content-center w-100">
+              <n-image
+                v-for="image in item.media"
+                :key="image.key"
+                width="50"
+                :src="image.original_url"
+              />
+            </div>
           </template>
           <template #actions="{ item }">
             <div class="d-flex justify-content-center">
@@ -45,6 +58,7 @@ import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import { Inertia } from "@inertiajs/inertia";
 import BlueVoteTable from "@/Components/BlueVoteTable.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";
+import { NImage } from "naive-ui";
 
 export default {
   props: {
@@ -80,9 +94,21 @@ export default {
         label: "Color",
         slotName: "location-color",
       },
+      {
+        value: "media",
+        label: "Preview Image",
+        slotName: "location-media",
+      },
     ],
   }),
-  components: { Link, Head, DashboardLayout, BlueVoteTable, DeleteButton },
+  components: {
+    Link,
+    Head,
+    DashboardLayout,
+    BlueVoteTable,
+    DeleteButton,
+    NImage,
+  },
   methods: {
     submitDelete(id) {
       Inertia.delete(route("locations.destroy", id));

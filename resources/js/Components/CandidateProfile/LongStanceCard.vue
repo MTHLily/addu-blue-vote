@@ -3,7 +3,7 @@
     class="card text-white mb-3"
     style="max-width: 100%; background-color: #bf2234"
   >
-    <div class="card-header border-0 text-center fw-bold lh-sm" style="background: #bf2234">
+    <div class="card-header border-0 text-center text-uppercase fw-bold lh-sm p-3 fs-1" style="background: #bf2234">
       {{ stance.cardTitle }}
     </div>
     <div

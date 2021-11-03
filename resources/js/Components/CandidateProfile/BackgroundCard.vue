@@ -3,7 +3,7 @@
     class="card text-white mb-3"
     :style="{ 'background-color': background.bgcolor || 'blue' }"
   >
-    <div class="card-header border-0 bg-primary fw-bold lh-sm">
+    <div class="card-header text-uppercase border-0 bg-primary fw-bold lh-sm p-3 fs-1">
       {{ background.heading }}
     </div>
     <div class="card-body">

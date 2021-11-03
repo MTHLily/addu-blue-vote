@@ -1,6 +1,6 @@
 <template lang="">
     <div class="card text-white mb-3" style="max-width: 100%;" :style="{ 'background-color': background.bgcolor || 'blue' }">
-        <div class="card-header border-0 fw-bold lh-sm" :style="{ 'background-color': background.bgcolor || 'blue' }">{{background.heading}}</div>
+        <div class="card-header text-uppercase border-0 fw-bold lh-sm p-3 fs-1" :style="{ 'background-color': background.bgcolor || 'blue' }">{{background.heading}}</div>
         <div class="card-body">
             <h5 class="card-title">
                 <span class="badge py-2 px-3 fs-6 bg-primary" style="border-radius: 20px" :style="{ 'background-color': background.color || 'red' }">

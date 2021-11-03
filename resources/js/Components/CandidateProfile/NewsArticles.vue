@@ -1,6 +1,6 @@
 <template lang="">
   <div class="card col-6 text-white h-auto" style="background-color: #faa728">
-    <div class="card-title p-3 fw-bold lh-sm">NEWS ARTICLES</div>
+    <div class="card-title p-3 text-uppercase fw-bold lh-sm fs-1">NEWS ARTICLES</div>
     <div class="card-body">
       <!-- <NewsCard></NewsCard> -->
       <div

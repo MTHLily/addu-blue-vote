@@ -10,7 +10,7 @@
       </div>
       <div class="col col-md-8">
         <div class="card-body d-flex flex-column h-100">
-          <h5 class="card-title fw-bold lh-sm">{{ prof.name }}</h5>
+          <h5 class="card-title text-uppercase fw-bold lh-sm">{{ prof.name }}</h5>
           <div class="card-text text-muted flex-grow-1">
             {{ prof.partylist }}
           </div>

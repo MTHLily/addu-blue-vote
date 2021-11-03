@@ -8,12 +8,12 @@
         alt="..."
       />
     </div>
-    <div class="col-12 col-md-8">
-      <div class="container">
-        <h1 class="fw-bold lh-sm">{{ candidate.name }}</h1>
-        <h4 class="text-muted">{{ candidate.partylist }}</h4>
+    <div class="col-12 col-md-8 p-3 align-self-center">
+      <div class="container d-flex flex-column h-100">
+        <h1 class="fw-bold lh-sm text-uppercase text-primary fs-1">{{ candidate.name }}</h1>
+        <div class="card-text text-muted fs-4 mb-3">{{ candidate.partylist }}</div>
         <!-- Convert to badge -->
-        <span class="badge text-white fw-bold lh-sm" style="border-radius: 20px; background-color: #faa728">
+        <span class="badge text-white fw-bold lh-sm fs-6 col-4" style="border-radius: 20px; background-color: #faa728">
           {{ candidate.position }}
         </span>
       </div>

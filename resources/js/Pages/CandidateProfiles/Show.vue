@@ -1,66 +1,51 @@
 // TODO: Fix background,twitter widget, news articles widget
 <template>
-<ArisenHeader></ArisenHeader>
-  <div class="container mx-auto" style="margin-top: 10%;">
-    <!-- <div class="row">
-
-      <div class="col-12 col-md-4 p-4 bg-primary text-white">
-        {{ candidate.image }}
+  <Layout>
+    <div class="container mx-auto" style="margin-top: 10%">
+      <div class="row">
+        <CandidateHeader></CandidateHeader>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
+          <EducBackground></EducBackground>
+        </div>
+        <div class="col">
+          <ProfBackground></ProfBackground>
+        </div>
+      </div>
+      <div class="row">
+        <PolBackground></PolBackground>
       </div>
 
-      <div class="d-flex col col-12 col-md-8 p-4 bg-secondary">
-        {{ candidate.position }}
-        {{ candidate.partylist }}
+      <div class="row">
+        <Stance></Stance>
       </div>
 
-      <div class="col-12 col-md-6 p-4 bg-primary text-white">
-        education ni pacqiao
+      <div class="row" style="position: relative">
+        <div class="row mb-2 row-cols-1 row-cols-md-2">
+          <div class="col">
+            <NewsArticles class="w-100 h-100"></NewsArticles>
+          </div>
+          <div class="col">
+            <Twitter class="w-100"></Twitter>
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-md-6 p-4 bg-secondary">profession ni pacqiao</div>
-      <div class="col-12 col-md-12 p-4 bg-primary text-white">
-        politiko ni pacq
-      </div>
-      <div class="col-12 col-md-12 p-4 bg-secondary">issues and stance</div>
-      <div class="col-12 col-md-8 p-4 bg-primary text-white">news articles</div>
-      <div class="col-12 col-md-4 p-4 bg-secondary">tweets</div>
     </div>
-  </div> -->
-    <div class="row">
-      <CandidateHeader></CandidateHeader>
-    </div>
-    <div class="row cols-2 row-cols-1 row-cols-md-8">
-        <EducBackground></EducBackground>
-        <ProfBackground></ProfBackground>
-    </div>
-    <div class="col">
-      <PolBackground></PolBackground>
-      <Stance></Stance>
-    </div>
-    
-    <div class="" style="position:relative">
-      <div class="row cols-2 col-12 mb-2 row-cols-1 row-cols-md-8" style="position:absolute">
-        <NewsArticles></NewsArticles> 
-        <Twitter></Twitter>
-      </div>
-      <Bg></Bg>
-    </div>
-  </div>
-<ArisenFooter></ArisenFooter>
+  </Layout>
 </template>
 
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue"
-import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue"
-import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue"
-import PolBackground from "../../Components/CandidateProfile/LongBackground.vue"
-import Stance from "../../Components/CandidateProfile/LongStanceCard.vue"
-import ArisenHeader from "../../Layouts/Partials/Header.vue";
-import ArisenFooter from "../../Components/Layout/ARISEnFooter.vue";
+import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue";
+import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
+import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
+import PolBackground from "../../Components/CandidateProfile/LongBackground.vue";
+import Stance from "../../Components/CandidateProfile/LongStanceCard.vue";
 
-import Bg from "../../Components/CandidateProfile/KnowMoreBg.vue";
-import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue"
-import Twitter from "../../Components/CandidateProfile/Twitter.vue"
+import Layout from "../../Layouts/CandidateProfileLayout.vue";
+import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";
+import Twitter from "../../Components/CandidateProfile/Twitter.vue";
 
 export default defineComponent({
   components: {
@@ -69,20 +54,18 @@ export default defineComponent({
     ProfBackground,
     PolBackground,
     Stance,
-    ArisenFooter,
-    ArisenHeader,
-    Bg,
+    Layout,
     NewsArticles,
     Twitter,
-
-
   },
-
 });
-
 </script>
 
 <style>
-
-
+body {
+  background: url("../../Components/assets/candidate-profile-show-background.svg")
+    no-repeat;
+  background-size: auto;
+  background-attachment: fixed;
+}
 </style>

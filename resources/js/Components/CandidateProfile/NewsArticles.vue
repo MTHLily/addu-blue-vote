@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="card col-6 text-white h-auto" style="background-color: #faa728">
+  <div class="container col-6 text-white h-auto" style="background-color: #faa728">
     <div class="card-title p-3 text-uppercase fw-bold lh-sm fs-1">NEWS ARTICLES</div>
     <div class="card-body">
       <!-- <NewsCard></NewsCard> -->
@@ -10,7 +10,11 @@
       >
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <!-- <NewsCard></NewsCard> -->
+            <!-- <div v-for="article in articles.data" :key="article.id">
+              <div class="col mb-2">
+                <NewsCard :news="article"></NewsCard>
+              </div>
+            </div> -->
           </div>
           <div class="carousel-item p-3 mb-3">
             <div class="card-body bg-white" style="border-radius: 20px">
@@ -70,6 +74,7 @@
 <script>
 import { defineComponent } from "@vue/runtime-core";
 // import NewsCard from "../../Components/News/NewsCard.vue";
+// import NewsCard from "./NewsArticle.vue";
 
 export default defineComponent({
   props: {
@@ -78,6 +83,7 @@ export default defineComponent({
   components: {
     // NewsCard,
   },
+  
 });
 </script>
 

@@ -30,6 +30,12 @@
 
 5. Migrate with `php artisan migrate --seed`
 
+# Update Instructions
+
+1. `composer install`
+2. `php artisan migrate:fresh --seed`
+3. `npm install && npm run dev`
+
 # Production Instructions
 
 1. Run `npm run production`

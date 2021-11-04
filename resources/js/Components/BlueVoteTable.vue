@@ -123,7 +123,7 @@ export default {
   computed: {
     tableItems() {
       if (this.pagination === undefined) return this.items;
-      return this.pagicnation.data;
+      return this.pagination.data;
     },
     pages() {
       if (this.pagination === undefined) return;

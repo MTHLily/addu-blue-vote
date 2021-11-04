@@ -617,5 +617,7 @@ class DatabaseSeeder extends Seeder
         foreach ($faqs as $faq) {
             DB::table("frequently_asked_questions")->insert($faq);
         }
+
+        $this->call([NewsSourceSeeder::class]);
     }
 }

@@ -4,7 +4,7 @@
   <DashboardLayout>
     <div class="rounded" style="background-color: #ccdfff">
       <div class="d-flex flex-column">
-        <form @submit.prevent="form.post(route('districts.store'))">
+        <form @submit.prevent="form.post(route('candidates.store'))">
           <h1 class="p-3">Create Candidate</h1>
           <div class="p-3">
             <CandidateForm v-model:form="form"></CandidateForm>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -37,9 +38,9 @@ class CandidateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

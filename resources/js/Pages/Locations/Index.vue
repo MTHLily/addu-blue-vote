@@ -25,6 +25,13 @@
               />
             </div>
           </template>
+
+          <template #location-parent="{ item }">
+            <div v-if="item.parent">
+              {{ item.parent.name }}
+            </div>
+          </template>
+
           <template #actions="{ item }">
             <div class="d-flex justify-content-center">
               <div class="btn-group">
@@ -38,6 +45,7 @@
               </div>
             </div>
           </template>
+
           <template #footer>
             <Link
               class="btn btn-primary m-2 py-2 px-4"
@@ -88,6 +96,7 @@ export default {
       {
         value: "parent_location_id",
         label: "Parent Location",
+        slotName: "location-parent",
       },
       {
         value: "color",

@@ -27,21 +27,37 @@ class LocationService
 
         // Handle Media
         $media = Arr::get($request->validated(), "media", null);
-        // Since locations only have 1 media...
-        $firstMedia = $location->getFirstMedia();
 
-        if ($firstMedia) {
-            if (!$media || $location->getFirstMedia()->id != $media["id"]) {
-                $location->getFirstMedia()->delete();
-                if (isset($media["file"])) {
-                    $location->addMedia($media["file"])->toMediaCollection();
-                }
+        if ($media !== null) {
+            $location
+                ->media()
+                ->whereNotIn("id", Arr::pluck($media, "id"))
+                ->delete();
+            if ($location->media()->count() === 0 && isset($media["file"])) {
+                $location
+                    ->addMedia($media["file"])
+                    ->toMediaCollection("location-preview");
             }
         } else {
-            if (isset($media["file"])) {
-                $location->addMedia($media["file"])->toMediaCollection();
-            }
+            $location->media()->delete();
         }
+
+        // if ($firstMedia) {
+        //     if (!$media || $location->getFirstMedia()->id != $media["id"]) {
+        //         $location->getFirstMedia()->delete();
+        //         if (isset($media["file"])) {
+        //             $location
+        //                 ->addMedia($media["file"])
+        //                 ->toMediaCollection("location-preview");
+        //         }
+        //     }
+        // } else {
+        //     if (isset($media["file"])) {
+        //         $location
+        //             ->addMedia($media["file"])
+        //             ->toMediaCollection("location-preview");
+        //     }
+        // }
 
         return $location;
     }

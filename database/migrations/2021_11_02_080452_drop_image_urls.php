@@ -13,8 +13,9 @@ class DropImageUrls extends Migration
      */
     public function up()
     {
-        Schema::table('candidates', function (Blueprint $table) {
-            //
+        Schema::table("candidates", function (Blueprint $table) {
+            $table->string("slug");
+            $table->dropColumn("profile_photo_url");
         });
     }
 
@@ -25,8 +26,9 @@ class DropImageUrls extends Migration
      */
     public function down()
     {
-        Schema::table('candidates', function (Blueprint $table) {
-            //
+        Schema::table("candidates", function (Blueprint $table) {
+            $table->string("profile_photo_url");
+            $table->dropColumn("slug");
         });
     }
 }

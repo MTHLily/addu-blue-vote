@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "postcss-scss": "^4.0.0",
+    "vue-twitter": "^0.1.0",
     "vue3-carousel": "^0.1.27"
   }
 }

@@ -31,11 +31,11 @@ export default {
     news: {
       type: Object,
       default: () => ({
-        title: "titleeee",
-        source: "ABS-CBN",
+        title: "default title",
+        source: "default source",
         description:
-          "descriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssssdescriptionsssss",
-        date: "Oct 18, 2021",
+          "default description",
+        date: "default date",
         link: "https://news.abs-cbn.com/",
         color: "#064205",
       }),

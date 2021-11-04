@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar sticky-top navbar-dark bg-primary navbar-expand-md">
+  <header class="navbar position-fixed sticky-top navbar-dark bg-primary navbar-expand-md rounded-pill" style="margin:2%; width: 95%" >
     <div class="container-md">
       <slot name="before-logo"> </slot>
       <Link class="navbar-brand w-50" href="/">
@@ -50,4 +50,5 @@ export default defineComponent({
   max-height: 50px;
   max-width: 80%;
 }
+
 </style>

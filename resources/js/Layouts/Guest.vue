@@ -4,7 +4,7 @@
     <ArisenHeader>
       <template #collapse-content>
         <ul
-          class="navbar-nav navbar-dark bg-primary ms-auto mb-2 mb-lg-0 gap-4"
+          class="navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4"
         >
           <li class="nav-item">
             <a class="nav-link" href="#voter-registration">

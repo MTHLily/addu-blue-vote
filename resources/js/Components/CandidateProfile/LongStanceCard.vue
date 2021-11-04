@@ -14,6 +14,7 @@
         m-2
         justify-content-evenly
         row-cols-1 row-cols-md-6 row-cols-lg-12
+        mb-3
       "
     >
     <div >

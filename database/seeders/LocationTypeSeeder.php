@@ -18,15 +18,32 @@ class LocationTypeSeeder extends Seeder
         $types = collect([
             [
                 "name" => "Region",
+                "positions" => [
+                    [
+                        "name" => "Governor",
+                    ],
+                ],
                 "children" => [
                     [
                         "name" => "District",
-                        "children" => [["name" => "City"]],
+                        "positions" => [
+                            [
+                                "name" => "Senator",
+                            ],
+                        ],
+                        "children" => [
+                            ["name" => "City", "positions" => ["Mayor"]],
+                        ],
                     ],
                 ],
             ],
             [
                 "name" => "Independent District",
+                "positions" => [
+                    [
+                        "name" => "Independent District Senator",
+                    ],
+                ],
             ],
         ]);
 
@@ -42,6 +59,12 @@ class LocationTypeSeeder extends Seeder
         } else {
             $type = $parent->children()->create(["name" => $data["name"]]);
         }
+
+        $positions = collect($data["positions"]);
+        $positions->each(function ($position) use ($type) {
+            $type->positions()->create($position);
+        });
+
         if (!empty($data["children"])) {
             $children = collect($data["children"]);
             $children->each(function ($child) use ($type) {

@@ -23,4 +23,9 @@ class LocationType extends Model
     {
         return $this->hasMany(Location::class);
     }
+
+    public function positions()
+    {
+        return $this->hasMany(RunningPosition::class);
+    }
 }

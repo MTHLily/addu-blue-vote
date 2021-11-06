@@ -2,19 +2,22 @@
   <Head title="Infomation Snippets"></Head>
 
   <DashboardLayout>
-    <div class="rounded" style="background-color: #ccdfff">
+    <div class="rounded w-75 mx-auto" style="background-color: #ccdfff">
       <div class="d-flex flex-column">
-        <form @submit.prevent="info.post('/dashboard/information')">
-          <h1 class="p-3">Create Information Snippet</h1>
-          <div class="p-3">
+        <form
+          class="d-flex flex-column align-items-center"
+          @submit.prevent="info.post(route('information.store'))"
+        >
+          <h1 class="p-3 w-100">Create Information Snippet</h1>
+          <div class="p-3 w-100">
             <InformationForm v-model:info="info"></InformationForm>
           </div>
-          <div class="btn-group" role="group">
+          <div class="btn-group justify-self-center" role="group">
             <div class="p-3">
               <button class="btn btn-primary">Save</button>
             </div>
             <div class="p-3">
-              <Link href="/dashboard/information" class="btn btn-danger"
+              <Link :href="route('information.index')" class="btn btn-danger"
                 >Cancel</Link
               >
             </div>

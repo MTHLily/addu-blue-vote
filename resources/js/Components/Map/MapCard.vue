@@ -3,7 +3,7 @@
     <div>
       <button
         type="button"
-        class="btn btn-light h-100"
+        class="btn h-100"
         @click="$emit('poiClicked', poi)"
       >
         <div class="row g-0 mh-15">

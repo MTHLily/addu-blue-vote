@@ -18,7 +18,13 @@
               required
               autofocus
               autocomplete="username"
+              :class="{
+                'is-invalid': form.errors.email,
+              }"
             />
+            <div class="invalid-feedback">
+              {{ form.errors.email }}
+            </div>
           </div>
           <div class="form-group">
             <label for="label">PASSWORD</label>
@@ -28,7 +34,13 @@
               v-model="form.password"
               required
               autocomplete="current-password"
+              :class="{
+                'is-invalid': form.errors.password,
+              }"
             />
+            <div class="invalid-feedback">
+              {{ form.errors.password }}
+            </div>
           </div>
           <div class="form-group">
             <label class="form-remember">

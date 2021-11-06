@@ -8,7 +8,9 @@
         <CityForm v-model:city="city"></CityForm>
         <div class="btn-group mx-auto w-100" role="group">
           <button class="btn btn-primary">Save</button>
-          <Link href="/dashboard/cities" class="btn btn-danger">Cancel</Link>
+          <Link :href="route('cities.index')" class="btn btn-danger"
+            >Cancel</Link
+          >
         </div>
       </form>
     </div>

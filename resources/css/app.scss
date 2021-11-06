@@ -1,6 +1,8 @@
 @import "~bootstrap/scss/functions";
 
-$primary: #08228d;
+$primary: #2365A1;
+$secondary: cyan;
+$light: lightblue;
 $info: #ccdfff;
 $enable-shadows: true;
 
@@ -61,6 +63,7 @@ $enable-shadows: true;
 @import "~bootstrap/scss/utilities/api";
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .is-invalid .toastui-editor-defaultUI {
   border-color: $danger;
 }

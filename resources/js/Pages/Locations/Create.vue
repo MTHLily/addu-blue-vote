@@ -2,7 +2,7 @@
   <Head title="Create Location"></Head>
 
   <DashboardLayout>
-    <div class="rounded" style="background-color: #ccdfff">
+    <div class="rounded container" style="background-color: #ccdfff">
       <div class="d-flex flex-column">
         <form @submit.prevent="location.post(route('locations.store'))">
           <h1 class="p-3">Create Location</h1>
@@ -14,7 +14,6 @@
               :types="types"
             ></LocationForm>
           </div>
-          <pre>{{ location }}</pre>
           <div class="btn-group mx-auto w-100" role="group">
             <div class="p-3">
               <button class="btn btn-primary">Save</button>
@@ -26,7 +25,6 @@
             </div>
           </div>
         </form>
-        <pre>{{ locations }}</pre>
       </div>
     </div>
   </DashboardLayout>

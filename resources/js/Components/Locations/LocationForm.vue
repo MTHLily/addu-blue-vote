@@ -182,9 +182,17 @@ export default {
       );
     },
     parentLocations() {
-      this.location.parent_location_id = null;
       if (this.currentType) {
-        return this.locations[this.currentType.parent_type_id];
+        if (this.currentType.requires_parent)
+          return this.locations[this.currentType.parent_type_id];
+        else
+          return [
+            {
+              id: null,
+              name: "Independent",
+            },
+            ...this.locations[this.currentType.parent_type_id],
+          ];
       }
       return [];
     },

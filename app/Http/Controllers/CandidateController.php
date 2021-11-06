@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
+use App\Models\Location;
+use App\Models\LocationType;
+use App\Models\RunningPosition;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -29,7 +32,15 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        return Inertia::render("Candidates/Create");
+        $locationTypes = LocationType::all();
+        $positions = RunningPosition::all()->groupBy("location_type_id");
+        $locations = Location::all()->groupBy("location_type_id");
+
+        return Inertia::render("Candidates/Create", [
+            "location_types" => $locationTypes,
+            "positions" => $positions,
+            "locations" => $locations,
+        ]);
     }
 
     /**

@@ -19,8 +19,8 @@ class PointOfInterestController extends Controller
      */
     public function index()
     {
-        return Inertia::render('PointsOfInterest/Index', [
-            'pois' => PointOfInterest::with('district')->get(),
+        return Inertia::render("PointsOfInterest/Index", [
+            "pois" => PointOfInterest::with("district")->get(),
         ]);
     }
 
@@ -31,9 +31,9 @@ class PointOfInterestController extends Controller
      */
     public function create()
     {
-        return Inertia::render( 'PointsOfInterest/Create', [
-            'districts' => District::all(),
-            'poi_types' => PointOfInterest::getTypes(),
+        return Inertia::render("PointsOfInterest/Create", [
+            "districts" => District::all(),
+            "poi_types" => PointOfInterest::getTypes(),
         ]);
     }
 
@@ -45,10 +45,12 @@ class PointOfInterestController extends Controller
      */
     public function store(PointOfInterestRequest $request)
     {
-        $poi = PointOfInterest::create($request->except('image'));
-        
+        $poi = PointOfInterest::create($request->except("image"));
 
-        return Redirect::route('poi.index')->with('success', 'Point of interest created!');
+        return Redirect::route("poi.index")->with(
+            "success",
+            "Point of interest created!"
+        );
     }
 
     /**
@@ -70,10 +72,10 @@ class PointOfInterestController extends Controller
      */
     public function edit(PointOfInterest $poi)
     {
-        return Inertia::render( 'PointsOfInterest/Edit', [
-            'poi' => $poi,
-            'districts' => District::all(),
-            'poi_types' => PointOfInterest::getTypes(),
+        return Inertia::render("PointsOfInterest/Edit", [
+            "poi" => $poi,
+            "districts" => District::all(),
+            "poi_types" => PointOfInterest::getTypes(),
         ]);
     }
 
@@ -84,11 +86,16 @@ class PointOfInterestController extends Controller
      * @param  \App\Models\PointOfInterest  $pointOfInterest
      * @return \Illuminate\Http\Response
      */
-    public function update(PointOfInterestRequest $request, PointOfInterest $poi)
-    {
-        $poi->update($request->except('image'));
-        
-        return Redirect::route('poi.index')->with('success', $poi->name . ' has been updated!');
+    public function update(
+        PointOfInterestRequest $request,
+        PointOfInterest $poi
+    ) {
+        $poi->update($request->except("image"));
+
+        return Redirect::route("poi.index")->with(
+            "success",
+            $poi->name . " has been updated!"
+        );
     }
 
     /**
@@ -101,6 +108,9 @@ class PointOfInterestController extends Controller
     {
         $poi->delete();
 
-        return Redirect::route('poi.index')->with('message', $poi->name . ' has been deleted!');
+        return Redirect::route("poi.index")->with(
+            "message",
+            $poi->name . " has been deleted!"
+        );
     }
 }

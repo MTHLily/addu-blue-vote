@@ -21,6 +21,12 @@ class RunningPositionSeeder extends Seeder
             [
                 "name" => "Vice-President",
             ],
+            [
+                "name" => "Senator",
+            ],
+            [
+                "name" => "Party List Representative",
+            ],
         ]);
 
         $independentPositions->each(

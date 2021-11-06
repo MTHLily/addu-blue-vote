@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             FrequentlyAskedQuestionSeeder::class,
             NewsSourceSeeder::class,
             LocationTypeSeeder::class,
+            RunningPositionSeeder::class,
             LocationSeeder::class,
         ]);
     }

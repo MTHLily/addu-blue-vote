@@ -41,6 +41,23 @@
       <div class="invalid-feedback">{{ form.errors.slug }}</div>
     </div>
     <div class="col mb-3 p-3">
+      <label for="positionType" class="form-label">Type</label>
+      <select
+        id="positionType"
+        cols="30"
+        rows="4"
+        class="form-select"
+        v-model="locationType"
+      >
+        <option :value="null" disabled>Choose a type</option>
+        <option value="">National</option>
+        <template v-for="type in locationTypes" :key="type.id">
+          <option :value="type.id">{{ type.name }}</option>
+        </template>
+      </select>
+      <div class="invalid-feedback">{{ form.errors.running_position_id }}</div>
+    </div>
+    <div class="col mb-3 p-3">
       <label for="runningPosition" class="form-label">Running Position</label>
       <select
         id="runningPosition"
@@ -98,7 +115,13 @@ export default defineComponent({
   },
   props: {
     form: Object,
+    locationTypes: Array,
+    locations: Object,
+    positions: Object,
   },
+  data: () => ({
+    locationType: null,
+  }),
   setup(props) {
     watch(
       () => props.form.name,

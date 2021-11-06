@@ -7,8 +7,9 @@
       bg-primary
       navbar-expand-md
       rounded-pill
+      m-4
+      arisen-header
     "
-    style="margin: 2%; width: 95%"
   >
     <div class="container-md">
       <slot name="before-logo"> </slot>

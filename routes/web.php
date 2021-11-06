@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\PointOfInterestController;
@@ -54,6 +55,7 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("poi", PointOfInterestController::class);
         Route::resource("news", NewsArticleController::class);
         Route::resource("candidates", CandidateController::class);
+        Route::resource("issues", IssueController::class);
     });
 });
 

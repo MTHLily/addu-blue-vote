@@ -7,7 +7,12 @@
         <form @submit.prevent="form.post(route('candidates.store'))">
           <h1 class="p-3">Create Candidate</h1>
           <div class="p-3">
-            <CandidateForm v-model:form="form"></CandidateForm>
+            <CandidateForm
+              v-model:form="form"
+              :location-types="location_types"
+              :locations="locations"
+              :positions="positions"
+            ></CandidateForm>
           </div>
           {{ form }}
           <div class="btn-group mx-auto w-100" role="group">
@@ -21,6 +26,8 @@
         </form>
       </div>
     </div>
+    <pre>{{ locations }}</pre>
+    <pre>{{ positions }}</pre>
   </DashboardLayout>
 </template>
 
@@ -33,6 +40,11 @@ import CandidateForm from "@/Components/Candidates/CandidateForm.vue";
 
 export default defineComponent({
   components: { Link, Head, DashboardLayout, CandidateForm },
+  props: {
+    location_types: Array,
+    locations: Object,
+    positions: Object,
+  },
   data: () => ({
     form: useForm({
       name: null,

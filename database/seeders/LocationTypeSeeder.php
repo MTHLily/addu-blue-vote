@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Location;
 use App\Models\LocationType;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class LocationTypeSeeder extends Seeder
 {
@@ -22,29 +23,49 @@ class LocationTypeSeeder extends Seeder
                     [
                         "name" => "Governor",
                     ],
+                    [
+                        "name" => "Vice Governor",
+                    ],
+                    [
+                        "name" => "Board Member",
+                    ],
                 ],
                 "children" => [
                     [
                         "name" => "District",
+                        "requires_parent" => false,
                         "positions" => [
                             [
-                                "name" => "Senator",
+                                "name" => "Congressman",
                             ],
                         ],
                         "children" => [
-                            ["name" => "City", "positions" => ["Mayor"]],
+                            [
+                                "name" => "City",
+                                "positions" => [
+                                    [
+                                        "name" => "Mayor",
+                                    ],
+                                    [
+                                        "name" => "Vice Mayor",
+                                    ],
+                                    [
+                                        "name" => "Counselor",
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
             ],
-            [
-                "name" => "Independent District",
-                "positions" => [
-                    [
-                        "name" => "Independent District Senator",
-                    ],
-                ],
-            ],
+            // [
+            //     "name" => "Independent District",
+            //     "positions" => [
+            //         [
+            //             "name" => "Independent District Senator",
+            //         ],
+            //     ],
+            // ],
         ]);
 
         $types->each(function ($data) {
@@ -55,9 +76,13 @@ class LocationTypeSeeder extends Seeder
     private function recursiveCreate(array $data, LocationType $parent = null)
     {
         if ($parent == null) {
-            $type = LocationType::create(["name" => $data["name"]]);
+            $type = LocationType::create(
+                Arr::only($data, ["name", "requires_parent"])
+            );
         } else {
-            $type = $parent->children()->create(["name" => $data["name"]]);
+            $type = $parent
+                ->children()
+                ->create(Arr::only($data, ["name", "requires_parent"]));
         }
 
         $positions = collect($data["positions"]);

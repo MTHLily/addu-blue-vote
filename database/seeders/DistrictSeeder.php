@@ -497,7 +497,6 @@ class DistrictSeeder extends Seeder
                         "longitude" => $site["longitude"],
                         "point_of_interest_type_id" => 1,
                         "district_id" => $district->id,
-                        "image_url" => $districtData["district"]["logo_url"],
                     ]
                 );
             }

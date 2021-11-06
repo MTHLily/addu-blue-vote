@@ -21,7 +21,7 @@
           {{ background.date }}
         </span>
       </h5>
-      <ul class="card-text">
+      <ul class="card-text mb-3">
         {{
           background.description
         }}

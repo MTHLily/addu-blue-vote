@@ -8,7 +8,7 @@
                 </span>
             </h5>
             <ul class="card-text fw-bolder lh-sm">{{background.title}}</ul>
-            <ul class="card-text lh-sm">{{background.description}}</ul>
+            <ul class="card-text lh-sm mb-3">{{background.description}}</ul>
         </div>
     </div>
 

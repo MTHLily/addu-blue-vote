@@ -12,6 +12,7 @@ use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\PointOfInterestController;
+use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
 
 /*
@@ -56,6 +57,7 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("news", NewsArticleController::class);
         Route::resource("candidates", CandidateController::class);
         Route::resource("issues", IssueController::class);
+        Route::resource("political-parties", PoliticalPartyController::class);
     });
 });
 

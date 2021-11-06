@@ -137,6 +137,10 @@ export default {
               title: "Issues",
               route: "issues.index",
             },
+            {
+              title: "Political Parties",
+              route: "political-parties.index",
+            },
           ],
         },
       ];

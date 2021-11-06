@@ -68,7 +68,12 @@
           'is-invalid': form.errors.running_position_id,
         }"
         v-model="form.running_position_id"
-      ></select>
+      >
+        <option :value="null" disabled>Choose a position</option>
+        <template v-for="position in positionOptions" :key="position.id">
+          <option :value="position.id">{{ position.name }}</option>
+        </template>
+      </select>
       <div class="invalid-feedback">{{ form.errors.running_position_id }}</div>
     </div>
     <div class="col mb-3 p-3">
@@ -79,11 +84,17 @@
         rows="4"
         class="form-select"
         :class="{
-          'is-invalid': form.errors.candidateable,
+          'is-invalid': form.errors.location_id,
         }"
-        v-model="form.candidateable"
-      ></select>
-      <div class="invalid-feedback">{{ form.errors.candidateable }}</div>
+        :disabled="currentPosition ? !currentPosition.location_type_id : true"
+        v-model="form.location_id"
+      >
+        <option :value="null" disabled>Choose a location</option>
+        <template v-for="location in locationOptions" :key="location.id">
+          <option :value="location.id">{{ location.name }}</option>
+        </template>
+      </select>
+      <div class="invalid-feedback">{{ form.errors.location_id }}</div>
     </div>
     <div class="col mb-3 p-3">
       <label for="description" class="form-label">Description</label>
@@ -104,7 +115,7 @@
 </template>
 
 <script>
-import { defineComponent, watch } from "@vue/runtime-core";
+import { computed, defineComponent, ref, watch } from "@vue/runtime-core";
 import axios from "axios";
 import _ from "lodash";
 import ImageUploader from "../FileUploader.vue";
@@ -119,10 +130,28 @@ export default defineComponent({
     locations: Object,
     positions: Object,
   },
-  data: () => ({
-    locationType: null,
-  }),
   setup(props) {
+    // Data
+    const locationType = ref(null);
+
+    // Computed
+    const positionOptions = computed(() => {
+      const ind = locationType.value === null ? "" : locationType.value;
+      return props.positions[ind];
+    });
+
+    const locationOptions = computed(() => {
+      const ind = locationType.value === null ? "" : locationType.value;
+      return props.locations[ind];
+    });
+
+    const currentPosition = computed(() => {
+      return positionOptions.value.find(
+        (pos) => pos.id === props.form.running_position_id
+      );
+    });
+
+    // Watch
     watch(
       () => props.form.name,
       _.throttle(async (newVal) => {
@@ -135,6 +164,13 @@ export default defineComponent({
         props.form.slug = data.data.slug;
       }, 500)
     );
+
+    return {
+      locationType,
+      currentPosition,
+      locationOptions,
+      positionOptions,
+    };
   },
 });
 </script>

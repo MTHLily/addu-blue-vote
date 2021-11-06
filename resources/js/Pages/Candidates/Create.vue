@@ -3,7 +3,7 @@
 
   <DashboardLayout>
     <div class="rounded" style="background-color: #ccdfff">
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column container">
         <form @submit.prevent="form.post(route('candidates.store'))">
           <h1 class="p-3">Create Candidate</h1>
           <div class="p-3">
@@ -48,11 +48,12 @@ export default defineComponent({
   data: () => ({
     form: useForm({
       name: null,
-      profile_photo: null,
+      slug: null,
       political_party_id: null,
       running_position_id: null,
-      candidateable_id: null,
-      candidateable_type: null,
+      location_id: null,
+      issues: [],
+      media: null,
     }),
   }),
 });

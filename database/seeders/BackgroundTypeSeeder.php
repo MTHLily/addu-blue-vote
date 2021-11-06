@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CandidateBackgroundType;
 use Illuminate\Database\Seeder;
 
 class BackgroundTypeSeeder extends Seeder
@@ -36,5 +37,9 @@ class BackgroundTypeSeeder extends Seeder
                 "description_label" => "Additional Information",
             ],
         ];
+
+        collect($types)->each(
+            fn($type) => CandidateBackgroundType::create($type)
+        );
     }
 }

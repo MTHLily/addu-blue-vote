@@ -14,6 +14,7 @@
               :positions="positions"
               :parties="parties"
               :issues="issues"
+              :background-types="background_types"
             ></CandidateForm>
           </div>
           <pre>{{ form }}</pre>
@@ -50,6 +51,7 @@ export default defineComponent({
     positions: Object,
     parties: Array,
     issues: Array,
+    background_types: Array,
   },
   data: () => ({
     form: useForm({

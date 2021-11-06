@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
+use App\Models\CandidateBackgroundType;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\LocationType;
@@ -39,6 +40,7 @@ class CandidateController extends Controller
         $locations = Location::all()->groupBy("location_type_id");
         $issues = Issue::all();
         $parties = PoliticalParty::orderBy("name")->get();
+        $background_types = CandidateBackgroundType::all();
 
         return Inertia::render("Candidates/Create", [
             "location_types" => $locationTypes,
@@ -46,6 +48,7 @@ class CandidateController extends Controller
             "locations" => $locations,
             "issues" => $issues,
             "parties" => $parties,
+            "background_types" => $background_types,
         ]);
     }
 

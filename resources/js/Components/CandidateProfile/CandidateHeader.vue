@@ -4,11 +4,11 @@
     <div class="col-12 col-md-4">
       <img
         :src="`${candidate.image}`"
-        class="img-fluid rounded-start"
+        class="img-fluid rounded"
         alt="..."
       />
     </div>
-    <div class="col-12 col-md-8 p-3 align-self-center">
+    <div class="col-12 col-md-8 p-5 align-self-center">
       <div class="container d-flex flex-column h-100">
         <h1 class="fw-bold lh-sm text-uppercase text-primary fs-1">{{ candidate.name }}</h1>
         <div class="card-text text-muted fs-4 mb-3">{{ candidate.partylist }}</div>

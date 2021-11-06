@@ -36,7 +36,7 @@ export default {
     background: {
       type: Object,
       default: () => ({
-        heading: "DEFAULT BACKROUND",
+        heading: "DEFAULT BACKGROUND",
         date: "default date",
         title: "default source",
         description: "default description",

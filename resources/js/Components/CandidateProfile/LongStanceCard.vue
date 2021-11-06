@@ -23,15 +23,6 @@
     <div >
       <StanceCard class="col-12"></StanceCard>
     </div>
-    <div >
-      <StanceCard class="col-12"></StanceCard>
-    </div>
-    <div >
-      <StanceCard class="col-12"></StanceCard>
-    </div>
-      <!-- <StanceCard></StanceCard>
-      <StanceCard></StanceCard>
-      <StanceCard></StanceCard> -->
     </div>
   </div>
 </template>

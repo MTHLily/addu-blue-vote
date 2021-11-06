@@ -7,6 +7,7 @@ use App\Models\Candidate;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\LocationType;
+use App\Models\PoliticalParty;
 use App\Models\RunningPosition;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -37,12 +38,14 @@ class CandidateController extends Controller
         $positions = RunningPosition::all()->groupBy("location_type_id");
         $locations = Location::all()->groupBy("location_type_id");
         $issues = Issue::all();
+        $parties = PoliticalParty::orderBy("name")->get();
 
         return Inertia::render("Candidates/Create", [
             "location_types" => $locationTypes,
             "positions" => $positions,
             "locations" => $locations,
             "issues" => $issues,
+            "parties" => $parties,
         ]);
     }
 

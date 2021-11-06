@@ -1,5 +1,5 @@
 <template>
-  <Head title="Create District"></Head>
+  <Head title="Create Candidate"></Head>
 
   <DashboardLayout>
     <div class="rounded" style="background-color: #ccdfff">
@@ -12,15 +12,19 @@
               :location-types="location_types"
               :locations="locations"
               :positions="positions"
+              :parties="parties"
+              :issues="issues"
             ></CandidateForm>
           </div>
-          {{ form }}
+          <pre>{{ form }}</pre>
           <div class="btn-group mx-auto w-100" role="group">
             <div class="p-3">
               <button class="btn btn-primary">Save</button>
             </div>
             <div class="p-3">
-              <Link href="/dashboard/faqs" class="btn btn-danger">Cancel</Link>
+              <Link :href="route('candidates.index')" class="btn btn-danger"
+                >Cancel</Link
+              >
             </div>
           </div>
         </form>
@@ -44,6 +48,8 @@ export default defineComponent({
     location_types: Array,
     locations: Object,
     positions: Object,
+    parties: Array,
+    issues: Array,
   },
   data: () => ({
     form: useForm({
@@ -52,7 +58,8 @@ export default defineComponent({
       political_party_id: null,
       running_position_id: null,
       location_id: null,
-      issues: [],
+      stances: [],
+      background: [],
       media: null,
     }),
   }),

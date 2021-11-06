@@ -13,42 +13,52 @@
       </div>
     </div>
     <div class="col mb-3 p-3">
-      <label for="candidateName" class="form-label">Candidate Name</label>
-      <input
-        v-model="form.name"
-        type="text"
-        class="form-control"
-        :class="{
-          'is-invalid': form.errors.name,
-        }"
-        id="candidateName"
-        placeholder="District Name"
-      />
-      <div class="invalid-feedback">{{ form.errors.name }}</div>
+      <div class="mb-3">
+        <label for="candidateName" class="form-label">Candidate Name</label>
+        <input
+          v-model="form.name"
+          type="text"
+          class="form-control"
+          :class="{
+            'is-invalid': form.errors.name,
+          }"
+          id="candidateName"
+          placeholder="District Name"
+        />
+        <div class="invalid-feedback">{{ form.errors.name }}</div>
+      </div>
+
+      <div>
+        <label for="candidateSlug" class="form-label">Candidate Slug</label>
+        <input
+          v-model="form.slug"
+          type="text"
+          class="form-control"
+          :class="{
+            'is-invalid': form.errors.slug,
+          }"
+          id="candidateSlug"
+          placeholder="Candidate Slug"
+        />
+        <div class="invalid-feedback">{{ form.errors.slug }}</div>
+      </div>
     </div>
     <div class="col mb-3 p-3">
-      <label for="candidateSlug" class="form-label">Candidate Slug</label>
-      <input
-        v-model="form.slug"
-        type="text"
-        class="form-control"
-        :class="{
-          'is-invalid': form.errors.slug,
-        }"
-        id="candidateSlug"
-        placeholder="Candidate Slug"
-      />
-      <div class="invalid-feedback">{{ form.errors.slug }}</div>
+      <label for="politicalParty" class="form-label">Political Party</label>
+      <select
+        id="politicalParty"
+        class="form-select"
+        v-model="form.political_party_id"
+      >
+        <option :value="null" disabled>Choose a party</option>
+        <template v-for="party in parties" :key="party.id">
+          <option :value="party.id">{{ party.name }}</option>
+        </template>
+      </select>
     </div>
     <div class="col mb-3 p-3">
       <label for="positionType" class="form-label">Type</label>
-      <select
-        id="positionType"
-        cols="30"
-        rows="4"
-        class="form-select"
-        v-model="locationType"
-      >
+      <select id="positionType" class="form-select" v-model="locationType">
         <option :value="null" disabled>Choose a type</option>
         <option value="">National</option>
         <template v-for="type in locationTypes" :key="type.id">
@@ -96,19 +106,20 @@
       </select>
       <div class="invalid-feedback">{{ form.errors.location_id }}</div>
     </div>
-    <div class="col mb-3 p-3">
-      <label for="description" class="form-label">Description</label>
-      <textarea
-        id="description"
-        cols="30"
-        rows="4"
-        class="form-control"
-        :class="{
-          'is-invalid': form.errors.name,
-        }"
-        v-model="form.description"
-        placeholder="Description"
-      ></textarea>
+    <div class="col-5 mb-3 p-3">
+      <label class="form-label">Stances on Issues</label>
+      <IssueSelector
+        v-model:stances="form.stances"
+        :options="issues"
+      ></IssueSelector>
+      <div class="invalid-feedback">{{ form.errors.description }}</div>
+    </div>
+    <div class="col-12 mb-3 p-3">
+      <label class="form-label">Candidate Background</label>
+      <CandidateBackgroundSelector
+        v-model:background="form.background"
+        :types="backgroundTypes"
+      ></CandidateBackgroundSelector>
       <div class="invalid-feedback">{{ form.errors.description }}</div>
     </div>
   </div>
@@ -119,16 +130,31 @@ import { computed, defineComponent, ref, watch } from "@vue/runtime-core";
 import axios from "axios";
 import _ from "lodash";
 import ImageUploader from "../FileUploader.vue";
+import CandidateBackgroundSelector from "./CandidateBackgroundSelector.vue";
+import IssueSelector from "./IssueSelector.vue";
 
 export default defineComponent({
   components: {
     ImageUploader,
+    IssueSelector,
+    CandidateBackgroundSelector,
   },
   props: {
     form: Object,
     locationTypes: Array,
     locations: Object,
     positions: Object,
+    parties: Array,
+    issues: Array,
+    backgroundTypes: {
+      type: Array,
+      default: [
+        {
+          id: 1,
+          name: "Educational",
+        },
+      ],
+    },
   },
   setup(props) {
     // Data

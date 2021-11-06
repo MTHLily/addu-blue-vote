@@ -2,7 +2,7 @@
   <Head title="Issues"></Head>
   <DashboardLayout>
     <div class="flex flex-column container">
-      <BlueVoteTable :items="issues" :columns="columns">
+      <BlueVoteTable :items="issues" :columns="columns" title="Issues">
         <template #footer>
           <Link
             class="btn btn-primary m-2 py-2 px-4"

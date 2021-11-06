@@ -2,7 +2,11 @@
   <Head title="Political Parties"></Head>
   <DashboardLayout>
     <div class="flex flex-column container">
-      <BlueVoteTable :items="political_parties" :columns="columns">
+      <BlueVoteTable
+        :items="political_parties"
+        :columns="columns"
+        title="Political Parties"
+      >
         <template #footer>
           <Link
             class="btn btn-primary m-2 py-2 px-4"

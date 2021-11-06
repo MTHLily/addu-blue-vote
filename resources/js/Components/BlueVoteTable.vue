@@ -72,7 +72,12 @@
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="page-item" v-for="pageNo in pages" :key="pageNo">
+                  <li
+                    v-for="pageNo in pages"
+                    :key="pageNo"
+                    class="page-item"
+                    :class="{ active: pagination.current_page == pageNo }"
+                  >
                     <Link
                       class="page-link"
                       href="#"

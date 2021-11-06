@@ -5,7 +5,7 @@
     :on-remove="onRemove"
     #="{ value, index }"
   >
-    <div class="w-100 row-cols-3">
+    <div class="w-100 row row-cols-3">
       <div class="col">
         <label :for="`bg-type-${index}`">Background Type</label>
         <select
@@ -18,6 +18,15 @@
             <option :value="type.id">{{ type.name }}</option>
           </template>
         </select>
+      </div>
+      <div class="col-6">
+        <label :for="`bg-place-${index}`">Place</label>
+        <input
+          type="text"
+          class="form-control"
+          :id="`bg-place-${index}`"
+          v-model="value.place"
+        />
       </div>
     </div>
   </n-dynamic-input>

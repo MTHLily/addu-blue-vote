@@ -13,7 +13,7 @@ class PointOfInterestRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -24,31 +24,23 @@ class PointOfInterestRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => 'required',
-            "description" => 'required',
-            "longitude" => 'required',
-            "latitude" => 'required',
-            "district_id" => 'required',
-            "point_of_interest_type_id" => 'required',
-            "image" => ['nullable','image',],
+            "name" => "required",
+            "description" => "required",
+            "longitude" => "required",
+            "latitude" => "required",
+            "district_id" => "required",
+            "point_of_interest_type_id" => "required",
+            "image" => ["nullable", "image"],
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
-            'point_of_interest_type_id.required' => 'Please pick a type.',
-            'district_id.required' => 'Please pick a district.',
-            'longitude.required' =>'Please pick a location on the map.',
-            'latitude.required' =>'Please pick a location on the map.',
+            "point_of_interest_type_id.required" => "Please pick a type.",
+            "district_id.required" => "Please pick a district.",
+            "longitude.required" => "Please pick a location on the map.",
+            "latitude.required" => "Please pick a location on the map.",
         ];
     }
-
-    public function passedValidation(){
-        
-        if($this->hasFile('image') && $this->file('image')->isValid() ){
-            $path = $this->file('image')->store('public/images/poi_previews');
-            $this->request->add(['image_url' => $path]);
-        }
-    }
-
 }

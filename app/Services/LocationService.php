@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Location;
+use App\Models\LocationType;
 use Illuminate\Support\Arr;
 
 class LocationService
@@ -19,6 +20,10 @@ class LocationService
             "parent_location_id",
         ]);
 
+        if (!LocationType::find($request->location_type_id)->parent_type_id) {
+            $locationData["parent_location_id"] = null;
+        }
+
         if ($location == null) {
             $location = Location::create($locationData);
         } else {
@@ -27,21 +32,12 @@ class LocationService
 
         // Handle Media
         $media = Arr::get($request->validated(), "media", null);
-        // Since locations only have 1 media...
-        $firstMedia = $location->getFirstMedia();
 
-        if ($firstMedia) {
-            if (!$media || $location->getFirstMedia()->id != $media["id"]) {
-                $location->getFirstMedia()->delete();
-                if (isset($media["file"])) {
-                    $location->addMedia($media["file"])->toMediaCollection();
-                }
-            }
-        } else {
-            if (isset($media["file"])) {
-                $location->addMedia($media["file"])->toMediaCollection();
-            }
-        }
+        $location = (new MediaService())->attachOnlyOne(
+            $location,
+            $media,
+            "location-preview"
+        );
 
         return $location;
     }

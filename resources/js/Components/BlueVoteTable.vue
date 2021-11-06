@@ -13,6 +13,14 @@
         </tr>
       </thead>
       <tbody>
+        <tr v-if="tableItems.length === 0">
+          <td class="text-center" :colspan="columns.length + 1">
+            <div class="d-flex flex-column">
+              <i class="bi bi-archive fs-4 text-danger"></i>
+              <div>No Data</div>
+            </div>
+          </td>
+        </tr>
         <template v-for="(item, ind) in tableItems" :key="ind">
           <tr>
             <template v-for="column in columns" :key="column.value">
@@ -64,7 +72,12 @@
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="page-item" v-for="pageNo in pages" :key="pageNo">
+                  <li
+                    v-for="pageNo in pages"
+                    :key="pageNo"
+                    class="page-item"
+                    :class="{ active: pagination.current_page == pageNo }"
+                  >
                     <Link
                       class="page-link"
                       href="#"

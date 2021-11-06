@@ -5,7 +5,7 @@
     <div class="container flex flex-column">
       <div class="card p-0">
         <div style="overflow-x: auto">
-          <BlueVoteTable title="Information" :columns="columns" :items="info">
+          <BlueVoteTable title="Candidates" :columns="columns" :items="info">
             <template #actions="{ item }">
               <div class="justify-content-center d-flex">
                 <div class="btn-group">

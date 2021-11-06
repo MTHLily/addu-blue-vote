@@ -1,12 +1,14 @@
 <template>
-  <NUpload
-    v-model:file-list="valueList"
-    :max="multipleFiles ? undefined : 1"
-    :on-update:file-list="handleFileListChange"
-    list-type="image-card"
-  >
-    <button class="btn btn-primary" type="button">Upload</button>
-  </NUpload>
+  <div class="upload-wrapper">
+    <NUpload
+      v-model:file-list="valueList"
+      :max="multipleFiles ? undefined : 1"
+      :on-update:file-list="handleFileListChange"
+      list-type="image-card"
+    >
+      <button class="btn btn-primary" type="button">Upload</button>
+    </NUpload>
+  </div>
 </template>
 
 <script>
@@ -45,3 +47,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.upload-wrapper.is-invalid {
+  border: red 1px solid;
+}
+</style>

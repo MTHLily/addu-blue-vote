@@ -1,7 +1,7 @@
 <template>
   <div
     class="position-fixed start-50 translate-middle"
-    style="z-index: 11; top: 4rem"
+    style="z-index: 1100; top: 4rem"
   >
     <div
       class="toast mt-4"
@@ -132,6 +132,14 @@ export default {
             {
               title: "News",
               route: "news.index",
+            },
+            {
+              title: "Issues",
+              route: "issues.index",
+            },
+            {
+              title: "Political Parties",
+              route: "political-parties.index",
             },
           ],
         },

@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
+use App\Models\CandidateBackgroundType;
+use App\Models\Issue;
+use App\Models\Location;
+use App\Models\LocationType;
+use App\Models\PoliticalParty;
+use App\Models\RunningPosition;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +35,21 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        return Inertia::render("Candidates/Create");
+        $locationTypes = LocationType::all();
+        $positions = RunningPosition::all()->groupBy("location_type_id");
+        $locations = Location::all()->groupBy("location_type_id");
+        $issues = Issue::all();
+        $parties = PoliticalParty::orderBy("name")->get();
+        $background_types = CandidateBackgroundType::all();
+
+        return Inertia::render("Candidates/Create", [
+            "location_types" => $locationTypes,
+            "positions" => $positions,
+            "locations" => $locations,
+            "issues" => $issues,
+            "parties" => $parties,
+            "background_types" => $background_types,
+        ]);
     }
 
     /**
@@ -37,9 +58,9 @@ class CandidateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

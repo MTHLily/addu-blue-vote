@@ -4,16 +4,16 @@
       <div class= "border-bottom border-primary">
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
         <PresCarousel></PresCarousel>
-        <h2 class="text-primary fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
+        <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
         <ViceCarousel></ViceCarousel>
-        <h2 class="text-primary fw-bold">SENATORIAL CANDIDATES</h2>
+        <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
         <SenCarousel></SenCarousel>
       </div>
       <div class="container d-flex">
         <!-- REGION DROPDOWN FILTER --> 
         <div class="dropdown ms-2 mt-5 mb-4">
           <button
-            class="btn btn-primary text-white dropdown-toggle"
+            class="btn btn-danger text-white dropdown-toggle"
             type="button"
             id="RegionDropdown"
             data-bs-toggle="dropdown"
@@ -45,7 +45,7 @@
         <!-- DISTRICT DROPDOWN FILTER --> 
         <div class="dropdown ms-2 mt-5 mb-4">
           <button
-            class="btn btn-primary text-white dropdown-toggle"
+            class="btn btn-warning text-white dropdown-toggle"
             type="button"
             id="districtDropdown"
             data-bs-toggle="dropdown"
@@ -77,7 +77,7 @@
       </div>
       <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
       <MayorCarousel></MayorCarousel>
-      <h2 class="text-primary fw-bold">COUNCILOR CANDIDATES</h2>
+      <h2 class="text-danger fw-bold">COUNCILOR CANDIDATES</h2>
       <CouncilorCarousel></CouncilorCarousel>
     </div>
   </Layout>

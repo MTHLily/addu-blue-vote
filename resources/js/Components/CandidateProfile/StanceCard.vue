@@ -1,8 +1,9 @@
+// todo stance card icon center
 <template lang="">
-  <div class="card m-3 text-primary" style="max-width: 540px">
+  <div class="container bg-white m-3 text-primary p-3" style="max-width: 540px;border-radius: 20px">
     <div class="row g-0">
       <div class="col col-md-4">
-        <i class="bi bi-question-circle-fill text-warning display-3 p-3"></i>
+        <i class="bi bi-question-circle-fill text-warning display-1 p-3"></i>
       </div>
       <div class="col col-md-8 ps-3">
         <div class="card-body d-flex flex-column h-100">
@@ -19,6 +20,7 @@
       </div>
     </div>
   </div>
+
   <!-- <div
     class="text-center bg-white p-3 text-primary m-2"
     style="border-radius: 20px"

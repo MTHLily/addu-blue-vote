@@ -76,9 +76,9 @@
         </div>
       </div>
       <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
-      <SenCarousel></SenCarousel>
+      <MayorCarousel></MayorCarousel>
       <h2 class="text-primary fw-bold">COUNCILOR CANDIDATES</h2>
-      <SenCarousel></SenCarousel>
+      <CouncilorCarousel></CouncilorCarousel>
     </div>
   </Layout>
 </template>
@@ -88,6 +88,8 @@ import { defineComponent } from "@vue/runtime-core";
 import PresCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import ViceCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import SenCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import MayorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import CouncilorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 
 export default {
@@ -96,6 +98,8 @@ export default {
     PresCarousel,
     ViceCarousel,
     SenCarousel,
+    MayorCarousel,
+    CouncilorCarousel,
     Layout,
   },
 };

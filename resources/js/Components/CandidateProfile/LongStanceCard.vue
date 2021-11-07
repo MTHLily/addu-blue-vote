@@ -13,7 +13,7 @@
         d-flex
         m-2
         justify-content-evenly
-        row-cols-1 row-cols-md-6 row-cols-lg-12
+        row-cols-1 row-cols-md-2 row-cols-lg-2
         mb-3
       "
     >
@@ -26,6 +26,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import StanceCard from "./StanceCard.vue";
 export default {
@@ -42,4 +43,5 @@ export default {
   },
 };
 </script>
+
 <style lang=""></style>

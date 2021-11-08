@@ -1,5 +1,6 @@
 <template>
   <div class="upload-wrapper">
+    <!-- <NImage v-if="!multipleFiles" width="100" :src="filePreview"></NImage> -->
     <NUpload
       v-model:file-list="valueList"
       :max="multipleFiles ? undefined : 1"
@@ -13,10 +14,10 @@
 
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import { NUpload } from "naive-ui";
+import { NUpload, NImage } from "naive-ui";
 
 export default defineComponent({
-  components: { NUpload },
+  components: { NUpload, NImage },
   props: {
     value: Object,
     multipleFiles: {
@@ -43,6 +44,12 @@ export default defineComponent({
           else return [];
         } else return this.value;
       },
+    },
+    filePreview() {
+      if (!this.multipleFiles) {
+        if (this.value?.file) return URL.createObjectURL(this.value.file);
+      }
+      return null;
     },
   },
 });

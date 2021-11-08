@@ -114,6 +114,26 @@
       ></IssueSelector>
       <div class="invalid-feedback">{{ form.errors.description }}</div>
     </div>
+    <div class="col-7 mb-3 p-3">
+      <div>
+        <label for="twitterTimeline" class="form-label"
+          >Twitter Timeline URL</label
+        >
+        <input
+          v-model="form.twitter_timeline_url"
+          type="text"
+          class="form-control"
+          :class="{
+            'is-invalid': form.errors.twitter_timeline_url,
+          }"
+          id="twitterTimeline"
+          placeholder="Twitter Timeline URL"
+        />
+        <div class="invalid-feedback">
+          {{ form.errors.twitter_timeline_url }}
+        </div>
+      </div>
+    </div>
     <div class="col-12 mb-3 p-3">
       <label class="form-label">Candidate Background</label>
       <CandidateBackgroundSelector

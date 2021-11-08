@@ -12,12 +12,19 @@
           class="form-select"
           :id="`bg-type-${index}`"
           v-model="value.candidate_background_type_id"
+          :class="{
+            'is-invalid':
+              errors[`${errorKey}.${index}.candidate_background_type_id`],
+          }"
         >
           <option :value="null" disabled>Select Background Type</option>
           <template v-for="type in types" :key="type.id">
             <option :value="type.id">{{ type.name }}</option>
           </template>
         </select>
+        <div class="invalid-feedback">
+          {{ errors[`${errorKey}.${index}.candidate_background_type_id`] }}
+        </div>
       </div>
       <div
         class="row row-cols-2"
@@ -33,7 +40,13 @@
               class="form-control"
               :id="`bg-place-${index}`"
               v-model="value.place"
+              :class="{
+                'is-invalid': errors[`${errorKey}.${index}.place`],
+              }"
             />
+            <div class="invalid-feedback">
+              {{ errors[`${errorKey}.${index}.place`] }}
+            </div>
           </div>
           <div class="row">
             <label :for="`bg-occupation-${index}`">{{
@@ -44,7 +57,13 @@
               class="form-control"
               :id="`bg-occupation-${index}`"
               v-model="value.occupation"
+              :class="{
+                'is-invalid': errors[`${errorKey}.${index}.occupation`],
+              }"
             />
+            <div class="invalid-feedback">
+              {{ errors[`${errorKey}.${index}.occupation`] }}
+            </div>
           </div>
           <div class="row">
             <label :for="`bg-position-${index}`">{{
@@ -55,17 +74,43 @@
               class="form-control"
               :id="`bg-position-${index}`"
               v-model="value.position"
+              :class="{
+                'is-invalid': errors[`${errorKey}.${index}.position`],
+              }"
             />
+            <div class="invalid-feedback">
+              {{ errors[`${errorKey}.${index}.position`] }}
+            </div>
           </div>
         </div>
         <div class="col">
           <div class="row">
             <label>Start Date</label>
-            <n-date-picker v-model="value.start_date" type="month" clearable />
+            <n-date-picker
+              v-model:value="value.start_date"
+              type="month"
+              clearable
+              :class="{
+                'is-invalid': errors[`${errorKey}.${index}.start_date`],
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ errors[`${errorKey}.${index}.start_date`] }}
+            </div>
           </div>
           <div class="row">
             <label>End Date</label>
-            <n-date-picker v-model="value.end_date" type="month" clearable />
+            <n-date-picker
+              v-model:value="value.end_date"
+              type="month"
+              clearable
+              :class="{
+                'is-invalid': errors[`${errorKey}.${index}.end_date`],
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ errors[`${errorKey}.${index}.end_date`] }}
+            </div>
           </div>
           <div class="row">
             <div class="col">
@@ -78,7 +123,13 @@
                 class="form-control"
                 :id="`bg-description-${index}`"
                 v-model="value.description"
+                :class="{
+                  'is-invalid': errors[`${errorKey}.${index}.description`],
+                }"
               />
+              <div class="invalid-feedback">
+                {{ errors[`${errorKey}.${index}.description`] }}
+              </div>
             </div>
           </div>
         </div>
@@ -99,6 +150,8 @@ export default defineComponent({
   props: {
     background: Array,
     types: Array,
+    errors: Object,
+    errorKey: String,
   },
   setup(props, { emit }) {
     return {

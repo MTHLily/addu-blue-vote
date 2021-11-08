@@ -17,7 +17,6 @@
               :background-types="background_types"
             ></CandidateForm>
           </div>
-          <pre>{{ form }}</pre>
           <div class="btn-group mx-auto w-100" role="group">
             <div class="p-3">
               <button class="btn btn-primary">Save</button>
@@ -31,8 +30,6 @@
         </form>
       </div>
     </div>
-    <pre>{{ locations }}</pre>
-    <pre>{{ positions }}</pre>
   </DashboardLayout>
 </template>
 
@@ -57,9 +54,11 @@ export default defineComponent({
     form: useForm({
       name: null,
       slug: null,
+      location_type_id: null,
       political_party_id: null,
       running_position_id: null,
       location_id: null,
+      twitter_timeline_feed_url: null,
       stances: [],
       background: [],
       media: null,

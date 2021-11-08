@@ -1,7 +1,7 @@
 <template lang="">
-  <div class="container bg-white m-3 text-primary p-3" style="max-width: 540px;border-radius: 20px">
+  <div class="container bg-white mb-3 text-primary p-3" style="max-width: 540px;border-radius: 20px">
     <div class="row g-0">
-      <div class="col-md-4 align-self-center">
+      <div class="d-flex col-md-4 align-self-center justify-content-center">
         <i class="bi bi-question-circle-fill text-warning display-1 p-3"></i>
       </div>
       <div class="col col-md-8 ps-3">

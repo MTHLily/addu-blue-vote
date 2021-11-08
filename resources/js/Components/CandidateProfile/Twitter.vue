@@ -1,5 +1,5 @@
 <template>
-  <div class="container col-6 h-50">
+  <div class="container">
     <twitter>
       <a class="twitter-timeline" data-height="540" data-theme="light" :href="`${profile.link}`" >Tweets by {{ profile.name }}</a>
     </twitter>

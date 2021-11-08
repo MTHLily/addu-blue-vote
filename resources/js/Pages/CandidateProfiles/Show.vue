@@ -2,7 +2,9 @@
   <Layout>
     <div class="container mx-auto" style="margin-top: 10%">
       <div class="row">
-        <CandidateHeader></CandidateHeader>
+        <div class="col">
+          <CandidateHeader></CandidateHeader>
+        </div>
       </div>
       <div class="row row-cols-1 row-cols-md-2">
         <div class="col">
@@ -13,13 +15,16 @@
         </div>
       </div>
       <div class="row">
-        <PolBackground></PolBackground>
+        <div class="col">
+          <PolBackground></PolBackground>
+        </div>
       </div>
 
       <div class="row">
-        <Stances></Stances>
+        <div class="col">
+          <Stances></Stances>
+        </div>
       </div>
-
       <div class="row" style="position: relative">
         <div class="row mb-2 row-cols-1 row-cols-md-2">
           <div class="col">
@@ -44,7 +49,7 @@ import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
 
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";
-import Twitter from "../../Components/CandidateProfile/Twitter.vue";
+import Twitter from "../../Components/CandidateProfile/TwitterFeed.vue";
 
 export default defineComponent({
   components: {

@@ -1,4 +1,3 @@
-// TODO:fix newscard import
 <template lang="">
   <div class="container col-6 text-white h-auto" style="background-color: #faa728">
     <div class="card-title p-3 text-uppercase fw-bold lh-sm fs-1">NEWS ARTICLES</div>

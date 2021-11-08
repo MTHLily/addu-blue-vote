@@ -65,11 +65,11 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 body {
-  background: url("../../Components/assets/candidate-profile-show-background.svg")
-    no-repeat;
-  background-size: auto;
-  background-attachment: fixed;
+  background-image: url("../../Components/assets/candidate-profile-show-background.svg");
+  background-repeat:no-repeat;
+  background-size: 100%;
+  background-position:bottom;
 }
 </style>

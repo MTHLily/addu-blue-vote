@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="container mx-auto" style="margin-top: 10%">
-      <div>
+      <div class="row">
         <Breadcrumb :crumbs="crumbs" @selected="selected" />
       </div>
       <div class="row">

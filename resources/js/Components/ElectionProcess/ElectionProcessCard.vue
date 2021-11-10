@@ -17,7 +17,7 @@
       "
       :style="`background-color: ${
         processStep.secondaryColor || processStep.primaryColor || '#ce2029'
-      }; border-radius: 20px`"
+      }; border-radius: 30px`"
     >
       {{ processStep.step }}
     </div>

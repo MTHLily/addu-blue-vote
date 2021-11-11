@@ -1,19 +1,20 @@
 <template>
   <DashboardLayout>
-    <h1>Update {{ poi.name }}</h1>
-    <form @submit.prevent="handleSubmit">
-      <PoIForm
-        :districts="districts"
-        :poi_types="poi_types"
-        v-model:poi="poiForm"
-        @update:image="handleImage"
-      ></PoIForm>
-
-      <div class="btn-group mx-auto w-100" role="group">
-        <button class="btn btn-primary">Save</button>
-        <Link :href="route('poi.index')" class="btn btn-danger">Cancel</Link>
-      </div>
-    </form>
+    <div class="container">
+      <h1>Update {{ poi.name }}</h1>
+      <form @submit.prevent="handleSubmit">
+        <PoIForm
+          :locations="locations"
+          :poi_types="poi_types"
+          v-model:poi="poiForm"
+          @update:image="handleImage"
+        ></PoIForm>
+        <div class="btn-group mx-auto w-100" role="group">
+          <button class="btn btn-primary">Save</button>
+          <Link :href="route('poi.index')" class="btn btn-danger">Cancel</Link>
+        </div>
+      </form>
+    </div>
   </DashboardLayout>
 </template>
 
@@ -42,6 +43,7 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    locations: Array,
   },
   data: () => ({
     poiForm: useForm({
@@ -49,7 +51,7 @@ export default {
       description: null,
       longitude: null,
       latitude: null,
-      district_id: null,
+      location_id: null,
       point_of_interest_type_id: null,
       image: null,
     }),
@@ -60,7 +62,7 @@ export default {
       description: this.poi.description,
       longitude: this.poi.longitude,
       latitude: this.poi.latitude,
-      district_id: this.poi.district_id,
+      location_id: this.poi.location_id,
       point_of_interest_type_id: this.poi.point_of_interest_type_id,
       image: null,
     });

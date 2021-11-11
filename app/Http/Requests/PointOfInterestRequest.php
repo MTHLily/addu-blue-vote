@@ -28,7 +28,7 @@ class PointOfInterestRequest extends FormRequest
             "description" => "required",
             "longitude" => "required",
             "latitude" => "required",
-            "district_id" => "required",
+            "location_id" => "required|exists:locations,id",
             "point_of_interest_type_id" => "required",
             "image" => ["nullable", "image"],
         ];

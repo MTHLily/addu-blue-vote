@@ -36,9 +36,17 @@ class Location extends Model implements HasMedia
     {
         $regions = Location::where("location_type_id", "1")
             ->where("name", "Region XI - Davao Region")
-            ->with(["children.children.sites.location"])
+            ->with([
+                "children.children.sites.location",
+                "children.children.sites.type",
+            ])
             ->get();
 
         return $regions;
+    }
+
+    public static function regions()
+    {
+        return Location::where("location_type_id", "1");
     }
 }

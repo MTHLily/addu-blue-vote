@@ -38,7 +38,7 @@
         </template>
       </div>
     </template>
-    <div
+    <!-- <div
       class="row mt-4"
       v-for="districtSection in districtAndPoi"
       :key="districtSection.id"
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

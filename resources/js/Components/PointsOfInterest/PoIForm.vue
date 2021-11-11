@@ -67,26 +67,14 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="district_id" class="form-label">District</label>
-          <select
-            class="form-select"
-            id="district_id"
-            aria-label="District ID Select"
-            :class="{
-              'is-invalid': poi.errors.district_id,
-            }"
-            v-model="poi.district_id"
-          >
-            <option selected disabled :value="null">Select a district</option>
-            <option
-              v-for="district in districts"
-              :key="district.id"
-              :value="district.id"
-            >
-              {{ district.name }}
-            </option>
-          </select>
-          <div class="invalid-feedback">{{ poi.errors.district_id }}</div>
+          <label for="location_id" class="form-label">Locations</label>
+          <n-tree-select
+            id="location_id"
+            v-model:value="poi.location_id"
+            :class="{ 'is-invalid': poi.location_id }"
+            :options="locationOptions"
+          ></n-tree-select>
+          <div class="invalid-feedback">{{ poi.errors.location_id }}</div>
         </div>
         <div class="row">
           <div class="col">
@@ -139,9 +127,10 @@
 
 <script>
 import MapPicker from "../Map/MapPicker.vue";
+import { NTreeSelect } from "naive-ui";
 
 export default {
-  components: { MapPicker },
+  components: { MapPicker, NTreeSelect },
   props: {
     poi: {
       type: Object,
@@ -164,7 +153,7 @@ export default {
         },
       }),
     },
-    districts: {
+    locations: {
       type: Array,
       default: [],
     },
@@ -176,6 +165,47 @@ export default {
   methods: {
     handleImage(event) {
       this.$emit("update:image", event.target.files[0]);
+    },
+  },
+  computed: {
+    locationOptions() {
+      return this.locations.map((region) => ({
+        key: region.id,
+        label: region.name,
+        children: [
+          {
+            key: -1,
+            label: "Provinces",
+            disabled: true,
+          },
+          ...region.children.map((province) => ({
+            key: province.id,
+            label: province.name,
+            children: [
+              {
+                key: -1,
+                label: "Districts",
+                disabled: true,
+              },
+              ...province.children.map((district) => ({
+                key: district.id,
+                label: district.name,
+                children: [
+                  {
+                    key: -1,
+                    label: "Cities/Municipalities",
+                    disabled: true,
+                  },
+                  ...district.children.map((city) => ({
+                    key: city.id,
+                    label: city.name,
+                  })),
+                ],
+              })),
+            ],
+          })),
+        ],
+      }));
     },
   },
 };

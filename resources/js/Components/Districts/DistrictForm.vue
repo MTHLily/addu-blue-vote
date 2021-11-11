@@ -3,16 +3,16 @@
     <div class="mb-3 p-3" style="background-color: #ffffff">
       <label for="districtName" class="form-label">District Name</label>
       <input
-        v-model="district.name"
+        v-model="form.name"
         type="text"
         class="form-control"
         :class="{
-          'is-invalid': district.errors.name,
+          'is-invalid': form.errors.name,
         }"
         id="districtName"
         placeholder="District Name"
       />
-      <div class="invalid-feedback">{{ district.errors.name }}</div>
+      <div class="invalid-feedback">{{ form.errors.name }}</div>
     </div>
     <div class="mb-3 p-3" style="background-color: #ffffff">
       <label for="description" class="form-label">Description</label>
@@ -22,21 +22,21 @@
         rows="4"
         class="form-control"
         :class="{
-          'is-invalid': district.errors.name,
+          'is-invalid': form.errors.name,
         }"
-        v-model="district.description"
+        v-model="form.description"
         placeholder="Description"
       ></textarea>
-      <div class="invalid-feedback">{{ district.errors.description }}</div>
+      <div class="invalid-feedback">{{ form.errors.description }}</div>
     </div>
     <div class="mb-3 p-3" style="background-color: #ffffff">
       <ColorPicker
-        v-model:color="district.color"
+        v-model:color="form.color"
         :class="{
-          'is-invalid': district.errors.color,
+          'is-invalid': form.errors.color,
         }"
       ></ColorPicker>
-      <div class="invalid-feedback">{{ district.errors.color }}</div>
+      <div class="invalid-feedback">{{ form.errors.color }}</div>
     </div>
     <div class="mb-3 p-3" style="background-color: #ffffff">
       <div class="row">
@@ -44,40 +44,40 @@
           <div class="mb-3">
             <label for="longitude" class="form-label">Longitude</label>
             <input
-              v-model="district.longitude"
+              v-model="form.longitude"
               type="text"
               class="form-control bg-white"
               :class="{
-                'is-invalid': district.errors.longitude,
+                'is-invalid': form.errors.longitude,
               }"
               id="longitude"
               readonly
               placeholder="Longitude"
             />
-            <div class="invalid-feedback">{{ district.errors.longitude }}</div>
+            <div class="invalid-feedback">{{ form.errors.longitude }}</div>
           </div>
         </div>
         <div class="col">
           <div class="mb-3">
             <label for="latitude" class="form-label">Latitude</label>
             <input
-              v-model="district.latitude"
+              v-model="form.latitude"
               type="text"
               class="form-control bg-white"
               readonly
               :class="{
-                'is-invalid': district.errors.latitude,
+                'is-invalid': form.errors.latitude,
               }"
               id="latitude"
               placeholder="Latitude"
             />
-            <div class="invalid-feedback">{{ district.errors.latitude }}</div>
+            <div class="invalid-feedback">{{ form.errors.latitude }}</div>
           </div>
         </div>
       </div>
       <MapPicker
-        v-model:longitude="district.longitude"
-        v-model:latitude="district.latitude"
+        v-model:longitude="form.longitude"
+        v-model:latitude="form.latitude"
         :zoom="10"
         id="mapPicker"
       ></MapPicker>
@@ -95,7 +95,7 @@ export default {
     MapPicker,
   },
   props: {
-    district: {
+    form: {
       type: Object,
       default: () => ({
         question: "",

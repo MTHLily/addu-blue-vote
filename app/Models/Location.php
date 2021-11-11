@@ -26,4 +26,19 @@ class Location extends Model implements HasMedia
     {
         return $this->belongsTo(LocationType::class, "location_type_id");
     }
+
+    public function sites()
+    {
+        return $this->hasMany(PointOfInterest::class);
+    }
+
+    public static function getTree()
+    {
+        $regions = Location::where("location_type_id", "1")
+            ->where("name", "Region XI - Davao Region")
+            ->with(["children.children.sites.location"])
+            ->get();
+
+        return $regions;
+    }
 }

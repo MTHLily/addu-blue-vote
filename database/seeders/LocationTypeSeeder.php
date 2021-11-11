@@ -19,38 +19,43 @@ class LocationTypeSeeder extends Seeder
         $types = collect([
             [
                 "name" => "Region",
-                "positions" => [
-                    [
-                        "name" => "Governor",
-                    ],
-                    [
-                        "name" => "Vice Governor",
-                    ],
-                    [
-                        "name" => "Board Member",
-                    ],
-                ],
                 "children" => [
                     [
-                        "name" => "District",
-                        "requires_parent" => false,
+                        "name" => "Province",
                         "positions" => [
                             [
-                                "name" => "Congressman",
+                                "name" => "Governor",
+                            ],
+                            [
+                                "name" => "Vice Governor",
+                            ],
+                            [
+                                "name" => "Board Member",
                             ],
                         ],
                         "children" => [
                             [
-                                "name" => "City",
+                                "name" => "District",
+                                "requires_parent" => false,
                                 "positions" => [
                                     [
-                                        "name" => "Mayor",
+                                        "name" => "Congressman",
                                     ],
+                                ],
+                                "children" => [
                                     [
-                                        "name" => "Vice Mayor",
-                                    ],
-                                    [
-                                        "name" => "Counselor",
+                                        "name" => "City",
+                                        "positions" => [
+                                            [
+                                                "name" => "Mayor",
+                                            ],
+                                            [
+                                                "name" => "Vice Mayor",
+                                            ],
+                                            [
+                                                "name" => "Counselor",
+                                            ],
+                                        ],
                                     ],
                                 ],
                             ],
@@ -58,14 +63,6 @@ class LocationTypeSeeder extends Seeder
                     ],
                 ],
             ],
-            // [
-            //     "name" => "Independent District",
-            //     "positions" => [
-            //         [
-            //             "name" => "Independent District Senator",
-            //         ],
-            //     ],
-            // ],
         ]);
 
         $types->each(function ($data) {
@@ -85,10 +82,12 @@ class LocationTypeSeeder extends Seeder
                 ->create(Arr::only($data, ["name", "requires_parent"]));
         }
 
-        $positions = collect($data["positions"]);
-        $positions->each(function ($position) use ($type) {
-            $type->positions()->create($position);
-        });
+        if (isset($data["positions"])) {
+            $positions = collect($data["positions"]);
+            $positions->each(function ($position) use ($type) {
+                $type->positions()->create($position);
+            });
+        }
 
         if (!empty($data["children"])) {
             $children = collect($data["children"]);

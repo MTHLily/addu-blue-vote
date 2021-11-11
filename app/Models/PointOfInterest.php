@@ -37,8 +37,8 @@ class PointOfInterest extends Model
     }
 
     // Relationships
-    public function district()
+    public function location()
     {
-        return $this->belongsTo(District::class);
+        return $this->belongsTo(Location::class);
     }
 }

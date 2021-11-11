@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\District;
 use App\Models\FrequentlyAskedQuestion;
 use App\Models\InformationSnippet;
+use App\Models\Location;
 use App\Models\NewsArticle;
 use App\Models\PointOfInterest;
 use App\Services\NewscraperService;
@@ -18,12 +19,14 @@ class GuestController extends Controller
             "faqs" => FrequentlyAskedQuestion::all(),
             "information" => InformationSnippet::all(),
             "districts" => District::all(),
+            "locations" => Location::all(),
+            "locationTree" => Location::getTree(),
             "registrationSites" => PointOfInterest::where(
                 "point_of_interest_type_id",
                 "=",
                 1
             )
-                ->with("district")
+                ->with("location")
                 ->get(),
         ]);
     }

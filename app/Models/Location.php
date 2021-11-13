@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpOffice\PhpSpreadsheet\RichText\Run;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -30,6 +31,21 @@ class Location extends Model implements HasMedia
     public function sites()
     {
         return $this->hasMany(PointOfInterest::class);
+    }
+
+    public function candidates()
+    {
+        return $this->hasMany(Candidate::class);
+    }
+
+    public function positions()
+    {
+        return $this->hasManyThrough(
+            RunningPosition::class,
+            LocationType::class,
+            "location_type_id",
+            "location_type_id"
+        );
     }
 
     public static function getTree()

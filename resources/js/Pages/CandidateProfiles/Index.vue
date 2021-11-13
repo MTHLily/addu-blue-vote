@@ -1,7 +1,17 @@
 <template>
   <Layout>
+    <div class="row">
+      <div class="col">
+        LOCATIONS
+        <pre>{{ locations }}</pre>
+      </div>
+      <div class="col">
+        NATIONAL POSITIONS
+        <pre>{{ nationalPositions }} </pre>
+      </div>
+    </div>
     <div class="container bod" style="margin-top: 10%">
-      <div class= "border-bottom border-primary">
+      <div class="border-bottom border-primary">
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
         <PresCarousel></PresCarousel>
         <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
@@ -10,7 +20,7 @@
         <SenCarousel></SenCarousel>
       </div>
       <div class="container d-flex">
-        <!-- REGION DROPDOWN FILTER --> 
+        <!-- REGION DROPDOWN FILTER -->
         <div class="dropdown ms-2 mt-5 mb-4">
           <button
             class="btn btn-danger text-white dropdown-toggle"
@@ -19,30 +29,22 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            {{
-              filteredRegion
-                ? filteredRegion.name
-                : "Region"
-            }}
+            {{ filteredRegion ? filteredRegion.name : "Region" }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="regionDropdown">
             <li>
-              <a
-                class="dropdown-item"
-                @click="filteredRegion = null"
+              <a class="dropdown-item" @click="filteredRegion = null"
                 >Clear filter</a
               >
             </li>
             <li v-for="region in districts" :key="region.id">
-              <a
-                class="dropdown-item"
-                @click="handleDistrictFilter(region)"
-                >{{ region.name }}</a
-              >
+              <a class="dropdown-item" @click="handleDistrictFilter(region)">{{
+                region.name
+              }}</a>
             </li>
           </ul>
         </div>
-        <!-- DISTRICT DROPDOWN FILTER --> 
+        <!-- DISTRICT DROPDOWN FILTER -->
         <div class="dropdown ms-2 mt-5 mb-4">
           <button
             class="btn btn-warning text-white dropdown-toggle"
@@ -51,17 +53,11 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            {{
-              filteredDistrict
-                ? filteredDistrict.name
-                : "District"
-            }}
+            {{ filteredDistrict ? filteredDistrict.name : "District" }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="districtDropdown">
             <li>
-              <a
-                class="dropdown-item"
-                @click="filteredDistrict = null"
+              <a class="dropdown-item" @click="filteredDistrict = null"
                 >Clear filter</a
               >
             </li>
@@ -93,6 +89,10 @@ import CouncilorCarousel from "../../Components/CandidateProfile/CandidateCarous
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 
 export default {
+  props: {
+    locations: Array,
+    nationalPositions: Array,
+  },
   components: {
     //   Link,
     PresCarousel,
@@ -108,8 +108,8 @@ export default {
 <style scoped>
 body {
   background-image: url("../../Components/assets/candidate-backgrounds.svg");
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: 100%;
-  background-position:bottom;
+  background-position: bottom;
 }
 </style>

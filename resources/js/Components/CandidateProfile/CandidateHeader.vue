@@ -3,16 +3,23 @@
   <div class="row g-0 mb-3">
     <div class="col-12 col-md-4">
       <img
-        :src="`${candidate.image}`"
+        :src="`${candidate.media[0].original_url}`"
         class="img-fluid rounded"
         alt="..."
       />
     </div>
     <div class="col-12 col-md-8 p-5 align-self-center">
       <div class="container d-flex flex-column h-100">
-        <h1 class="fw-bold lh-sm text-uppercase text-primary fs-1">{{ candidate.name }}</h1>
-        <div class="card-text text-muted fs-4 mb-3">{{ candidate.partylist }}</div>
-        <span class="badge py-2 px-3 fw-bold 1h-sm fs-6 w-50" style="background-color: #faa728; border-radius: 20px">
+        <h1 class="fw-bold lh-sm text-uppercase text-primary fs-1">
+          {{ candidate.name }}
+        </h1>
+        <div class="card-text text-muted fs-4 mb-3">
+          {{ candidate.partylist }}
+        </div>
+        <span
+          class="badge py-2 px-3 fw-bold 1h-sm fs-6 w-50"
+          style="background-color: #faa728; border-radius: 20px"
+        >
           {{ candidate.position }}
         </span>
       </div>

@@ -19,6 +19,21 @@ class Candidate extends Model implements HasMedia
         return $this->hasMany(CandidateBackground::class);
     }
 
+    public function educationalBackground()
+    {
+        return $this->background()->where("candidate_background_type_id", 1);
+    }
+
+    public function politicalBackground()
+    {
+        return $this->background()->where("candidate_background_type_id", 2);
+    }
+
+    public function professionalBackground()
+    {
+        return $this->background()->where("candidate_background_type_id", 3);
+    }
+
     public function stances()
     {
         return $this->belongsToMany(Issue::class)->withPivot("positive");
@@ -27,6 +42,16 @@ class Candidate extends Model implements HasMedia
     public function runningPosition()
     {
         return $this->belongsTo(RunningPosition::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function politicalParty()
+    {
+        return $this->belongsTo(PoliticalParty::class);
     }
 
     // Picture Conversions

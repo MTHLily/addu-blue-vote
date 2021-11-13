@@ -46,8 +46,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
-    Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
-        // Route::prefix("dashboard")->group(function () {
+    // Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
+    Route::prefix("dashboard")->group(function () {
         Route::get("/", [DashboardController::class, "index"])->name(
             "dashboard"
         );
@@ -77,19 +77,10 @@ Route::get("/candidate-profiles", [
     "candidate_profiles_index",
 ])->name("candidate-profiles.index");
 
-Route::get("/candidate-profile/{id}", [
+Route::get("/candidate-profile/{candidate}", [
     GuestController::class,
     "candidate_profile",
 ])->name("candidate-profiles.show");
-
-Route::get("/test", function () {
-    $imports = Excel::import(
-        new LocationSeedImport(),
-        "data/AdDU Blue Vote Locations.xlsx"
-    );
-
-    dd($imports);
-});
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);

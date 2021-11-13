@@ -1,12 +1,18 @@
 <template>
   <Layout>
+    <!-- Candidate Backgorund Type
+    1: Education
+    2: Political
+    3: Professional
+    -->
+    <pre>{{ candidate }}</pre>
     <div class="container mx-auto" style="margin-top: 10%">
       <div class="row">
         <Breadcrumb :crumbs="crumbs" @selected="selected" />
       </div>
       <div class="row">
         <div class="col">
-          <CandidateHeader></CandidateHeader>
+          <CandidateHeader :candidate="candidate"></CandidateHeader>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-2">
@@ -67,16 +73,19 @@ export default defineComponent({
     NewsArticles,
     Twitter,
   },
+  props: {
+    candidate: Object,
+  },
   data() {
     return {
       // crumbs: ['Davao City', 'District 2', 'Sara Duterte']
-    }
+    };
   },
   methods: {
     selected(crumb) {
       console.log(crumb);
-    }
-  }
+    },
+  },
 });
 </script>
 

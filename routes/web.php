@@ -14,6 +14,9 @@ use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
+use App\Imports\LocationSeedImport;
+use App\Models\Location;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +81,15 @@ Route::get("/candidate-profile/{id}", [
     GuestController::class,
     "candidate_profile",
 ])->name("candidate-profiles.show");
+
+Route::get("/test", function () {
+    $imports = Excel::import(
+        new LocationSeedImport(),
+        "data/AdDU Blue Vote Locations.xlsx"
+    );
+
+    dd($imports);
+});
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);

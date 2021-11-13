@@ -9,7 +9,8 @@
       <FAQs :faqs="faqs" />
       <Map
         :registrationSites="registrationSites"
-        :districts="districts"
+        :locations="locations"
+        :locationTree="locationTree"
         :stack="true"
       />
     </div>
@@ -51,6 +52,8 @@ export default {
       type: Array,
       default: [],
     },
+    locations: Array,
+    locationTree: Array,
   },
 };
 </script>

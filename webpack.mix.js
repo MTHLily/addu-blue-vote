@@ -24,6 +24,7 @@ mix
   .browserSync({
     proxy: "laravel.test",
     open: false,
+    files: ["public/**"],
   });
 
 if (mix.inProduction()) {

@@ -4,8 +4,48 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Candidate extends Model
+class Candidate extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     use HasFactory;
+    protected $guarded = [];
+
+    public function background()
+    {
+        return $this->hasMany(CandidateBackground::class);
+    }
+
+    public function stances()
+    {
+        return $this->belongsToMany(Issue::class)->withPivot("positive");
+    }
+
+    public function runningPosition()
+    {
+        return $this->belongsTo(RunningPosition::class);
+    }
+
+    // Picture Conversions
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion("thumb")
+            ->width(100)
+            ->height(100)
+            ->sharpen(10);
+    }
+
+    public function getMediaUrlsAttribute()
+    {
+        return $this->media->map(function ($media) {
+            return [
+                "id" => $media->id,
+                "url" => $media->getUrl(),
+                "thumbnailUrl" => $media->getUrl("thumb"),
+            ];
+        });
+    }
 }

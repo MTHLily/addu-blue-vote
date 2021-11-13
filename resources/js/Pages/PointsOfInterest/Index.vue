@@ -25,7 +25,7 @@
         :items="pois"
       >
         <template #district="{ item }">
-          <td>{{ item.district.name }}</td>
+          <td>{{ item.location.name }}</td>
         </template>
         <template #image="{ item }">
           <td>
@@ -125,7 +125,7 @@ export default {
               lng: parseFloat(poi.longitude),
             },
             icon: {
-              url: "/svg/map_marker.svg?color=" + poi.district.color.slice(1),
+              url: "/svg/map_marker.svg?color=" + poi.location.color.slice(1),
             },
           };
         });

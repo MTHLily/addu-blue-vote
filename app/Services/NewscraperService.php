@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Candidate;
 use App\Models\NewsArticle;
 use Carbon\Carbon;
 use Exception;
@@ -434,6 +435,25 @@ class NewscraperService
 
     //https://www.gmanetwork.com/news/tracking/eleksyon_2022/
     //https://cnnphilippines.com/thefilipinovotes/
+
+    public function relatedCandidates($id, $articleSource)
+    {
+        $relatedCandidates = [];
+        // get all the names candidates
+        $candidateNames = Candidate::all()->pluck("name");
+
+        $article = NewsArticle::findOrFail($id);
+        // Visit with guzzler
+        $article->url;
+
+        // Get the main article
+        $article = "";
+
+        // Foreach candidates if candidate name is inside the article
+        // if candidate is inside, add to $relatedCandidates
+
+        return $relatedCandidates;
+    }
 
     public function get(): array
     {

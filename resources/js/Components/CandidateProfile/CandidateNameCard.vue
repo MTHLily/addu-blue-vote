@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="card mb-3 text-primary" style="max-width: 540px">
+  <div class="card m-3 text-primary" style="max-width: 540px">
     <div class="row g-0">
       <div class="col col-md-4">
         <img
@@ -20,7 +20,7 @@
             style="border-radius: 20px"
           >
             <a
-              :href="`${prof.refProfile}`"
+              :href="route('candidate-profiles.show',`${prof.refProfile}`)"
               target="_blank"
               class="text-white text-decoration-none"
             >
@@ -42,7 +42,7 @@ export default {
         name: "Default Name",
         img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde? ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
         partylist: "Default Partylist",
-        refProfile: "",
+        refProfile: "1",
       }),
     },
   },

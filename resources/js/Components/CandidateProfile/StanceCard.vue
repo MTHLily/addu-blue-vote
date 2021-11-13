@@ -1,28 +1,42 @@
 <template lang="">
-  <div
-    class="col-2 text-center bg-white p-3 text-primary m-2"
+  <div class="container bg-white mb-3 text-primary p-3" style="max-width: 540px;border-radius: 20px">
+    <div class="row g-0">
+      <div class="d-flex col-md-4 align-self-center justify-content-center">
+        <i class="bi bi-question-circle-fill text-warning display-1 p-3"></i>
+      </div>
+      <div class="col col-md-8 ps-3">
+        <div class="card-body d-flex flex-column h-100">
+          <h5 class="card-title">{{ stance.title }}</h5>
+          <p class="card-text text-truncate">{{ stance.description }}</p>
+          <p class="card-text">
+            <small class="text-white">
+              <span class="badge bg-primary py-2 px-3 fs-6" style="border-radius: 20px">
+                {{ stance.decision ? "Yes" : "No" }}
+              </span>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div
+    class="text-center bg-white p-3 text-primary m-2"
     style="border-radius: 20px"
   >
-    <!-- <img
-      :src="`${stance.image}`"
-      class="card-img-top img-fluid"
-      style="max-width: 15%"
-      :alt="`${stance.name}`"
-    /> -->
     <i class="bi bi-question-circle-fill text-warning display-3"></i>
     <div class="card-body">
       <h5 class="card-title">{{ stance.title }}</h5>
-      <!-- <p class="card-text text-truncate">{{ stance.description }}</p> -->
+      <p class="card-text text-truncate">{{ stance.description }}</p>
       <p class="card-text">
         <small class="text-white">
-          <!-- TODO: Convert to Badge -->
           <span class="badge bg-primary py-2 px-3 fs-6" style="border-radius: 20px">
             {{ stance.decision ? "Yes" : "No" }}
           </span>
         </small>
       </p>
     </div>
-  </div>
+  </div> -->
 </template>
 <script>
 export default {
@@ -30,8 +44,6 @@ export default {
     stance: {
       type: Object,
       default: () => ({
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/f/f6/Lol_question_mark.png",
         title: "Default name",
         description: "Default Descriptions",
         decision: false,

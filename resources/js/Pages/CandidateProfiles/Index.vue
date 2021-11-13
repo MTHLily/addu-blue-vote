@@ -1,15 +1,19 @@
 <template>
   <Layout>
     <div class="container bod" style="margin-top: 10%">
-      <h1 class="text-primary">PRESIDENTIAL CANDIDATES</h1>
-      <PresCarousel></PresCarousel>
-      <h1 class="text-primary">VICE PRESIDENTIAL CANDIDATES</h1>
-      <ViceCarousel></ViceCarousel>
+      <div class= "border-bottom border-primary">
+        <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
+        <PresCarousel></PresCarousel>
+        <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
+        <ViceCarousel></ViceCarousel>
+        <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
+        <SenCarousel></SenCarousel>
+      </div>
       <div class="container d-flex">
         <!-- REGION DROPDOWN FILTER --> 
-        <div class="dropdown ms-2 mt-2 mb-3">
+        <div class="dropdown ms-2 mt-5 mb-4">
           <button
-            class="btn btn-primary text-white dropdown-toggle"
+            class="btn btn-danger text-white dropdown-toggle"
             type="button"
             id="RegionDropdown"
             data-bs-toggle="dropdown"
@@ -39,9 +43,9 @@
           </ul>
         </div>
         <!-- DISTRICT DROPDOWN FILTER --> 
-        <div class="dropdown ms-2 mt-2 mb-3">
+        <div class="dropdown ms-2 mt-5 mb-4">
           <button
-            class="btn btn-primary text-white dropdown-toggle"
+            class="btn btn-warning text-white dropdown-toggle"
             type="button"
             id="districtDropdown"
             data-bs-toggle="dropdown"
@@ -71,9 +75,10 @@
           </ul>
         </div>
       </div>
-        <SenCarousel></SenCarousel>
-      <h1 class="text-primary">SENATORIAL CANDIDATES</h1>
-      <SenCarousel></SenCarousel>
+      <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
+      <MayorCarousel></MayorCarousel>
+      <h2 class="text-danger fw-bold">COUNCILOR CANDIDATES</h2>
+      <CouncilorCarousel></CouncilorCarousel>
     </div>
   </Layout>
 </template>
@@ -83,6 +88,8 @@ import { defineComponent } from "@vue/runtime-core";
 import PresCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import ViceCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import SenCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import MayorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import CouncilorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 
 export default {
@@ -91,13 +98,18 @@ export default {
     PresCarousel,
     ViceCarousel,
     SenCarousel,
+    MayorCarousel,
+    CouncilorCarousel,
     Layout,
   },
 };
 </script>
 
-<style>
+<style scoped>
 body {
-  background: url("../../Components/assets/candidate-backgrounds.svg") repeat;
+  background-image: url("../../Components/assets/candidate-backgrounds.svg");
+  background-repeat:no-repeat;
+  background-size: 100%;
+  background-position:bottom;
 }
 </style>

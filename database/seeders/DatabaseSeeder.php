@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             LocationSeeder::class,
             PoliticalPartySeeder::class,
             BackgroundTypeSeeder::class,
+            LocationSeeder::class,
         ]);
     }
 }

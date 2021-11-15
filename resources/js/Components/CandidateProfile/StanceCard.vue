@@ -6,12 +6,12 @@
       </div>
       <div class="col col-md-8 ps-3">
         <div class="card-body d-flex flex-column h-100">
-          <h5 class="card-title">{{ stance.title }}</h5>
+          <h5 class="card-title">{{ candidate.stances[0].name}}</h5>
           <p class="card-text text-truncate">{{ stance.description }}</p>
           <p class="card-text">
             <small class="text-white">
               <span class="badge bg-primary py-2 px-3 fs-6" style="border-radius: 20px">
-                {{ stance.decision ? "Yes" : "No" }}
+                {{ candidate.stances[0].pivot.positive ? "Yes" : "No" }}
               </span>
             </small>
           </p>
@@ -49,7 +49,24 @@ export default {
         decision: false,
       }),
     },
+    candidate:{
+      type:Object,
+    },
   },
 };
 </script>
 <style lang=""></style>
+
+// "stances": [
+//     {
+//       "id": 1,
+//       "name": "Death penalty",
+//       "created_at": "2021-11-15T03:54:41.000000Z",
+//       "updated_at": "2021-11-15T03:54:41.000000Z",
+//       "pivot": {
+//         "candidate_id": 1,
+//         "issue_id": 1,
+//         "positive": 1
+//       }
+//     }
+//   ],

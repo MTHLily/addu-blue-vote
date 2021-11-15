@@ -17,7 +17,25 @@
             </h5>
             <ul class="card-text fw-bolder lh-sm">{{candidate.political_background[0].place}}</ul>
             <ul class="card-text lh-sm mb-3">{{candidate.political_background[0].description}}</ul> -->
-            <Pol :candidate="candidate"></Pol>
+            
+            <div class="col">
+                <Pol :candidate="candidate"></Pol>
+            </div>
+            
+            <div class="col">
+                <Pol :candidate="candidate"></Pol>
+            </div>
+            
+            <div class="col">
+                <Pol :candidate="candidate"></Pol>
+            </div>
+            <div class="col">
+                <Pol :candidate="candidate"></Pol>
+            </div>
+            <div class="col">
+                <Pol :candidate="candidate"></Pol>
+            </div>
+
 
         </div>
     </div>

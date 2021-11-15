@@ -56,17 +56,3 @@ export default {
 };
 </script>
 <style lang=""></style>
-
-// "stances": [
-//     {
-//       "id": 1,
-//       "name": "Death penalty",
-//       "created_at": "2021-11-15T03:54:41.000000Z",
-//       "updated_at": "2021-11-15T03:54:41.000000Z",
-//       "pivot": {
-//         "candidate_id": 1,
-//         "issue_id": 1,
-//         "positive": 1
-//       }
-//     }
-//   ],

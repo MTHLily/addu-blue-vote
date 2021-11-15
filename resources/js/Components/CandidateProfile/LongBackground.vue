@@ -4,11 +4,20 @@
         <div class="card-body">
             <h5 class="card-title">
                 <span class="badge py-2 px-3 fs-6 bg-primary" style="border-radius: 20px" :style="{ 'background-color': background.color || 'red' }">
-                        {{ background.date }}
+                        <!-- {{ background.date }} -->
+                    <n-time 
+                        :time="candidate.political_background[0].start_date"
+                        format="yyyy"
+                    /> 
+                    -
+                    <n-time 
+                        :time="candidate.political_background[0].end_date"
+                        format="yyyy"
+                    /> 
                 </span>
             </h5>
-            <ul class="card-text fw-bolder lh-sm">{{background.title}}</ul>
-            <ul class="card-text lh-sm mb-3">{{background.description}}</ul>
+            <ul class="card-text fw-bolder lh-sm">{{candidate.political_background[0].place}}</ul>
+            <ul class="card-text lh-sm mb-3">{{candidate.political_background[0].description}}</ul>
         </div>
     </div>
 
@@ -16,18 +25,23 @@
 
 
 <script>
+import {NTime} from 'naive-ui'
 export default {
+    components:{NTime},
     props: {
         background: {
             type: Object,
             default: () => ({
-                heading: "DEFAULT BACKROUND",
+                heading: "POLITICAL BACKGROUND",
                 date: "Default date",
                 title: "Default source",
                 description:"Default description",
                 bgcolor: "#FAA728",
                 color:"#185EA9",
             }),
+        },
+        candidate:{
+            type:Object,
         },
     },
 }

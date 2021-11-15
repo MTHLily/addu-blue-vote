@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <twitter>
-      <a class="twitter-timeline" data-height="540" data-theme="light" :href="`${profile.link}`" >Tweets by {{ profile.name }}</a>
+      <a class="twitter-timeline" data-height="540" data-theme="light" :href="`${candidate.twitter_timeline_feed_url}`" >Tweets by {{ candidate.name }}</a>
     </twitter>
   </div>
 </template>
@@ -21,6 +21,9 @@ export default {
         name: "Default Descriptions",
         link: "https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw",
       }),
+    },
+    candidate:{
+      type:Object,
     },
   },
 }

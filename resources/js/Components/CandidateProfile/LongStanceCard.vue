@@ -40,6 +40,9 @@ export default {
         cardTitle: "CANDIDATE’S STANCE ON ISSUES",
       }),
     },
+    candidate:{
+      type:Object,
+    },
   },
 };
 </script>

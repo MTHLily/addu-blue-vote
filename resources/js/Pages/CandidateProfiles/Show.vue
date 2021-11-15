@@ -25,22 +25,22 @@
       </div>
       <div class="row">
         <div class="col">
-          <PolBackground></PolBackground>
+          <PolBackground :candidate="candidate"></PolBackground>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <Stances></Stances>
+          <Stances :candidate="candidate"></Stances>
         </div>
       </div>
       <div class="row" style="position: relative">
         <div class="row mb-2 row-cols-1 row-cols-md-2">
           <div class="col">
-            <NewsArticles class="w-100 h-100"></NewsArticles>
+            <NewsArticles class="w-100 h-100" ></NewsArticles>
           </div>
           <div class="col">
-            <Twitter class="w-100"></Twitter>
+            <Twitter class="w-100" :candidate="candidate"></Twitter>
           </div>
         </div>
       </div>
@@ -53,10 +53,9 @@ import { defineComponent } from "@vue/runtime-core";
 import Breadcrumb from "../../Components/CandidateProfile/Breadcrumb.vue";
 import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue";
 import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
-import ProfBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
+import ProfBackground from "../../Components/CandidateProfile/ProfBackgroundCard.vue";
 import PolBackground from "../../Components/CandidateProfile/LongBackground.vue";
 import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
-
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";
 import Twitter from "../../Components/CandidateProfile/TwitterFeed.vue";

@@ -90,6 +90,12 @@ export default {
           icon: "bi-geo-alt-fill",
           route: "locations.index",
         },
+
+        {
+          title: "Points of Interest",
+          icon: "bi-geo-fill",
+          route: "poi.index",
+        },
         {
           title: "Voter's Registration",
           icon: "bi-pen-fill",
@@ -101,23 +107,6 @@ export default {
             {
               title: "FAQs",
               route: "faqs.index",
-            },
-            {
-              title: "Registration Sites",
-              items: [
-                {
-                  title: "Cities",
-                  route: "cities.index",
-                },
-                {
-                  title: "Districts",
-                  route: "districts.index",
-                },
-                {
-                  title: "Points of Interest",
-                  route: "poi.index",
-                },
-              ],
             },
           ],
         },

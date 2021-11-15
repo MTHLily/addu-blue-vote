@@ -30,7 +30,6 @@ class CandidateRequest extends FormRequest
                 "string",
                 "unique:candidates,slug," . $this->candidate?->id,
             ],
-            "location_type_id" => "nullable",
             "political_party_id" => "required|exists:political_parties,id",
             "running_position_id" => "required|exists:running_positions,id",
             "location_id" => "nullable|exists:locations,id",

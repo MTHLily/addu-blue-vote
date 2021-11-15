@@ -21,7 +21,7 @@ class PointOfInterestController extends Controller
     public function index()
     {
         return Inertia::render("PointsOfInterest/Index", [
-            "pois" => PointOfInterest::with("location")->get(),
+            "pois" => PointOfInterest::with(["location", "type"])->get(),
         ]);
     }
 

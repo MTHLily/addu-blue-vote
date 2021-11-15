@@ -2,7 +2,7 @@
   <Head title="Create Candidate"></Head>
 
   <DashboardLayout>
-    <div class="rounded" style="background-color: #ccdfff">
+    <div class="rounded container" style="background-color: #ccdfff">
       <div class="d-flex flex-column container">
         <form @submit.prevent="form.post(route('candidates.store'))">
           <h1 class="p-3">Create Candidate</h1>
@@ -11,6 +11,7 @@
               v-model:form="form"
               :location-types="location_types"
               :locations="locations"
+              :location-tree="location_tree"
               :positions="positions"
               :parties="parties"
               :issues="issues"
@@ -45,6 +46,7 @@ export default defineComponent({
   props: {
     location_types: Array,
     locations: Object,
+    location_tree: Array,
     positions: Object,
     parties: Array,
     issues: Array,

@@ -17,10 +17,10 @@
       </div>
       <div class="row row-cols-1 row-cols-md-2">
         <div class="col">
-          <EducBackground></EducBackground>
+          <EducBackground :candidate="candidate"></EducBackground>
         </div>
         <div class="col">
-          <ProfBackground></ProfBackground>
+          <ProfBackground :candidate="candidate"></ProfBackground>
         </div>
       </div>
       <div class="row">

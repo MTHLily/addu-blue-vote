@@ -20,56 +20,16 @@
         <SenCarousel></SenCarousel>
       </div>
       <div class="container d-flex">
-        <!-- REGION DROPDOWN FILTER -->
-        <div class="dropdown ms-2 mt-5 mb-4">
-          <button
-            class="btn btn-danger text-white dropdown-toggle"
-            type="button"
-            id="RegionDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ filteredRegion ? filteredRegion.name : "Region" }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="regionDropdown">
-            <li>
-              <a class="dropdown-item" @click="filteredRegion = null"
-                >Clear filter</a
-              >
-            </li>
-            <li v-for="region in districts" :key="region.id">
-              <a class="dropdown-item" @click="handleDistrictFilter(region)">{{
-                region.name
-              }}</a>
-            </li>
-          </ul>
-        </div>
-        <!-- DISTRICT DROPDOWN FILTER -->
-        <div class="dropdown ms-2 mt-5 mb-4">
-          <button
-            class="btn btn-warning text-white dropdown-toggle"
-            type="button"
-            id="districtDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ filteredDistrict ? filteredDistrict.name : "District" }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="districtDropdown">
-            <li>
-              <a class="dropdown-item" @click="filteredDistrict = null"
-                >Clear filter</a
-              >
-            </li>
-            <li v-for="district in districts" :key="district.id">
-              <a
-                class="dropdown-item"
-                @click="handleDistrictFilter(district)"
-                >{{ district.name }}</a
-              >
-            </li>
-          </ul>
-        </div>
+        <n-tree-select
+              class="my-4"
+              style="max-width: 300px"
+              placeholder="Filter Locations..."
+              multiple
+              cascade
+              checkable
+              :options="filterOptions"
+              v-model:value="filteredLocationIds"
+            ></n-tree-select>
       </div>
       <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
       <MayorCarousel></MayorCarousel>
@@ -87,11 +47,13 @@ import SenCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue
 import MayorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import CouncilorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
+import { NTreeSelect } from "naive-ui";
 
 export default {
   props: {
     locations: Array,
     nationalPositions: Array,
+    locationTree: Array,
   },
   components: {
     //   Link,
@@ -101,7 +63,20 @@ export default {
     MayorCarousel,
     CouncilorCarousel,
     Layout,
+    NTreeSelect,
   },
+  // computed: {
+  //   filterOptions() {
+  //     return this.locationTree.map((region) => ({
+  //       key: region.id,
+  //       label: region.name,
+  //       children: region.children.map((province) => ({
+  //         key: province.id,
+  //         label: province.name,
+  //       })),
+  //     }));
+  //   },
+  // },
 };
 </script>
 

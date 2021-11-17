@@ -13,16 +13,14 @@
         d-flex
         m-2
         justify-content-evenly
-        row-cols-1 row-cols-md-2 row-cols-lg-2
+        row-cols-1 row-cols-md-2 row-cols-lg-4
         mb-3
       "
     >
-    <div >
-      <StanceCard :candidate="candidate" class="col-12"></StanceCard>
-    </div>
-    <div >
-      <StanceCard :candidate="candidate" class="col-12"></StanceCard>
-    </div>
+    <template v-for="stance in candidate.stances" :key="stance.id">
+        <StanceCard :stance="stance" class="col"></StanceCard>
+    </template>
+    
     </div>
   </div>
 </template>

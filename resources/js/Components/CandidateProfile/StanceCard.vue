@@ -6,12 +6,12 @@
       </div>
       <div class="col col-md-8 ps-3">
         <div class="card-body d-flex flex-column h-100">
-          <h5 class="card-title">{{ candidate.stances[0].name}}</h5>
+          <h5 class="card-title">{{ stance.name}}</h5>
           <p class="card-text text-truncate">{{ stance.description }}</p>
           <p class="card-text">
             <small class="text-white">
               <span class="badge bg-primary py-2 px-3 fs-6" style="border-radius: 20px">
-                {{ candidate.stances[0].pivot.positive ? "Yes" : "No" }}
+                {{ stance.pivot.positive ? "Yes" : "No" }}
               </span>
             </small>
           </p>

@@ -5,7 +5,7 @@
     2: Political
     3: Professional
     -->
-    <pre>{{ candidate }}</pre>
+    <pre>{{ candidate}}</pre>
     <div class="container mx-auto" style="margin-top: 10%">
       <div class="row">
         <Breadcrumb :crumbs="crumbs" @selected="selected" />
@@ -52,9 +52,9 @@
 import { defineComponent } from "@vue/runtime-core";
 import Breadcrumb from "../../Components/CandidateProfile/Breadcrumb.vue";
 import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue";
-import EducBackground from "../../Components/CandidateProfile/BackgroundCard.vue";
-import ProfBackground from "../../Components/CandidateProfile/ProfBackgroundCard.vue";
-import PolBackground from "../../Components/CandidateProfile/LongBackground.vue";
+import EducBackground from "../../Components/CandidateProfile/EducationalBackgroundCard.vue";
+import ProfBackground from "../../Components/CandidateProfile/ProfessionalBackgroundCard.vue";
+import PolBackground from "../../Components/CandidateProfile/LongPolitcalBackgroundCard.vue";
 import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";

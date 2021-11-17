@@ -1,23 +1,23 @@
 <template>
   <Layout>
     <div class="row">
-      <div class="col">
+      <!-- <div class="col">
         LOCATIONS
         <pre>{{ locations }}</pre>
-      </div>
+      </div> -->
       <div class="col">
         NATIONAL POSITIONS
-        <pre>{{ nationalPositions }} </pre>
+        <pre>{{ nationalPositions[0] }} </pre>
       </div>
     </div>
     <div class="container bod" style="margin-top: 10%">
       <div class="border-bottom border-primary">
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
-        <PresCarousel></PresCarousel>
+        <CandidateCarousel :candidates="nationalPositions[0]?.candidates"></CandidateCarousel>
         <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
-        <ViceCarousel></ViceCarousel>
+        <CandidateCarousel :candidates="nationalPositions[1]?.candidates"></CandidateCarousel>
         <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
-        <SenCarousel></SenCarousel>
+        <CandidateCarousel :candidates="nationalPositions[2]?.candidates"></CandidateCarousel>
       </div>
       <div class="container d-flex">
         <n-tree-select
@@ -31,21 +31,19 @@
               v-model:value="filteredLocationIds"
             ></n-tree-select>
       </div>
-      <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
-      <MayorCarousel></MayorCarousel>
-      <h2 class="text-danger fw-bold">COUNCILOR CANDIDATES</h2>
-      <CouncilorCarousel></CouncilorCarousel>
+      <h2 class="text-primary fw-bold">PARTYLIST REPRESENTATIVE</h2>
+      <CandidateCarousel :candidates="nationalPositions[3]?.candidates"></CandidateCarousel>
+      <!-- <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
+      <CandidateCarousel :candidates="nationalPositions[4]?.candidates"></CandidateCarousel> -->
+      <!-- <h2 class="text-danger fw-bold">COUNCILOR CANDIDATES</h2>
+      <CandidateCarousel :candidates="nationalPositions[5]?.candidates"></CandidateCarousel> -->
     </div>
   </Layout>
 </template>
 
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import PresCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import ViceCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import SenCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import MayorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import CouncilorCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import { NTreeSelect } from "naive-ui";
 
@@ -57,11 +55,7 @@ export default {
   },
   components: {
     //   Link,
-    PresCarousel,
-    ViceCarousel,
-    SenCarousel,
-    MayorCarousel,
-    CouncilorCarousel,
+    CandidateCarousel,
     Layout,
     NTreeSelect,
   },

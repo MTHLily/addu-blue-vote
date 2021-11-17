@@ -63,7 +63,11 @@ class GuestController extends Controller
             // ->with("children.children.children.candidates.media")
             ->get();
         $nationalPositions = RunningPosition::where("location_type_id", null)
-            ->with("candidates")
+            ->with([
+                "candidates.media",
+                "candidates.politicalParty",
+                "candidates.runningPosition",
+            ])
             ->get();
 
         return Inertia::render("CandidateProfiles/Index", [

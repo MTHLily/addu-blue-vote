@@ -21,15 +21,14 @@
       </div>
       <div class="container d-flex">
         <n-tree-select
-              class="my-4"
-              style="max-width: 300px"
-              placeholder="Filter Locations..."
-              multiple
-              cascade
-              checkable
-              :options="filterOptions"
-              v-model:value="filteredLocationIds"
-            ></n-tree-select>
+          class="my-4"
+          style="max-width: 300px"
+          placeholder="Filter Locations..."
+          multiple
+          cascade
+          checkable
+          :options="locationOptions"
+        ></n-tree-select>
       </div>
       <h2 class="text-primary fw-bold">PARTYLIST REPRESENTATIVE</h2>
       <CandidateCarousel :candidates="nationalPositions[3]?.candidates"></CandidateCarousel>
@@ -47,11 +46,22 @@ import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarous
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import { NTreeSelect } from "naive-ui";
 
-export default {
+export default defineComponent({
+  setup (props) {
+    const locationToOption = ( location ) => ({
+      key: location.id,
+      label: location.name,
+      children: location.children?.map(locationToOption)
+    })
+    const locationOptions = ref(props.locations.map( locationToOption ))
+  
+  return {
+    locationOptions
+  }
+  },
   props: {
     locations: Array,
     nationalPositions: Array,
-    locationTree: Array,
   },
   components: {
     //   Link,
@@ -59,19 +69,7 @@ export default {
     Layout,
     NTreeSelect,
   },
-  // computed: {
-  //   filterOptions() {
-  //     return this.locationTree.map((region) => ({
-  //       key: region.id,
-  //       label: region.name,
-  //       children: region.children.map((province) => ({
-  //         key: province.id,
-  //         label: province.name,
-  //       })),
-  //     }));
-  //   },
-  // },
-};
+});
 </script>
 
 <style scoped>

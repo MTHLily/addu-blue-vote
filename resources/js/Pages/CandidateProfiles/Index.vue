@@ -45,6 +45,7 @@ import { defineComponent } from "@vue/runtime-core";
 import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import { NTreeSelect } from "naive-ui";
+import { ref } from "vue";
 
 export default defineComponent({
   setup (props) {

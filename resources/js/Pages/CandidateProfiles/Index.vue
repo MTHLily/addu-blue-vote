@@ -30,12 +30,45 @@
           :options="locationOptions"
         ></n-tree-select>
       </div>
-      <h2 class="text-primary fw-bold">PARTYLIST REPRESENTATIVE</h2>
-      <CandidateCarousel :candidates="nationalPositions[3]?.candidates"></CandidateCarousel>
-      <!-- <h2 class="text-primary fw-bold">MAYORAL CANDIDATES</h2>
-      <CandidateCarousel :candidates="nationalPositions[4]?.candidates"></CandidateCarousel> -->
-      <!-- <h2 class="text-danger fw-bold">COUNCILOR CANDIDATES</h2>
-      <CandidateCarousel :candidates="nationalPositions[5]?.candidates"></CandidateCarousel> -->
+      <n-collapse>
+        <n-collapse-item title="Region XI - Davao Region" name="1">
+          <n-collapse>
+            <n-collapse-item title="Davao de Oro" name="1">
+              <div>
+                <h2 class="text-primary fw-bold">GOVERNOR CANDIDATES</h2>
+                <CandidateCarousel :candidates="nationalPositions[3]?.candidates"></CandidateCarousel>
+                <h2 class="text-danger fw-bold">VICE-GOVERNOR CANDIDATES</h2>
+                <CandidateCarousel :candidates="nationalPositions[4]?.candidates"></CandidateCarousel>
+                <h2 class="text-warning fw-bold">BOARD MEMBERS CANDIDATES</h2>
+                <CandidateCarousel :candidates="nationalPositions[5]?.candidates"></CandidateCarousel>
+              </div>
+              <n-collapse>
+                <n-collapse-item title="District 1" name="1">
+                  <div>
+                    <h2 class="text-primary fw-bold">CONGRESSMAN CANDIDATES</h2>
+                    <CandidateCarousel :candidates="nationalPositions[6]?.candidates"></CandidateCarousel>
+                  </div>
+                  <n-collapse>
+                    <n-collapse-item title="Davao City" name="1">
+                      <div>
+                        <h2 class="text-primary fw-bold">GOVERNOR CANDIDATES</h2>
+                        <CandidateCarousel :candidates="nationalPositions[3]?.candidates"></CandidateCarousel>
+                        <h2 class="text-danger fw-bold">VICE-GOVERNOR CANDIDATES</h2>
+                        <CandidateCarousel :candidates="nationalPositions[4]?.candidates"></CandidateCarousel>
+                        <h2 class="text-warning fw-bold">BOARD MEMBERS CANDIDATES</h2>
+                        <CandidateCarousel :candidates="nationalPositions[5]?.candidates"></CandidateCarousel>
+                      </div>
+                    </n-collapse-item>
+                  </n-collapse>
+                </n-collapse-item>  
+              </n-collapse>
+            </n-collapse-item>
+            <n-collapse-item title="Davao Oriental" name="2">
+              <div>XXXX</div>
+            </n-collapse-item>
+          </n-collapse>
+        </n-collapse-item>
+      </n-collapse>
     </div>
   </Layout>
 </template>
@@ -44,7 +77,7 @@
 import { defineComponent } from "@vue/runtime-core";
 import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
-import { NTreeSelect } from "naive-ui";
+import { NTreeSelect, NCollapse, NCollapseItem } from "naive-ui";
 import { ref } from "vue";
 
 export default defineComponent({
@@ -69,6 +102,8 @@ export default defineComponent({
     CandidateCarousel,
     Layout,
     NTreeSelect,
+    NCollapse,
+    NCollapseItem,
   },
 });
 </script>

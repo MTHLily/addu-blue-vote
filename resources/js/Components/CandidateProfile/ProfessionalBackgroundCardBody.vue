@@ -5,7 +5,7 @@
             <span
             class="badge py-2 px-3 fs-6"
             :style="{
-                'background-color': background.color || 'yellow',
+                'background-color': background.color || '#FAA728',
                 'border-radius': '20px',
             }"
             >

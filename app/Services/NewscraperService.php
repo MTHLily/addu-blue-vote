@@ -6,6 +6,8 @@ use App\Models\Candidate;
 use App\Models\NewsArticle;
 use Carbon\Carbon;
 use Exception;
+use FuzzyWuzzy\Fuzz;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Weidner\Goutte\GoutteFacade as Goutte;
 
@@ -436,23 +438,45 @@ class NewscraperService
     //https://www.gmanetwork.com/news/tracking/eleksyon_2022/
     //https://cnnphilippines.com/thefilipinovotes/
 
-    public function relatedCandidates($id, $articleSource)
+    public function relatedCandidates($id)
     {
-        $relatedCandidates = [];
+        $relatedCandidates = collect([]);
+
         // get all the names candidates
-        $candidateNames = Candidate::all()->pluck("name");
+        $candidateNames = Candidate::all(["id", "name"]);
 
         $article = NewsArticle::findOrFail($id);
         // Visit with guzzler
-        $article->url;
+        $crawler = Goutte::request("GET", $article->url);
 
-        // Get the main article
-        $article = "";
+        // Parser for ABS-CBN
+        if ($article->news_source_id === $this->sources_id["abs_cbn"]) {
+            // Each news source
+            // Text to be parsed
+            $text = $crawler->filter(".article-block")->text();
+            $fuzz = new Fuzz();
+        }
 
-        // Foreach candidates if candidate name is inside the article
-        // if candidate is inside, add to $relatedCandidates
+        $candidateNames->each(function ($candidate) use (
+            $text,
+            $fuzz,
+            $relatedCandidates
+        ) {
+            $ratio = $fuzz->partialRatio($candidate->name, $text);
+            if ($ratio >= 15) {
+                $relatedCandidates->push($candidate); // Add Candidate to Collection of Related Candidates
+            }
+        });
 
         return $relatedCandidates;
+
+        // dd("Related Candidates: ", $relatedCandidates);
+    }
+
+    public function linkCandidates(): void
+    {
+        $candidates = $this->relatedCandidates(3);
+        dd($candidates);
     }
 
     public function get(): array

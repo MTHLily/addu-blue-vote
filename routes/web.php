@@ -16,6 +16,7 @@ use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
 use App\Imports\LocationSeedImport;
 use App\Models\Location;
+use App\Services\NewscraperService;
 use Maatwebsite\Excel\Facades\Excel;
 
 /*
@@ -28,21 +29,6 @@ use Maatwebsite\Excel\Facades\Excel;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get("/", function () {
-//     return Inertia::render("Welcome", [
-//         "faqs" => FrequentlyAskedQuestion::all(),
-//         "information" => InformationSnippet::all(),
-//         "districts" => District::all(),
-//         "registrationSites" => PointOfInterest::where(
-//             "point_of_interest_type_id",
-//             "=",
-//             1
-//         )
-//             ->with("district")
-//             ->get(),
-//     ]);
-// });
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
@@ -64,9 +50,10 @@ Route::middleware(["auth"])->group(function () {
     });
 });
 
-Route::get("/", [GuestController::class, "voters_registration"])->name(
-    "voters-registration"
-);
+Route::get("/testing", function () {
+    (new NewscraperService())->linkCandidates();
+})->name("testing");
+
 Route::get("/voters-education", [
     GuestController::class,
     "voters_education",
@@ -84,5 +71,9 @@ Route::get("/candidate-profile/{candidate}", [
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
+
+Route::get("/", [GuestController::class, "voters_registration"])->name(
+    "voters-registration"
+);
 
 require __DIR__ . "/auth.php";

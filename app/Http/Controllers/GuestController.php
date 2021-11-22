@@ -60,6 +60,11 @@ class GuestController extends Controller
                 "children.children.candidates.runningPosition",
                 "children.children.candidates.politicalParty",
             ])
+            ->with([
+                "children.children.children.candidates.media",
+                "children.children.children.candidates.runningPosition",
+                "children.children.children.candidates.politicalParty",
+            ])
             // ->with("children.children.children.candidates.media")
             ->get();
         $nationalPositions = RunningPosition::where("location_type_id", null)
@@ -80,6 +85,7 @@ class GuestController extends Controller
         $candidate->load([
             "educationalBackground",
             "politicalBackground",
+            "runningPosition",
             "professionalBackground",
             "location.parent.parent.parent",
             "stances",

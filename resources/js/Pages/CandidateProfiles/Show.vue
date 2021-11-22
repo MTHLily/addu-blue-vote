@@ -5,10 +5,14 @@
     2: Political
     3: Professional
     -->
-    <pre>{{ candidate}}</pre>
+    <pre>{{ candidate }}</pre>
     <div class="container mx-auto" style="margin-top: 10%">
       <div class="row">
-        <Breadcrumb :crumbs="crumbs" @selected="selected" />
+        <Breadcrumb
+          :crumbs="crumbs"
+          :candidate="candidate"
+          @selected="selected"
+        />
       </div>
       <div class="row">
         <div class="col">
@@ -20,24 +24,35 @@
           <EducBackground :candidate="candidate"></EducBackground>
         </div>
         <div class="col">
-          <ProfBackground :candidate="candidate"></ProfBackground>
+          <BackgroundCard
+            title="Professional Background"
+            primary-color="#CE2029"
+            secondary-color="#FAA728"
+            :background="candidate.professional_background"
+          ></BackgroundCard>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <PolBackground :candidate="candidate"></PolBackground>
+          <BackgroundCard
+            horizontal
+            title="Political Background"
+            primary-color="#FAA728"
+            secondary-color="#185EA9"
+            :background="candidate.professional_background"
+          ></BackgroundCard>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <Stances :candidate="candidate"></Stances>
+          <Stances :stances="candidate.stances"></Stances>
         </div>
       </div>
       <div class="row" style="position: relative">
         <div class="row mb-2 row-cols-1 row-cols-md-2">
           <div class="col">
-            <NewsArticles class="w-100 h-100" ></NewsArticles>
+            <NewsArticles class="w-100 h-100"></NewsArticles>
           </div>
           <div class="col">
             <Twitter class="w-100" :candidate="candidate"></Twitter>
@@ -53,24 +68,22 @@ import { defineComponent } from "@vue/runtime-core";
 import Breadcrumb from "../../Components/CandidateProfile/Breadcrumb.vue";
 import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue";
 import EducBackground from "../../Components/CandidateProfile/EducationalBackgroundCard.vue";
-import ProfBackground from "../../Components/CandidateProfile/ProfessionalBackgroundCard.vue";
-import PolBackground from "../../Components/CandidateProfile/LongPolitcalBackgroundCard.vue";
 import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";
 import Twitter from "../../Components/CandidateProfile/TwitterFeed.vue";
+import BackgroundCard from "../../Components/CandidateProfile/Background/BackgroundCard.vue";
 
 export default defineComponent({
   components: {
     Breadcrumb,
     CandidateHeader,
     EducBackground,
-    ProfBackground,
-    PolBackground,
     Stances,
     Layout,
     NewsArticles,
     Twitter,
+    BackgroundCard,
   },
   props: {
     candidate: Object,

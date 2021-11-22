@@ -1,23 +1,29 @@
 <template>
   <Layout>
     <div class="row">
-      <div class="col">
+      <!-- <div class="col">
         LOCATIONS
         <pre>{{ locations }}</pre>
       </div>
       <div class="col">
         NATIONAL POSITIONS
         <pre>{{ nationalPositions[0] }} </pre>
-      </div>
+      </div> -->
     </div>
     <div class="container bod" style="margin-top: 10%">
       <div class="border-bottom border-primary">
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
-        <CandidateCarousel :candidates="nationalPositions[0]?.candidates"></CandidateCarousel>
+        <CandidateCarousel
+          :candidates="nationalPositions[0]?.candidates"
+        ></CandidateCarousel>
         <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
-        <CandidateCarousel :candidates="nationalPositions[1]?.candidates"></CandidateCarousel>
+        <CandidateCarousel
+          :candidates="nationalPositions[1]?.candidates"
+        ></CandidateCarousel>
         <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
-        <CandidateCarousel :candidates="nationalPositions[2]?.candidates"></CandidateCarousel>
+        <CandidateCarousel
+          :candidates="nationalPositions[2]?.candidates"
+        ></CandidateCarousel>
       </div>
       <div class="container d-flex">
         <n-tree-select
@@ -30,7 +36,7 @@
           :options="locationOptions"
         ></n-tree-select>
       </div>
-      <NCollapse></NCollapse>
+      <CandidateCollapse :locations="locations"></CandidateCollapse>
     </div>
   </Layout>
 </template>
@@ -38,23 +44,23 @@
 <script>
 import { defineComponent } from "@vue/runtime-core";
 import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import NCollapse from "../../Components/CandidateProfile/NCollapse.vue";
+import CandidateCollapse from "../../Components/CandidateProfile/NCollapse.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import { NTreeSelect } from "naive-ui";
 import { ref } from "vue";
 
 export default defineComponent({
-  setup (props) {
-    const locationToOption = ( location ) => ({
+  setup(props) {
+    const locationToOption = (location) => ({
       key: location.id,
       label: location.name,
-      children: location.children?.map(locationToOption)
-    })
-    const locationOptions = ref(props.locations.map( locationToOption ))
-  
-  return {
-    locationOptions
-  }
+      children: location.children?.map(locationToOption),
+    });
+    const locationOptions = ref(props.locations.map(locationToOption));
+
+    return {
+      locationOptions,
+    };
   },
   props: {
     locations: Array,
@@ -65,7 +71,7 @@ export default defineComponent({
     CandidateCarousel,
     Layout,
     NTreeSelect,
-    NCollapse,
+    CandidateCollapse,
   },
 });
 </script>

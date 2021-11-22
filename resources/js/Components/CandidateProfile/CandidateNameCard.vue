@@ -3,14 +3,20 @@
     <div class="row g-0">
       <div class="col col-md-4">
         <img
-          :src="candidate.media[0].length > 0 ? candidate[0].media[0].original_url : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde? ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'"
+          :src="
+            candidate.media.length > 0
+              ? candidate.media[0].original_url
+              : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde? ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'
+          "
           class="img-fluid rounded-start"
           :alt="candidate.name"
         />
       </div>
       <div class="col col-md-8">
         <div class="card-body d-flex flex-column h-100">
-          <h5 class="card-title text-uppercase fw-bold lh-sm">{{ candidate.name }}</h5>
+          <h5 class="card-title text-uppercase fw-bold lh-sm">
+            {{ candidate.name }}
+          </h5>
           <div class="card-text text-muted flex-grow-1">
             {{ candidate.political_party.name }}
           </div>

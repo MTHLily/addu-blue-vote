@@ -4,12 +4,11 @@
     style="max-width: 100%; background-color: #CE2029"
   >
     <div class="card-header border-0 text-center text-uppercase fw-bold lh-sm p-3 fs-1" style="background: #CE2029">
-      {{ stance.cardTitle }}
+      Stances on Issues
     </div>
     <div
       class="
         row
-        col
         d-flex
         m-2
         justify-content-evenly
@@ -17,7 +16,7 @@
         mb-3
       "
     >
-    <template v-for="stance in candidate.stances" :key="stance.id">
+    <template v-for="stance in stances" :key="stance.id">
         <StanceCard :stance="stance" class="col"></StanceCard>
     </template>
     
@@ -32,13 +31,7 @@ export default {
     StanceCard,
   },
   props: {
-    stance: {
-      type: Object,
-      default: () => ({
-        cardTitle: "CANDIDATE’S STANCE ON ISSUES",
-      }),
-    },
-    candidate:{
+    stances:{
       type:Object,
     },
   },

@@ -21,7 +21,12 @@
       </div>
       <div class="row row-cols-1 row-cols-md-2">
         <div class="col">
-          <EducBackground :candidate="candidate"></EducBackground>
+          <BackgroundCard
+            title="Educational Background"
+            primary-color="#2365A1"
+            secondary-color="#CE2029"
+            :background="candidate.educational_background"
+          ></BackgroundCard>
         </div>
         <div class="col">
           <BackgroundCard
@@ -39,7 +44,7 @@
             title="Political Background"
             primary-color="#FAA728"
             secondary-color="#185EA9"
-            :background="candidate.professional_background"
+            :background="candidate.political_background"
           ></BackgroundCard>
         </div>
       </div>
@@ -67,7 +72,6 @@
 import { defineComponent } from "@vue/runtime-core";
 import Breadcrumb from "../../Components/CandidateProfile/Breadcrumb.vue";
 import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue";
-import EducBackground from "../../Components/CandidateProfile/EducationalBackgroundCard.vue";
 import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "../../Components/CandidateProfile/NewsArticles.vue";
@@ -78,7 +82,6 @@ export default defineComponent({
   components: {
     Breadcrumb,
     CandidateHeader,
-    EducBackground,
     Stances,
     Layout,
     NewsArticles,

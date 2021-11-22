@@ -3,9 +3,13 @@
   <div class="row g-0 mb-3">
     <div class="col-12 col-md-4">
       <img
-        :src="`${candidate.media[0].original_url}`"
+        :src="
+            candidate.media.length > 0
+              ? candidate.media[0].original_url
+              : 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'
+          "
         class="img-fluid rounded"
-        alt="..."
+        :alt="candidate.name"
       />
     </div>
     <div class="col-12 col-md-8 p-5 align-self-center">

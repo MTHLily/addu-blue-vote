@@ -1,6 +1,16 @@
 <template>
   <Layout>
     <div class="row">
+      <h2>Regions</h2>
+      <ul>
+        <template v-for="region in locations" :key="region.id">
+          <li>
+            <Link :href="route('locations.region.show', region.id)">{{
+              region.name
+            }}</Link>
+          </li>
+        </template>
+      </ul>
       <!-- <div class="col">
         LOCATIONS
         <pre>{{ locations }}</pre>
@@ -46,6 +56,7 @@ import { defineComponent } from "@vue/runtime-core";
 import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import CandidateCollapse from "../../Components/CandidateProfile/NCollapse.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
+import { Link } from "@inertiajs/inertia-vue3";
 import { NTreeSelect } from "naive-ui";
 import { ref } from "vue";
 
@@ -67,7 +78,7 @@ export default defineComponent({
     nationalPositions: Array,
   },
   components: {
-    //   Link,
+    Link,
     CandidateCarousel,
     Layout,
     NTreeSelect,

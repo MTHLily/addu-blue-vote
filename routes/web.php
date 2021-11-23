@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\CandidateProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
@@ -72,15 +73,33 @@ Route::get("/voters-education", [
     "voters_education",
 ])->name("voters-education");
 
-Route::get("/candidate-profiles", [
-    GuestController::class,
-    "candidate_profiles_index",
-])->name("candidate-profiles.index");
+Route::prefix("candidate-profiles")->group(function () {
+    Route::get(
+        "/region/{region}/province/{province}/district/{district}/city/{city}",
+        [CandidateProfileController::class, "city_show"]
+    )->name("locations.city.show");
+    Route::get("/region/{region}/province/{province}/district/{district}", [
+        CandidateProfileController::class,
+        "district_show",
+    ])->name("locations.district.show");
+    Route::get("/region/{region}/province/{province}", [
+        CandidateProfileController::class,
+        "province_show",
+    ])->name("locations.province.show");
+    Route::get("/region/{region}", [
+        CandidateProfileController::class,
+        "region_show",
+    ])->name("locations.region.show");
 
-Route::get("/candidate-profile/{candidate}", [
-    GuestController::class,
-    "candidate_profile",
-])->name("candidate-profiles.show");
+    Route::get("/candidate/{candidate}", [
+        CandidateProfileController::class,
+        "show",
+    ])->name("candidate-profiles.show");
+
+    Route::get("/", [CandidateProfileController::class, "index"])->name(
+        "candidate-profiles.index"
+    );
+});
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);

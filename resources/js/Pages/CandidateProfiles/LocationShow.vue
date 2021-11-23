@@ -33,6 +33,13 @@
       </template>
     </ul>
 
+    <h1>Candidates</h1>
+    <ul>
+      <template v-for="candidate in location.candidates" :key="candidate.id">
+        <li>{{ candidate.name }}</li>
+      </template>
+    </ul>
+
     <h1>Breadcrumbs</h1>
     <pre style="height: 500px" class="overflow-auto">
       {{ breadcrumbs }}

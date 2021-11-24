@@ -7,9 +7,10 @@
       bg-primary
       navbar-expand-md
       rounded-pill
-      m-4
       arisen-header
+      mb-5
     "
+    style="top: 2rem"
   >
     <div class="container-md">
       <slot name="before-logo"> </slot>

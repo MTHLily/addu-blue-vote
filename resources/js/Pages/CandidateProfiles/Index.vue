@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="candidate-profile-background">
     <div class="row">
       <h2>Regions</h2>
       <ul>
@@ -88,9 +88,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-body {
-  background-image: url("../../Components/assets/candidate-backgrounds.svg");
-  background-repeat: no-repeat;
+.candidate-profile-background {
+  background-image: url("/images/candidate-backgrounds.svg");
   background-size: 100%;
   background-position: bottom;
 }

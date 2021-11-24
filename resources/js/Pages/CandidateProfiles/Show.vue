@@ -1,11 +1,11 @@
 <template>
-  <Layout>
+  <Layout class="individual-candidate-profile-background">
     <!-- Candidate Backgorund Type
     1: Education
     2: Political
     3: Professional
     -->
-    <pre>{{ candidate.location }}</pre>
+    <!-- <pre>{{ candidate.location }}</pre> -->
     <div class="container mx-auto">
       <div class="row">
         <Breadcrumb :breadcrumbs="candidateBreadcrumbs" />
@@ -126,4 +126,11 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.individual-candidate-profile-background {
+  background-image: url("/images/candidate-profile-show-background.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+</style>

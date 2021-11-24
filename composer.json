@@ -21,6 +21,7 @@
     "meyfa/php-svg": "^0.11.2",
     "phpoffice/phpspreadsheet": "^1.19",
     "spatie/laravel-medialibrary": "^9.8",
+    "staudenmeir/laravel-adjacency-list": "^1.8",
     "tightenco/ziggy": "^1.0",
     "weidner/goutte": "^2.1",
     "wulfheart/pretty_routes": "^0.3.0"

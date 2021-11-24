@@ -4,36 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Location;
+use App\Models\LocationType;
 use App\Models\RunningPosition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CandidateProfileController extends Controller
 {
     public function index()
     {
-        $locations = Location::where(
-            ["name" => "Region XI - Davao Region"],
-            ["location_type_id" => 1]
-        )
+        $locations = Location::tree()
             ->with([
-                "children.candidates.media",
-                "children.candidates.runningPosition",
-                "children.candidates.politicalParty",
+                "candidates.media",
+                "candidates.runningPosition",
+                "candidates.politicalParty",
             ])
-            ->with([
-                "children.children.candidates.media",
-                "children.children.candidates.runningPosition",
-                "children.children.candidates.politicalParty",
-            ])
-            ->with([
-                "children.children.children.candidates.media",
-                "children.children.children.candidates.runningPosition",
-                "children.children.children.candidates.politicalParty",
-            ])
-            // ->with("children.children.children.candidates.media")
-            ->get();
+            ->get()
+            ->toTree();
+
         $nationalPositions = RunningPosition::where("location_type_id", null)
             ->with([
                 "candidates.media",
@@ -55,7 +45,7 @@ class CandidateProfileController extends Controller
             "politicalBackground",
             "runningPosition",
             "professionalBackground",
-            "location.parent.parent.parent",
+            "location.ancestorsAndSelf",
             "stances",
             "media",
         ]);
@@ -111,5 +101,33 @@ class CandidateProfileController extends Controller
             $district,
             $city,
         ]);
+    }
+
+    public function location_redirect(Location $location)
+    {
+        $location->ancestorsAndSelf;
+
+        // dd($location->ancestorsAndSelf->pluck("id"));
+
+        $args = $location->ancestorsAndSelf->mapWithKeys(function ($loc) {
+            $locName = strtolower(
+                LocationType::find($loc->location_type_id)->name
+            );
+
+            return [$locName => $loc->id];
+        });
+
+        switch ($location->location_type_id) {
+            case 1:
+                $route = "locations.region.show";
+                break;
+            case 2:
+                $route = "locations.province.show";
+                break;
+        }
+
+        $args = $args->toArray();
+
+        return Redirect::route($route, $args);
     }
 }

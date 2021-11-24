@@ -454,17 +454,20 @@ class NewscraperService
             // Each news source
             // Text to be parsed
             $text = $crawler->filter(".article-block")->text();
-            $fuzz = new Fuzz();
         }
 
         $candidateNames->each(function ($candidate) use (
             $text,
-            $fuzz,
             $relatedCandidates
         ) {
-            $ratio = $fuzz->partialRatio($candidate->name, $text);
-            if ($ratio >= 15) {
-                $relatedCandidates->push($candidate); // Add Candidate to Collection of Related Candidates
+            if (
+                Str::of($text)->contains(
+                    Str::of($candidate->name)
+                        ->explode(" ")
+                        ->toArray()
+                )
+            ) {
+                $relatedCandidates->push($candidate);
             }
         });
 

@@ -73,7 +73,7 @@ class CandidateProfileController extends Controller
             "candidates.runningPosition",
             "parent",
             "type",
-            "children",
+            "children.type",
         ]);
 
         return Inertia::render("CandidateProfiles/LocationShow", [

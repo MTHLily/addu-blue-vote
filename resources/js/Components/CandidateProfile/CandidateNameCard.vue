@@ -6,7 +6,7 @@
           :src="
             candidate.media.length > 0
               ? candidate.media[0].original_url
-              : 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'
+              : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
           "
           class="img-fluid rounded-start"
           :alt="candidate.name"

@@ -10,7 +10,6 @@
       >
         {{ location.type?.name }}
       </span>
-    <!-- <h4>{{ location.type?.name }}</h4> -->
     <h1 
       class="fw-bold"
       :class="{
@@ -42,55 +41,64 @@
     <!-- Render candidates of location tree children -->
     <template v-if="location.parent">
       <h1>Candidates</h1>
-      <!-- <template v-for="(
-        positionCandidates, runningPosition
+      <!-- <template v-for="candidate in location.candidates" :key="candidate.id">
+        <h1>{{candidate.running_position.name}}</h1> -->
+      <template v-for="(
+        positionCandidates, position
         ) in groupCandidatesByPosition(location.candidates)"
-        :key="runningPosition"
-      > -->
-        <!-- <div
-          class="display-6"
-          :class="{
-            'text-primary': location.children.candidates?.runningPosition === 'Governor',
-            'text-danger': location.children.candidates?.runningPosition === 'Vice Governor',
-          }"
-        >
-          {{ location.children.candidates?.runningposition }}
-        </div> -->
-      <!-- </template> -->
-        <template v-for="candidate in location.candidates" :key="candidate.id">
-          <CandidateCarousel :runningPosition="location.candidates[0]?.runningPosition"></CandidateCarousel>
-        </template>
-        <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">  
-          <template v-for="candidate in location.candidates" :key="candidate.id">
-            <div class="col">
-              <CandidateNameCard class="m-3" :candidate="candidate"></CandidateNameCard>
-            </div>
+        :key="position"
+      >
+        <template> 
+          <div
+            class="display-6"
+            :class="{
+              'text-primary': location.candidates.runningPosition === 'Governor',
+              'text-danger': location.candidates.runningPosition === 'Vice Governor',
+            }"
+          >
+            {{ location.candidates.runningPosition }}
+          </div>
           </template>
-        </div> -->
-      </template>
+          <div class="row row-cols-3">
+            <div
+              v-for="candidate in positionCandidates"
+              :key="candidate.id"
+              class="col"
+            >
+              
+              <CandidateNameCard
+                :candidate="candidate"
+              ></CandidateNameCard>
+            </div>
+          </div>
+        </template>
+    </template>
+
 
     <!-- Render link buttons of location tree children -->
-    <template v-if="location.children[0].type.name === 'City'"><h2>Cities</h2></template>
+    <!-- <template v-if="location.children[0].type.name === 'City'">
+      <h2>Cities</h2>
+    </template>
     <template v-else>
       <h2>{{ location.children[0].type.name }}s</h2>
-    </template>
+    </template> -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3"> 
         <template v-for="child in location.children" :key="child.id">
             <div class="col"> 
               <Link :href="route(getLocationRoute(child), getLocationBreadCrumbs(child))">
-                  <Button 
-                    class="text-white btn-lg p-4 px-5 mt-3 w-100"
-                    :class="{
-                      'btn btn-danger': location.children[0].type.name === 'Region',
-                      'btn btn-warning': location.children[0].type.name === 'Province',
-                      'btn btn-primary': location.children[0].type.name === 'District',
-                      'btn btn-danger': location.children[0].type.name === 'City',
-                      }"
-                    style="padding: 20px; border-radius: 10px">
-                    {{ child.name }}
-                  </Button>
-                </Link>
-              </div>
+                <Button 
+                  class="text-white btn-lg p-4 px-5 mt-3 w-100"
+                  :class="{
+                    'btn btn-danger': location.children[0].type.name === 'Region',
+                    'btn btn-warning': location.children[0].type.name === 'Province',
+                    'btn btn-primary': location.children[0].type.name === 'District',
+                    'btn btn-danger': location.children[0].type.name === 'City',
+                    }"
+                  style="padding: 20px; border-radius: 10px">
+                  {{ child.name }}
+                </Button>
+              </Link>
+            </div>
         </template>
       </div>
 
@@ -168,17 +176,18 @@ export default defineComponent({
       );
       return breadcrumbs;
     },
+    groupCandidatesByPosition: (candidates) => {
+      console.log("Candidates: ", candidates);
+
+      const grouped = _.groupBy(
+        candidates,
+        (candidate) => candidate.running_position.name
+      );
+
+      return grouped;
+    },
   },
-    // groupCandidatesByPosition: (candidates) => {
-    //   console.log("Candidates: ", candidates);
-
-    //   const grouped = _.groupBy(
-    //     candidates,
-    //     (candidate) => candidate.runningPosition.name
-    //   );
-
-    //   return grouped;
-    // },
+    
 });
 </script>
 

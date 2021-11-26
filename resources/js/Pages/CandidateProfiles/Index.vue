@@ -19,7 +19,7 @@
     National
     </span>
       <!-- <h1 class="fw-bolder">National</h1> -->
-      <div class="border-bottom border-primary">
+      <div>
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
         <CandidateCarousel
           :candidates="nationalPositions[0]?.candidates"
@@ -34,7 +34,7 @@
         ></CandidateCarousel>
       </div>
       <div class="container d-flex">
-        <n-tree-select
+        <!-- <n-tree-select
           class="my-4"
           style="max-width: 300px"
           placeholder="Filter Locations..."
@@ -42,7 +42,7 @@
           cascade
           checkable
           :options="locationOptions"
-        ></n-tree-select>
+        ></n-tree-select> -->
       </div>
       <div class="row">
       <h2 class="fw-bold">Regions</h2>

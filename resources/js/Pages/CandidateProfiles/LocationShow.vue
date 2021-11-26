@@ -77,10 +77,10 @@
 
     <!-- Render link buttons of location tree children -->
     <!-- <template v-if="location.children[0].type.name === 'City'">
-      <h2>Cities</h2>
+      <h2 class="fw-bold">Cities</h2>
     </template>
     <template v-else>
-      <h2>{{ location.children[0].type.name }}s</h2>
+      <h2 class="fw-bold">{{ location.children[0].type.name }}s</h2>
     </template> -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3"> 
         <template v-for="child in location.children" :key="child.id">

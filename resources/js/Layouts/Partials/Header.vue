@@ -6,11 +6,13 @@
       navbar-dark
       bg-primary
       navbar-expand-md
-      rounded-pill
       arisen-header
-      mb-5
     "
-    style="top: 2rem"
+    :class="{
+      'rounded-pill': !show,
+      'mb-5': !show,
+    }"
+    :style="{ top: show ? '0' : '2rem' }"
   >
     <div class="container-md">
       <slot name="before-logo"> </slot>
@@ -20,7 +22,7 @@
       <slot name="after-logo">
         <button
           class="navbar-toggler"
-          @click="navbarCollapse.toggle()"
+          @click="toggleNav"
           type="button"
           aria-label="Toggle navigation"
         >
@@ -32,6 +34,13 @@
       </div>
     </div>
   </header>
+  <div class="d-md-none navbar sticky-top navbar-dark p-0">
+    <div class="collapse navbar-collapse bg-primary" ref="navbarCollapse">
+      <div class="container-md">
+        <slot name="collapse-content"></slot>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -47,12 +56,20 @@ export default defineComponent({
   data: () => ({
     logo: logo,
     navbarCollapse: null,
+    show: false,
   }),
 
   mounted() {
     this.navbarCollapse = new Collapse(this.$refs.navbarCollapse, {
       toggle: false,
     });
+  },
+
+  methods: {
+    toggleNav() {
+      this.show = !this.show;
+      this.navbarCollapse.toggle(this.show);
+    },
   },
 });
 </script>
@@ -61,5 +78,9 @@ export default defineComponent({
 .navbar-logo {
   max-height: 50px;
   max-width: 80%;
+}
+
+.arisen-header {
+  transition: 250ms all ease-in;
 }
 </style>

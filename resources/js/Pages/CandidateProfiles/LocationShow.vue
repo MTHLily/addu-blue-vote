@@ -42,31 +42,51 @@
     <!-- Render candidates of location tree children -->
     <template v-if="location.parent">
       <h1>Candidates</h1>
-      <template v-for="candidate in location.candidates" :key="candidate.id">
-        <li>{{candidate.name}}</li>
+      <!-- <template v-for="(
+        positionCandidates, runningPosition
+        ) in groupCandidatesByPosition(location.candidates)"
+        :key="runningPosition"
+      > -->
+        <!-- <div
+          class="display-6"
+          :class="{
+            'text-primary': location.children.candidates?.runningPosition === 'Governor',
+            'text-danger': location.children.candidates?.runningPosition === 'Vice Governor',
+          }"
+        >
+          {{ location.children.candidates?.runningposition }}
+        </div> -->
+      <!-- </template> -->
+        <template v-for="candidate in location.candidates" :key="candidate.id">
+          <CandidateCarousel :runningPosition="location.candidates[0]?.runningPosition"></CandidateCarousel>
+        </template>
+        <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">  
+          <template v-for="candidate in location.candidates" :key="candidate.id">
+            <div class="col">
+              <CandidateNameCard class="m-3" :candidate="candidate"></CandidateNameCard>
+            </div>
+          </template>
+        </div> -->
       </template>
-    </template>
 
     <!-- Render link buttons of location tree children -->
     <template v-if="location.children[0].type.name === 'City'"><h2>Cities</h2></template>
     <template v-else>
       <h2>{{ location.children[0].type.name }}s</h2>
     </template>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-2"> 
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3"> 
         <template v-for="child in location.children" :key="child.id">
             <div class="col"> 
-              <Link 
-                :href="route(getLocationRoute(child), getLocationBreadCrumbs(child))"
-                class="m-3">
+              <Link :href="route(getLocationRoute(child), getLocationBreadCrumbs(child))">
                   <Button 
-                    class="text-white btn-lg p-4 px-5 m-3 w-100"
+                    class="text-white btn-lg p-4 px-5 mt-3 w-100"
                     :class="{
                       'btn btn-danger': location.children[0].type.name === 'Region',
                       'btn btn-warning': location.children[0].type.name === 'Province',
                       'btn btn-primary': location.children[0].type.name === 'District',
                       'btn btn-danger': location.children[0].type.name === 'City',
                       }"
-                style="padding: 20px; border-radius: 10px">
+                    style="padding: 20px; border-radius: 10px">
                     {{ child.name }}
                   </Button>
                 </Link>
@@ -149,6 +169,16 @@ export default defineComponent({
       return breadcrumbs;
     },
   },
+    // groupCandidatesByPosition: (candidates) => {
+    //   console.log("Candidates: ", candidates);
+
+    //   const grouped = _.groupBy(
+    //     candidates,
+    //     (candidate) => candidate.runningPosition.name
+    //   );
+
+    //   return grouped;
+    // },
 });
 </script>
 

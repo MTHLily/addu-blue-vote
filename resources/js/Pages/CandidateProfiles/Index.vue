@@ -47,12 +47,12 @@
       <div class="row">
       <h2 class="fw-bold">Regions</h2>
       <ul>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-2">  
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">  
         <template v-for="region in locations" :key="region.id">
           <!-- <li> -->
             <Link :href="route('locations.region.show', region.id)">
               <Button 
-                class="btn btn-danger btn-lg p-4 px-5"
+                class="btn btn-danger btn-lg p-4 px-5 mt-3"
                 style="padding: 20px; border-radius: 10px">
                 {{ region.name }}
               </Button>

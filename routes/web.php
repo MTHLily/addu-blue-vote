@@ -16,6 +16,7 @@ use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
 use App\Imports\LocationSeedImport;
+use App\Models\Candidate;
 use App\Models\Location;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -90,6 +91,10 @@ Route::prefix("candidate-profiles")->group(function () {
         CandidateProfileController::class,
         "region_show",
     ])->name("locations.region.show");
+    Route::get("/location/{location}", [
+        CandidateProfileController::class,
+        "location_redirect",
+    ])->name("locations.redirect");
 
     Route::get("/candidate/{candidate}", [
         CandidateProfileController::class,
@@ -103,5 +108,15 @@ Route::prefix("candidate-profiles")->group(function () {
 
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
+
+Route::get("/testing", function () {
+    $candidate = Candidate::find(4);
+    $candidate->load("location.ancestorsAndSelf");
+
+    $location = Location::find(425);
+
+    dd($candidate, $location->bloodline->toTree());
+    dd(Location::find(425)->ancestorsAndSelf);
+});
 
 require __DIR__ . "/auth.php";

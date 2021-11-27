@@ -1,18 +1,14 @@
 <template>
-  <Layout>
+  <Layout class="individual-candidate-profile-background">
     <!-- Candidate Backgorund Type
     1: Education
     2: Political
     3: Professional
     -->
-    <pre>{{ candidate }}</pre>
-    <div class="container mx-auto" style="margin-top: 10%">
+    <!-- <pre>{{ candidate.location }}</pre> -->
+    <div class="container mx-auto">
       <div class="row">
-        <Breadcrumb
-          :crumbs="crumbs"
-          :candidate="candidate"
-          @selected="selected"
-        />
+        <Breadcrumb :breadcrumbs="candidateBreadcrumbs" />
       </div>
       <div class="row">
         <div class="col">
@@ -70,7 +66,7 @@
 
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import Breadcrumb from "../../Components/CandidateProfile/Breadcrumb.vue";
+import Breadcrumb from "../../Components/CandidateProfile/CandidateBreadcrumb.vue";
 import CandidateHeader from "../../Components/CandidateProfile/CandidateHeader.vue";
 import Stances from "../../Components/CandidateProfile/LongStanceCard.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
@@ -101,7 +97,40 @@ export default defineComponent({
       console.log(crumb);
     },
   },
+  computed: {
+    candidateBreadcrumbs() {
+      let locations;
+      if (this.candidate.location) {
+        locations = this.candidate.location.ancestors_and_self
+          .reverse()
+          .map((loc) => ({
+            route: route("locations.redirect", loc.id),
+            label: loc.name,
+          }));
+      } else {
+        locations = [
+          {
+            label: "National",
+            route: route("candidate-profiles.index"),
+          },
+        ];
+      }
+
+      const candidate = {
+        label: this.candidate.name,
+      };
+
+      return [...locations, candidate];
+    },
+  },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.individual-candidate-profile-background {
+  background-image: url("/images/candidate-profile-show-background.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+</style>

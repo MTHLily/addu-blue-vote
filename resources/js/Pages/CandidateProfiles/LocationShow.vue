@@ -1,6 +1,9 @@
 <template>
   <Layout>
     <div class="container bod" style="margin-top: 5%">
+      <LocationBreadcrumb
+        :breadcrumbs="locationBreadcrumbs"
+      ></LocationBreadcrumb>
       <span
         class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
         :style="{
@@ -10,104 +13,74 @@
       >
         {{ location.type?.name }}
       </span>
-    <h1 
-      class="fw-bold"
-      :class="{
-      'text-danger': location.type?.name === 'Region',
-      'text-warning': location.type?.name === 'Province',
-      'text-primary': location.type?.name === 'District',
-      'text-danger': location.type?.name === 'City',
-      }"
-    >
-      {{ location.name }}</h1>
-    <!-- <pre style="height: 400px" class="overflow-auto">
-      {{ location }}
-    </pre> -->
-
-    <!-- <template v-if="location.parent">
-      <h2>Parent</h2>
-      <Link
-        :href="
-          route(
-            getLocationRoute(location.parent),
-            getLocationBreadCrumbs(location.parent)
-          )
-        "
+      <h2
+        class="fw-bold"
+        :class="{
+          'text-danger': location.type?.name === 'Region',
+          'text-warning': location.type?.name === 'Province',
+          'text-primary': location.type?.name === 'District',
+          'text-danger': location.type?.name === 'City',
+        }"
       >
-        {{ location.parent.name }}
-      </Link>
-    </template> -->
+        {{ location.name }}
+      </h2>
 
-    <!-- Render candidates of location tree children -->
-    <template v-if="location.parent">
-      <h1>Candidates</h1>
-      <!-- <template v-for="candidate in location.candidates" :key="candidate.id">
+      <!-- Render candidates of location tree children -->
+      <template v-if="location.candidates.length > 0">
+        <h2>Candidates</h2>
+        <!-- <template v-for="candidate in location.candidates" :key="candidate.id">
         <h1>{{candidate.running_position.name}}</h1> -->
-      <template v-for="(
-        positionCandidates, position
-        ) in groupCandidatesByPosition(location.candidates)"
-        :key="position"
-      >
-        <template> 
+        <template
+          v-for="(positionCandidates, position) in candidatesByPosition"
+          :key="position"
+        >
           <div
             class="display-6"
             :class="{
-              'text-primary': location.candidates.runningPosition === 'Governor',
-              'text-danger': location.candidates.runningPosition === 'Vice Governor',
+              'text-primary': position === 'Governor',
+              'text-danger': position === 'Vice Governor',
             }"
           >
-            {{ location.candidates.runningPosition }}
+            {{ position }}
           </div>
-          </template>
           <div class="row row-cols-3">
             <div
               v-for="candidate in positionCandidates"
               :key="candidate.id"
               class="col"
             >
-              
-              <CandidateNameCard
-                :candidate="candidate"
-              ></CandidateNameCard>
+              <CandidateNameCard :candidate="candidate"></CandidateNameCard>
             </div>
           </div>
         </template>
-    </template>
-
-
-    <!-- Render link buttons of location tree children -->
-    <!-- <template v-if="location.children[0].type.name === 'City'">
-      <h2 class="fw-bold">Cities</h2>
-    </template>
-    <template v-else>
-      <h2 class="fw-bold">{{ location.children[0].type.name }}s</h2>
-    </template> -->
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3"> 
-        <template v-for="child in location.children" :key="child.id">
-            <div class="col"> 
-              <Link :href="route(getLocationRoute(child), getLocationBreadCrumbs(child))">
-                <Button 
-                  class="text-white btn-lg p-4 px-5 mt-3 w-100"
-                  :class="{
-                    'btn btn-danger': location.children[0].type.name === 'Region',
-                    'btn btn-warning': location.children[0].type.name === 'Province',
-                    'btn btn-primary': location.children[0].type.name === 'District',
-                    'btn btn-danger': location.children[0].type.name === 'City',
-                    }"
-                  style="padding: 20px; border-radius: 10px">
-                  {{ child.name }}
-                </Button>
+      </template>
+      <template v-if="location.children.length > 0">
+        <h2>{{ childrenType(location.children) }}</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+          <template v-for="child in location.children" :key="child.id">
+            <div class="col">
+              <Link
+                :href="
+                  route(getLocationRoute(child), getLocationBreadCrumbs(child))
+                "
+                class="text-white btn-lg p-4 px-5 mt-3 w-100"
+                :class="{
+                  'btn btn-danger': location.children[0].type.name === 'Region',
+                  'btn btn-warning':
+                    location.children[0].type.name === 'Province',
+                  'btn btn-primary':
+                    location.children[0].type.name === 'District',
+                  'btn btn-danger': location.children[0].type.name === 'City',
+                }"
+                style="padding: 20px; border-radius: 10px"
+              >
+                {{ child.name }}
               </Link>
             </div>
-        </template>
-      </div>
-
-    <!-- <h1>Breadcrumbs</h1>
-    <pre style="height: 500px" class="overflow-auto">
-      {{ breadcrumbs }}
-    </pre> -->
-
-  </div>
+          </template>
+        </div>
+      </template>
+    </div>
   </Layout>
 </template>
 
@@ -117,12 +90,14 @@ import { Link } from "@inertiajs/inertia-vue3";
 import _ from "lodash";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
 import CandidateNameCard from "../../Components/CandidateProfile/CandidateNameCard.vue";
+import LocationBreadcrumb from "@/Components/Locations/LocationBreadcrumb.vue";
 
 export default defineComponent({
-  components: { 
-    Link, 
+  components: {
+    Link,
     Layout,
-    CandidateNameCard
+    CandidateNameCard,
+    LocationBreadcrumb,
   },
   props: {
     location: Object,
@@ -172,22 +147,42 @@ export default defineComponent({
             breadcrumbs.city = crumb.id;
             break;
         }
-      },
-      );
+      });
       return breadcrumbs;
     },
-    groupCandidatesByPosition: (candidates) => {
-      console.log("Candidates: ", candidates);
+    childrenType(children) {
+      const child = children[0];
+
+      switch (child.location_type_id) {
+        case 1:
+          return "Regions";
+        case 2:
+          return "Provinces";
+        case 3:
+          return "locations.district.show";
+        case 4:
+          return "locations.city.show";
+      }
+    },
+  },
+  computed: {
+    locationBreadcrumbs() {
+      return this.breadcrumbs.map((breadcrumb) => ({
+        label: breadcrumb.name,
+        route: route("locations.redirect", breadcrumb.id),
+      }));
+    },
+    candidatesByPosition() {
+      console.log("Candidates: ", this.location.candidates);
 
       const grouped = _.groupBy(
-        candidates,
+        this.location.candidates,
         (candidate) => candidate.running_position.name
       );
 
       return grouped;
     },
   },
-    
 });
 </script>
 

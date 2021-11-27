@@ -1,23 +1,15 @@
 <template>
-  <Layout>
-    <!-- <div class="col">
-      LOCATIONS
-      <pre>{{ locations }}</pre>
-    </div>
-    <div class="col">
-      NATIONAL POSITIONS
-      <pre>{{ nationalPositions[0] }} </pre>
-      </div> -->
+  <Layout class="candidate-profile-background">
     <div class="container bod" style="margin-top: 5%">
       <span
-      class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
-      :style="{
-        'background-color': '#CE2029',
-        'border-radius': '30px',
-      }"
-    >
-    National
-    </span>
+        class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
+        :style="{
+          'background-color': '#CE2029',
+          'border-radius': '30px',
+        }"
+      >
+        National
+      </span>
       <!-- <h1 class="fw-bolder">National</h1> -->
       <div>
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
@@ -33,35 +25,24 @@
           :candidates="nationalPositions[2]?.candidates"
         ></CandidateCarousel>
       </div>
-      <div class="container d-flex">
-        <!-- <n-tree-select
-          class="my-4"
-          style="max-width: 300px"
-          placeholder="Filter Locations..."
-          multiple
-          cascade
-          checkable
-          :options="locationOptions"
-        ></n-tree-select> -->
-      </div>
       <div class="row">
-      <h2 class="fw-bold">Regions</h2>
-      <ul>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">  
-        <template v-for="region in locations" :key="region.id">
-          <!-- <li> -->
-            <Link :href="route('locations.region.show', region.id)">
-              <Button 
-                class="btn btn-danger btn-lg p-4 px-5 mt-3"
-                style="padding: 20px; border-radius: 10px">
-                {{ region.name }}
-              </Button>
-            </Link>
-          <!-- </li> -->
-        </template>
-        </div>
-      </ul>
-    </div>
+        <h2 class="fw-bold">Regions</h2>
+        <ul>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <template v-for="region in locations" :key="region.id">
+              <div class="col mt-3">
+                <Link
+                  :href="route('locations.region.show', region.id)"
+                  class="btn btn-danger btn-lg p-4 px-5 w-100 h-100"
+                  style="padding: 20px; border-radius: 10px"
+                >
+                  {{ region.name }}
+                </Link>
+              </div>
+            </template>
+          </div>
+        </ul>
+      </div>
       <!-- <CandidateCollapse :locations="locations"></CandidateCollapse> -->
     </div>
   </Layout>
@@ -104,9 +85,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-body {
-  background-image: url("../../Components/assets/candidate-backgrounds.svg");
-  background-repeat: no-repeat;
+.candidate-profile-background {
+  background-image: url("/images/candidate-backgrounds.svg");
   background-size: 100%;
   background-position: bottom;
 }

@@ -17,7 +17,7 @@ class LocationSeeder extends Seeder
     {
         Excel::import(
             new LocationSeedImport(),
-            "data/AdDU Blue Vote Locations.xlsx"
+            "public/data/AdDU Blue Vote Locations.xlsx"
         );
     }
 }

@@ -65,7 +65,8 @@ export default {
 
 .breadcrumb-item:after,
 .breadcrumb-item:before {
-  background: white;
+  /* background: white; */
+  background: #2365A1;
   bottom: 0;
   clip-path: polygon(50% 50%, -50% -50%, 0 100%);
   content: "";
@@ -84,6 +85,8 @@ export default {
 
 .breadcrumb-item:last-child {
   border-right: none;
+  background: #2365A1;
+  color:white;
 }
 
 .breadcrumb-item.is-active {

@@ -122,6 +122,10 @@ export default {
               title: "News",
               route: "news.index",
             },
+                       {
+              title: "News Sources",
+              route: "news-sources.index",
+            },
             {
               title: "Issues",
               route: "issues.index",

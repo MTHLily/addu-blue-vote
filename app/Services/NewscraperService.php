@@ -27,13 +27,25 @@ class NewscraperService
 
     private function getMetaDescriptionFromUrl(string $url): null|string
     {
-        $descriptionArr = Goutte::request("GET", $url)
-            ->filterXpath("//meta[@name='description']")
-            ->extract(["content"]);
-        if (empty($descriptionArr)) {
-            return null;
+        $descriptionArr = [];
+        array_push(
+            $descriptionArr,
+            Goutte::request("GET", $url)
+                ->filterXpath("//meta[@name='description']")
+                ->extract(["content"])
+        );
+        array_push(
+            $descriptionArr,
+            Goutte::request("GET", $url)
+                ->filterXpath("//meta[@property='og:description']")
+                ->extract(["content"])
+        );
+        for ($i = 0; $i < count($descriptionArr); $i++) {
+            if (!empty($descriptionArr[$i])) {
+                return $descriptionArr[$i][0];
+            }
         }
-        return $descriptionArr[0];
+        return null;
     }
 
     public function abs_cbn(bool $getOnlyNew = true): array
@@ -83,7 +95,7 @@ class NewscraperService
                         ],
                         $article
                     );
-                    dd($article);
+                    // dd($article);
                     return $article;
                 });
 
@@ -102,6 +114,7 @@ class NewscraperService
             }
         }
 
+        dump($articles);
         return $articles;
     }
 
@@ -110,13 +123,13 @@ class NewscraperService
         $articles = [];
         $crawler = Goutte::request(
             "GET",
-            "https://www.rappler.com/2022-philippine-elections"
+            "https://www.rappler.com/topic/2022-philippine-elections/"
         );
 
-        $latestArticle = $crawler->filter(".text-block div a");
+        $latestArticle = $crawler->filter(".archive-article__content");
 
         $article = NewsArticle::firstOrNew([
-            "url" => "https://www.rappler.com" . $latestArticle->attr("href"),
+            "url" => $latestArticle->filter("a")->attr("href"),
         ]);
 
         if (!$article->exists) {
@@ -132,33 +145,42 @@ class NewscraperService
         array_push($articles, $article);
 
         $newsArticles = $crawler
-            ->filter(".StyledComponents__ArticleItemText-sc-7o38yj-6")
-            ->each(function ($node) {
-                $url =
-                    "https://www.rappler.com" .
-                    $node->filter("a.related-content-item")->attr("href");
+            ->filter("article")
+            ->each(function ($node) use ($article) {
+                $check = $node->filter("div h2");
+                if ($check->count() === 0) {
+                    return $article;
+                }
+
+                $url = $node->filter("h2 a")->attr("href");
 
                 $article = NewsArticle::firstOrNew(["url" => $url]);
 
                 if (!$article->exists) {
-                    $article->title = $node
-                        ->filter("a.related-content-item")
-                        ->text();
+                    try {
+                        $time = Str::remove(
+                            "PHT",
+                            $node->filter("time")->text()
+                        );
+                        $date = Carbon::parse($time);
+                    } catch (Exception $e) {
+                        dd($e, $time);
+                    }
+                    $article->title = $node->filter("h2 a")->text();
                     $article->description = Str::of(
                         $this->getMetaDescriptionFromUrl($url)
                     )->limit(252);
-                    $article->date = Carbon::parse(
-                        $node->filter("time")->text()
-                    );
+                    $article->date = $date;
                     $article->news_source_id = $this->sources_id["rappler"];
                     $article->save();
                 }
-                dd($article);
+                // dd($article);
                 return $article;
             });
 
         $articles = array_merge($articles, $newsArticles);
 
+        dump($articles);
         return $articles;
     }
 
@@ -203,7 +225,8 @@ class NewscraperService
         });
 
         $articles = array_merge($articles, $newsArticles);
-        dd($articles);
+        // dd($articles);
+        dump($articles);
         return $articles;
     }
 
@@ -236,10 +259,11 @@ class NewscraperService
                     $article->news_source_id = $this->sources_id["comelec"];
                     $article->save();
                 }
-                dd($article);
+                // dd($article);
                 return $article;
             });
 
+        dump($newsArticles);
         return $newsArticles;
     }
 
@@ -272,19 +296,19 @@ class NewscraperService
                             $this->sources_id["manila_times"];
                         $article->save();
                     }
-                   
+
                     return $article;
                 });
         }
+
+        dump($newsArticles);
+
         return $newsArticles;
     }
 
     public function cnn_ph()
     {
-        $crawler = Goutte::request(
-            "GET",
-            "https://cnnphilippines.com/news/"
-        );
+        $crawler = Goutte::request("GET", "https://cnnphilippines.com/news/");
         //div.carousel-img-text span
         $newsArticles = $crawler
             ->filter(".widget.list.headline.xs-special")
@@ -296,18 +320,17 @@ class NewscraperService
                 ]);
 
                 if (!$article->exists) {
-                    $article->title = $node
-                        ->filter("a")
-                        ->text();
+                    $article->title = $node->filter("a")->text();
                     $article->description = "A CNN PH Article.";
                     $article->date = Carbon::now();
                     $article->news_source_id = $this->sources_id["cnn_ph"];
                     $article->save();
                 }
-               dump($article);
+                // dump($article);
                 return $article;
             });
 
+        dump($newsArticles);
         return $newsArticles;
     }
 
@@ -319,23 +342,31 @@ class NewscraperService
         );
 
         $newsArticles = $crawler->filter("#ch-ls-box")->each(function ($node) {
+            $url = "";
+            try {
+                $url = $node->filter("a")->attr("href");
+            } catch (Exception $e) {
+                return;
+            }
             $article = NewsArticle::firstOrNew([
-                "url" =>
-                    "https://newsinfo.inquirer.net/" .
-                    $node->filter("a")->attr("href"),
+                "url" => $url,
             ]);
 
             if (!$article->exists) {
-                $article->title = $node->filter("#ch-ls-head")->text();
-                $article->description = "An Inquirer.net Article.";
-                $article->date = Carbon::now();
+                $article->title = $node->filter("#ch-ls-head h2")->text();
+                $article->description = Str::of(
+                    $this->getMetaDescriptionFromUrl($url)
+                )->limit("252");
+                $article->date = Carbon::parse(
+                    $node->filter("#ch-postdate span")->text()
+                );
                 $article->news_source_id = $this->sources_id["inquirer_net"];
                 $article->save();
             }
-            dd($article);
             return $article;
         });
 
+        dump($newsArticles);
         return $newsArticles;
     }
 
@@ -347,26 +378,28 @@ class NewscraperService
         );
 
         $newsArticles = $crawler
-            ->filter("#grid_thumbnail_stories")
+            ->filter("grid_thumbnail_stories li")
             ->each(function ($node) {
                 $article = NewsArticle::firstOrNew([
-                    "url" =>
-                        "https://www.gmanetwork.com/news/" ,
-                        $node->filter("a.story_link")->attr("href"),
+                    "url" => "https://www.gmanetwork.com/news/",
+                    $node->filter("a.story_link")->attr("href"),
                 ]);
 
                 if (!$article->exists) {
                     $article->title = $node
-                        ->filter(".story_link")->attr("title")
+                        ->filter(".story_link")
+                        ->attr("title")
                         ->text();
                     $article->description = "An GMA News Article.";
                     $article->date = Carbon::now();
                     $article->news_source_id = $this->sources_id["gma"];
                     $article->save();
                 }
-                dd($article);
+                // dd($article);
                 return $article;
             });
+
+        dump($newsArticles);
 
         return $newsArticles;
     }
@@ -382,7 +415,7 @@ class NewscraperService
         $candidateNames = Candidate::all(["id", "name"]);
 
         //$article = NewsArticle::findOrFail($id);
-        $article = NewsArticle::where('news_source_id', 6)->first();
+        $article = NewsArticle::where("news_source_id", 1)->first();
         // Visit with guzzler
         $crawler = Goutte::request("GET", $article->url);
 
@@ -391,9 +424,11 @@ class NewscraperService
             $text = $crawler->filter(".article-block")->text();
             dump($text);
         }
-       // Parser for Rappler
+        // Parser for Rappler
         if ($article->news_source_id === $this->sources_id["rappler"]) {
-            $text = $crawler->filter(".ArticleWrapper__ArticleBodyWrapper-sc-36pn73-0")->text();
+            $text = $crawler
+                ->filter(".ArticleWrapper__ArticleBodyWrapper-sc-36pn73-0")
+                ->text();
             dump($text);
         }
 
@@ -403,7 +438,7 @@ class NewscraperService
             dump($text);
         }
 
-         // Parser for Comelec
+        // Parser for Comelec
         if ($article->news_source_id === $this->sources_id["comelec"]) {
             $text = $crawler->filter(".list-group-item")->text();
             dump($text);
@@ -417,7 +452,9 @@ class NewscraperService
 
         // Parser for CNN
         if ($article->news_source_id === $this->sources_id["cnn_ph"]) {
-            $text = $crawler->filter(".article-maincontent-p.cnn-life-body")->text();
+            $text = $crawler
+                ->filter(".article-maincontent-p.cnn-life-body")
+                ->text();
             dump($text);
         }
 
@@ -455,22 +492,37 @@ class NewscraperService
 
     public function linkCandidates(): void
     {
-        $candidates = $this->relatedCandidates(3);
-       // dd($candidates);
+        $candidates = $this->relatedCandidates(1);
+        // dd($candidates);
     }
 
     public function get(): array
     {
         $articles = [];
+        dump("ABS-CBN");
         $articles = $this->abs_cbn();
+        dump("Philstar");
         $articles = $this->phil_star();
+        dump("Rappler");
         $articles = $this->rappler();
+        dump("Comelec");
         $articles = $this->comelec();
-        //$articles = $this->cnn_ph();
+        dump("CNN");
+        /**
+         * No section for electiosn
+         */
+        // $articles = $this->cnn_ph();
+        dump("Manila Times");
         $articles = $this->manila_times();
+        dump("Inquirer");
         $articles = $this->inquirer_net();
-        //$articles = $this->gma();
+        dump("GMA");
+        /**
+         * Uses JS to load articles
+         */
+        // $articles = $this->gma();
 
+        dump($articles);
         return $articles;
     }
 }

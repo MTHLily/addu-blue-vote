@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
 
         DB::table("users")->truncate();
         DB::table("users")->insert([
-            "name" => env("ADMIN_USER", "Admin"),
-            "email" => env("ADMIN_EMAIL", "admin@admin.com"),
-            "password" => bcrypt(env("ADMIN_PASSWORD", "adminadmin")),
+            "name" => config("admin.user"),
+            "email" => config("admin.email"),
+            "password" => bcrypt(config("admin.pass")),
         ]);
 
         $this->call([

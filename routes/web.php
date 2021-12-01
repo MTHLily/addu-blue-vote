@@ -14,10 +14,7 @@ use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
-use App\Imports\LocationSeedImport;
-use App\Models\Location;
 use App\Services\NewscraperService;
-use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +48,7 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::get("/testing", function () {
-    (new NewscraperService())->get();
+    dd(config("admin.email"));
 })->name("testing");
 
 Route::get("/voters-education", [

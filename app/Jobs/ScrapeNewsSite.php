@@ -32,7 +32,7 @@ class ScrapeNewsSite implements ShouldQueue
      */
     public function handle()
     {
-        $service = new NewscraperService();
+        $service = app(NewscraperService::class);
         if (is_callable([$service, $this->site])) {
             $method = $this->site;
             $service->$method();

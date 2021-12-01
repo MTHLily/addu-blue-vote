@@ -34,7 +34,7 @@ class FindRelatedCandidatesForNewsArticle implements ShouldQueue
      */
     public function handle()
     {
-        $candidates = (new NewscraperService())->relatedCandidates(
+        $candidates = app(NewscraperService::class)->relatedCandidates(
             $this->article
         );
         $this->article->relatedCandidates()->sync($candidates->pluck("id"));

@@ -502,22 +502,20 @@ class NewscraperService
         // dd("Related Candidates: ", $relatedCandidates);
     }
 
-    public function linkCandidates(bool $fresh = false): void
+    public function linkCandidates(int $limit = 0, bool $fresh = false): void
     {
         if ($fresh) {
             $articles = NewsArticle::all();
         } else {
-            $articles = NewsArticle::has("relatedCandidates", ">", "0")
-                ->limit(20)
-                ->get();
+            $query = NewsArticle::has("relatedCandidates", ">", "0");
+            if ($limit > 0) {
+                $query = $query->limit($limit);
+            }
+            $articles = $query->get();
         }
-
-        // dd($articles);
 
         $articles->each(function (NewsArticle $article) {
             FindRelatedCandidatesForNewsArticle::dispatch($article);
-            // $candidates = $this->relatedCandidates($article);
-            // $article->relatedCandidates()->sync($candidates->pluck("id"));
         });
     }
 

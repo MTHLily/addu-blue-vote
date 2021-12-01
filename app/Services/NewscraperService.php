@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Jobs\FindRelatedCandidatesForNewsArticle;
+use App\Jobs\ScrapeNewsSite;
 use App\Models\Candidate;
 use App\Models\NewsArticle;
 use Carbon\Carbon;
@@ -505,40 +507,55 @@ class NewscraperService
         if ($fresh) {
             $articles = NewsArticle::all();
         } else {
-            $articles = NewsArticle::has("relatedCandidates", ">", "0")->get();
+            $articles = NewsArticle::has("relatedCandidates", ">", "0")
+                ->limit(20)
+                ->get();
         }
 
+        // dd($articles);
+
         $articles->each(function (NewsArticle $article) {
-            $candidates = $this->relatedCandidates($article);
-            $article->relatedCandidates()->sync($candidates->pluck("id"));
+            FindRelatedCandidatesForNewsArticle::dispatch($article);
+            // $candidates = $this->relatedCandidates($article);
+            // $article->relatedCandidates()->sync($candidates->pluck("id"));
         });
     }
 
     public function get(): array
     {
-        $articles = [];
-        dump("ABS-CBN");
-        $articles = $this->abs_cbn();
-        dump("Philstar");
-        $articles = $this->phil_star();
-        dump("Rappler");
-        $articles = $this->rappler();
-        dump("Comelec");
-        $articles = $this->comelec();
-        dump("CNN");
-        /**
-         * No section for electiosn
-         */
-        // $articles = $this->cnn_ph();
-        dump("Manila Times");
-        $articles = $this->manila_times();
-        dump("Inquirer");
-        $articles = $this->inquirer_net();
-        dump("GMA");
+        // $articles = [];
+        // dump("ABS-CBN");
+        // $articles = $this->abs_cbn();
+        // dump("Philstar");
+        // $articles = $this->phil_star();
+        // dump("Rappler");
+        // $articles = $this->rappler();
+        // dump("Comelec");
+        // $articles = $this->comelec();
+        // dump("CNN");
+        // /**
+        //  * No section for electiosn
+        //  */
+        // // $articles = $this->cnn_ph();
+        // dump("Manila Times");
+        // $articles = $this->manila_times();
+        // dump("Inquirer");
+        // $articles = $this->inquirer_net();
+        // dump("GMA");
         /**
          * Uses JS to load articles
          */
         // $articles = $this->gma();
+
+        $articles = [];
+
+        ScrapeNewsSite::dispatch("abs_cbn");
+        ScrapeNewsSite::dispatch("phil_star");
+        ScrapeNewsSite::dispatch("rappler");
+        ScrapeNewsSite::dispatch("comelec");
+        ScrapeNewsSite::dispatch("manila_times");
+        ScrapeNewsSite::dispatch("inquirer_net");
+        ScrapeNewsSite::dispatch("gma");
 
         dump($articles);
         return $articles;

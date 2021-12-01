@@ -51,7 +51,7 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::get("/testing", function () {
-    (new NewscraperService())->linkCandidates();
+    (new NewscraperService())->get();
 })->name("testing");
 
 Route::get("/voters-education", [

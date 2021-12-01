@@ -407,28 +407,25 @@ class NewscraperService
     //https://www.gmanetwork.com/news/tracking/eleksyon_2022/
     //https://cnnphilippines.com/thefilipinovotes/
 
-    public function relatedCandidates($id)
+    public function relatedCandidates(NewsArticle $article)
     {
         $relatedCandidates = collect([]);
 
         // get all the names candidates
         $candidateNames = Candidate::all(["id", "name"]);
 
-        //$article = NewsArticle::findOrFail($id);
-        $article = NewsArticle::where("news_source_id", 1)->first();
         // Visit with guzzler
         $crawler = Goutte::request("GET", $article->url);
 
         // Parser for ABS-CBN
         if ($article->news_source_id === $this->sources_id["abs_cbn"]) {
+            dump("ABS CBN");
             $text = $crawler->filter(".article-block")->text();
             dump($text);
         }
         // Parser for Rappler
         if ($article->news_source_id === $this->sources_id["rappler"]) {
-            $text = $crawler
-                ->filter(".ArticleWrapper__ArticleBodyWrapper-sc-36pn73-0")
-                ->text();
+            $text = $crawler->filter(".article-main-section")->text();
             dump($text);
         }
 
@@ -440,7 +437,7 @@ class NewscraperService
 
         // Parser for Comelec
         if ($article->news_source_id === $this->sources_id["comelec"]) {
-            $text = $crawler->filter(".list-group-item")->text();
+            $text = "";
             dump($text);
         }
 
@@ -452,21 +449,32 @@ class NewscraperService
 
         // Parser for CNN
         if ($article->news_source_id === $this->sources_id["cnn_ph"]) {
-            $text = $crawler
-                ->filter(".article-maincontent-p.cnn-life-body")
-                ->text();
+            $text = "";
+            // $text = $crawler
+            //     ->filter(".article-maincontent-p.cnn-life-body")
+            //     ->text();
             dump($text);
         }
 
         // Parser for Inquirer
         if ($article->news_source_id === $this->sources_id["inquirer_net"]) {
-            $text = $crawler->filter(".article_align")->text();
+            // $text = Str::of("");
+            $p = collect(
+                $crawler
+                    ->filter("#article_content > div >p ")
+                    ->each(function ($node) {
+                        return $node->text();
+                    })
+            );
+            $text = $p->reduce(fn($carry, $string) => $carry . $string . " ");
+            // $text = $crawler->filter("#article_content > div >p ")->text();
             dump($text);
         }
 
         // Parser for gma
         if ($article->news_source_id === $this->sources_id["gma"]) {
-            $text = $crawler->filter(".story_main")->text();
+            // $text = $crawler->filter(".story_main")->text();
+            $text = "";
             dump($text);
         }
 
@@ -485,15 +493,25 @@ class NewscraperService
             }
         });
 
+        dump($relatedCandidates);
+
         return $relatedCandidates;
 
         // dd("Related Candidates: ", $relatedCandidates);
     }
 
-    public function linkCandidates(): void
+    public function linkCandidates(bool $fresh = false): void
     {
-        $candidates = $this->relatedCandidates(1);
-        // dd($candidates);
+        if ($fresh) {
+            $articles = NewsArticle::all();
+        } else {
+            $articles = NewsArticle::has("relatedCandidates", ">", "0")->get();
+        }
+
+        $articles->each(function (NewsArticle $article) {
+            $candidates = $this->relatedCandidates($article);
+            $article->relatedCandidates()->sync($candidates->pluck("id"));
+        });
     }
 
     public function get(): array

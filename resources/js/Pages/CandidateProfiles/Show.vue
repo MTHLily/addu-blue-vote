@@ -1,6 +1,5 @@
 <template>
   <Layout class="individual-candidate-profile-background">
-    <pre>{{ relatedArticles }}</pre>
     <div class="container mx-auto">
       <div class="row">
         <Breadcrumb :breadcrumbs="candidateBreadcrumbs" />

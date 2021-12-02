@@ -16,10 +16,12 @@ use App\Http\Controllers\NewsSourceController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
+use App\Imports\LocationSeedImport;
 use App\Models\Candidate;
 use App\Models\Location;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\NewscraperService;
+use Database\Seeders\LocationSeeder;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +56,8 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::get("/testing", function () {
-    dd(config("admin.email"));
+    (new LocationSeeder())->run();
+    return view("welcome");
 })->name("testing");
 
 Route::get("/voters-education", [

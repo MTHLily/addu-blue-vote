@@ -17,7 +17,7 @@
   >
     <div class="container-md">
       <slot name="before-logo"> </slot>
-      <Link class="navbar-brand w-50" href="/">
+      <Link class="navbar-brand" href="/">
         <img :src="logo" class="navbar-logo" />
       </Link>
       <slot name="after-logo">
@@ -30,7 +30,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </slot>
-      <div class="collapse navbar-collapse flex-shrink-1" ref="navbarCollapse">
+      <div class="collapse navbar-collapse flex-grow-1" ref="navbarCollapse">
         <slot name="collapse-content"></slot>
       </div>
     </div>

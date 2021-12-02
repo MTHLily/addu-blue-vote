@@ -7,7 +7,7 @@
       <template v-for="article in articles?.data" :key="article.id">
         <NewsCard :news="article"></NewsCard>
       </template>
-      <Pagination :pagination="articles"></Pagination>
+      <Pagination class="mx-auto" :pagination="articles"></Pagination>
     </div>
   </div>
 </template>

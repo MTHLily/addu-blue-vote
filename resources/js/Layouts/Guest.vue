@@ -3,16 +3,11 @@
   <div class="min-vh-100 d-flex flex-column">
     <ArisenHeader>
       <template #collapse-content>
-        <ul
-          class="navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4"
-        >
+        <ul class="navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4">
           <li class="nav-item">
-            <a class="nav-link" href="#voter-registration">
-              Registration Process
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#faqs">FAQs</a>
+            <Link class="nav-link" :href="route('voters-education')"
+              >Voters Education</Link
+            >
           </li>
           <li class="nav-item">
             <Link class="nav-link" :href="route('candidate-profiles.index')"
@@ -20,9 +15,12 @@
             >
           </li>
           <li class="nav-item">
-            <Link class="nav-link" :href="route('candidate-profiles.show', 1)"
-              >Individual Profile</Link
-            >
+            <a class="nav-link" href="#voter-registration">
+              Registration Process
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#faqs">FAQs</a>
           </li>
           <li class="nav-item">
             <a

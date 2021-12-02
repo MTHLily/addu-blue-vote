@@ -15,9 +15,23 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
-        Excel::import(
-            new LocationSeedImport(),
-            "public/data/AdDU Blue Vote Locations.xlsx"
+        $import = new LocationSeedImport();
+
+        $import->onlySheets(
+            "Region"
+            // "Provinces",
+            // "Districts",
+            // "Cities",
+            // "Sites"
         );
+        Excel::import($import, "data/AdDU Blue Vote Locations.xlsx");
+        $import->onlySheets("Provinces");
+        Excel::import($import, "data/AdDU Blue Vote Locations.xlsx");
+        $import->onlySheets("Districts");
+        Excel::import($import, "data/AdDU Blue Vote Locations.xlsx");
+        $import->onlySheets("Cities");
+        Excel::import($import, "data/AdDU Blue Vote Locations.xlsx");
+        $import->onlySheets("Sites");
+        Excel::import($import, "data/AdDU Blue Vote Locations.xlsx");
     }
 }

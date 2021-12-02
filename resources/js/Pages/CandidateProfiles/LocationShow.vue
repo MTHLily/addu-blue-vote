@@ -167,10 +167,17 @@ export default defineComponent({
   },
   computed: {
     locationBreadcrumbs() {
-      return this.breadcrumbs.map((breadcrumb) => ({
+      const locationCrumbs = this.breadcrumbs.map((breadcrumb) => ({
         label: breadcrumb.name,
         route: route("locations.redirect", breadcrumb.id),
       }));
+      return [
+        {
+          label: "Home",
+          route: route("candidate-profiles.index"),
+        },
+        ...locationCrumbs,
+      ];
     },
     candidatesByPosition() {
       console.log("Candidates: ", this.location.candidates);

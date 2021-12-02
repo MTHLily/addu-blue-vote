@@ -2,12 +2,16 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class LocationSeedImport implements WithMultipleSheets
 {
-    public function sheets(): array
+    use WithConditionalSheets;
+
+    public function conditionalSheets(): array
     {
         return [
             "Region" => new LocationsImport(1),

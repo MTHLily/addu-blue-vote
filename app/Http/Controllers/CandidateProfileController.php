@@ -52,6 +52,7 @@ class CandidateProfileController extends Controller
 
         $relatedArticles = $candidate
             ->relatedArticles()
+            ->orderByDesc("date")
             ->with("newsSource")
             ->paginate(5)
             ->onEachSide(1);

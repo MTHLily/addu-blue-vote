@@ -1,6 +1,8 @@
 <template lang="">
   <div class="card gap-2 p-2" style="border-radius: 20px">
-    <h5 class="card-title">{{ news.title }}</h5>
+    <h5 class="card-title" :style="{ 'font-size': small ? '1px' : '15px' }">
+      {{ news.title }}
+    </h5>
     <div class="card-subtitle">
       <span
         class="badge rounded-pill"
@@ -14,9 +16,19 @@
         {{ news.news_source.name }}
       </span>
     </div>
-    <p class="card-text text-wrap">{{ news.description }}</p>
+    <p
+      class="card-text text-wrap"
+      :style="{ 'font-size': small ? '1px' : '15px' }"
+    >
+      {{ news.description }}
+    </p>
     <div class="d-flex justify-content-between">
-      <p class="card-subtitle mb-2 text-muted">{{ news.date }}</p>
+      <p
+        class="card-subtitle mb-2 text-muted"
+        :style="{ 'font-size': small ? '1px' : '15px' }"
+      >
+        {{ news.date }}
+      </p>
 
       <a
         :href="`${news.url}`"
@@ -42,6 +54,10 @@ export default {
         link: "https://news.abs-cbn.com/",
         color: "#064205",
       }),
+    },
+    small: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

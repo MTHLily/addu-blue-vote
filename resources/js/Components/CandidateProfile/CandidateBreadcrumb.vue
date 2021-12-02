@@ -59,7 +59,6 @@ export default {
 
 .breadcrumb-item:after,
 .breadcrumb-item:before {
-  /* background: white; */
   background: #fff;
   bottom: 0;
   clip-path: polygon(50% 50%, -50% -50%, 0 100%);

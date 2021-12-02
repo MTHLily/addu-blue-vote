@@ -5,7 +5,7 @@
     </div>
     <div class="d-flex flex-column gap-4">
       <template v-for="article in articles?.data" :key="article.id">
-        <NewsCard :news="article"></NewsCard>
+        <NewsCard small :news="article"></NewsCard>
       </template>
       <Pagination class="mx-auto" :pagination="articles"></Pagination>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="container bod" style="margin-top: 5%">
+    <div class="container bod">
       <LocationBreadcrumb
         :breadcrumbs="locationBreadcrumbs"
       ></LocationBreadcrumb>
@@ -24,6 +24,8 @@
       >
         {{ location.name }}
       </h2>
+
+      <p class="lead"></p>
 
       <!-- Render candidates of location tree children -->
       <template v-if="location.candidates.length > 0">
@@ -159,9 +161,9 @@ export default defineComponent({
         case 2:
           return "Provinces";
         case 3:
-          return "locations.district.show";
+          return "Districts";
         case 4:
-          return "locations.city.show";
+          return "Cities/Municipalities";
       }
     },
   },

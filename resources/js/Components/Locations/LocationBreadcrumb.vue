@@ -7,9 +7,9 @@
         class="breadcrumb-item"
       >
         <template v-if="breadcrumb.route">
-          <a :href="breadcrumb.route" class="text-decoration-none">
+          <Link :href="breadcrumb.route" class="text-decoration-none">
             {{ breadcrumb.label }}
-          </a>
+          </Link>
         </template>
         <template v-else>
           {{ breadcrumb.label }}
@@ -20,7 +20,10 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
+  components: { Link },
   props: {
     breadcrumbs: Array,
   },

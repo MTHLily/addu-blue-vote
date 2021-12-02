@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="m-3 text-primary">
     <div class="row g-0">
       <div class="col col-md-4">
@@ -27,13 +27,13 @@
                 class="btn btn-primary align-self-end"
                 style="border-radius: 20px"
               >
-                <a
+                <Link
                   :href="route('candidate-profiles.show', candidate.id)"
                   target="_blank"
                   class="text-white text-decoration-none"
                 >
                   KNOW MORE
-                </a>
+                </Link>
               </button>
             </div>
           </div>
@@ -44,7 +44,10 @@
   </div>
 </template>
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
+  components: { Link },
   props: {
     candidate: {
       type: Object,

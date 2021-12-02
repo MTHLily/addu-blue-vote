@@ -56,7 +56,7 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::get("/testing", function () {
-    (new LocationSeeder())->run();
+    app(NewscraperService::class)->linkCandidates(1);
     return view("welcome");
 })->name("testing");
 

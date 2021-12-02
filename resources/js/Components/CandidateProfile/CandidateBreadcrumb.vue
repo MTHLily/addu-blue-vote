@@ -1,6 +1,6 @@
 <template>
   <nav style="--bs-breadcrumb-divider: '>'">
-    <ol class="breadcrumb p-2">
+    <ol class="breadcrumb p-2 border-0">
       <li
         v-for="breadcrumb in breadcrumbs"
         :key="breadcrumb.label"
@@ -66,7 +66,7 @@ export default {
 .breadcrumb-item:after,
 .breadcrumb-item:before {
   /* background: white; */
-  background: #2365A1;
+  background: #2365a1;
   bottom: 0;
   clip-path: polygon(50% 50%, -50% -50%, 0 100%);
   content: "";
@@ -85,12 +85,11 @@ export default {
 
 .breadcrumb-item:last-child {
   border-right: none;
-  background: #2365A1;
-  color:white;
+  background: #2365a1;
+  color: white;
 }
 
 .breadcrumb-item.is-active {
   background: #edf1f5;
 }
-
 </style>

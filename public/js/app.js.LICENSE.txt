@@ -50,16 +50,15 @@
   */
 
 /*!
+  * vue-script2 v2.1.0
+  * (c) 2016-2019 Greg Slepak
+  * @license MIT License
+  */
+
+/*!
  * @toast-ui/editor
  * @version 3.1.0 | Tue Sep 07 2021
  * @author NHN FE Development Lab <dl_javascript@nhn.com>
- * @license MIT
- */
-
-/*!
- * TOAST UI Color Picker
- * @version 2.2.7
- * @author NHN FE Development Team <dl_javascript@nhn.com>
  * @license MIT
  */
 
@@ -100,5 +99,3 @@ PERFORMANCE OF THIS SOFTWARE.
  * @author NHN FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
-
-// @license RGB <-> HSV conversion utilities based off of http://www.cs.rit.edu/~ncs/color/t_convert.html

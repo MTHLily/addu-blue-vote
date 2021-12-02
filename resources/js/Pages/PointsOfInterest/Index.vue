@@ -24,8 +24,11 @@
         :columns="tableColumns"
         :items="pois"
       >
-        <template #district="{ item }">
+        <template #location="{ item }">
           <td>{{ item.location.name }}</td>
+        </template>
+        <template #type="{ item }">
+          {{ item.type.type }}
         </template>
         <template #image="{ item }">
           <td>
@@ -177,11 +180,12 @@ export default {
       {
         label: "Type",
         value: "type",
+        slotName: "type",
       },
       {
-        label: "District",
-        value: "district",
-        slotName: "district",
+        label: "Location",
+        value: "id",
+        slotName: "location",
       },
       {
         label: "Image",

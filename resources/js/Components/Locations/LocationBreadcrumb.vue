@@ -1,6 +1,6 @@
 <template>
   <nav style="--bs-breadcrumb-divider: '>'">
-    <ol class="breadcrumb p-2">
+    <ol class="breadcrumb p-2 border-0">
       <li
         v-for="breadcrumb in breadcrumbs"
         :key="breadcrumb.label"

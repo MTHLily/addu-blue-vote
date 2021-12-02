@@ -50,8 +50,15 @@ class CandidateProfileController extends Controller
             "media",
         ]);
 
+        $relatedArticles = $candidate
+            ->relatedArticles()
+            ->with("newsSource")
+            ->paginate(5)
+            ->onEachSide(1);
+
         return Inertia::render("CandidateProfiles/Show", [
             "candidate" => $candidate,
+            "relatedArticles" => $relatedArticles,
         ]);
     }
 

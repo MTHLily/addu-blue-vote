@@ -12,13 +12,14 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewsArticleController;
+use App\Http\Controllers\NewsSourceController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
-use App\Imports\LocationSeedImport;
 use App\Models\Candidate;
 use App\Models\Location;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Services\NewscraperService;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,24 +32,9 @@ use Maatwebsite\Excel\Facades\Excel;
 |
 */
 
-// Route::get("/", function () {
-//     return Inertia::render("Welcome", [
-//         "faqs" => FrequentlyAskedQuestion::all(),
-//         "information" => InformationSnippet::all(),
-//         "districts" => District::all(),
-//         "registrationSites" => PointOfInterest::where(
-//             "point_of_interest_type_id",
-//             "=",
-//             1
-//         )
-//             ->with("district")
-//             ->get(),
-//     ]);
-// });
-
 //admin resources
 Route::middleware(["auth"])->group(function () {
-    // Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
+    //Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
     Route::prefix("dashboard")->group(function () {
         Route::get("/", [DashboardController::class, "index"])->name(
             "dashboard"
@@ -63,12 +49,14 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("candidates", CandidateController::class);
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);
+        Route::resource("news-sources", NewsSourceController::class);
     });
 });
 
-Route::get("/", [GuestController::class, "voters_registration"])->name(
-    "voters-registration"
-);
+Route::get("/testing", function () {
+    dd(config("admin.email"));
+})->name("testing");
+
 Route::get("/voters-education", [
     GuestController::class,
     "voters_education",
@@ -109,14 +97,8 @@ Route::prefix("candidate-profiles")->group(function () {
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
 
-Route::get("/testing", function () {
-    $candidate = Candidate::find(4);
-    $candidate->load("location.ancestorsAndSelf");
-
-    $location = Location::find(425);
-
-    dd($candidate, $location->bloodline->toTree());
-    dd(Location::find(425)->ancestorsAndSelf);
-});
+Route::get("/", [GuestController::class, "voters_registration"])->name(
+    "voters-registration"
+);
 
 require __DIR__ . "/auth.php";

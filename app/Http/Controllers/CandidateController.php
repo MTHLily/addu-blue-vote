@@ -39,7 +39,10 @@ class CandidateController extends Controller
     {
         $locationTypes = LocationType::all();
         $positions = RunningPosition::all()->groupBy("location_type_id");
-        $locations = Location::all()->groupBy("location_type_id");
+        $locations = Location::all();
+        $location_tree = Location::regions()
+            ->with("children.children.children")
+            ->get();
         $issues = Issue::all();
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
@@ -48,6 +51,7 @@ class CandidateController extends Controller
             "location_types" => $locationTypes,
             "positions" => $positions,
             "locations" => $locations,
+            "location_tree" => $location_tree,
             "issues" => $issues,
             "parties" => $parties,
             "background_types" => $background_types,
@@ -91,7 +95,10 @@ class CandidateController extends Controller
     {
         $locationTypes = LocationType::all();
         $positions = RunningPosition::all()->groupBy("location_type_id");
-        $locations = Location::all()->groupBy("location_type_id");
+        $locations = Location::all();
+        $location_tree = Location::regions()
+            ->with("children.children.children")
+            ->get();
         $issues = Issue::all();
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
@@ -104,6 +111,7 @@ class CandidateController extends Controller
             "location_types" => $locationTypes,
             "positions" => $positions,
             "locations" => $locations,
+            "location_tree" => $location_tree,
             "issues" => $issues,
             "parties" => $parties,
             "background_types" => $background_types,

@@ -1,11 +1,6 @@
 <template>
   <Layout class="individual-candidate-profile-background">
-    <!-- Candidate Backgorund Type
-    1: Education
-    2: Political
-    3: Professional
-    -->
-    <!-- <pre>{{ candidate.location }}</pre> -->
+    <pre>{{ relatedArticles }}</pre>
     <div class="container mx-auto">
       <div class="row">
         <Breadcrumb :breadcrumbs="candidateBreadcrumbs" />
@@ -53,7 +48,10 @@
       <div class="row" style="position: relative">
         <div class="row mb-2 row-cols-1 row-cols-md-2">
           <div class="col">
-            <NewsArticles class="w-100 h-100"></NewsArticles>
+            <NewsArticles
+              class="w-100 h-100"
+              :articles="relatedArticles"
+            ></NewsArticles>
           </div>
           <div class="col">
             <Twitter class="w-100" :candidate="candidate"></Twitter>
@@ -86,6 +84,7 @@ export default defineComponent({
   },
   props: {
     candidate: Object,
+    relatedArticles: Object,
   },
   data() {
     return {

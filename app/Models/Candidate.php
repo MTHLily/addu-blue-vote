@@ -54,6 +54,11 @@ class Candidate extends Model implements HasMedia
         return $this->belongsTo(PoliticalParty::class);
     }
 
+    public function relatedArticles()
+    {
+        return $this->belongsToMany(NewsArticle::class);
+    }
+
     // Picture Conversions
     public function registerMediaConversions(?Media $media = null): void
     {

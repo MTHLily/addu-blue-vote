@@ -15,6 +15,7 @@
     "guzzlehttp/guzzle": "^7.0.1",
     "inertiajs/inertia-laravel": "^0.4.3",
     "laravel/framework": "^8.54",
+    "laravel/horizon": "^5.7",
     "laravel/sanctum": "^2.6",
     "laravel/tinker": "^2.5",
     "maatwebsite/excel": "^3.1",
@@ -24,7 +25,8 @@
     "staudenmeir/laravel-adjacency-list": "^1.8",
     "tightenco/ziggy": "^1.0",
     "weidner/goutte": "^2.1",
-    "wulfheart/pretty_routes": "^0.3.0"
+    "wulfheart/pretty_routes": "^0.3.0",
+    "wyndow/fuzzywuzzy": "^0.6.0"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.6",

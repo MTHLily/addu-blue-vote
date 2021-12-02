@@ -1,16 +1,20 @@
-<template lang="">
-  <div class="container col-6 text-white h-auto" style="background-color: #faa728">
-    <div class="card-title p-3 text-uppercase fw-bold lh-sm fs-1">NEWS ARTICLES</div>
+<template>
+  <div class="container col-6 h-auto" style="background-color: #faa728">
+    <div class="card-title text-white p-3 text-uppercase fw-bold lh-sm fs-1">
+      NEWS ARTICLES
+    </div>
+    <div class="d-flex flex-column gap-4">
       <template v-for="article in articles?.data" :key="article.id">
-        <NewsCard :newsArticle="article"></NewsCard>
+        <NewsCard :news="article"></NewsCard>
       </template>
-      <!-- <h1>aaaaaaaaaaaaaaaaaaaaaa</h1> -->
+      <Pagination :pagination="articles"></Pagination>
+    </div>
   </div>
 </template>
 <script>
 import { defineComponent } from "@vue/runtime-core";
 import NewsCard from "../../Components/News/NewsCard.vue";
-// import NewsCard from "./NewsArticle.vue";
+import Pagination from "../Pagination.vue";
 
 export default defineComponent({
   props: {
@@ -18,11 +22,9 @@ export default defineComponent({
   },
   components: {
     NewsCard,
+    Pagination,
   },
-  
 });
 </script>
 
-<style>
-
-</style>
+<style></style>

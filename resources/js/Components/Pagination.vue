@@ -1,12 +1,36 @@
-<template lang="">
+<template>
   <nav aria-label="Page navigation" :key="pagination.per_page">
     <ul class="pagination">
-      <li class="page-item" :class="{ disabled: pagination.current_page == 1 }">
+      <template v-for="link in pagination.links" :key="link.url">
+        <li class="page-item" :class="{ disabled: link.active }">
+          <template v-if="link.label !== '...'">
+            <Link :href="link.url" class="page-link" preserve-scroll>
+              <span aria-hidden="true" v-html="link.label"></span>
+            </Link>
+          </template>
+          <template v-else>
+            <NPopconfirm
+              :negative-text="null"
+              positive-text="Go to"
+              :show-icon="false"
+              :on-positive-click="changePage"
+            >
+              <template #trigger>
+                <a href="#" class="page-link"
+                  ><span aria-hidden="true">...</span></a
+                >
+              </template>
+              <input type="text" class="form-control" v-model="gotoPage" />
+            </NPopconfirm>
+          </template>
+        </li>
+      </template>
+      <!-- <li class="page-item" :class="{ disabled: pagination.current_page == 1 }">
         <a class="page-link" href="#" @click="changePage(1)" aria-label="First">
           <span aria-hidden="true">&laquo;</span>
         </a>
-      </li>
-      <li
+      </li> -->
+      <!-- <li
         v-for="pageNo in pages"
         :key="pageNo"
         class="page-item"
@@ -30,7 +54,7 @@
         >
           <span aria-hidden="true">&raquo;</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
@@ -39,25 +63,27 @@
 import { defineComponent } from "@vue/runtime-core";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
+import { NPopconfirm } from "naive-ui";
 
 export default defineComponent({
-  components: { Link },
+  components: { Link, NPopconfirm },
   props: {
     pagination: Object,
   },
   methods: {
-    changePage(page) {
-      Inertia.visit(
-        route(route().current(), {
-          page: page,
-          itemsPerPage: this.pagination.per_page,
-        })
-      );
+    changePage() {
+      console.log("PAGE VISIT: ", this.gotoPage);
+      Inertia.visit(this.pagination.path, {
+        data: { page: this.gotoPage, itemsPerPage: this.pagination.per_page },
+      });
     },
   },
+  data: () => ({
+    gotoPage: 1,
+  }),
   computed: {
     pages() {
-      if (this.pagination === undefined) return;
+      if (this.pagination === undefined) return [];
       const pivot = this.pagination.current_page;
       if (pivot <= 3)
         return _.range(1, Math.min(this.pagination.last_page + 1, 6));
@@ -71,5 +97,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang=""></style>

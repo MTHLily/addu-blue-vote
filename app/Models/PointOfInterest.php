@@ -31,7 +31,10 @@ class PointOfInterest extends Model
 
     public function type()
     {
-        return $this->belongsTo(PointOfInterestType::class);
+        return $this->belongsTo(
+            PointOfInterestType::class,
+            "point_of_interest_type_id"
+        );
     }
 
     // public function getTypeAttribute()

@@ -15,4 +15,9 @@ class NewsArticle extends Model
     {
         return $this->belongsTo(NewsSource::class);
     }
+
+    public function relatedCandidates()
+    {
+        return $this->belongsToMany(Candidate::class);
+    }
 }

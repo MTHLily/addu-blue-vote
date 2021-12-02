@@ -62,7 +62,32 @@
         {{ form.errors.political_party_id }}
       </div>
     </div>
+
     <div class="col mb-3 p-3">
+      <label for="candidateLocation" class="form-label">Running Location</label>
+      <location-select
+        v-model:value="form.location_id"
+        :options="locationTree"
+      ></location-select>
+      <!-- <select
+        id="candidateLocation"
+        cols="30"
+        rows="4"
+        class="form-select"
+        :class="{
+          'is-invalid': form.errors.location_id,
+        }"
+        :disabled="currentPosition ? !currentPosition.location_type_id : true"
+        v-model="form.location_id"
+      >
+        <option :value="null" disabled>Choose a location</option>
+        <template v-for="location in locationOptions" :key="location.id">
+          <option :value="location.id">{{ location.name }}</option>
+        </template>
+      </select> -->
+      <div class="invalid-feedback">{{ form.errors.location_id }}</div>
+    </div>
+    <!-- <div class="col mb-3 p-3">
       <label for="positionType" class="form-label">Type</label>
       <select
         id="positionType"
@@ -80,7 +105,7 @@
       <div class="invalid-feedback">
         {{ form.errors.location_type_id }}
       </div>
-    </div>
+    </div> -->
     <div class="col mb-3 p-3">
       <label for="runningPosition" class="form-label">Running Position</label>
       <select
@@ -100,38 +125,8 @@
       </select>
       <div class="invalid-feedback">{{ form.errors.running_position_id }}</div>
     </div>
+
     <div class="col mb-3 p-3">
-      <label for="candidateLocation" class="form-label">Running Location</label>
-      <select
-        id="candidateLocation"
-        cols="30"
-        rows="4"
-        class="form-select"
-        :class="{
-          'is-invalid': form.errors.location_id,
-        }"
-        :disabled="currentPosition ? !currentPosition.location_type_id : true"
-        v-model="form.location_id"
-      >
-        <option :value="null" disabled>Choose a location</option>
-        <template v-for="location in locationOptions" :key="location.id">
-          <option :value="location.id">{{ location.name }}</option>
-        </template>
-      </select>
-      <div class="invalid-feedback">{{ form.errors.location_id }}</div>
-    </div>
-    <div class="col-5 mb-3 p-3">
-      <label class="form-label">Stances on Issues</label>
-      <IssueSelector
-        v-model:stances="form.stances"
-        :class="{
-          'is-invalid': issueFormErrors,
-        }"
-        :options="issues"
-      ></IssueSelector>
-      <div class="invalid-feedback">{{ issueFormErrors }}</div>
-    </div>
-    <div class="col-7 mb-3 p-3">
       <div>
         <label for="twitterTimeline" class="form-label"
           >Twitter Timeline URL</label
@@ -150,6 +145,17 @@
           {{ form.errors.twitter_timeline_feed_url }}
         </div>
       </div>
+    </div>
+    <div class="col-12 mb-3 p-3">
+      <label class="form-label">Stances on Issues</label>
+      <IssueSelector
+        v-model:stances="form.stances"
+        :class="{
+          'is-invalid': issueFormErrors,
+        }"
+        :options="issues"
+      ></IssueSelector>
+      <div class="invalid-feedback">{{ issueFormErrors }}</div>
     </div>
     <div class="col-12 mb-3 p-3">
       <label class="form-label">Candidate Background</label>
@@ -171,17 +177,20 @@ import _ from "lodash";
 import ImageUploader from "../FileUploader.vue";
 import CandidateBackgroundSelector from "./CandidateBackgroundSelector.vue";
 import IssueSelector from "./IssueSelector.vue";
+import LocationSelect from "../Locations/LocationSelect.vue";
 
 export default defineComponent({
   components: {
     ImageUploader,
     IssueSelector,
     CandidateBackgroundSelector,
+    LocationSelect,
   },
   props: {
     form: Object,
     locationTypes: Array,
-    locations: Object,
+    locations: Array,
+    locationTree: Array,
     positions: Object,
     parties: Array,
     issues: Array,
@@ -198,15 +207,18 @@ export default defineComponent({
   setup(props) {
     // Computed
     const positionOptions = computed(() => {
-      const ind =
-        props.form.location_type_id == null ? "" : props.form.location_type_id;
-      return props.positions[ind];
+      const type = props.locationTypes.find(
+        (type) => type.id === currentLocation.value?.location_type_id
+      );
+      return props.positions[type ? type.id : ""];
+    });
+
+    const currentLocation = computed(() => {
+      return props.locations.find((loc) => loc.id === props.form.location_id);
     });
 
     const locationOptions = computed(() => {
-      const ind =
-        props.form.location_type_id == null ? "" : props.form.location_type_id;
-      return props.locations[ind];
+      return props.locations;
     });
 
     const currentPosition = computed(() => {
@@ -242,6 +254,7 @@ export default defineComponent({
 
     return {
       currentPosition,
+      currentLocation,
       locationOptions,
       positionOptions,
       issueFormErrors,

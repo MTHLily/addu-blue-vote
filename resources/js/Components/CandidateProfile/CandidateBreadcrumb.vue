@@ -28,12 +28,6 @@ export default {
 </script>
 
 <style scoped>
-/* .breadcrumb {
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.37rem;
-  line-height: 40px;
-} */
-
 .breadcrumb {
   border: 1px solid #cbd2d9;
   border-radius: 0.3rem;
@@ -66,7 +60,7 @@ export default {
 .breadcrumb-item:after,
 .breadcrumb-item:before {
   /* background: white; */
-  background: #2365a1;
+  background: #fff;
   bottom: 0;
   clip-path: polygon(50% 50%, -50% -50%, 0 100%);
   content: "";
@@ -83,6 +77,7 @@ export default {
   margin-left: 1px;
 }
 
+.breadcrumb-item:last-child:after,
 .breadcrumb-item:last-child {
   border-right: none;
   background: #2365a1;

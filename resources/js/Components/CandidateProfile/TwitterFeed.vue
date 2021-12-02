@@ -1,13 +1,18 @@
 <template>
   <div class="container">
     <twitter>
-      <a class="twitter-timeline" data-height="540" data-theme="light" :href="`${candidate.twitter_timeline_feed_url}`" >Tweets by {{ candidate.name }}</a>
+      <a
+        class="twitter-timeline h-100"
+        data-theme="light"
+        :href="`${candidate.twitter_timeline_feed_url}`"
+        >Tweets by {{ candidate.name }}</a
+      >
     </twitter>
   </div>
 </template>
 
 <script>
-import { twitter } from 'vue-twitter'
+import { twitter } from "vue-twitter";
 // import twitter from 'vue-twitter/lib/twttr.js'
 
 export default {
@@ -22,12 +27,10 @@ export default {
         link: "https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw",
       }),
     },
-    candidate:{
-      type:Object,
+    candidate: {
+      type: Object,
     },
   },
-}
+};
 </script>
-<style lang="">
-  
-</style>
+<style lang=""></style>

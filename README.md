@@ -29,12 +29,22 @@
    ```
 
 5. Migrate with `php artisan migrate --seed`
+6. Link storage using `php artisan storage:link`
 
 # Update Instructions
 
 1. `composer install`
 2. `php artisan migrate:fresh --seed`
 3. `npm install && npm run dev`
+
+# Scraping Instructions
+
+1. Run `php artisan queue:work` in the background.
+2. `php artisan scrape:news`
+
+## Linking Candidates
+
+3. Run `php artisan scrape:link`
 
 # Production Instructions
 

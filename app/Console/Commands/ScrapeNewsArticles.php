@@ -38,11 +38,7 @@ class ScrapeNewsArticles extends Command
      */
     public function handle()
     {
-        $service = new NewscraperService();
-        $service->abs_cbn();
-        $service->rappler();
-        $service->phil_star();
-        $service->comelec();
+        app(NewscraperService::class)->get();
 
         return 0;
     }

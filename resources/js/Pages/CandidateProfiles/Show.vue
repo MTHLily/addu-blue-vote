@@ -53,7 +53,7 @@
             ></NewsArticles>
           </div>
           <div class="col">
-            <Twitter class="w-100" :candidate="candidate"></Twitter>
+            <Twitter class="w-100 h-100" :candidate="candidate"></Twitter>
           </div>
         </div>
       </div>

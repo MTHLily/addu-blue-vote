@@ -15,14 +15,7 @@ class CandidateProfileController extends Controller
 {
     public function index()
     {
-        $locations = Location::tree()
-            ->with([
-                "candidates.media",
-                "candidates.runningPosition",
-                "candidates.politicalParty",
-            ])
-            ->get()
-            ->toTree();
+        $locations = Location::where("name", "Region XI - Davao Region")->get();
 
         $nationalPositions = RunningPosition::where("location_type_id", null)
             ->with([

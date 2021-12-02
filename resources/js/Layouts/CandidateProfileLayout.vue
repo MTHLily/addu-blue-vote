@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="min-vh-100 d-flex flex-column">
     <ArisenHeader>
       <template #collapse-content>
         <ul class="nav navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4">

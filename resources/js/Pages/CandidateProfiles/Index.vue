@@ -1,6 +1,6 @@
 <template>
   <Layout class="candidate-profile-background">
-    <div class="container bod" style="margin-top: 5%">
+    <div class="container" style="margin-top: 5%">
       <span
         class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
         :style="{
@@ -86,8 +86,6 @@ export default defineComponent({
 
 <style scoped>
 .candidate-profile-background {
-  background-image: url("/images/candidate-backgrounds.svg");
-  background-size: 100%;
-  background-position: bottom;
+  background: url("/images/candidate-index-bg.svg") bottom/100%;
 }
 </style>

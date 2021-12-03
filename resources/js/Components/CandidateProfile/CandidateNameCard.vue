@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3 text-primary">
+  <div class="m-3 text-primary border rounded bg-white">
     <div class="row g-0">
       <div class="col col-md-4">
         <img

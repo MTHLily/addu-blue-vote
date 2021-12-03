@@ -30,7 +30,6 @@
       <div class="row">
         <div class="col">
           <BackgroundCard
-            horizontal
             title="Political Background"
             primary-color="#FAA728"
             secondary-color="#185EA9"

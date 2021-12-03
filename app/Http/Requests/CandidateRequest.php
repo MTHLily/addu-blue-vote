@@ -28,7 +28,8 @@ class CandidateRequest extends FormRequest
             "slug" => [
                 "required",
                 "string",
-                "unique:candidates,slug," . $this->candidate?->id,
+                /** TODO: FIX THIS */
+                // "unique:candidates,slug," . $this->candidate?->id,
             ],
             "political_party_id" => "required|exists:political_parties,id",
             "running_position_id" => "required|exists:running_positions,id",

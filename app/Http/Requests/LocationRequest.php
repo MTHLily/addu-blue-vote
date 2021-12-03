@@ -25,6 +25,7 @@ class LocationRequest extends FormRequest
     {
         return [
             "name" => "required",
+            "slug" => "required",
             "description" => "nullable",
             "color" => "required",
             "longitude" => "required",

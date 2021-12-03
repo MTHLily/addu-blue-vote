@@ -46,6 +46,7 @@ export default {
   data: () => ({
     location: useForm({
       name: "",
+      slug: "",
       description: "",
       color: "#ffffff",
       longitude: null,

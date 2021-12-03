@@ -1,14 +1,16 @@
 <template>
   <div class="d-flex flex-column gap-4 mt-4">
-    <span
-      class="badge text-wrap text-whitefw-bolder p-3 fs-5 col-6 col-md-4 col-lg-2"
-      :style="{
-        'background-color': '#CE2029',
-        'border-radius': '30px',
-      }"
-    >
-    Voters Education
-    </span>
+    <div>
+      <span
+        class="badge text-wrap text-whitefw-bolder p-3 fs-5"
+        :style="{
+          'background-color': '#CE2029',
+          'border-radius': '30px',
+        }"
+      >
+        Voters Education
+      </span>
+    </div>
     <h1 class="text-primary fw-bold">Election Process</h1>
 
     <template v-for="step in electionProcess" :key="step.step">

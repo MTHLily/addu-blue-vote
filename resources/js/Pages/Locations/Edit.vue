@@ -72,6 +72,7 @@ export default {
     this.locationForm = useForm({
       _method: "PUT",
       name: this.location.name,
+      slug: this.location.slug,
       description: this.location.description,
       color: this.location.color,
       longitude: parseFloat(this.location.longitude),

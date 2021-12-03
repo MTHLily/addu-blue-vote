@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Location;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -61,17 +62,7 @@ class LocationsImport implements
 
         $data["location_type_id"] = $this->type_id;
         $data["parent_location_id"] = $parent?->id;
-
-        // if ($this->parent_type_id) {
-        //     $parent = Location::where([
-        //         ["location_type_id", $this->parent_type_id],
-        //         ["name", $row["parent_location"]],
-        //     ])->first();
-
-        //     $data["parent_location_id"] = $parent?->id;
-        // } else {
-        //     $data["parent_location_id"] = null;
-        // }
+        $data["slug"] = Str::slug($row["name"]);
 
         return new Location($data);
     }

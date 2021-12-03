@@ -1,8 +1,8 @@
 <template>
-<!-- sample -->
+  <!-- sample -->
   <Head title="Frequently Asked Questions"></Head>
   <DashboardLayout>
-    <div class="rounded" style="background-color: #CCDFFF;">  
+    <div class="rounded w-75 mx-auto" style="background-color: #ccdfff">
       <div class="d-flex flex-column">
         <form @submit.prevent="faq.post('/dashboard/faqs')">
           <h1 class="p-3">Create Frequently Asked Question</h1>
@@ -14,7 +14,9 @@
               <button class="btn btn-primary">Save</button>
             </div>
             <div class="p-3">
-              <Link :href="route('faqs.index')" class="btn btn-danger">Cancel</Link>
+              <Link :href="route('faqs.index')" class="btn btn-danger"
+                >Cancel</Link
+              >
             </div>
           </div>
         </form>
@@ -31,7 +33,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AdminLayout from "../../Layouts/admin";
 
 export default {
-  components: { Link, Head, DashboardLayout, FAQForm,AdminLayout },
+  components: { Link, Head, DashboardLayout, FAQForm, AdminLayout },
   data: () => ({
     faq: useForm({
       question: "",

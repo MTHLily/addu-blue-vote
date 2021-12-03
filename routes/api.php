@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Candidate;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,17 @@ Route::get("candidate/slug-valid/{string}", function (string $string) {
         "valid" => $valid,
     ]);
 })->name("candidates.slug-valid");
+
+Route::get("location/slug-valid/{string}", function (string $string) {
+    $slug = Str::slug($string);
+    $valid = true;
+    $candidate = Location::where("slug", $slug);
+    if ($candidate != null) {
+        $valid = false;
+    }
+
+    return response()->json([
+        "slug" => $slug,
+        "valid" => $valid,
+    ]);
+})->name("locations.slug-valid");

@@ -37,9 +37,13 @@ class CandidateService
             ->delete();
 
         $background->each(function ($bg) use ($candidate) {
-            $candidate
-                ->background()
-                ->updateOrCreate(["id" => Arr::get($bg, "id", null)], $bg);
+            if (Arr::get($bg, "id", null) !== null) {
+                $candidate
+                    ->background()
+                    ->updateOrCreate(["id" => Arr::get($bg, "id", null)], $bg);
+            } else {
+                $candidate->background()->create($bg);
+            }
         });
 
         // Handle Profile Photos

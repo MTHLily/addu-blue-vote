@@ -1,6 +1,6 @@
 <template lang="">
   <div class="card gap-2 p-2" style="border-radius: 20px">
-    <h5 class="card-title" :style="{ 'font-size': small ? '1px' : '15px' }">
+    <h5 class="card-title" :style="{ 'font-size': small ? '10px' : '15px' }">
       {{ news.title }}
     </h5>
     <div class="card-subtitle">
@@ -18,14 +18,14 @@
     </div>
     <p
       class="card-text text-wrap"
-      :style="{ 'font-size': small ? '1px' : '15px' }"
+      :style="{ 'font-size': small ? '7px' : '15px' }"
     >
       {{ news.description }}
     </p>
     <div class="d-flex justify-content-between">
       <p
         class="card-subtitle mb-2 text-muted"
-        :style="{ 'font-size': small ? '1px' : '15px' }"
+        :style="{ 'font-size': small ? '7px' : '15px' }"
       >
         {{ news.date }}
       </p>

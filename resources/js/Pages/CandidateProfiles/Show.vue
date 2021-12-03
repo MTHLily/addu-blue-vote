@@ -125,10 +125,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.individual-candidate-profile-background {
+/* .individual-candidate-profile-background {
   background-image: url("/images/candidate-profile-show-background.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom;
-}
+} */
 </style>

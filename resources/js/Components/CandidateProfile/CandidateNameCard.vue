@@ -1,32 +1,42 @@
-<template lang="">
-  <div class="card mb-3 text-primary" style="max-width: 540px">
+<template>
+  <div class="m-3 text-primary">
     <div class="row g-0">
       <div class="col col-md-4">
         <img
-          :src="`${prof.img}`"
+          :src="
+            candidate.media.length > 0
+              ? candidate.media[0].original_url
+              : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
+          "
           class="img-fluid rounded-start"
-          :alt="`${prof.name}`"
+          :alt="candidate.name"
         />
       </div>
       <div class="col col-md-8">
         <div class="card-body d-flex flex-column h-100">
-          <h5 class="card-title text-uppercase fw-bold lh-sm">{{ prof.name }}</h5>
+          <h5 class="card-title text-uppercase fw-bold lh-sm">
+            {{ candidate.name }}
+          </h5>
           <div class="card-text text-muted flex-grow-1">
-            {{ prof.partylist }}
+            {{ candidate.political_party.name }}
           </div>
-          <button
-            type="button"
-            class="btn btn-primary w-50 align-self-end"
-            style="border-radius: 20px"
-          >
-            <a
-              :href="`${prof.refProfile}`"
-              target="_blank"
-              class="text-white text-decoration-none"
-            >
-              KNOW MORE
-            </a>
-          </button>
+          <div>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary align-self-end"
+                style="border-radius: 20px"
+              >
+                <Link
+                  :href="route('candidate-profiles.show', candidate.id)"
+                  target="_blank"
+                  class="text-white text-decoration-none"
+                >
+                  KNOW MORE
+                </Link>
+              </button>
+            </div>
+          </div>
         </div>
         <div class="card-action"></div>
       </div>
@@ -34,15 +44,18 @@
   </div>
 </template>
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
+  components: { Link },
   props: {
-    prof: {
+    candidate: {
       type: Object,
       default: () => ({
         name: "Default Name",
         img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde? ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
         partylist: "Default Partylist",
-        refProfile: "",
+        refProfile: "1",
       }),
     },
   },

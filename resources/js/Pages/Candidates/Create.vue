@@ -2,7 +2,7 @@
   <Head title="Create Candidate"></Head>
 
   <DashboardLayout>
-    <div class="rounded" style="background-color: #ccdfff">
+    <div class="rounded container" style="background-color: #ccdfff">
       <div class="d-flex flex-column container">
         <form @submit.prevent="form.post(route('candidates.store'))">
           <h1 class="p-3">Create Candidate</h1>
@@ -11,13 +11,13 @@
               v-model:form="form"
               :location-types="location_types"
               :locations="locations"
+              :location-tree="location_tree"
               :positions="positions"
               :parties="parties"
               :issues="issues"
               :background-types="background_types"
             ></CandidateForm>
           </div>
-          <pre>{{ form }}</pre>
           <div class="btn-group mx-auto w-100" role="group">
             <div class="p-3">
               <button class="btn btn-primary">Save</button>
@@ -31,8 +31,6 @@
         </form>
       </div>
     </div>
-    <pre>{{ locations }}</pre>
-    <pre>{{ positions }}</pre>
   </DashboardLayout>
 </template>
 
@@ -48,6 +46,7 @@ export default defineComponent({
   props: {
     location_types: Array,
     locations: Object,
+    location_tree: Array,
     positions: Object,
     parties: Array,
     issues: Array,
@@ -57,9 +56,11 @@ export default defineComponent({
     form: useForm({
       name: null,
       slug: null,
+      location_type_id: null,
       political_party_id: null,
       running_position_id: null,
       location_id: null,
+      twitter_timeline_feed_url: null,
       stances: [],
       background: [],
       media: null,

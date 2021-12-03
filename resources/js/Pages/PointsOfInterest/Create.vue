@@ -1,19 +1,20 @@
 <template>
   <DashboardLayout>
-    <h1>Create Point of Interest</h1>
-    <form @submit.prevent="poi.post(route('poi.store'))">
-      <PoIForm
-        :districts="districts"
-        :poi_types="poi_types"
-        v-model:poi="poi"
-        @update:image="poi.image = $event"
-      ></PoIForm>
-
-      <div class="btn-group mx-auto w-100" role="group">
-        <button class="btn btn-primary">Save</button>
-        <Link :href="route('poi.index')" class="btn btn-danger">Cancel</Link>
-      </div>
-    </form>
+    <div class="container">
+      <h1>Create Point of Interest</h1>
+      <form @submit.prevent="poi.post(route('poi.store'))">
+        <PoIForm
+          :locations="locations"
+          :poi_types="poi_types"
+          v-model:poi="poi"
+          @update:image="poi.image = $event"
+        ></PoIForm>
+        <div class="btn-group mx-auto w-100" role="group">
+          <button class="btn btn-primary">Save</button>
+          <Link :href="route('poi.index')" class="btn btn-danger">Cancel</Link>
+        </div>
+      </form>
+    </div>
   </DashboardLayout>
 </template>
 
@@ -30,7 +31,7 @@ export default {
     Link,
   },
   props: {
-    districts: {
+    locations: {
       type: Array,
       default: [],
     },
@@ -45,7 +46,7 @@ export default {
       description: null,
       longitude: null,
       latitude: null,
-      district_id: null,
+      location_id: null,
       point_of_interest_type_id: null,
       image: null,
     }),

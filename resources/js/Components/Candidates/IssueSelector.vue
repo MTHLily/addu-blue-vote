@@ -20,7 +20,9 @@
             class="form-check-input"
             v-model="value.positive"
           />
-          <label class="form-check-label">Stance</label>
+          <label class="form-check-label">{{
+            value.positive ? "Yes" : "No"
+          }}</label>
         </div>
       </div>
     </div>

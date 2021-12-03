@@ -16,6 +16,20 @@
         <div class="invalid-feedback">{{ location.errors.name }}</div>
       </div>
       <div class="mb-3 p-3">
+        <label for="locationSlug" class="form-label">Slug</label>
+        <input
+          v-model="location.slug"
+          type="text"
+          class="form-control"
+          :class="{
+            'is-invalid': location.errors.slug,
+          }"
+          id="locationSlug"
+          placeholder="Slug"
+        />
+        <div class="invalid-feedback">{{ location.errors.slug }}</div>
+      </div>
+      <div class="mb-3 p-3">
         <label for="locationType" class="form-label">Type</label>
         <select
           v-model="location.location_type_id"
@@ -56,7 +70,7 @@
           {{ location.errors.parent_location_id }}
         </div>
       </div>
-      <div class="mb-3 p-3 col-8">
+      <div class="mb-3 p-3 col">
         <label for="description" class="form-label">Description</label>
         <textarea
           id="description"
@@ -146,6 +160,7 @@
 </template>
 
 <script>
+import { computed, watch } from "@vue/runtime-core";
 import ColorPicker from "../ColorPicker.vue";
 import FileUploader from "../FileUploader.vue";
 import MapPicker from "../Map/MapPicker.vue";
@@ -175,27 +190,46 @@ export default {
     locations: Object,
     types: Array,
   },
-  computed: {
-    currentType() {
-      return this.types.find(
-        (type) => type.id === this.location.location_type_id
+  setup(props) {
+    const currentType = computed(() => {
+      return props.types.find(
+        (type) => type.id === props.location.location_type_id
       );
-    },
-    parentLocations() {
-      if (this.currentType) {
-        if (this.currentType.requires_parent)
-          return this.locations[this.currentType.parent_type_id];
+    });
+    const parentLocations = computed(() => {
+      if (currentType.value) {
+        if (currentType.value.requires_parent)
+          return props.locations[currentType.value.parent_type_id];
         else
           return [
             {
               id: null,
               name: "Independent",
             },
-            ...this.locations[this.currentType.parent_type_id],
+            ...props.locations[currentType.value.parent_type_id],
           ];
       }
       return [];
-    },
+    });
+
+    // Watch
+    watch(
+      () => props.location.name,
+      _.throttle(async (newVal) => {
+        if (!newVal) {
+          props.location.slug = "";
+          return;
+        }
+
+        const data = await axios.get(route("locations.slug-valid", newVal));
+        props.location.slug = data.data.slug;
+      }, 500)
+    );
+
+    return {
+      currentType,
+      parentLocations,
+    };
   },
 };
 </script>

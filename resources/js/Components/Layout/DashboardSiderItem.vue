@@ -65,6 +65,8 @@ export default defineComponent({
     const traverseObject = (item) => {
       if (this.active == true) return;
       if (item.route === route().current()) this.active = true;
+      if (item.route?.split(".")[0] === route().current().split(".")[0])
+        this.active = true;
       if (item.items)
         item.items.forEach((child) => traverseObject(child, this.active));
     };

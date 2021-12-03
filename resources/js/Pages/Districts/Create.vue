@@ -28,10 +28,9 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import DistrictForm from "../../Components/Districts/DistrictForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-import AdminLayout from "../../Layouts/admin";
 
 export default {
-  components: { Link, Head, DashboardLayout, DistrictForm, AdminLayout },
+  components: { Link, Head, DashboardLayout, DistrictForm },
   data: () => ({
     district: useForm({
       name: "",

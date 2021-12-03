@@ -38,6 +38,16 @@
             ></GMapMarker>
           </GMapMap>
           <div ref="mapTopLeft">
+            <n-tree-select
+              class="ms-2"
+              style="max-width: 300px"
+              placeholder="Filter Locations..."
+              multiple
+              cascade
+              checkable
+              :options="filterOptions"
+              v-model:value="filteredLocationIds"
+            ></n-tree-select>
             <div class="dropdown ms-2 mt-2">
               <button
                 class="btn btn-light dropdown-toggle"
@@ -83,14 +93,6 @@
                 gap-2
               "
             >
-              <!-- <div>
-                <input
-                  class="form-control"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-              </div> -->
               <div class="w-100">
                 <DistrictLegend :districts="districts"></DistrictLegend>
               </div>
@@ -101,9 +103,11 @@
               <i class="bi bi-search"></i>
             </button>
           </div>
+          <pre>{{ filteredLocationIds }}</pre>
           <div class="mt-2">
             <MapStack
               v-if="stack"
+              :locationTree="locationTree"
               :pois="filteredPois"
               :districts="filteredDistrict ? [filteredDistrict] : districts"
               @poi-clicked="handlePoiClicked"
@@ -128,6 +132,7 @@ import MapCarousel from "./MapCarousel.vue";
 import MapStack from "./MapStack.vue";
 import MapCard from "./MapCard.vue";
 import { Modal } from "bootstrap";
+import { NTreeSelect } from "naive-ui";
 
 export default {
   components: {
@@ -135,6 +140,7 @@ export default {
     MapCarousel,
     MapCard,
     MapStack,
+    NTreeSelect,
   },
   props: {
     districts: {
@@ -149,8 +155,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    locations: Array,
+    locationTree: Array,
   },
   data: () => ({
+    filteredLocationIds: [],
     mapOptions: {
       center: { lat: 7.071250196247246, lng: 125.61315274255003 },
       zoom: 16,
@@ -178,7 +187,7 @@ export default {
           lng: parseFloat(site.longitude),
         },
         icon: {
-          url: "/svg/map_marker.svg?color=" + site.district.color.slice(1),
+          url: "/svg/map_marker.svg?color=" + site.location.color.slice(1),
         },
       }));
     },
@@ -191,8 +200,18 @@ export default {
     filteredPois() {
       if (this.filteredDistrict == null) return this.registrationSites;
       return this.registrationSites.filter(
-        (site) => site.district_id == this.filteredDistrict.id
+        (site) => site.location_id == this.filteredDistrict.id
       );
+    },
+    filterOptions() {
+      return this.locationTree.map((region) => ({
+        key: region.id,
+        label: region.name,
+        children: region.children.map((province) => ({
+          key: province.id,
+          label: province.name,
+        })),
+      }));
     },
   },
   methods: {

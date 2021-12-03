@@ -24,8 +24,11 @@
         :columns="tableColumns"
         :items="pois"
       >
-        <template #district="{ item }">
-          <td>{{ item.district.name }}</td>
+        <template #location="{ item }">
+          <td>{{ item.location.name }}</td>
+        </template>
+        <template #type="{ item }">
+          {{ item.type.type }}
         </template>
         <template #image="{ item }">
           <td>
@@ -125,7 +128,7 @@ export default {
               lng: parseFloat(poi.longitude),
             },
             icon: {
-              url: "/svg/map_marker.svg?color=" + poi.district.color.slice(1),
+              url: "/svg/map_marker.svg?color=" + poi.location.color.slice(1),
             },
           };
         });
@@ -177,11 +180,12 @@ export default {
       {
         label: "Type",
         value: "type",
+        slotName: "type",
       },
       {
-        label: "District",
-        value: "district",
-        slotName: "district",
+        label: "Location",
+        value: "id",
+        slotName: "location",
       },
       {
         label: "Image",

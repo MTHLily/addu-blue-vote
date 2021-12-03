@@ -1,103 +1,93 @@
 <template>
-  <Layout>
-    <div class="container bod" style="margin-top: 10%">
-      <h1 class="text-primary">PRESIDENTIAL CANDIDATES</h1>
-      <PresCarousel></PresCarousel>
-      <h1 class="text-primary">VICE PRESIDENTIAL CANDIDATES</h1>
-      <ViceCarousel></ViceCarousel>
-      <div class="container d-flex">
-        <!-- REGION DROPDOWN FILTER --> 
-        <div class="dropdown ms-2 mt-2 mb-3">
-          <button
-            class="btn btn-primary text-white dropdown-toggle"
-            type="button"
-            id="RegionDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{
-              filteredRegion
-                ? filteredRegion.name
-                : "Region"
-            }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="regionDropdown">
-            <li>
-              <a
-                class="dropdown-item"
-                @click="filteredRegion = null"
-                >Clear filter</a
-              >
-            </li>
-            <li v-for="region in districts" :key="region.id">
-              <a
-                class="dropdown-item"
-                @click="handleDistrictFilter(region)"
-                >{{ region.name }}</a
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- DISTRICT DROPDOWN FILTER --> 
-        <div class="dropdown ms-2 mt-2 mb-3">
-          <button
-            class="btn btn-primary text-white dropdown-toggle"
-            type="button"
-            id="districtDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{
-              filteredDistrict
-                ? filteredDistrict.name
-                : "District"
-            }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="districtDropdown">
-            <li>
-              <a
-                class="dropdown-item"
-                @click="filteredDistrict = null"
-                >Clear filter</a
-              >
-            </li>
-            <li v-for="district in districts" :key="district.id">
-              <a
-                class="dropdown-item"
-                @click="handleDistrictFilter(district)"
-                >{{ district.name }}</a
-              >
-            </li>
-          </ul>
-        </div>
+  <Layout class="candidate-profile-background">
+    <div class="container bod" style="margin-top: 5%">
+      <span
+        class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
+        :style="{
+          'background-color': '#CE2029',
+          'border-radius': '30px',
+        }"
+      >
+        National
+      </span>
+      <!-- <h1 class="fw-bolder">National</h1> -->
+      <div>
+        <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
+        <CandidateCarousel
+          :candidates="nationalPositions[0]?.candidates"
+        ></CandidateCarousel>
+        <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
+        <CandidateCarousel
+          :candidates="nationalPositions[1]?.candidates"
+        ></CandidateCarousel>
+        <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
+        <CandidateCarousel
+          :candidates="nationalPositions[2]?.candidates"
+        ></CandidateCarousel>
       </div>
-        <SenCarousel></SenCarousel>
-      <h1 class="text-primary">SENATORIAL CANDIDATES</h1>
-      <SenCarousel></SenCarousel>
+      <div class="row">
+        <h2 class="fw-bold">Regions</h2>
+        <ul>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <template v-for="region in locations" :key="region.id">
+              <div class="col mt-3">
+                <Link
+                  :href="route('locations.region.show', region.id)"
+                  class="btn btn-danger btn-lg p-4 px-5 w-100 h-100"
+                  style="padding: 20px; border-radius: 10px"
+                >
+                  {{ region.name }}
+                </Link>
+              </div>
+            </template>
+          </div>
+        </ul>
+      </div>
+      <!-- <CandidateCollapse :locations="locations"></CandidateCollapse> -->
     </div>
   </Layout>
 </template>
 
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import PresCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import ViceCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
-import SenCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
+import CandidateCollapse from "../../Components/CandidateProfile/NCollapse.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
+import { Link } from "@inertiajs/inertia-vue3";
+import { NTreeSelect } from "naive-ui";
+import { ref } from "vue";
 
-export default {
-  components: {
-    //   Link,
-    PresCarousel,
-    ViceCarousel,
-    SenCarousel,
-    Layout,
+export default defineComponent({
+  setup(props) {
+    const locationToOption = (location) => ({
+      key: location.id,
+      label: location.name,
+      children: location.children?.map(locationToOption),
+    });
+    const locationOptions = ref(props.locations.map(locationToOption));
+
+    return {
+      locationOptions,
+    };
   },
-};
+  props: {
+    locations: Array,
+    nationalPositions: Array,
+  },
+  components: {
+    Link,
+    CandidateCarousel,
+    Layout,
+    NTreeSelect,
+    CandidateCollapse,
+  },
+});
 </script>
 
-<style>
-body {
-  background: url("../../Components/assets/candidate-backgrounds.svg") repeat;
+<style scoped>
+.candidate-profile-background {
+  background-image: url("/images/candidate-backgrounds.svg");
+  background-size: 100%;
+  background-position: bottom;
 }
 </style>

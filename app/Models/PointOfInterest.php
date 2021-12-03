@@ -11,7 +11,7 @@ class PointOfInterest extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $appends = ["image_preview_url", "type"];
+    protected $appends = ["image_preview_url"];
 
     // Static Functions
     public static function getTypes()
@@ -29,16 +29,24 @@ class PointOfInterest extends Model
         }
     }
 
-    public function getTypeAttribute()
+    public function type()
     {
-        return DB::table("point_of_interest_types")->find(
-            $this->point_of_interest_type_id
-        )->type;
+        return $this->belongsTo(
+            PointOfInterestType::class,
+            "point_of_interest_type_id"
+        );
     }
 
+    // public function getTypeAttribute()
+    // {
+    //     return DB::table("point_of_interest_types")->find(
+    //         $this->point_of_interest_type_id
+    //     )->type;
+    // }
+
     // Relationships
-    public function district()
+    public function location()
     {
-        return $this->belongsTo(District::class);
+        return $this->belongsTo(Location::class);
     }
 }

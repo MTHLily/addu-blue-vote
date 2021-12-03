@@ -1,23 +1,66 @@
-<template lang="">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+<template>
+  <nav aria-label="Page navigation" :key="pagination.per_page">
+    <ul class="pagination">
+      <template v-for="(link, ind) in pagination.links" :key="link.url">
+        <li class="page-item" :class="{ disabled: link.active }">
+          <template v-if="link.label !== '...'">
+            <Link :href="link.url" class="page-link" preserve-scroll>
+              <span v-if="ind === 0">&laquo;</span>
+              <span v-else-if="ind === pagination.links.length - 1"
+                >&raquo;</span
+              >
+              <span v-else aria-hidden="true">{{ link.label }}</span>
+            </Link>
+          </template>
+          <template v-else>
+            <NPopconfirm
+              :negative-text="null"
+              positive-text="Go to"
+              :show-icon="false"
+              :on-positive-click="changePage"
+            >
+              <template #trigger>
+                <a href="#" class="page-link"
+                  ><span aria-hidden="true">...</span></a
+                >
+              </template>
+              <input
+                type="number"
+                :max="pagination.last_page"
+                :min="1"
+                class="form-control"
+                v-model="gotoPage"
+              />
+            </NPopconfirm>
+          </template>
+        </li>
+      </template>
+    </ul>
+  </nav>
 </template>
 
 <script>
-    
-</script>
+import { defineComponent } from "@vue/runtime-core";
+import { Link } from "@inertiajs/inertia-vue3";
+import { Inertia } from "@inertiajs/inertia";
+import { NPopconfirm } from "naive-ui";
 
-<style lang="">
-    
-</style>
+export default defineComponent({
+  components: { Link, NPopconfirm },
+  props: {
+    pagination: Object,
+  },
+  methods: {
+    changePage() {
+      if (this.gotoPage > this.pagination.last_page)
+        this.gotoPage = this.pagination.last_page;
+      Inertia.visit(this.pagination.path, {
+        data: { page: this.gotoPage, itemsPerPage: this.pagination.per_page },
+      });
+    },
+  },
+  data: () => ({
+    gotoPage: 1,
+  }),
+});
+</script>

@@ -1,12 +1,11 @@
 <template lang="">
-    <div class="row row-cols-1 row-cols-md-2">
-        <!-- <template v-for="article in articles.data" :key="article.id"> -->
-        <div class="col mb-2">
-            <!-- <NewsCard :news="article"></NewsCard> -->
-            <NameCard></NameCard>
-        </div>
-        <!-- </template> -->
-    </div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">  
+      <template v-for="candidate in candidates" :key="candidate.id">
+          <div class="col">
+            <NameCard class="m-3" :candidate="candidate"></NameCard>
+          </div>
+      </template>
+ </div>
 </template>
 
 <script>
@@ -15,7 +14,10 @@ import NameCard from "./CandidateNameCard.vue"
 
 export default defineComponent({
   props: {
-    articles: Object,
+    candidates:{
+      type:Array,
+    },
+    nationalPositions: Array,
   },
   components: {
     NameCard,

@@ -10,7 +10,9 @@ use App\Models\Location;
 use App\Models\LocationType;
 use App\Models\PoliticalParty;
 use App\Models\RunningPosition;
+use App\Services\CandidateService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CandidateController extends Controller
@@ -37,7 +39,10 @@ class CandidateController extends Controller
     {
         $locationTypes = LocationType::all();
         $positions = RunningPosition::all()->groupBy("location_type_id");
-        $locations = Location::all()->groupBy("location_type_id");
+        $locations = Location::all();
+        $location_tree = Location::regions()
+            ->with("children.children.children")
+            ->get();
         $issues = Issue::all();
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
@@ -46,6 +51,7 @@ class CandidateController extends Controller
             "location_types" => $locationTypes,
             "positions" => $positions,
             "locations" => $locations,
+            "location_tree" => $location_tree,
             "issues" => $issues,
             "parties" => $parties,
             "background_types" => $background_types,
@@ -60,7 +66,12 @@ class CandidateController extends Controller
      */
     public function store(CandidateRequest $request)
     {
-        dd($request);
+        $candidate = (new CandidateService())->updateOrCreate($request);
+
+        return Redirect::route("candidates.index")->with(
+            "success",
+            $candidate->name . " has been created!"
+        );
     }
 
     /**
@@ -82,7 +93,29 @@ class CandidateController extends Controller
      */
     public function edit(Candidate $candidate)
     {
-        //
+        $locationTypes = LocationType::all();
+        $positions = RunningPosition::all()->groupBy("location_type_id");
+        $locations = Location::all();
+        $location_tree = Location::regions()
+            ->with("children.children.children")
+            ->get();
+        $issues = Issue::all();
+        $parties = PoliticalParty::orderBy("name")->get();
+        $background_types = CandidateBackgroundType::all();
+
+        $candidate->load(["media", "background", "stances", "runningPosition"]);
+        $candidate->append("mediaUrls");
+
+        return Inertia::render("Candidates/Edit", [
+            "candidate" => $candidate,
+            "location_types" => $locationTypes,
+            "positions" => $positions,
+            "locations" => $locations,
+            "location_tree" => $location_tree,
+            "issues" => $issues,
+            "parties" => $parties,
+            "background_types" => $background_types,
+        ]);
     }
 
     /**
@@ -92,9 +125,14 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(CandidateRequest $request, Candidate $candidate)
     {
-        //
+        (new CandidateService())->updateOrCreate($request, $candidate);
+
+        return Redirect::route("candidates.index")->with(
+            "success",
+            $candidate->name . " has been updated!"
+        );
     }
 
     /**
@@ -105,6 +143,11 @@ class CandidateController extends Controller
      */
     public function destroy(Candidate $candidate)
     {
-        //
+        $candidate->delete();
+
+        return Redirect::back()->with(
+            "message",
+            $candidate->name . " has been deleted!"
+        );
     }
 }

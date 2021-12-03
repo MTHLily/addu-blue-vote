@@ -1,40 +1,29 @@
 <template lang="">
   <div
     class="card text-white mb-3"
-    style="max-width: 100%; background-color: #bf2234"
+    style="max-width: 100%; background-color: #CE2029"
   >
-    <div class="card-header border-0 text-center text-uppercase fw-bold lh-sm p-3 fs-1" style="background: #bf2234">
-      {{ stance.cardTitle }}
+    <div class="card-header border-0 text-center text-uppercase fw-bold lh-sm p-3 fs-1" style="background: #CE2029">
+      Stances on Issues
     </div>
     <div
       class="
         row
-        col
         d-flex
         m-2
         justify-content-evenly
-        row-cols-1 row-cols-md-6 row-cols-lg-12
+        row-cols-1 row-cols-md-2 row-cols-lg-4
         mb-3
       "
     >
-    <div >
-      <StanceCard class="col-12"></StanceCard>
-    </div>
-    <div >
-      <StanceCard class="col-12"></StanceCard>
-    </div>
-    <div >
-      <StanceCard class="col-12"></StanceCard>
-    </div>
-    <div >
-      <StanceCard class="col-12"></StanceCard>
-    </div>
-      <!-- <StanceCard></StanceCard>
-      <StanceCard></StanceCard>
-      <StanceCard></StanceCard> -->
+    <template v-for="stance in stances" :key="stance.id">
+        <StanceCard :stance="stance" class="col"></StanceCard>
+    </template>
+    
     </div>
   </div>
 </template>
+
 <script>
 import StanceCard from "./StanceCard.vue";
 export default {
@@ -42,13 +31,12 @@ export default {
     StanceCard,
   },
   props: {
-    stance: {
-      type: Object,
-      default: () => ({
-        cardTitle: "CANDIDATE’S STANCE ON ISSUES",
-      }),
+    stances:{
+      type:Object,
     },
   },
+  
 };
 </script>
+
 <style lang=""></style>

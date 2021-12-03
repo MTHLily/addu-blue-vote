@@ -56,7 +56,6 @@
         </BlueVoteTable>
       </div>
     </div>
-    <pre>{{ locations }}</pre>
   </DashboardLayout>
 </template>
 
@@ -84,6 +83,7 @@ export default {
   data: () => ({
     columns: [
       { value: "name", label: "Name" },
+      { value: "slug", label: "Slug" },
       {
         value: "description",
         label: "Description",

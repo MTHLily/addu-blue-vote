@@ -2,7 +2,7 @@
   <Head title="Frequently Asked Questions"></Head>
 
   <DashboardLayout>
-    <div class="rounded" style="background-color: #9ACAB3;">
+    <div class="rounded w-75 mx-auto" style="background-color: #9acab3">
       <div class="d-flex flex-column">
         <form @submit.prevent="faqForm.put(`/dashboard/faqs/${faq.id}`)">
           <h1 class="p-3">Edit Frequently Asked Question</h1>
@@ -40,7 +40,7 @@ export default {
       }),
     },
   },
-  components: { Link, Head, DashboardLayout, FAQForm,AdminLayout, },
+  components: { Link, Head, DashboardLayout, FAQForm, AdminLayout },
   created() {
     this.faqForm = useForm({
       question: this.faq.question,

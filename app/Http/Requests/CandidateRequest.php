@@ -24,12 +24,31 @@ class CandidateRequest extends FormRequest
     public function rules()
     {
         return [
-            "profile_photo.file" => "image",
-            "name" => "required",
-            "slug" => "required",
-            "running_position_id" => "required|exists:running_position,id",
-            "running_location_id" => "nullable|exists:location",
-            "description" => "nullable",
+            "name" => "required|string",
+            "slug" => [
+                "required",
+                "string",
+                "unique:candidates,slug," . $this->candidate?->id,
+            ],
+            "political_party_id" => "required|exists:political_parties,id",
+            "running_position_id" => "required|exists:running_positions,id",
+            "location_id" => "nullable|exists:locations,id",
+            "twitter_timeline_feed_url" => "nullable|string",
+            "stances" => "array",
+            "stances.*.issue_id" => "required|exists:issues,id",
+            "stances.*.positive" => "required|boolean",
+            "background" => "array",
+            "background.*.candidate_background_type_id" =>
+                "required|exists:candidate_background_types,id",
+            "background.*.id" => "sometimes|exists:candidate_backgrounds",
+            "background.*.place" => "required|string",
+            "background.*.occupation" => "required|string",
+            "background.*.position" => "required|string",
+            "background.*.description" => "required|string",
+            "background.*.end_date" => "required",
+            "background.*.start_date" => "required",
+            "media.file" => "image",
+            "media.id" => "sometimes",
         ];
     }
 }

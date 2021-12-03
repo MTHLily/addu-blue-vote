@@ -3,7 +3,10 @@
   "trailingComma": "es5",
   "overrides": [
     {
-      "files": "*.php",
+      "files": [
+        "*.php",
+        "*.yml"
+      ],
       "options": {
         "tabWidth": 4
       }

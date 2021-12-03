@@ -105,9 +105,6 @@
         </div>
       </div>
     </div>
-    <pre>
-      {{ info }}
-    </pre>
   </DashboardLayout>
 </template>
 

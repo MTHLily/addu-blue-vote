@@ -1,41 +1,50 @@
-<template lang="">
-  <ArisenHeader>
-    <template #collapse-content>
-      <ul
-          class="navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4"
-        >
+<template>
+  <div class="min-vh-100 d-flex flex-column">
+    <ArisenHeader>
+      <template #collapse-content>
+        <ul class="nav navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4">
           <li class="nav-item">
-            <a class="nav-link" :href="route('voters-registration')">
+            <Link class="nav-link" :href="route('voters-registration')">
               Voters Registration
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" :href="route('voters-education')">Voters Education</a>
+            <Link class="nav-link" :href="route('voters-education')"
+              >Voters Education</Link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" :href="route('candidate-profiles.index')">Candidate Profiles</a>
+            <Link class="nav-link" :href="route('candidate-profiles.index')">
+              Candidates Profile
+            </Link>
           </li>
-      </ul>
-      <!-- <div>Voters Registration</div>
-      <div>Voters Education</div>
-      <div>Candidate Profiles</div> -->
-    </template>
-  </ArisenHeader>
-  <div class="" style="position: relative">
-    <slot></slot>
+        </ul>
+      </template>
+    </ArisenHeader>
+    <div class="flex-grow-1" style="position: relative">
+      <slot></slot>
+    </div>
+    <ArisenFooter></ArisenFooter>
   </div>
-  <ArisenFooter></ArisenFooter>
 </template>
+
 <script>
 import ArisenFooter from "../Components/Layout/ARISEnFooter.vue";
 import ArisenHeader from "./Partials/Header.vue";
 
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
+  props: {
+    locations: Array,
+  },
   components: {
     ArisenFooter,
     ArisenHeader,
+    Link,
   },
   data: () => ({}),
 };
 </script>
+
 <style></style>

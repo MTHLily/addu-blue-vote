@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsSourceRequest;
 use App\Models\NewsSource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class NewsSourceController extends Controller
 {
@@ -14,7 +17,10 @@ class NewsSourceController extends Controller
      */
     public function index()
     {
-        //
+        $newsSources = NewsSource::all();
+        return Inertia::render("NewsSources/Index", [
+            "news-sources" => $newsSources,
+        ]);
     }
 
     /**
@@ -24,7 +30,7 @@ class NewsSourceController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("NewsSources/Create");
     }
 
     /**
@@ -33,9 +39,14 @@ class NewsSourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsSourceRequest $request)
     {
-        //
+        NewsSource::create($request->validated());
+
+        return Redirect::route("news-sources.index")->with(
+            "success",
+            "A news source has been created!"
+        );
     }
 
     /**
@@ -57,7 +68,9 @@ class NewsSourceController extends Controller
      */
     public function edit(NewsSource $newsSource)
     {
-        //
+        return Inertia::render("NewsSources/Edit", [
+            "news-source" => $newsSource,
+        ]);
     }
 
     /**
@@ -67,9 +80,14 @@ class NewsSourceController extends Controller
      * @param  \App\Models\NewsSource  $newsSource
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NewsSource $newsSource)
+    public function update(NewsSourceRequest $request, NewsSource $newsSource)
     {
-        //
+        $newsSource->update($request->validated());
+
+        return Redirect::route("news-sources.index")->with(
+            "success",
+            "A news source has been updated!"
+        );
     }
 
     /**
@@ -80,6 +98,11 @@ class NewsSourceController extends Controller
      */
     public function destroy(NewsSource $newsSource)
     {
-        //
+        $newsSource->delete();
+
+        return Redirect::back()->with(
+            "message",
+            $newsSource->name . " has been deleted!"
+        );
     }
 }

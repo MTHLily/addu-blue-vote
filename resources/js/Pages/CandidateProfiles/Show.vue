@@ -126,6 +126,6 @@ export default defineComponent({
 
 <style scoped>
 .individual-candidate-profile-background {
-  background: url("/images/candidate-show-bg.svg") no-repeat bottom/100%;
+  /* background: url("/images/candidate-show-bg.svg") no-repeat bottom/100%; */
 }
 </style>

@@ -14,13 +14,14 @@
           </template>
           <template v-else>
             <NPopconfirm
+              id="goto"
               :negative-text="null"
               positive-text="Go to"
               :show-icon="false"
               :on-positive-click="changePage"
             >
               <template #trigger>
-                <a href="#" class="page-link"
+                <a href="#goto" class="page-link"
                   ><span aria-hidden="true">...</span></a
                 >
               </template>
@@ -56,6 +57,7 @@ export default defineComponent({
         this.gotoPage = this.pagination.last_page;
       Inertia.visit(this.pagination.path, {
         data: { page: this.gotoPage, itemsPerPage: this.pagination.per_page },
+        preserveScroll: true,
       });
     },
   },

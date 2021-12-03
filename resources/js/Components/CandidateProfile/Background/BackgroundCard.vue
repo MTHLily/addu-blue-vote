@@ -8,18 +8,21 @@
     </div>
     <div class="card-body">
       <div
-        class="row"
+        class="row row-cols-1"
         :class="{
-          'row-cols-3': horizontal,
+          'row-cols-md-3': horizontal,
+          'row-cols-md-1': !horizontal,
         }"
       >
         <template v-for="background in background" :key="background.id">
-          <CardSection
-            :primary-color="primaryColor"
-            :secondary-color="secondaryColor"
-            :class="{ col: horizontal, row: !horizontal }"
-            :background="background"
-          ></CardSection>
+          <div class="col">
+            <CardSection
+              :primary-color="primaryColor"
+              :secondary-color="secondaryColor"
+              :class="{ col: horizontal, row: !horizontal }"
+              :background="background"
+            ></CardSection>
+          </div>
         </template>
       </div>
     </div>

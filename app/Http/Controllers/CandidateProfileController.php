@@ -48,7 +48,7 @@ class CandidateProfileController extends Controller
             ->orderByDesc("date")
             ->with("newsSource")
             ->paginate(5)
-            ->onEachSide(1);
+            ->onEachSide(0);
 
         return Inertia::render("CandidateProfiles/Show", [
             "candidate" => $candidate,

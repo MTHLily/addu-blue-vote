@@ -16,7 +16,7 @@ class LocationSeeder extends Seeder
     public function run()
     {
         $import = new LocationSeedImport();
-        $path = "public/data/AdDU Blue Vote Locations.xlsx";
+        $path = "data/AdDU Blue Vote Locations.xlsx";
         $import->import($path);
     }
 }

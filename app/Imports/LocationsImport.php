@@ -34,6 +34,11 @@ class LocationsImport implements
         $this->parent_type_id = $parent_type_id;
     }
 
+    public function chunkSize(): int
+    {
+        return 1000;
+    }
+
     public static function beforeSheet(BeforeSheet $event): void
     {
         self::$locations = Location::all();
@@ -85,10 +90,5 @@ class LocationsImport implements
         dump("Model not found, creating new model!", $loc);
 
         return $loc;
-    }
-
-    public function chunkSize(): int
-    {
-        return 1000;
     }
 }

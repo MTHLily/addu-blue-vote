@@ -53,7 +53,7 @@
             ></NewsArticles>
           </div>
           <div class="col">
-            <Twitter class="w-100 h-100" :candidate="candidate"></Twitter>
+            <Twitter class="twitterfeed w-100" :candidate="candidate" style="max-height:860px"></Twitter>
           </div>
         </div>
       </div>
@@ -131,4 +131,27 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-position: bottom;
 } */
+.twitterfeed{
+  overflow-y: scroll;
+}
+
+.twitterfeed::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+	border-radius: 8px;
+	background-color: #F5F5F5;
+}
+
+.twitterfeed::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.twitterfeed::-webkit-scrollbar-thumb
+{
+	border-radius: 8px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.1);
+	background-color: #2365A1;
+}
 </style>

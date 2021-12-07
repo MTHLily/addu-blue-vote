@@ -52,8 +52,12 @@
               :articles="relatedArticles"
             ></NewsArticles>
           </div>
-          <div class="col">
-            <Twitter class="w-100 h-100" :candidate="candidate"></Twitter>
+          <div class="col" v-if="candidate.twitter_timeline_feed_url">
+            <Twitter
+              class="w-100 h-100"
+              :title="`Tweets By ${candidate.name}`"
+              :feed-url="candidate.twitter_timeline_feed_url"
+            ></Twitter>
           </div>
         </div>
       </div>

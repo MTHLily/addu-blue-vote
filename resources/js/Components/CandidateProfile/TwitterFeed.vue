@@ -1,12 +1,9 @@
 <template>
   <div class="container">
     <twitter>
-      <a
-        class="twitter-timeline h-100"
-        data-theme="light"
-        :href="`${candidate.twitter_timeline_feed_url}`"
-        >Tweets by {{ candidate.name }}</a
-      >
+      <a class="twitter-timeline h-100" data-theme="light" :href="feedUrl"
+        >{{ title }}
+      </a>
     </twitter>
   </div>
 </template>
@@ -27,8 +24,13 @@ export default {
         link: "https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw",
       }),
     },
-    candidate: {
-      type: Object,
+    title: {
+      type: String,
+      default: "",
+    },
+    feedUrl: {
+      type: String,
+      required: true,
     },
   },
 };

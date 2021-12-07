@@ -423,8 +423,20 @@ class NewscraperService
     {
         $relatedCandidates = collect([]);
 
-        // get all the names candidates
-        $candidateNames = Candidate::all(["id", "name"]);
+        // get all the candidate keywords
+        $candidates = Candidate::all(["id", "name", "keywords"]);
+        $keywords = $candidates->map(function ($candidate) {
+            $name = Str::of($candidate->name)
+                ->explode(" ")
+                ->toArray();
+            $keys = Str::of($candidate->keywords)
+                ->explode(",")
+                ->toArray();
+            return [
+                "name" => $name,
+                "keywords" => $keys,
+            ];
+        });
 
         // Visit with guzzler
         $crawler = Goutte::request("GET", $article->url);
@@ -490,22 +502,17 @@ class NewscraperService
             dump($text);
         }
 
-        $candidateNames->each(function ($candidate) use (
-            $text,
-            $relatedCandidates
-        ) {
+        $keywords->each(function ($candidate) use ($text, $relatedCandidates) {
+            $text = Str::of($text);
             if (
-                Str::of($text)->contains(
-                    Str::of($candidate->name)
-                        ->explode(" ")
-                        ->toArray()
-                )
+                $text->contains($candidate["name"]) ||
+                $text->contains($candidate["keywords"])
             ) {
                 $relatedCandidates->push($candidate);
             }
         });
 
-        dump($relatedCandidates);
+        dump($relatedCandidates->pluck("name"));
 
         return $relatedCandidates;
 

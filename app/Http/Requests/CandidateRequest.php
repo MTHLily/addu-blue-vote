@@ -50,6 +50,7 @@ class CandidateRequest extends FormRequest
             "background.*.start_date" => "required",
             "media.file" => "image",
             "media.id" => "sometimes",
+            "keywords" => "nullable",
         ];
     }
 }

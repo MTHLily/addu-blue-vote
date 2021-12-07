@@ -64,6 +64,7 @@ export default defineComponent({
       stances: [],
       background: [],
       media: null,
+      keywords: null,
     }),
   }),
 });

@@ -92,6 +92,7 @@ export default defineComponent({
             status: "finished",
           }))[0]
         : null,
+      keywords: this.candidate.keywords,
     });
   },
 });

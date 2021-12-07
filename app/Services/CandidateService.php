@@ -18,6 +18,7 @@ class CandidateService
             "running_position_id",
             "location_id",
             "twitter_timeline_feed_url",
+            "keywords",
         ]);
 
         if ($candidate == null) {

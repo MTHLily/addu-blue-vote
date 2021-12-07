@@ -60,7 +60,6 @@ Route::middleware(["auth"])->group(function () {
 Route::get("/testing", function () {
     $article = NewsArticle::find(234);
     FindRelatedCandidatesForNewsArticle::dispatch($article);
-    dd("FUCK");
 })->name("testing");
 
 Route::get("/voters-education", [

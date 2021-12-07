@@ -86,7 +86,7 @@ Route::prefix("candidate-profiles")->group(function () {
         "location_redirect",
     ])->name("locations.redirect");
 
-    Route::get("/candidate/{candidate}", [
+    Route::get("/candidate/{candidate:slug}", [
         CandidateProfileController::class,
         "show",
     ])->name("candidate-profiles.show");

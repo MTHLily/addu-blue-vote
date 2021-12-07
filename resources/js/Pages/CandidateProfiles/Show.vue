@@ -97,21 +97,26 @@ export default defineComponent({
   },
   computed: {
     candidateBreadcrumbs() {
-      let locations;
+      const locations = [];
       if (this.candidate.location) {
-        locations = this.candidate.location.ancestors_and_self
-          .reverse()
-          .map((loc) => ({
-            route: route("locations.redirect", loc.id),
-            label: loc.name,
-          }));
+        locations.push({
+          label: "Home",
+          route: route("candidate-profiles.index"),
+        });
+
+        locations.push(
+          ...this.candidate.location.ancestors_and_self
+            .reverse()
+            .map((loc) => ({
+              route: route("locations.redirect", loc.slug),
+              label: loc.name,
+            }))
+        );
       } else {
-        locations = [
-          {
-            label: "National",
-            route: route("candidate-profiles.index"),
-          },
-        ];
+        locations.push({
+          label: "National",
+          route: route("candidate-profiles.index"),
+        });
       }
 
       const candidate = {

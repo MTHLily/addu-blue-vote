@@ -142,6 +142,8 @@ class NewscraperService
             $article->news_source_id = $this->sources_id["rappler"];
             $article->date = Carbon::now();
             $article->save();
+
+            FindRelatedCandidatesForNewsArticle::dispatch($article);
         }
 
         array_push($articles, $article);
@@ -175,6 +177,8 @@ class NewscraperService
                     $article->date = $date;
                     $article->news_source_id = $this->sources_id["rappler"];
                     $article->save();
+
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dd($article);
                 return $article;
@@ -222,6 +226,7 @@ class NewscraperService
                 $article->date = $date;
                 $article->news_source_id = $this->sources_id["phil_star"];
                 $article->save();
+                FindRelatedCandidatesForNewsArticle::dispatch($article);
             }
             return $article;
         });
@@ -260,6 +265,7 @@ class NewscraperService
                     $article->date = $date;
                     $article->news_source_id = $this->sources_id["comelec"];
                     $article->save();
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dd($article);
                 return $article;
@@ -297,6 +303,7 @@ class NewscraperService
                         $article->news_source_id =
                             $this->sources_id["manila_times"];
                         $article->save();
+                        FindRelatedCandidatesForNewsArticle::dispatch($article);
                     }
 
                     return $article;
@@ -327,6 +334,7 @@ class NewscraperService
                     $article->date = Carbon::now();
                     $article->news_source_id = $this->sources_id["cnn_ph"];
                     $article->save();
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dump($article);
                 return $article;
@@ -364,6 +372,7 @@ class NewscraperService
                 );
                 $article->news_source_id = $this->sources_id["inquirer_net"];
                 $article->save();
+                FindRelatedCandidatesForNewsArticle::dispatch($article);
             }
             return $article;
         });
@@ -396,6 +405,7 @@ class NewscraperService
                     $article->date = Carbon::now();
                     $article->news_source_id = $this->sources_id["gma"];
                     $article->save();
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dd($article);
                 return $article;

@@ -17,8 +17,10 @@ use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
 use App\Imports\LocationSeedImport;
+use App\Jobs\FindRelatedCandidatesForNewsArticle;
 use App\Models\Candidate;
 use App\Models\Location;
+use App\Models\NewsArticle;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\NewscraperService;
 use Database\Seeders\LocationSeeder;
@@ -56,7 +58,9 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::get("/testing", function () {
-    (new LocationSeeder())->run();
+    $article = NewsArticle::find(234);
+    FindRelatedCandidatesForNewsArticle::dispatch($article);
+    dd("FUCK");
 })->name("testing");
 
 Route::get("/voters-education", [

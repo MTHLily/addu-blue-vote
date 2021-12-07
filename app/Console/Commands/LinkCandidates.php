@@ -19,7 +19,7 @@ class LinkCandidates extends Command
      *
      * @var string
      */
-    protected $description = "Command description";
+    protected $description = "Link candidates to a news article.";
 
     /**
      * Create a new command instance.

@@ -445,30 +445,25 @@ class NewscraperService
         if ($article->news_source_id === $this->sources_id["abs_cbn"]) {
             dump("ABS CBN");
             $text = $crawler->filter(".article-block")->text();
-            dump($text);
         }
         // Parser for Rappler
         if ($article->news_source_id === $this->sources_id["rappler"]) {
             $text = $crawler->filter(".article-main-section")->text();
-            dump($text);
         }
 
         // Parser for PhilStar
         if ($article->news_source_id === $this->sources_id["phil_star"]) {
             $text = $crawler->filter(".article__writeup")->text();
-            dump($text);
         }
 
         // Parser for Comelec
         if ($article->news_source_id === $this->sources_id["comelec"]) {
             $text = "";
-            dump($text);
         }
 
         // Parser for Manila Times
         if ($article->news_source_id === $this->sources_id["manila_times"]) {
             $text = $crawler->filter(".article-body")->text();
-            dump($text);
         }
 
         // Parser for CNN
@@ -477,8 +472,9 @@ class NewscraperService
             // $text = $crawler
             //     ->filter(".article-maincontent-p.cnn-life-body")
             //     ->text();
-            dump($text);
         }
+
+        dump($text);
 
         // Parser for Inquirer
         if ($article->news_source_id === $this->sources_id["inquirer_net"]) {
@@ -492,14 +488,12 @@ class NewscraperService
             );
             $text = $p->reduce(fn($carry, $string) => $carry . $string . " ");
             // $text = $crawler->filter("#article_content > div >p ")->text();
-            dump($text);
         }
 
         // Parser for gma
         if ($article->news_source_id === $this->sources_id["gma"]) {
             // $text = $crawler->filter(".story_main")->text();
             $text = "";
-            dump($text);
         }
 
         $keywords->each(function ($candidate) use ($text, $relatedCandidates) {
@@ -558,7 +552,7 @@ class NewscraperService
         // $articles = $this->inquirer_net();
         // dump("GMA");
         /**
-         * Uses JS to load articles
+         * Uses JS to load articles, can't get
          */
         // $articles = $this->gma();
 

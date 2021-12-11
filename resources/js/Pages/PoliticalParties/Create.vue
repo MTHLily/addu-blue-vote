@@ -28,6 +28,8 @@ export default {
   data: () => ({
     form: useForm({
       name: "",
+      abbreviation: "",
+      representation: "",
     }),
   }),
 };

@@ -51,7 +51,7 @@ export default {
   data: () => ({
     columns: [
       {
-        label: "Issue",
+        label: "Party",
         value: "name",
       },
     ],

@@ -1,5 +1,5 @@
 <template>
-  <Head title="Registration Process">
+  <Head title="Voters' Registration Process">
     <meta
       name="description"
       content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines"

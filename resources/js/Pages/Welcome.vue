@@ -1,5 +1,10 @@
 <template>
-  <Head title="Welcome" />
+  <Head title="Registration Process">
+    <meta
+      name="description"
+      content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines"
+    />
+  </Head>
   <GuestLayout>
     <div>
       <div class="w-100">

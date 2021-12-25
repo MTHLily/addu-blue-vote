@@ -2,7 +2,11 @@
   <Head title="Voters' Registration Process">
     <meta
       name="description"
-      content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines"
+      content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines. Developed by AdDU ARISEn Labs."
+    />
+    <meta
+      name="keywords"
+      content="philippines, election, 2022, election news"
     />
   </Head>
   <GuestLayout>

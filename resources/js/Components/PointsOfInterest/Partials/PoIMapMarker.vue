@@ -4,14 +4,13 @@
     :position="marker.position"
     :icon="marker.icon"
     :clickable="true"
-    @click="$emit('marker-clicked', location)"
+    @click="$emit('marker-clicked', site)"
   >
   </GMapMarker>
 </template>
 
 <script>
 import { computed, defineComponent } from "vue";
-
 export default defineComponent({
   props: {
     site: Object,

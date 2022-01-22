@@ -7,17 +7,21 @@
       <div class="row">
         <div class="map--container">
           <GMapMap
+            :ref="
+              (ref) => {
+                refs.gMapRef.value = ref;
+              }
+            "
             :zoom="mapOptions.zoom"
             :center="mapOptions.center"
             :options="mapOptions.opts"
-            ref="gMapRef"
             map-type-id="satellite"
             style="width: 100%; height: clamp(200px, 80vh, 800px)"
           >
             <template v-for="location in flatLocations" :key="location.id">
               <PoIMapMarker
                 v-for="site in location.sites"
-                @marker-clicked="$emit('marker-clicked', $event)"
+                @marker-clicked="pan.panToSite"
                 :key="site.id"
                 :site="site"
               ></PoIMapMarker>
@@ -37,7 +41,7 @@
               ></GMapMarker> -->
           </GMapMap>
           <div ref="mapTopLeft"></div>
-          <div ref="mapTopRight">
+          <div :ref="(ref) => (refs.mapTopRight.value = ref)">
             <div class="vw-100 me-2" style="max-width: 300px">
               <n-tree-select
                 multiple
@@ -58,7 +62,12 @@
       </div>
       <div>
         <template v-for="location in filteredLocations" :key="location.id">
-          <PoIMapStackSection :location="location" :depth="3" />
+          <PoIMapStackSection
+            @site-clicked="pan.panToSite"
+            @location-clicked="pan.panToLocation"
+            :location="location"
+            :depth="3"
+          />
         </template>
       </div>
     </div>
@@ -171,14 +180,44 @@ export default defineComponent({
       });
     });
 
+    /**
+    Pan Functions
+     */
+    const pan = ({ lat, lng }, zoom) => {
+      document.getElementById("map").scrollIntoView();
+      gMapRef.value.$mapPromise.then((gmap) => {
+        gmap.panTo({
+          lat: parseFloat(lat),
+          lng: parseFloat(lng),
+        });
+        mapOptions.value.zoom = zoom;
+      });
+    };
+    const panToSite = (site) => {
+      pan({ lat: site.latitude, lng: site.longitude }, 16);
+    };
+    const panToLocation = (location_id) => {
+      const location = flatLocations.value.find(
+        (loc) => loc.id === location_id
+      );
+      console.log(location);
+      pan({ lat: location.latitude, lng: location.longitude }, 10);
+    };
+
     return {
       mapOptions,
       filteredLocationIds,
       filteredLocations,
       filterOptions,
       flatLocations,
-      gMapRef,
-      mapTopRight,
+      refs: {
+        gMapRef,
+        mapTopRight,
+      },
+      pan: {
+        panToLocation,
+        panToSite,
+      },
     };
   },
 });

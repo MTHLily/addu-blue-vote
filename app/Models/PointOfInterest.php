@@ -60,10 +60,17 @@ class PointOfInterest extends Model
                 "=",
                 "locations.id"
             )
+            ->join(
+                "location_types",
+                "locations.location_type_id",
+                "=",
+                "location_types.id"
+            )
             ->select(
                 "point_of_interests.*",
                 "locations.name as location_name",
-                "locations.color as location_color"
+                "locations.color as location_color",
+                "location_types.name as location_type"
             );
     }
 }

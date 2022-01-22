@@ -24,6 +24,7 @@ use App\Models\NewsArticle;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\NewscraperService;
 use Database\Seeders\LocationSeeder;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ use Database\Seeders\LocationSeeder;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
@@ -57,10 +60,9 @@ Route::middleware(["auth"])->group(function () {
     });
 });
 
-Route::get("/testing", function () {
-    $article = NewsArticle::find(234);
-    FindRelatedCandidatesForNewsArticle::dispatch($article);
-})->name("testing");
+// Route::get("/testing", function () {
+
+// })->name("testing");
 
 Route::get("/voters-education", [
     GuestController::class,

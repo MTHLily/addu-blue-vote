@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -48,5 +49,21 @@ class PointOfInterest extends Model
     public function location()
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function scopeWithLocationAttribs(Builder $query): Builder
+    {
+        return $query
+            ->join(
+                "locations",
+                "point_of_interests.location_id",
+                "=",
+                "locations.id"
+            )
+            ->select(
+                "point_of_interests.*",
+                "locations.name as location_name",
+                "locations.color as location_color"
+            );
     }
 }

@@ -10,18 +10,19 @@
     />
   </Head>
   <GuestLayout>
+    <PoIMap :locations="locations"></PoIMap>
     <div>
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>
       <VoterRegistrationProcess></VoterRegistrationProcess>
       <FAQs :faqs="faqs" />
-      <Map
+      <!-- <Map
         :registrationSites="registrationSites"
         :locations="locations"
         :locationTree="locationTree"
         :stack="true"
-      />
+      /> -->
     </div>
   </GuestLayout>
 </template>
@@ -33,9 +34,11 @@ import Map from "../Components/Map/Map.vue";
 import VoterRegistrationProcess from "../Components/VoterRegistrationProcess.vue";
 import FAQs from "../Components/FAQs/FAQList.vue";
 import InformationCarousel from "../Components/Information/InformationCarousel.vue";
+import PoIMap from "@/Components/PointsOfInterest/PoIMap.vue";
 
 export default {
   components: {
+    PoIMap,
     Head,
     Link,
     GuestLayout,

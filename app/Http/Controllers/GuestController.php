@@ -11,25 +11,27 @@ use App\Models\NewsArticle;
 use App\Models\PointOfInterest;
 use App\Models\RunningPosition;
 use App\Services\NewscraperService;
+use App\Services\PointOfInterestService;
 use Inertia\Inertia;
 
 class GuestController extends Controller
 {
     public function voters_registration()
     {
+        $registrationSites = (new PointOfInterestService())->fetchPointsOfInterest(
+            1
+        );
+        $locations = (new PointOfInterestService())->fetchPointsOfInterestByLocations(
+            1
+        );
+
         return Inertia::render("Welcome", [
             "faqs" => FrequentlyAskedQuestion::all(),
             "information" => InformationSnippet::all(),
             "districts" => District::all(),
-            "locations" => Location::all(),
+            "locations" => $locations,
             "locationTree" => Location::getTree(),
-            "registrationSites" => PointOfInterest::where(
-                "point_of_interest_type_id",
-                "=",
-                1
-            )
-                ->with("location")
-                ->get(),
+            "registrationSites" => $registrationSites,
         ]);
     }
 

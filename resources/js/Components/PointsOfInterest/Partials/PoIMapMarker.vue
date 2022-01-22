@@ -4,7 +4,7 @@
     :position="marker.position"
     :icon="marker.icon"
     :clickable="true"
-    @click="emit('marker-clicked', location)"
+    @click="$emit('marker-clicked', location)"
   >
   </GMapMarker>
 </template>
@@ -16,14 +16,15 @@ export default defineComponent({
   props: {
     site: Object,
   },
+  emits: ["marker-clicked"],
   setup(props) {
     const marker = computed(() => ({
       position: {
-        lat: site.latitude,
-        lng: site.longitude,
+        lat: parseFloat(props.site.latitude),
+        lng: parseFloat(props.site.longitude),
       },
       icon: {
-        url: "/svg/map_marker.svg?color=" + site.location_color.slice(1),
+        url: "/svg/map_marker.svg?color=" + props.site.location_color.slice(1),
       },
     }));
     return {

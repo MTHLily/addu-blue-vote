@@ -1,13 +1,12 @@
 <template>
   <div>
-    <template v-if="location.sites.length || location.children.length">
-      <component :is="`h${heading}`">{{ location.name }}</component>
-    </template>
+    <component :is="`h${heading}`">{{ location.name }}</component>
+
     <div v-if="location.sites.length">
       <component :is="`h${heading + 1}`">{{ siteLabel }}</component>
-      <div class="row row-cols-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
         <template v-for="site in location.sites" :key="site.id">
-          <div class="col">
+          <div class="col mb-4">
             <PoICard :site="site" />
           </div>
         </template>

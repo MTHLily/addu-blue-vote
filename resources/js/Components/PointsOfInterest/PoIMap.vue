@@ -1,29 +1,28 @@
 <template>
-  <div>
-    <div class="map container" id="map">
-      <pre>{{ flatLocations }}</pre>
-      <div class="d-flex flex-column">
-        <h2 class="text-primary text-center p-3 fw-bolder">
-          Voters Registration Sites
-        </h2>
-        <div class="row">
-          <div class="map--container">
-            <GMapMap
-              :zoom="mapOptions.zoom"
-              :center="mapOptions.center"
-              :options="mapOptions.opts"
-              ref="gMapRef"
-              map-type-id="satellite"
-              style="width: 100%; height: clamp(200px, 80vh, 800px)"
-            >
-              <template v-for="location in flatLocations" :key="location.id">
-                <PoIMapMarker
-                  v-for="site in location.sites"
-                  :key="site.id"
-                  :site="site"
-                ></PoIMapMarker>
-              </template>
-              <!-- <GMapMarker
+  <div class="map container" id="map">
+    <div class="d-flex flex-column">
+      <h2 class="text-primary text-center p-3 fw-bolder">
+        Voters Registration Sites
+      </h2>
+      <div class="row">
+        <div class="map--container">
+          <GMapMap
+            :zoom="mapOptions.zoom"
+            :center="mapOptions.center"
+            :options="mapOptions.opts"
+            ref="gMapRef"
+            map-type-id="satellite"
+            style="width: 100%; height: clamp(200px, 80vh, 800px)"
+          >
+            <template v-for="location in flatLocations" :key="location.id">
+              <PoIMapMarker
+                v-for="site in location.sites"
+                @marker-clicked="$emit('marker-clicked', $event)"
+                :key="site.id"
+                :site="site"
+              ></PoIMapMarker>
+            </template>
+            <!-- <GMapMarker
                 v-for="m in filteredMarkers"
                 :key="m.position.lat"
                 :position="m.position"
@@ -32,42 +31,42 @@
                 @click="handleMarkerClicked(m)"
               >
               </GMapMarker> -->
-              <!-- <GMapMarker
+            <!-- <GMapMarker
                 v-show="userLocation"
                 :position="userLocation"
               ></GMapMarker> -->
-            </GMapMap>
-            <div ref="mapTopLeft"></div>
-            <div ref="mapTopRight">
+          </GMapMap>
+          <div ref="mapTopLeft"></div>
+          <div ref="mapTopRight">
+            <div class="vw-100 me-2" style="max-width: 300px">
               <n-tree-select
                 multiple
                 cascade
                 checkable
                 filterable
+                placeholder="Filter locations..."
                 v-model:value="filteredLocationIds"
                 :options="filterOptions"
                 check-strategy="parent"
               />
-              {{ filteredLocationIds }}
             </div>
-            <div ref="mapBottomRight"></div>
-            <pre></pre>
-            <div class="mt-2"></div>
           </div>
-        </div>
-        <div>
-          <template v-for="location in filteredLocations" :key="location.id">
-            <PoIMapStackSection :location="location" :depth="3" />
-          </template>
+          <div ref="mapBottomRight"></div>
+          <pre></pre>
+          <div class="mt-2"></div>
         </div>
       </div>
+      <div>
+        <template v-for="location in filteredLocations" :key="location.id">
+          <PoIMapStackSection :location="location" :depth="3" />
+        </template>
+      </div>
     </div>
-    <pre>{{ locations }}</pre>
   </div>
 </template>
 
 <script>
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import { NTreeSelect } from "naive-ui";
 import PoIMapStackSection from "./Partials/PoIMapStackSection.vue";
 import PoIMapMarker from "./Partials/PoIMapMarker.vue";
@@ -126,18 +125,20 @@ export default defineComponent({
         filteredLocationIds.value.some((num) =>
           location.children.reduce(locationChildrenIdsReduce, []).includes(num)
         )
-      )
+      ) {
         return {
           ...location,
           children: location.children
-            .filter((loc) => loc.children.length > 0)
             .map(filterLocationMap)
             .filter((loc) => loc !== null),
         };
+      }
       return null;
     };
     const filteredLocations = computed(() =>
-      props.locations.map(filterLocationMap).filter((loc) => loc !== null)
+      filteredLocationIds.value.length > 0
+        ? props.locations.map(filterLocationMap).filter((loc) => loc !== null)
+        : props.locations
     );
 
     const flattenLocations = (carry, curr) => {
@@ -151,13 +152,33 @@ export default defineComponent({
       return filteredLocations.value.reduce(flattenLocations, []);
     });
 
+    /* 
+    Map elements
+     */
+    const gMapRef = ref();
+    const mapTopRight = ref();
+    onMounted(() => {
+      gMapRef.value.$mapPromise.then((gmap) => {
+        // gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
+        //   this.$refs.mapTopLeft
+        // );
+        gmap.controls[google.maps.ControlPosition.RIGHT_TOP].push(
+          mapTopRight.value
+        );
+        // gmap.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
+        //   this.$refs.mapBottomRight
+        // );
+      });
+    });
+
     return {
       mapOptions,
-      // filteredMarkers,
       filteredLocationIds,
       filteredLocations,
       filterOptions,
       flatLocations,
+      gMapRef,
+      mapTopRight,
     };
   },
 });

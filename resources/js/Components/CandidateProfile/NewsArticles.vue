@@ -4,10 +4,15 @@
       NEWS ARTICLES
     </div>
     <div class="d-flex flex-column gap-4">
-      <template v-for="article in articles?.data" :key="article.id">
-        <NewsCard :news="article"></NewsCard>
+      <template v-if="articles?.data.length">
+        <template v-for="article in articles?.data" :key="article.id">
+          <NewsCard :news="article"></NewsCard>
+        </template>
+        <Pagination class="mx-auto" :pagination="articles"></Pagination>
       </template>
-      <Pagination class="mx-auto" :pagination="articles"></Pagination>
+      <div v-else class="lead fw-bold mx-2 mb-4 text-white">
+        There are no news articles about this candidate.
+      </div>
     </div>
   </div>
 </template>

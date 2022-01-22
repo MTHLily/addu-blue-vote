@@ -28,7 +28,7 @@
                 style="border-radius: 20px"
               >
                 <Link
-                  :href="route('candidate-profiles.show', candidate.id)"
+                  :href="route('candidate-profiles.show', candidate.slug)"
                   target="_blank"
                   class="text-white text-decoration-none"
                 >

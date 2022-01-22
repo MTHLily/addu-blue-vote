@@ -142,6 +142,8 @@ class NewscraperService
             $article->news_source_id = $this->sources_id["rappler"];
             $article->date = Carbon::now();
             $article->save();
+
+            FindRelatedCandidatesForNewsArticle::dispatch($article);
         }
 
         array_push($articles, $article);
@@ -175,6 +177,8 @@ class NewscraperService
                     $article->date = $date;
                     $article->news_source_id = $this->sources_id["rappler"];
                     $article->save();
+
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dd($article);
                 return $article;
@@ -222,6 +226,7 @@ class NewscraperService
                 $article->date = $date;
                 $article->news_source_id = $this->sources_id["phil_star"];
                 $article->save();
+                FindRelatedCandidatesForNewsArticle::dispatch($article);
             }
             return $article;
         });
@@ -260,6 +265,7 @@ class NewscraperService
                     $article->date = $date;
                     $article->news_source_id = $this->sources_id["comelec"];
                     $article->save();
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dd($article);
                 return $article;
@@ -297,6 +303,7 @@ class NewscraperService
                         $article->news_source_id =
                             $this->sources_id["manila_times"];
                         $article->save();
+                        FindRelatedCandidatesForNewsArticle::dispatch($article);
                     }
 
                     return $article;
@@ -327,6 +334,7 @@ class NewscraperService
                     $article->date = Carbon::now();
                     $article->news_source_id = $this->sources_id["cnn_ph"];
                     $article->save();
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dump($article);
                 return $article;
@@ -364,6 +372,7 @@ class NewscraperService
                 );
                 $article->news_source_id = $this->sources_id["inquirer_net"];
                 $article->save();
+                FindRelatedCandidatesForNewsArticle::dispatch($article);
             }
             return $article;
         });
@@ -396,6 +405,7 @@ class NewscraperService
                     $article->date = Carbon::now();
                     $article->news_source_id = $this->sources_id["gma"];
                     $article->save();
+                    FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
                 // dd($article);
                 return $article;
@@ -413,8 +423,20 @@ class NewscraperService
     {
         $relatedCandidates = collect([]);
 
-        // get all the names candidates
-        $candidateNames = Candidate::all(["id", "name"]);
+        // get all the candidate keywords
+        $candidates = Candidate::all(["id", "name", "keywords"]);
+        $keywords = $candidates->map(function ($candidate) {
+            $name = Str::of($candidate->name)
+                ->explode(" ")
+                ->toArray();
+            $keys = Str::of($candidate->keywords)
+                ->explode(",")
+                ->toArray();
+            return [
+                "name" => $name,
+                "keywords" => $keys,
+            ];
+        });
 
         // Visit with guzzler
         $crawler = Goutte::request("GET", $article->url);
@@ -423,30 +445,25 @@ class NewscraperService
         if ($article->news_source_id === $this->sources_id["abs_cbn"]) {
             dump("ABS CBN");
             $text = $crawler->filter(".article-block")->text();
-            dump($text);
         }
         // Parser for Rappler
         if ($article->news_source_id === $this->sources_id["rappler"]) {
             $text = $crawler->filter(".article-main-section")->text();
-            dump($text);
         }
 
         // Parser for PhilStar
         if ($article->news_source_id === $this->sources_id["phil_star"]) {
             $text = $crawler->filter(".article__writeup")->text();
-            dump($text);
         }
 
         // Parser for Comelec
         if ($article->news_source_id === $this->sources_id["comelec"]) {
             $text = "";
-            dump($text);
         }
 
         // Parser for Manila Times
         if ($article->news_source_id === $this->sources_id["manila_times"]) {
             $text = $crawler->filter(".article-body")->text();
-            dump($text);
         }
 
         // Parser for CNN
@@ -455,8 +472,9 @@ class NewscraperService
             // $text = $crawler
             //     ->filter(".article-maincontent-p.cnn-life-body")
             //     ->text();
-            dump($text);
         }
+
+        dump($text);
 
         // Parser for Inquirer
         if ($article->news_source_id === $this->sources_id["inquirer_net"]) {
@@ -470,32 +488,25 @@ class NewscraperService
             );
             $text = $p->reduce(fn($carry, $string) => $carry . $string . " ");
             // $text = $crawler->filter("#article_content > div >p ")->text();
-            dump($text);
         }
 
         // Parser for gma
         if ($article->news_source_id === $this->sources_id["gma"]) {
             // $text = $crawler->filter(".story_main")->text();
             $text = "";
-            dump($text);
         }
 
-        $candidateNames->each(function ($candidate) use (
-            $text,
-            $relatedCandidates
-        ) {
+        $keywords->each(function ($candidate) use ($text, $relatedCandidates) {
+            $text = Str::of($text);
             if (
-                Str::of($text)->contains(
-                    Str::of($candidate->name)
-                        ->explode(" ")
-                        ->toArray()
-                )
+                $text->contains($candidate["name"]) ||
+                $text->contains($candidate["keywords"])
             ) {
                 $relatedCandidates->push($candidate);
             }
         });
 
-        dump($relatedCandidates);
+        dump($relatedCandidates->pluck("name"));
 
         return $relatedCandidates;
 
@@ -541,7 +552,7 @@ class NewscraperService
         // $articles = $this->inquirer_net();
         // dump("GMA");
         /**
-         * Uses JS to load articles
+         * Uses JS to load articles, can't get
          */
         // $articles = $this->gma();
 

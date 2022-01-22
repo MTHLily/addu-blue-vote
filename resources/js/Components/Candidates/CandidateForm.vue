@@ -69,43 +69,8 @@
         v-model:value="form.location_id"
         :options="locationTree"
       ></location-select>
-      <!-- <select
-        id="candidateLocation"
-        cols="30"
-        rows="4"
-        class="form-select"
-        :class="{
-          'is-invalid': form.errors.location_id,
-        }"
-        :disabled="currentPosition ? !currentPosition.location_type_id : true"
-        v-model="form.location_id"
-      >
-        <option :value="null" disabled>Choose a location</option>
-        <template v-for="location in locationOptions" :key="location.id">
-          <option :value="location.id">{{ location.name }}</option>
-        </template>
-      </select> -->
       <div class="invalid-feedback">{{ form.errors.location_id }}</div>
     </div>
-    <!-- <div class="col mb-3 p-3">
-      <label for="positionType" class="form-label">Type</label>
-      <select
-        id="positionType"
-        class="form-select"
-        :class="{
-          'is-invalid': form.errors.location_type_id,
-        }"
-        v-model="form.location_type_id"
-      >
-        <option :value="null">National</option>
-        <template v-for="type in locationTypes" :key="type.id">
-          <option :value="type.id">{{ type.name }}</option>
-        </template>
-      </select>
-      <div class="invalid-feedback">
-        {{ form.errors.location_type_id }}
-      </div>
-    </div> -->
     <div class="col mb-3 p-3">
       <label for="runningPosition" class="form-label">Running Position</label>
       <select
@@ -166,6 +131,18 @@
         error-key="background"
       ></CandidateBackgroundSelector>
       <div class="invalid-feedback">{{ form.errors.description }}</div>
+    </div>
+    <div class="col-12 mb-3 p-3">
+      <label class="form-label" for="keywords"
+        >Keywords <small>Separate keywords using commas</small></label
+      >
+      <textarea
+        class="form-control"
+        name="keywords"
+        id="keywords"
+        v-model="form.keywords"
+      ></textarea>
+      <div class="invalid-feedback">{{ form.errors.keywords }}</div>
     </div>
   </div>
 </template>

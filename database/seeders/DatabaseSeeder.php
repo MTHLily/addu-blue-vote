@@ -34,10 +34,9 @@ class DatabaseSeeder extends Seeder
             NewsSourceSeeder::class,
             LocationTypeSeeder::class,
             RunningPositionSeeder::class,
-            LocationSeeder::class,
             PoliticalPartySeeder::class,
             BackgroundTypeSeeder::class,
-            LocationSeeder::class,
+            // LocationSeeder::class,
         ]);
     }
 }

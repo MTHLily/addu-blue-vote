@@ -17,8 +17,10 @@ use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\SVGController;
 use App\Imports\LocationSeedImport;
+use App\Jobs\FindRelatedCandidatesForNewsArticle;
 use App\Models\Candidate;
 use App\Models\Location;
+use App\Models\NewsArticle;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\NewscraperService;
 use Database\Seeders\LocationSeeder;
@@ -56,8 +58,8 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::get("/testing", function () {
-    app(NewscraperService::class)->linkCandidates(1);
-    return view("welcome");
+    $article = NewsArticle::find(234);
+    FindRelatedCandidatesForNewsArticle::dispatch($article);
 })->name("testing");
 
 Route::get("/voters-education", [
@@ -87,7 +89,7 @@ Route::prefix("candidate-profiles")->group(function () {
         "location_redirect",
     ])->name("locations.redirect");
 
-    Route::get("/candidate/{candidate}", [
+    Route::get("/candidate/{candidate:slug}", [
         CandidateProfileController::class,
         "show",
     ])->name("candidate-profiles.show");

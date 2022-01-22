@@ -32,6 +32,8 @@ export default {
   data: () => ({
     form: useForm({
       name: "",
+      abbreviation: "",
+      representation: "",
     }),
   }),
   props: {
@@ -40,6 +42,8 @@ export default {
   created() {
     this.form = useForm({
       name: this.political_party.name,
+      abbreviation: this.political_party.abbreviation,
+      representation: this.political_party.representation,
     });
   },
 };

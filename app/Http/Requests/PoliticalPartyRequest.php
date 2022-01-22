@@ -25,6 +25,9 @@ class PoliticalPartyRequest extends FormRequest
     {
         return [
             "name" => "required",
+            "abbreviation" => "required",
+            "representation" => "nullable",
+
         ];
     }
 }

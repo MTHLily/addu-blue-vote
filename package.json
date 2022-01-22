@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@fawmi/vue-google-maps": "^0.9.1",
-    "@inertiajs/inertia": "^0.10.0",
-    "@inertiajs/inertia-vue3": "^0.5.1",
+    "@inertiajs/inertia": "^0.10.1",
+    "@inertiajs/inertia-vue3": "^0.5.2",
     "@inertiajs/progress": "^0.2.6",
     "@popperjs/core": "^2.10.1",
     "@prettier/plugin-php": "^0.17.5",

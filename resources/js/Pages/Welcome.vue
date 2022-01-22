@@ -10,13 +10,13 @@
     />
   </Head>
   <GuestLayout>
-    <PoIMap :locations="locations"></PoIMap>
     <div>
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>
-      <VoterRegistrationProcess></VoterRegistrationProcess>
+      <VoterRegistrationProcess />
       <FAQs :faqs="faqs" />
+      <PoIMap :locations="locations"></PoIMap>
       <!-- <Map
         :registrationSites="registrationSites"
         :locations="locations"
@@ -56,16 +56,7 @@ export default {
       type: Array,
       default: [],
     },
-    districts: {
-      type: Array,
-      default: [],
-    },
-    registrationSites: {
-      type: Array,
-      default: [],
-    },
     locations: Array,
-    locationTree: Array,
   },
 };
 </script>

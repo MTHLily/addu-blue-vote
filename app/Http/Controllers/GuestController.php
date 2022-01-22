@@ -18,9 +18,6 @@ class GuestController extends Controller
 {
     public function voters_registration()
     {
-        $registrationSites = (new PointOfInterestService())->fetchPointsOfInterest(
-            1
-        );
         $locations = (new PointOfInterestService())->fetchPointsOfInterestByLocations(
             1
         );
@@ -28,10 +25,7 @@ class GuestController extends Controller
         return Inertia::render("Welcome", [
             "faqs" => FrequentlyAskedQuestion::all(),
             "information" => InformationSnippet::all(),
-            "districts" => District::all(),
             "locations" => $locations,
-            "locationTree" => Location::getTree(),
-            "registrationSites" => $registrationSites,
         ]);
     }
 

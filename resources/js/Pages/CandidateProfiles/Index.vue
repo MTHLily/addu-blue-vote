@@ -85,7 +85,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.candidate-profile-background {
-  /* background: url("/images/candidate-index-bg.svg") bottom/100%; */
-}
+/* .candidate-profile-background {
+  background-image: url("/images/candidate-backgrounds.svg");
+  background-size: 100%;
+  background-position: bottom;
+} */
 </style>

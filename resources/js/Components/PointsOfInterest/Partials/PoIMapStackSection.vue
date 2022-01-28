@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="mb-4">
     <component
-      :is="`h${heading}`"
       v-if="location.sites.length || location.children.length"
+      :is="`h${heading}`"
     >
-      <div href="#map" @click.stop="$emit('location-clicked', location.id)">
+      <div
+        href="#map"
+        style="cursor: pointer"
+        @click.stop="$emit('location-clicked', location.id)"
+      >
         {{ location.name }}
       </div>
     </component>
@@ -33,6 +37,7 @@
           :location="child"
           :depth="depth + 1"
           :heading="heading + 1"
+          :site-label="siteLabel"
         />
       </template>
     </div>

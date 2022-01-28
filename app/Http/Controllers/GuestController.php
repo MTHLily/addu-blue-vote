@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
-use App\Models\District;
 use App\Models\FrequentlyAskedQuestion;
 use App\Models\InformationSnippet;
 use App\Models\Location;
 use App\Models\NewsArticle;
-use App\Models\PointOfInterest;
 use App\Models\RunningPosition;
-use App\Services\NewscraperService;
 use App\Services\PointOfInterestService;
 use Inertia\Inertia;
 

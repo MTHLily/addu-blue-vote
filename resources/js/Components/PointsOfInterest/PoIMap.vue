@@ -21,19 +21,6 @@
             :site="site"
           ></PoIMapMarker>
         </template>
-        <!-- <GMapMarker
-                v-for="m in filteredMarkers"
-                :key="m.position.lat"
-                :position="m.position"
-                :icon="m.icon"
-                :clickable="true"
-                @click="handleMarkerClicked(m)"
-              >
-              </GMapMarker> -->
-        <!-- <GMapMarker
-                v-show="userLocation"
-                :position="userLocation"
-              ></GMapMarker> -->
       </GMapMap>
     </div>
     <div>
@@ -41,8 +28,10 @@
         <PoIMapStackSection
           @site-clicked="pan.panToSite"
           @location-clicked="pan.panToLocation"
+          :site-label="siteLabel"
           :location="location"
-          :depth="3"
+          :depth="startingDepth"
+          :heading="startingHeading"
         />
       </template>
     </div>
@@ -79,6 +68,18 @@ export default defineComponent({
     locations: {
       type: Object,
       required: true,
+    },
+    startingHeading: {
+      type: Number,
+      default: 1,
+    },
+    startingDepth: {
+      type: Number,
+      default: 1,
+    },
+    siteLabel: {
+      type: String,
+      default: "Sites",
     },
   },
   setup(props) {

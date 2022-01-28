@@ -23,14 +23,7 @@
 
       <VoterRegistrationProcess />
       <FAQs :faqs="faqs" />
-      <PoIMap :locations="locations"></PoIMap>
-
-      <!-- <Map
-        :registrationSites="registrationSites"
-        :locations="locations"
-        :locationTree="locationTree"
-        :stack="true"
-      /> -->
+      <PoIMap class="container-md" :locations="locations" />
     </div>
   </GuestLayout>
 </template>
@@ -56,7 +49,8 @@ export default {
     FAQs,
     InformationCarousel,
     VoterRegistrationProcess,
-    NewsDisplay, ElectionProcessInfo,
+    NewsDisplay,
+    ElectionProcessInfo,
   },
   props: {
     faqs: {

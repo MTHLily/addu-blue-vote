@@ -1,7 +1,9 @@
 <template>
   <GuestLayout>
-    <h1>Voting Precints</h1>
-    <PoIMap :locations="locations" />
+    <div class="container-md">
+      <h1>Voting Precints</h1>
+      <PoIMap :locations="locations" site-label="Voting Precints" />
+    </div>
   </GuestLayout>
 </template>
 

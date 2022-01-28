@@ -35,7 +35,7 @@
         />
       </template>
     </div>
-
+    <PoIModal v-model:show="showModal" :site="currentSite" />
     <div ref="mapTopLeft"></div>
     <div :ref="(ref) => (refs.mapTopRight.value = ref)">
       <div class="vw-100 me-2" style="max-width: 300px">
@@ -61,9 +61,10 @@ import { NTreeSelect } from "naive-ui";
 import PoIMapStackSection from "./Partials/PoIMapStackSection.vue";
 import PoIMapMarker from "./Partials/PoIMapMarker.vue";
 import _ from "lodash";
+import PoIModal from "./PoIModal.vue";
 
 export default defineComponent({
-  components: { PoIMapMarker, PoIMapStackSection, NTreeSelect },
+  components: { PoIMapMarker, PoIMapStackSection, NTreeSelect, PoIModal },
   props: {
     locations: {
       type: Object,
@@ -174,6 +175,12 @@ export default defineComponent({
     });
 
     /**
+     * Modal
+     */
+    const currentSite = ref(null);
+    const showModal = ref(false);
+
+    /**
     Pan Functions
      */
     const pan = ({ lat, lng }, zoom) => {
@@ -188,6 +195,8 @@ export default defineComponent({
     };
     const panToSite = (site) => {
       pan({ lat: site.latitude, lng: site.longitude }, 16);
+      showModal.value = true;
+      currentSite.value = site;
     };
     const panToLocation = (location_id) => {
       const location = flatLocations.value.find(
@@ -211,6 +220,8 @@ export default defineComponent({
         panToLocation,
         panToSite,
       },
+      currentSite,
+      showModal,
     };
   },
 });

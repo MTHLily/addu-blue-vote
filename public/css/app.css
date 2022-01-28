@@ -14830,3 +14830,8 @@ textarea.form-control-lg {
 .poi-map {
   height: clamp(300px, 100vh, 800px);
 }
+
+.site-card {
+  height: clamp(300px, 100vh, 450px);
+  width: clamp(600px, 100vw, 600px);
+}

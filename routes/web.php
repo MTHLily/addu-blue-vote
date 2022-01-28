@@ -54,6 +54,10 @@ Route::get("/voters-education", [
     "voters_education",
 ])->name("voters-education");
 
+Route::get("/", function () {
+    return redirect()->route("voters-education");
+});
+
 Route::get("/voting-precints", [
     GuestController::class,
     "voting_precints",
@@ -94,8 +98,9 @@ Route::prefix("candidate-profiles")->group(function () {
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
 
-Route::get("/", [GuestController::class, "voters_registration"])->name(
-    "voters-registration"
-);
+Route::get("/voters-registration", [
+    GuestController::class,
+    "voters_registration",
+])->name("voters-registration");
 
 require __DIR__ . "/auth.php";

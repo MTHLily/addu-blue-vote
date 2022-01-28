@@ -17,7 +17,7 @@ class GuestController extends Controller
     {
         $locations = $service->fetchPointsOfInterestByLocations(1);
 
-        return Inertia::render("Welcome", [
+        return Inertia::render("VotersRegistration", [
             "faqs" => FrequentlyAskedQuestion::all(),
             "information" => InformationSnippet::all(),
             "locations" => $locations,

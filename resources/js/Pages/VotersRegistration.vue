@@ -17,7 +17,14 @@
 
       <VoterRegistrationProcess />
       <FAQs :faqs="faqs" />
-      <PoIMap class="container-md" :locations="locations" />
+      <div class="container-md mt-4">
+        <h1 class="text-primary text-center">Registration Sites</h1>
+        <PoIMap
+          class="container-md"
+          site-label="Registration Sites"
+          :locations="locations"
+        />
+      </div>
     </div>
   </GuestLayout>
 </template>

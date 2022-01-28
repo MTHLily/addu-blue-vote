@@ -14,15 +14,37 @@
               >Candidate Profiles</Link
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#voter-registration">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Registration Process
             </a>
+            <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="#voter-registration">Voter Registration</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#faqs">FAQs</a>
+              </li>
+              <!-- <li>
+                <a
+                  class="dropdown-item"
+                  href="https://irehistro.comelec.gov.ph/"
+                  target="_blank"
+                >
+                  iRehistro
+                </a>
+              </li> -->
+              <li>
+                <a class="dropdown-item" href="#map">Registration Sites</a>
+              </li>
+            </ul>
           </li>
+
+
           <li class="nav-item">
             <a class="nav-link" href="#faqs">FAQs</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               class="nav-link"
               href="https://irehistro.comelec.gov.ph/"
@@ -30,7 +52,7 @@
             >
               iRehistro
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="#map">Registration Sites</a>
           </li>

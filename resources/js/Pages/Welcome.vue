@@ -14,9 +14,17 @@
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>
+      <!-- voters education -->
+      <div class="container-md overflow-auto">
+        <ElectionProcessInfo></ElectionProcessInfo>
+        <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
+        <NewsDisplay :articles="articles"></NewsDisplay>
+      </div>
+
       <VoterRegistrationProcess />
       <FAQs :faqs="faqs" />
       <PoIMap :locations="locations"></PoIMap>
+
       <!-- <Map
         :registrationSites="registrationSites"
         :locations="locations"
@@ -35,6 +43,8 @@ import VoterRegistrationProcess from "../Components/VoterRegistrationProcess.vue
 import FAQs from "../Components/FAQs/FAQList.vue";
 import InformationCarousel from "../Components/Information/InformationCarousel.vue";
 import PoIMap from "@/Components/PointsOfInterest/PoIMap.vue";
+import NewsDisplay from "../Components/News/NewsDisplay.vue";
+import ElectionProcessInfo from "../Components/ElectionProcessInfo.vue";
 
 export default {
   components: {
@@ -46,6 +56,7 @@ export default {
     FAQs,
     InformationCarousel,
     VoterRegistrationProcess,
+    NewsDisplay, ElectionProcessInfo,
   },
   props: {
     faqs: {
@@ -57,6 +68,10 @@ export default {
       default: [],
     },
     locations: Array,
+    articles: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 };
 </script>

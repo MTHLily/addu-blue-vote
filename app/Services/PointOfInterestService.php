@@ -30,7 +30,11 @@ class PointOfInterestService
     {
         $locations = Location::tree()
             ->depthFirst()
-            ->with(["sites" => fn($query) => $query->withLocationAttribs()])
+            ->with([
+                "sites" => fn($query) => $query
+                    ->where("point_of_interest_type_id", $type)
+                    ->withLocationAttribs(),
+            ])
             ->get()
             ->toTree();
 

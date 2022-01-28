@@ -7,7 +7,6 @@ import { InertiaProgress } from "@inertiajs/progress";
 
 import VueGoogleMaps from "@fawmi/vue-google-maps";
 import colorPicker from "vue3-colorpicker";
-import "vue3-colorpicker/bundle.css";
 
 const appName =
   window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";

@@ -1,32 +1,27 @@
 <template>
-  <div class="map container" id="map">
-    <div class="d-flex flex-column">
-      <h2 class="text-primary text-center p-3 fw-bolder">
-        Voters Registration Sites
-      </h2>
-      <div class="row">
-        <div class="map--container">
-          <GMapMap
-            :ref="
-              (ref) => {
-                refs.gMapRef.value = ref;
-              }
-            "
-            :zoom="mapOptions.zoom"
-            :center="mapOptions.center"
-            :options="mapOptions.opts"
-            map-type-id="satellite"
-            style="width: 100%; height: clamp(200px, 80vh, 800px)"
-          >
-            <template v-for="location in flatLocations" :key="location.id">
-              <PoIMapMarker
-                v-for="site in location.sites"
-                @marker-clicked="pan.panToSite"
-                :key="site.id"
-                :site="site"
-              ></PoIMapMarker>
-            </template>
-            <!-- <GMapMarker
+  <div class="d-flex flex-column" id="map">
+    <div class="flex-grow-1">
+      <GMapMap
+        class="poi-map"
+        :ref="
+          (ref) => {
+            refs.gMapRef.value = ref;
+          }
+        "
+        :zoom="mapOptions.zoom"
+        :center="mapOptions.center"
+        :options="mapOptions.opts"
+        map-type-id="satellite"
+      >
+        <template v-for="location in flatLocations" :key="location.id">
+          <PoIMapMarker
+            v-for="site in location.sites"
+            @marker-clicked="pan.panToSite"
+            :key="site.id"
+            :site="site"
+          ></PoIMapMarker>
+        </template>
+        <!-- <GMapMarker
                 v-for="m in filteredMarkers"
                 :key="m.position.lat"
                 :position="m.position"
@@ -35,42 +30,39 @@
                 @click="handleMarkerClicked(m)"
               >
               </GMapMarker> -->
-            <!-- <GMapMarker
+        <!-- <GMapMarker
                 v-show="userLocation"
                 :position="userLocation"
               ></GMapMarker> -->
-          </GMapMap>
-          <div ref="mapTopLeft"></div>
-          <div :ref="(ref) => (refs.mapTopRight.value = ref)">
-            <div class="vw-100 me-2" style="max-width: 300px">
-              <n-tree-select
-                multiple
-                cascade
-                checkable
-                filterable
-                placeholder="Filter locations..."
-                v-model:value="filteredLocationIds"
-                :options="filterOptions"
-                check-strategy="parent"
-              />
-            </div>
-          </div>
-          <div ref="mapBottomRight"></div>
-          <pre></pre>
-          <div class="mt-2"></div>
-        </div>
-      </div>
-      <div>
-        <template v-for="location in filteredLocations" :key="location.id">
-          <PoIMapStackSection
-            @site-clicked="pan.panToSite"
-            @location-clicked="pan.panToLocation"
-            :location="location"
-            :depth="3"
-          />
-        </template>
+      </GMapMap>
+    </div>
+    <div>
+      <template v-for="location in filteredLocations" :key="location.id">
+        <PoIMapStackSection
+          @site-clicked="pan.panToSite"
+          @location-clicked="pan.panToLocation"
+          :location="location"
+          :depth="3"
+        />
+      </template>
+    </div>
+
+    <div ref="mapTopLeft"></div>
+    <div :ref="(ref) => (refs.mapTopRight.value = ref)">
+      <div class="vw-100 me-2" style="max-width: 300px">
+        <n-tree-select
+          multiple
+          cascade
+          checkable
+          filterable
+          placeholder="Filter locations..."
+          v-model:value="filteredLocationIds"
+          :options="filterOptions"
+          check-strategy="parent"
+        />
       </div>
     </div>
+    <div ref="mapBottomRight"></div>
   </div>
 </template>
 

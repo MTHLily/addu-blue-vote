@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/functions";
 
-$primary: #2365A1;
+$primary: #2365a1;
 $secondary: cyan;
 $light: lightblue;
 $info: #ccdfff;
@@ -66,4 +66,8 @@ $enable-shadows: true;
 
 .is-invalid .toastui-editor-defaultUI {
   border-color: $danger;
+}
+
+.poi-map {
+  height: clamp(300px, 100vh, 800px);
 }

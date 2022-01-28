@@ -1,32 +1,25 @@
 <template lang="">
-    <Head title="Voters' Registration Process">
-        <meta
-        name="description"
-        content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines. Developed by AdDU ARISEn Labs."
-        />
-        <meta
-        name="keywords"
-        content="philippines, election, 2022, election news"
-        />
-    </Head>
-    <GuestLayout>
-        <div>
-            <div class="w-100">
-                <InformationCarousel :information="information"></InformationCarousel>
-            </div>
+  <Head title="Voters' Registration Process">
+    <meta
+      name="description"
+      content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines. Developed by AdDU ARISEn Labs."
+    />
+    <meta
+      name="keywords"
+      content="philippines, election, 2022, election news"
+    />
+  </Head>
+  <GuestLayout>
+    <div>
+      <div class="w-100">
+        <InformationCarousel :information="information"></InformationCarousel>
+      </div>
 
-            <VoterRegistrationProcess />
-            <FAQs :faqs="faqs" />
-            <PoIMap :locations="locations"></PoIMap>
-
-            <!-- <Map
-                :registrationSites="registrationSites"
-                :locations="locations"
-                :locationTree="locationTree"
-                :stack="true"
-            /> -->
-        </div>
-    </GuestLayout>
+      <VoterRegistrationProcess />
+      <FAQs :faqs="faqs" />
+      <PoIMap :locations="locations" />
+    </div>
+  </GuestLayout>
 </template>
 <script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
@@ -49,7 +42,8 @@ export default {
     FAQs,
     InformationCarousel,
     VoterRegistrationProcess,
-    NewsDisplay, ElectionProcessInfo,
+    NewsDisplay,
+    ElectionProcessInfo,
   },
   props: {
     faqs: {

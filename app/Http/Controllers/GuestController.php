@@ -16,11 +16,9 @@ use Inertia\Inertia;
 
 class GuestController extends Controller
 {
-    public function voters_registration()
+    public function voters_registration(PointOfInterestService $service)
     {
-        $locations = (new PointOfInterestService())->fetchPointsOfInterestByLocations(
-            1
-        );
+        $locations = $service->fetchPointsOfInterestByLocations(1);
 
         return Inertia::render("Welcome", [
             "faqs" => FrequentlyAskedQuestion::all(),
@@ -37,6 +35,15 @@ class GuestController extends Controller
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,
+        ]);
+    }
+
+    public function voting_precints(PointOfInterestService $service)
+    {
+        $locations = $service->fetchPointsOfInterestByLocations(2); // Get All Voting Precints
+
+        return Inertia::render("VotingPrecints", [
+            "locations" => $locations,
         ]);
     }
 

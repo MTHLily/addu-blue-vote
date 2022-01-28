@@ -18,6 +18,11 @@
               Candidates Profile
             </Link>
           </li>
+          <li class="nav-item">
+            <Link class="nav-link" :href="route('voting-precints')">
+              Voting Precints
+            </Link>
+          </li>
         </ul>
       </template>
     </ArisenHeader>
@@ -35,14 +40,10 @@ import ArisenHeader from "./Partials/Header.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
-  props: {
-    locations: Array,
-  },
   components: {
     ArisenFooter,
     ArisenHeader,
     Link,
   },
-  data: () => ({}),
 };
 </script>

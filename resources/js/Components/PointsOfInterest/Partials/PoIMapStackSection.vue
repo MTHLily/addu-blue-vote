@@ -1,6 +1,9 @@
 <template>
   <div>
-    <component :is="`h${heading}`">
+    <component
+      :is="`h${heading}`"
+      v-if="location.sites.length || location.children.length"
+    >
       <div href="#map" @click.stop="$emit('location-clicked', location.id)">
         {{ location.name }}
       </div>

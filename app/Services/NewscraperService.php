@@ -427,9 +427,11 @@ class NewscraperService
         $candidates = Candidate::all(["id", "name", "keywords"]);
         $keywords = $candidates->map(function ($candidate) {
             $name = Str::of($candidate->name)
+                ->upper()
                 ->explode(" ")
                 ->toArray();
             $keys = Str::of($candidate->keywords)
+                ->upper()
                 ->explode(",")
                 ->toArray();
             return [
@@ -497,7 +499,7 @@ class NewscraperService
         }
 
         $keywords->each(function ($candidate) use ($text, $relatedCandidates) {
-            $text = Str::of($text);
+            $text = Str::of(Str::upper($text));
             if (
                 $text->contains($candidate["name"]) ||
                 $text->contains($candidate["keywords"])

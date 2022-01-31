@@ -54,9 +54,8 @@
         </div>
         <div class="col">
           <Twitter
-            class="twitterfeed w-100"
+            class="twitterfeed"
             :candidate="candidate"
-            style="max-height: 600px"
             :feed-url="candidate.twitter_timeline_feed_url"
           ></Twitter>
         </div>
@@ -142,6 +141,9 @@ export default defineComponent({
 } */
 .twitterfeed {
   overflow-y: scroll;
+  height: 100%;
+  min-height: 600px;
+  max-height: 1000px;
 }
 
 .twitterfeed::-webkit-scrollbar-track {

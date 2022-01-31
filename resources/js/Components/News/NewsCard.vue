@@ -16,12 +16,12 @@
         {{ news.news_source.name }}
       </span>
     </div>
-    <p
+    <div
       class="card-text text-wrap"
       :style="{ 'font-size': small ? '14px' : '15px' }"
     >
       {{ news.description }}
-    </p>
+    </div>
     <div class="d-flex justify-content-between">
       <p
         class="card-subtitle mb-2 text-muted"

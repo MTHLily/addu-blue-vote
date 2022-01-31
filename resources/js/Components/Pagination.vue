@@ -1,6 +1,12 @@
 <template>
   <nav aria-label="Page navigation" :key="pagination.per_page">
-    <ul class="pagination">
+    <ul
+      class="pagination"
+      :class="{
+        'pagination-lg': size === 'lg',
+        'pagination-sm': size === 'sm',
+      }"
+    >
       <template v-for="(link, ind) in pagination.links" :key="link.url">
         <li class="page-item" :class="{ disabled: link.active }">
           <template v-if="link.label !== '...'">
@@ -50,6 +56,10 @@ export default defineComponent({
   components: { Link, NPopconfirm },
   props: {
     pagination: Object,
+    size: {
+      type: String,
+      default: "md",
+    },
   },
   methods: {
     changePage() {

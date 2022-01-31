@@ -68,6 +68,7 @@ export default defineComponent({
       Inertia.visit(this.pagination.path, {
         data: { page: this.gotoPage, itemsPerPage: this.pagination.per_page },
         preserveScroll: true,
+        preserveState: true,
       });
     },
   },

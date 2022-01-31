@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="card gap-2 p-3" style="border-radius: 20px">
+  <article class="card gap-2 p-3" style="border-radius: 20px">
     <h5 class="card-title" :style="{ 'font-size': small ? '14px' : '15px' }">
       {{ news.title }}
     </h5>
@@ -38,7 +38,7 @@
         READ MORE
       </a>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>

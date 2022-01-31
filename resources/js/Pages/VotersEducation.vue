@@ -11,6 +11,7 @@
   </Head>
   <GuestLayout>
     <div class="container-md overflow-auto">
+      <VideoResources />
       <ElectionProcessInfo></ElectionProcessInfo>
       <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
       <NewsDisplay :articles="articles"></NewsDisplay>
@@ -24,9 +25,17 @@ import NewsDisplay from "../Components/News/NewsDisplay.vue";
 import ElectionProcessInfo from "../Components/ElectionProcessInfo.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import GuestLayout from "../Layouts/Guest.vue";
+import VideoResources from "@/Components/VideoResources/VideoResources.vue";
 
 export default defineComponent({
-  components: { NewsDisplay, ElectionProcessInfo, GuestLayout, Head },
+  components: {
+    NewsDisplay,
+    ElectionProcessInfo,
+    GuestLayout,
+    Head,
+    VideoResources,
+  },
+
   props: {
     articles: {
       type: Object,

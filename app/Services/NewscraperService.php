@@ -116,7 +116,7 @@ class NewscraperService
             }
         }
 
-        dump($articles);
+        // dump($articles);
         return $articles;
     }
 
@@ -186,7 +186,7 @@ class NewscraperService
 
         $articles = array_merge($articles, $newsArticles);
 
-        dump($articles);
+        // // dump($articles);
         return $articles;
     }
 
@@ -233,7 +233,7 @@ class NewscraperService
 
         $articles = array_merge($articles, $newsArticles);
         // dd($articles);
-        dump($articles);
+        // // dump($articles);
         return $articles;
     }
 
@@ -271,7 +271,7 @@ class NewscraperService
                 return $article;
             });
 
-        dump($newsArticles);
+        // dump($newsArticles);
         return $newsArticles;
     }
 
@@ -310,7 +310,7 @@ class NewscraperService
                 });
         }
 
-        dump($newsArticles);
+        // dump($newsArticles);
 
         return $newsArticles;
     }
@@ -336,11 +336,11 @@ class NewscraperService
                     $article->save();
                     FindRelatedCandidatesForNewsArticle::dispatch($article);
                 }
-                // dump($article);
+                // // dump($article);
                 return $article;
             });
 
-        dump($newsArticles);
+        // dump($newsArticles);
         return $newsArticles;
     }
 
@@ -377,7 +377,7 @@ class NewscraperService
             return $article;
         });
 
-        dump($newsArticles);
+        // dump($newsArticles);
         return $newsArticles;
     }
 
@@ -411,7 +411,7 @@ class NewscraperService
                 return $article;
             });
 
-        dump($newsArticles);
+        // dump($newsArticles);
 
         return $newsArticles;
     }
@@ -443,7 +443,7 @@ class NewscraperService
 
         // Parser for ABS-CBN
         if ($article->news_source_id === $this->sources_id["abs_cbn"]) {
-            dump("ABS CBN");
+            // dump("ABS CBN");
             $text = $crawler->filter(".article-block")->text();
         }
         // Parser for Rappler
@@ -474,7 +474,7 @@ class NewscraperService
             //     ->text();
         }
 
-        dump($text);
+        // dump($text);
 
         // Parser for Inquirer
         if ($article->news_source_id === $this->sources_id["inquirer_net"]) {
@@ -506,7 +506,7 @@ class NewscraperService
             }
         });
 
-        dump($relatedCandidates->pluck("name"));
+        // dump($relatedCandidates->pluck("name"));
 
         return $relatedCandidates;
 
@@ -533,24 +533,24 @@ class NewscraperService
     public function get(): array
     {
         // $articles = [];
-        // dump("ABS-CBN");
+        // // dump("ABS-CBN");
         // $articles = $this->abs_cbn();
-        // dump("Philstar");
+        // // dump("Philstar");
         // $articles = $this->phil_star();
-        // dump("Rappler");
+        // // dump("Rappler");
         // $articles = $this->rappler();
-        // dump("Comelec");
+        // // dump("Comelec");
         // $articles = $this->comelec();
-        // dump("CNN");
+        // // dump("CNN");
         // /**
         //  * No section for electiosn
         //  */
         // // $articles = $this->cnn_ph();
-        // dump("Manila Times");
+        // // dump("Manila Times");
         // $articles = $this->manila_times();
-        // dump("Inquirer");
+        // // dump("Inquirer");
         // $articles = $this->inquirer_net();
-        // dump("GMA");
+        // // dump("GMA");
         /**
          * Uses JS to load articles, can't get
          */
@@ -566,7 +566,7 @@ class NewscraperService
         ScrapeNewsSite::dispatch("inquirer_net");
         ScrapeNewsSite::dispatch("gma");
 
-        dump($articles);
+        // dump($articles);
         return $articles;
     }
 }

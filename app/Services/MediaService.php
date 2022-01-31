@@ -6,19 +6,25 @@ use Illuminate\Support\Arr;
 
 class MediaService
 {
-    public function attachOnlyOne($mediable, $media, string $collectionName)
-    {
+    public function attachOnlyOne(
+        $mediable,
+        $media,
+        string $collectionName,
+        string $fileName
+    ) {
         // // Handle Media
         // $media = Arr::get($request->validated(), "media", null);
 
         if ($media !== null) {
             $mediable
                 ->media()
-                ->whereNotIn("id", Arr::pluck($media, "id"))
+                ->whereNotIn("id", Arr::wrap(Arr::get($media, "id")))
                 ->delete();
+
             if ($mediable->media()->count() === 0 && isset($media["file"])) {
                 $mediable
                     ->addMedia($media["file"])
+                    ->usingName($fileName)
                     ->toMediaCollection($collectionName);
             }
         } else {

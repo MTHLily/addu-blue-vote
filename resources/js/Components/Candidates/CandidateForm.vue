@@ -23,7 +23,7 @@
             'is-invalid': form.errors.name,
           }"
           id="candidateName"
-          placeholder="District Name"
+          placeholder="Candidate Name"
         />
         <div class="invalid-feedback">{{ form.errors.name }}</div>
       </div>

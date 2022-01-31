@@ -49,11 +49,16 @@
           <NewsArticles
             class="w-100 h-100 mb-3"
             :articles="relatedArticles"
-            :style="{'border-radius':'5px'}"
+            :style="{ 'border-radius': '5px' }"
           ></NewsArticles>
         </div>
         <div class="col">
-          <Twitter class="twitterfeed w-100" :candidate="candidate" style="max-height:1155px"></Twitter>
+          <Twitter
+            class="twitterfeed w-100"
+            :candidate="candidate"
+            style="max-height: 600px"
+            :feed-url="candidate.twitter_timeline_feed_url"
+          ></Twitter>
         </div>
       </div>
     </div>
@@ -135,27 +140,24 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-position: bottom;
 } */
-.twitterfeed{
+.twitterfeed {
   overflow-y: scroll;
 }
 
-.twitterfeed::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
-	border-radius: 8px;
-	background-color: #F5F5F5;
+.twitterfeed::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f5f5f5;
 }
 
-.twitterfeed::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
+.twitterfeed::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
 }
 
-.twitterfeed::-webkit-scrollbar-thumb
-{
-	border-radius: 8px;
-	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.1);
-	background-color: #2365A1;
+.twitterfeed::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: #2365a1;
 }
 </style>

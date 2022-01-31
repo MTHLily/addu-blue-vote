@@ -23,7 +23,7 @@
         </template>
       </GMapMap>
     </div>
-    <div>
+    <div v-if="!noStack">
       <template v-for="location in filteredLocations" :key="location.id">
         <PoIMapStackSection
           @site-clicked="pan.panToSite"
@@ -81,6 +81,10 @@ export default defineComponent({
     siteLabel: {
       type: String,
       default: "Sites",
+    },
+    noStack: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

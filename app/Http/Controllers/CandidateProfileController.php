@@ -25,6 +25,10 @@ class CandidateProfileController extends Controller
             ])
             ->get();
 
+        $nationalPositions->each(
+            fn($position) => $position->candidates->append("profile_photo_url")
+        );
+
         return Inertia::render("CandidateProfiles/Index", [
             "locations" => $locations,
             "nationalPositions" => $nationalPositions,
@@ -42,6 +46,8 @@ class CandidateProfileController extends Controller
             "stances",
             "media",
         ]);
+
+        $candidate->append("profile_photo_url");
 
         $relatedArticles = $candidate
             ->relatedArticles()

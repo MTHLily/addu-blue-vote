@@ -4,8 +4,8 @@
       <div class="col col-md-4">
         <img
           :src="
-            candidate.media.length > 0
-              ? candidate.media[0].original_url
+            candidate.profile_photo_url?.thumbnailUrl
+              ? candidate.profile_photo_url.thumbnailUrl
               : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
           "
           class="img-fluid rounded-start"

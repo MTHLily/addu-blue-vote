@@ -4,10 +4,10 @@
     <div class="col-12 col-md-4">
       <img
         :src="
-            candidate.media.length > 0
-              ? candidate.media[0].original_url
-              : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
-          "
+          candidate.profile_photo_url?.url
+            ? candidate.profile_photo_url.url
+            : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
+        "
         class="img-fluid rounded w-100"
         :alt="candidate.name"
       />

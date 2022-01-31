@@ -4,12 +4,12 @@
   <DashboardLayout>
     <div class="d-flex flex-column h-100 w-75 mx-auto">
       <GMapMap
+        class="poi-map"
         :zoom="16"
         :center="center"
         :options="gMapOptions"
         ref="gMapRef"
         map-type-id="hybrid"
-        style="width: 100%; height: clamp(200px, 50vh, 800px)"
       >
         <GMapMarker
           v-for="m in markers"
@@ -81,9 +81,11 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import BlueVoteTable from "../../Components/BlueVoteTable.vue";
 import { watch } from "@vue/runtime-core";
 import marked from "marked";
+import PoIMap from "@/Components/PointsOfInterest/PoIMap.vue";
 
 export default {
   components: {
+    PoIMap,
     DashboardLayout,
     BlueVoteTable,
     Link,

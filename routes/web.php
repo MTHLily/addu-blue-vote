@@ -47,6 +47,11 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);
         Route::resource("news-sources", NewsSourceController::class);
+
+        Route::patch("video-resources/{videoResource}/check}", [
+            VideoResourceController::class,
+            "check",
+        ])->name("video-resources.check");
         Route::resource("video-resources", VideoResourceController::class);
     });
 });

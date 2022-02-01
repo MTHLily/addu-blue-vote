@@ -47,17 +47,22 @@ class VideoResourceController extends Controller
             "Video resource created!"
         );
     }
-    
 
     /**
-     * Display the specified resource.
+     * Check the video resource as featured.
      *
      * @param  \App\Models\VideoResource  $videoResource
      * @return \Illuminate\Http\Response
      */
-    public function show(VideoResource $videoResource)
+    public function check(VideoResource $videoResource)
     {
-        //
+        $videoResource->featured = !$videoResource->featured;
+        $videoResource->save();
+
+        return Redirect::back()->with(
+            "success",
+            "Updated " . $videoResource->title
+        );
     }
 
     /**
@@ -67,7 +72,7 @@ class VideoResourceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(VideoResource $videoResource)
-    {                                                                                                                                                                                                                                          
+    {
         return Inertia::render("VideoResources/Edit", [
             "video_resource" => $videoResource,
         ]);

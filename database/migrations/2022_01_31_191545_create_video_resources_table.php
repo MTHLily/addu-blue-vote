@@ -1,5 +1,4 @@
 <?php
-use App\Models\Candidate;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +12,14 @@ class CreateVideoResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_resources', function (Blueprint $table) {
+        Schema::create("video_resources", function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->text('information')->nullable();;
-            $table->text('guests')->nullable();;
-            $table->text('link');
+            $table->string("title");
+            $table->string("description");
+            $table->text("information")->nullable();
+            $table->text("guests")->nullable();
+            $table->text("link");
+            $table->boolean("featured")->default(false);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateVideoResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_resources');
+        Schema::dropIfExists("video_resources");
     }
 }

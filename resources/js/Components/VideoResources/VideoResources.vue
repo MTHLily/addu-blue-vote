@@ -27,22 +27,23 @@
         </p>
       </div>
       <div class="col-12 col-md-4 h-100">
-        <div class="overflow-y-scroll" style="max-height: 29rem">
-          <h2>Featured Videos</h2>
-          <div class="d-flex flex-column gap-2">
-            <template
-              v-for="featuredResource in featuredVideos"
-              :key="featuredResource.id"
+        <h2>Featured Videos</h2>
+        <div
+          class="d-flex flex-column gap-2 overflow-y-scroll"
+          style="max-height: 29rem"
+        >
+          <template
+            v-for="featuredResource in featuredVideos"
+            :key="featuredResource.id"
+          >
+            <a
+              href="#video-resources"
+              class="text-decoration-none text-black"
+              @click="setCurrentVideo(featuredResource)"
             >
-              <a
-                href="#video-resources"
-                class="text-decoration-none text-black"
-                @click="setCurrentVideo(featuredResource)"
-              >
-                <VideoResourceCard :video-resource="featuredResource" />
-              </a>
-            </template>
-          </div>
+              <VideoResourceCard :video-resource="featuredResource" />
+            </a>
+          </template>
         </div>
       </div>
     </div>

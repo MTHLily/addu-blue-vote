@@ -1,3 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.n-button {
+  background-color: var(--n-color) !important;
+  font-weight: var(--n-font-weight) !important;
+}

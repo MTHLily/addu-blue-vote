@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-column">
-    <h1>
+    <h1 id="video-resources">
       <span
-        class="badge text-wrap text-whitefw-bolder p-3 fs-5"
+        class="badge text-wrap text-white fw-bolder p-3 fs-5"
         :style="{
           'background-color': '#CE2029',
           'border-radius': '30px',
@@ -26,18 +26,23 @@
           Guests: {{ currentVideo.guests }}
         </p>
       </div>
-      <div class="col-12 col-md-4 d-flex flex-column">
-        <h2>Featured Videos</h2>
-        <div class="d-flex flex-column gap-2">
-          <template
-            v-for="featuredResource in featuredVideos"
-            :key="featuredResource.id"
-          >
-            <VideoResourceCard
-              :video-resource="featuredResource"
-              @click="setCurrentVideo(featuredResource)"
-            />
-          </template>
+      <div class="col-12 col-md-4 h-100">
+        <div class="overflow-y-scroll" style="max-height: 29rem">
+          <h2>Featured Videos</h2>
+          <div class="d-flex flex-column gap-2">
+            <template
+              v-for="featuredResource in featuredVideos"
+              :key="featuredResource.id"
+            >
+              <a
+                href="#video-resources"
+                class="text-decoration-none text-black"
+                @click="setCurrentVideo(featuredResource)"
+              >
+                <VideoResourceCard :video-resource="featuredResource" />
+              </a>
+            </template>
+          </div>
         </div>
       </div>
     </div>
@@ -46,10 +51,10 @@
       <PaginatedList :pagination="videos" page-key="videos">
         <template #list-item="{ item }">
           <a
-            href="#"
+            href="#video-resources"
             class="list-group-item list-group-item-action"
             :class="{ active: item.id === currentVideo.id }"
-            @click.prevent="setCurrentVideo(item)"
+            @click="setCurrentVideo(item)"
           >
             {{ item.title }} -
             <span class="italic">{{ item.description }}</span>
@@ -87,7 +92,6 @@ export default defineComponent({
     const currentVideoEl = ref();
 
     const setCurrentVideo = (video) => {
-      currentVideoEl.value.scrollIntoView();
       currentVideo.value = video;
     };
 

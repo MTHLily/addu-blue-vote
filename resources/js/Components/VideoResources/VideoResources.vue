@@ -12,21 +12,25 @@
       </span>
     </h1>
     <div class="row">
-      <div class="col-9 d-flex flex-column">
+      <div class="col-12 col-md-8 d-flex flex-column" ref="currentVideoEl">
         <h2>{{ currentVideo.title }}</h2>
         <div class="ratio ratio-16x9">
           <iframe
-            :src="currentVideo.embed_link"
+            :src="currentVideo.link"
             :title="currentVideo.title"
             allowfullscreen
           />
         </div>
+        <p class="lead">{{ currentVideo.information }}</p>
+        <p v-if="currentVideo.guests != ''" class="lead italic fs-6">
+          Guests: {{ currentVideo.guests }}
+        </p>
       </div>
-      <div class="col-3 d-flex flex-column">
+      <div class="col-12 col-md-4 d-flex flex-column">
         <h2>Featured Videos</h2>
         <div class="d-flex flex-column gap-2">
           <template
-            v-for="featuredResource in featured"
+            v-for="featuredResource in featuredVideos"
             :key="featuredResource.id"
           >
             <VideoResourceCard
@@ -37,88 +41,57 @@
         </div>
       </div>
     </div>
-    <div class="row">stack here</div>
+    <div class="row">
+      <h2>More Videos</h2>
+      <PaginatedList :pagination="videos" page-key="videos">
+        <template #list-item="{ item }">
+          <a
+            href="#"
+            class="list-group-item list-group-item-action"
+            :class="{ active: item.id === currentVideo.id }"
+            @click.prevent="setCurrentVideo(item)"
+          >
+            {{ item.title }} -
+            <span class="italic">{{ item.description }}</span>
+          </a>
+        </template>
+      </PaginatedList>
+    </div>
   </div>
 </template>
 
 <script>
 import { computed, defineComponent, ref } from "vue";
 import VideoResourceCard from "./VideoResourceCard.vue";
+import PaginatedList from "../PaginatedList.vue";
 
 export default defineComponent({
-  components: { VideoResourceCard },
+  components: { VideoResourceCard, PaginatedList },
   props: {
     featured: {
       type: Array,
-      default: [
-        {
-          title: "HELLO",
-          description: "World",
-          id: 1,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-        {
-          title: "This is",
-          description: "a word",
-          id: 2,
-          embed_link: "https://www.youtube.com/embed/hExhv8x64Xo",
-        },
-        {
-          title: "Testing",
-          description: "123",
-          id: 3,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-      ],
     },
-    videoes: {
-      type: Array,
-      default: [
-        {
-          title: "HELLO",
-          description: "World",
-          id: 1,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-        {
-          title: "This is",
-          description: "a word",
-          id: 2,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-        {
-          title: "Testing",
-          description: "123",
-          id: 3,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-        {
-          title: "Should not be featured",
-          description: "123",
-          id: 4,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-        {
-          title: "No featured pls",
-          description: "123",
-          id: 5,
-          embed_link: "https://www.youtube.com/embed/Opp9nqiN5m0",
-        },
-      ],
+    videos: {
+      type: Object,
+      required: true,
     },
   },
   setup(props) {
-    const videoStack = computed(() =>
-      props.videos.filter((video) =>
-        props.featured.some((featured) => featured.id === video.id)
-      )
+    const featuredVideos = computed(() =>
+      !!props.featured && props.featured.length > 0
+        ? props.featured
+        : props.videos.data.slice(0, 3)
     );
 
-    const currentVideo = ref(props.featured[0]);
+    const currentVideo = ref(featuredVideos.value[0]);
+    const currentVideoEl = ref();
 
-    const setCurrentVideo = (video) => (currentVideo.value = video);
+    const setCurrentVideo = (video) => {
+      currentVideoEl.value.scrollIntoView();
+      currentVideo.value = video;
+    };
 
-    return { videoStack, currentVideo, setCurrentVideo };
+    return { currentVideo, currentVideoEl, setCurrentVideo, featuredVideos };
   },
 });
 </script>

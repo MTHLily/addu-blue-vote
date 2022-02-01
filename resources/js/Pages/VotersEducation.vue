@@ -11,7 +11,11 @@
   </Head>
   <GuestLayout>
     <div class="container-md overflow-auto">
-      <VideoResources />
+      <VideoResources
+        v-if="featuredVideos.length > 0 || videoResources.data.length > 0"
+        :featured="featuredVideos"
+        :videos="videoResources"
+      />
       <ElectionProcessInfo></ElectionProcessInfo>
       <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
       <NewsDisplay :articles="articles"></NewsDisplay>
@@ -41,6 +45,8 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
+    featuredVideos: Array,
+    videoResources: Object,
   },
 });
 </script>

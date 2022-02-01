@@ -8,6 +8,7 @@ use App\Models\InformationSnippet;
 use App\Models\Location;
 use App\Models\NewsArticle;
 use App\Models\RunningPosition;
+use App\Models\VideoResource;
 use App\Services\PointOfInterestService;
 use Inertia\Inertia;
 
@@ -26,12 +27,23 @@ class GuestController extends Controller
 
     public function voters_education()
     {
+        $featuredVideos = VideoResource::where("featured", true)->get();
+        $videoResources = VideoResource::where("featured", false)
+            ->orderByDesc("updated_at")
+            ->paginate(10, ["*"], "videos")
+            ->onEachSide(1)
+            ->withQueryString();
+
         $articles = NewsArticle::with("newsSource")
             ->orderByDesc("date")
-            ->paginate(10);
+            ->paginate(10)
+            ->onEachSide(1)
+            ->withQueryString();
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,
+            "featuredVideos" => $featuredVideos,
+            "videoResources" => $videoResources,
         ]);
     }
 

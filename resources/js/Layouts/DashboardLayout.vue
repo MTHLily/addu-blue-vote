@@ -134,6 +134,10 @@ export default {
               title: "Political Parties",
               route: "political-parties.index",
             },
+            {
+              title: "Video Resources",
+              route: "video-resources.index",
+            },
           ],
         },
       ];

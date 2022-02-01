@@ -15,6 +15,7 @@ use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\NewsSourceController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
+use App\Http\Controllers\VideoResourceController;
 use App\Http\Controllers\SVGController;
 use App\Imports\LocationSeedImport;
 use App\Jobs\FindRelatedCandidatesForNewsArticle;
@@ -54,6 +55,7 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);
         Route::resource("news-sources", NewsSourceController::class);
+        Route::resource("video-resources", VideoResourceController::class);
     });
 });
 

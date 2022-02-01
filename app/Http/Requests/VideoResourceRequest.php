@@ -27,8 +27,8 @@ class VideoResourceRequest extends FormRequest
             
                 "title" => "required",
                 "description" => "required",
-                "information" => "required",
-                "guests" => "required",
+                "information" => "nullable",
+                "guests" => "nullable",
                 "link" => "required",
            
         ];

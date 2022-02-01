@@ -17,8 +17,8 @@ class CreateVideoResourcesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->text('information');
-            $table->text('guests');
+            $table->text('information')->nullable();;
+            $table->text('guests')->nullable();;
             $table->text('link');
             $table->timestamps();
         });

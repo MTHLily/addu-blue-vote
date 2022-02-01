@@ -5,7 +5,7 @@
     :options="gMapOptions"
     ref="gMapRef"
     map-type-id="hybrid"
-    style="width: 100%; height: clamp(200px, 50vh, 800px)"
+    class="poi-map"
   >
     <GMapMarker :position="marker"> </GMapMarker>
   </GMapMap>

@@ -29,7 +29,6 @@
       >
         {{ news.date }}
       </p>
-
       <a
         :href="`${news.url}`"
         target="_blank"

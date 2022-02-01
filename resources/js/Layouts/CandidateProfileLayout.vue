@@ -3,19 +3,60 @@
     <ArisenHeader>
       <template #collapse-content>
         <ul class="nav navbar-nav navbar-dark ms-auto mb-2 mb-lg-0 gap-4">
-          <li class="nav-item">
-            <Link class="nav-link" :href="route('voters-registration')">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              id="votersRegistrationDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
               Voters Registration
-            </Link>
+            </a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="votersRegistrationDropdown"
+            >
+              <li>
+                <Link
+                  class="dropdown-item"
+                  :href="`${route('voters-registration')}#voter-registration`"
+                >
+                  Registration Process
+                </Link>
+              </li>
+              <li>
+                <Link
+                  class="dropdown-item"
+                  :href="`${route('voters-registration')}#faqs`"
+                >
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  class="dropdown-item"
+                  :href="`${route('voters-registration')}#map`"
+                >
+                  Registration Sites
+                </Link>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" :href="route('voters-education')"
-              >Voters Education</Link
-            >
+            <Link class="nav-link" :href="route('voters-education')">
+              Voters Education
+            </Link>
           </li>
           <li class="nav-item">
             <Link class="nav-link" :href="route('candidate-profiles.index')">
               Candidates Profile
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" :href="route('voting-precints')">
+              Voting Precints
             </Link>
           </li>
         </ul>
@@ -35,14 +76,10 @@ import ArisenHeader from "./Partials/Header.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
-  props: {
-    locations: Array,
-  },
   components: {
     ArisenFooter,
     ArisenHeader,
     Link,
   },
-  data: () => ({}),
 };
 </script>

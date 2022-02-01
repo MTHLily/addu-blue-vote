@@ -25,4 +25,43 @@ class PointOfInterestService
 
         return $poi;
     }
+
+    public function fetchPointsOfInterestByLocations(int $type = 1)
+    {
+        $locations = Location::tree()
+            ->depthFirst()
+            ->with([
+                "sites" => fn($query) => $query
+                    ->where("point_of_interest_type_id", $type)
+                    ->withLocationAttribs(),
+            ])
+            ->get()
+            ->toTree();
+
+        return $locations;
+    }
+
+    public function fetchPointsOfInterest(int $type = 1)
+    {
+        $points = PointOfInterest::where(
+            "point_of_interest_type_id",
+            "=",
+            $type
+        )
+            ->join(
+                "locations",
+                "point_of_interests.location_id",
+                "=",
+                "locations.id"
+            )
+            ->select(
+                "point_of_interests.*",
+                "locations.name as location_name",
+                "locations.color as location_color"
+            )
+            ->with("location")
+            ->get();
+
+        return $points;
+    }
 }

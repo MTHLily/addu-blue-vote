@@ -1,35 +1,25 @@
 <template>
   <header
     :attrs="$attrs"
-    class="
-      navbar
-      sticky-top
-      navbar-dark
-      bg-primary
-      navbar-expand-md
-      arisen-header
-    "
-    :class="{
-      'rounded-pill': !show,
-      'mb-5': !show,
-    }"
-    :style="{ top: show ? '0' : '2rem' }"
+    class="navbar sticky-top navbar-dark bg-primary navbar-expand-md arisen-header"
   >
     <div class="container-md">
-      <slot name="before-logo"> </slot>
-      <Link class="navbar-brand" href="/">
-        <img :src="logo" class="navbar-logo" />
-      </Link>
-      <slot name="after-logo">
-        <button
-          class="navbar-toggler"
-          @click="toggleNav"
-          type="button"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </slot>
+      <div class="d-flex">
+        <slot name="before-logo"> </slot>
+        <Link class="navbar-brand" href="/">
+          <img :src="logo" class="navbar-logo" />
+        </Link>
+        <slot name="after-logo">
+          <button
+            class="navbar-toggler"
+            @click="toggleNav"
+            type="button"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </slot>
+      </div>
       <div class="collapse navbar-collapse flex-grow-1" ref="navbarCollapse">
         <slot name="collapse-content"></slot>
       </div>
@@ -76,9 +66,5 @@ export default defineComponent({
 .navbar-logo {
   max-height: 50px;
   max-width: 80%;
-}
-
-.arisen-header {
-  transition: 250ms all ease-in;
 }
 </style>

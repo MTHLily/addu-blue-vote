@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PointOfInterestType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -9,10 +10,13 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        DB::table("point_of_interests")->truncate();
-        DB::table("point_of_interest_types")->insert([
-            "type" => "Registration Site",
-        ]);
+        $poiTypes = ["Registration Site", "Voting Precint"];
+
+        collect($poiTypes)->each(
+            fn($type) => PointOfInterestType::updateOrCreate([
+                "type" => $type,
+            ])
+        );
 
         DB::table("information_snippets")->truncate();
         DB::table("information_snippets")->insert([

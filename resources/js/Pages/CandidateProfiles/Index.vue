@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <title>2022 Candidates</title>
+  </Head>
   <Layout class="candidate-profile-background">
     <div class="container" style="margin-top: 5%">
       <span
@@ -53,7 +56,7 @@ import { defineComponent } from "@vue/runtime-core";
 import CandidateCarousel from "../../Components/CandidateProfile/CandidateCarousel.vue";
 import CandidateCollapse from "../../Components/CandidateProfile/NCollapse.vue";
 import Layout from "../../Layouts/CandidateProfileLayout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, Head } from "@inertiajs/inertia-vue3";
 import { NTreeSelect } from "naive-ui";
 import { ref } from "vue";
 
@@ -76,6 +79,7 @@ export default defineComponent({
   },
   components: {
     Link,
+    Head,
     CandidateCarousel,
     Layout,
     NTreeSelect,
@@ -85,7 +89,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.candidate-profile-background {
-  /* background: url("/images/candidate-index-bg.svg") bottom/100%; */
-}
+/* .candidate-profile-background {
+  background-image: url("/images/candidate-backgrounds.svg");
+  background-size: 100%;
+  background-position: bottom;
+} */
 </style>

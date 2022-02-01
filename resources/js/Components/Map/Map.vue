@@ -85,13 +85,7 @@
           </div>
           <div ref="mapTopRight">
             <div
-              class="
-                d-flex
-                flex-column
-                justify-content-end
-                align-items-end
-                gap-2
-              "
+              class="d-flex flex-column justify-content-end align-items-end gap-2"
             >
               <div class="w-100">
                 <DistrictLegend :districts="districts"></DistrictLegend>
@@ -294,29 +288,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.map--container {
-  position: relative;
-}
-
-.map--top-left {
-  position: absolute;
-  z-index: 11;
-  top: 1em;
-  left: 1em;
-}
-
-.map--top-right {
-  position: absolute;
-  z-index: 11;
-  top: 3.5em;
-  right: 1em;
-}
-
-.map--bottom-center {
-  position: absolute;
-  z-index: 11;
-  bottom: 0;
-}
-</style>

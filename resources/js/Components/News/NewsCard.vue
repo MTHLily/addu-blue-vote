@@ -1,6 +1,6 @@
 <template lang="">
-  <div class="card gap-2 p-2" style="border-radius: 20px">
-    <h5 class="card-title" :style="{ 'font-size': small ? '5px' : '15px' }">
+  <article class="card gap-2 p-3" style="border-radius: 20px">
+    <h5 class="card-title" :style="{ 'font-size': small ? '14px' : '15px' }">
       {{ news.title }}
     </h5>
     <div class="card-subtitle">
@@ -16,20 +16,19 @@
         {{ news.news_source.name }}
       </span>
     </div>
-    <p
+    <div
       class="card-text text-wrap"
-      :style="{ 'font-size': small ? '1px' : '15px' }"
+      :style="{ 'font-size': small ? '14px' : '15px' }"
     >
       {{ news.description }}
-    </p>
+    </div>
     <div class="d-flex justify-content-between">
       <p
         class="card-subtitle mb-2 text-muted"
-        :style="{ 'font-size': small ? '1px' : '15px' }"
+        :style="{ 'font-size': small ? '14px' : '15px' }"
       >
         {{ news.date }}
       </p>
-
       <a
         :href="`${news.url}`"
         target="_blank"
@@ -38,7 +37,7 @@
         READ MORE
       </a>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>

@@ -33,7 +33,7 @@
             horizontal
             title="Political Background"
             primary-color="#FAA728"
-            secondary-color="#185EA9"
+            secondary-color="#2365A1"
             :background="candidate.political_background"
           ></BackgroundCard>
         </div>
@@ -44,21 +44,20 @@
           <Stances :stances="candidate.stances"></Stances>
         </div>
       </div>
-      <div class="row" style="position: relative">
-        <div class="row mb-2 row-cols-1 row-cols-md-2">
-          <div class="col">
-            <NewsArticles
-              class="w-100 h-100"
-              :articles="relatedArticles"
-            ></NewsArticles>
-          </div>
-          <div class="col" v-if="candidate.twitter_timeline_feed_url">
-            <Twitter
-              class="w-100 h-100"
-              :title="`Tweets By ${candidate.name}`"
-              :feed-url="candidate.twitter_timeline_feed_url"
-            ></Twitter>
-          </div>
+      <div class="row mb-2 row-cols-1 row-cols-md-2">
+        <div class="col">
+          <NewsArticles
+            class="w-100 h-100 mb-3"
+            :articles="relatedArticles"
+            :style="{ 'border-radius': '5px' }"
+          ></NewsArticles>
+        </div>
+        <div class="col">
+          <Twitter
+            class="twitterfeed"
+            :candidate="candidate"
+            :feed-url="candidate.twitter_timeline_feed_url"
+          ></Twitter>
         </div>
       </div>
     </div>
@@ -134,7 +133,33 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.individual-candidate-profile-background {
-  /* background: url("/images/candidate-show-bg.svg") no-repeat bottom/100%; */
+/* .individual-candidate-profile-background {
+  background-image: url("/images/candidate-profile-show-background.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+} */
+.twitterfeed {
+  overflow-y: scroll;
+  height: 100%;
+  min-height: 600px;
+  max-height: 1000px;
+}
+
+.twitterfeed::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+.twitterfeed::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+.twitterfeed::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: #2365a1;
 }
 </style>

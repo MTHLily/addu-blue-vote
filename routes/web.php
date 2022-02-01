@@ -17,14 +17,6 @@ use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\VideoResourceController;
 use App\Http\Controllers\SVGController;
-use App\Imports\LocationSeedImport;
-use App\Jobs\FindRelatedCandidatesForNewsArticle;
-use App\Models\Candidate;
-use App\Models\Location;
-use App\Models\NewsArticle;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Services\NewscraperService;
-use Database\Seeders\LocationSeeder;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +31,8 @@ use Database\Seeders\LocationSeeder;
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
-    //Route::domain("http://dashboard." . env("SHORT_URL"))->group(function () {
-    Route::prefix("dashboard")->group(function () {
+    Route::domain("dashboard." . env("SHORT_URL"))->group(function () {
+        // Route::prefix("dashboard")->group(function () {
         Route::get("/", [DashboardController::class, "index"])->name(
             "dashboard"
         );
@@ -59,15 +51,19 @@ Route::middleware(["auth"])->group(function () {
     });
 });
 
-Route::get("/testing", function () {
-    $article = NewsArticle::find(234);
-    FindRelatedCandidatesForNewsArticle::dispatch($article);
-})->name("testing");
-
 Route::get("/voters-education", [
     GuestController::class,
     "voters_education",
 ])->name("voters-education");
+
+Route::get("/", function () {
+    return redirect()->route("voters-education");
+});
+
+Route::get("/voting-precints", [
+    GuestController::class,
+    "voting_precints",
+])->name("voting-precints");
 
 Route::prefix("candidate-profiles")->group(function () {
     Route::get(
@@ -104,8 +100,9 @@ Route::prefix("candidate-profiles")->group(function () {
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
 
-Route::get("/", [GuestController::class, "voters_registration"])->name(
-    "voters-registration"
-);
+Route::get("/voters-registration", [
+    GuestController::class,
+    "voters_registration",
+])->name("voters-registration");
 
 require __DIR__ . "/auth.php";

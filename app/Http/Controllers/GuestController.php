@@ -3,33 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
-use App\Models\District;
 use App\Models\FrequentlyAskedQuestion;
 use App\Models\InformationSnippet;
 use App\Models\Location;
 use App\Models\NewsArticle;
-use App\Models\PointOfInterest;
 use App\Models\RunningPosition;
-use App\Services\NewscraperService;
+use App\Services\PointOfInterestService;
 use Inertia\Inertia;
 
 class GuestController extends Controller
 {
-    public function voters_registration()
+    public function voters_registration(PointOfInterestService $service)
     {
-        return Inertia::render("Welcome", [
+        $locations = $service->fetchPointsOfInterestByLocations(1);
+
+        return Inertia::render("VotersRegistration", [
             "faqs" => FrequentlyAskedQuestion::all(),
             "information" => InformationSnippet::all(),
-            "districts" => District::all(),
-            "locations" => Location::all(),
-            "locationTree" => Location::getTree(),
-            "registrationSites" => PointOfInterest::where(
-                "point_of_interest_type_id",
-                "=",
-                1
-            )
-                ->with("location")
-                ->get(),
+            "locations" => $locations,
         ]);
     }
 
@@ -41,6 +32,15 @@ class GuestController extends Controller
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,
+        ]);
+    }
+
+    public function voting_precints(PointOfInterestService $service)
+    {
+        $locations = $service->fetchPointsOfInterestByLocations(2); // Get All Voting Precints
+
+        return Inertia::render("VotingPrecints", [
+            "locations" => $locations,
         ]);
     }
 

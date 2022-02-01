@@ -68,12 +68,25 @@ class Candidate extends Model implements HasMedia
             ->sharpen(10);
     }
 
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->media
+            ->map(function ($media) {
+                return [
+                    "id" => $media->id,
+                    "url" => asset($media->getUrl()),
+                    "thumbnailUrl" => $media->getUrl("thumb"),
+                ];
+            })
+            ->first();
+    }
+
     public function getMediaUrlsAttribute()
     {
         return $this->media->map(function ($media) {
             return [
                 "id" => $media->id,
-                "url" => $media->getUrl(),
+                "url" => asset($media->getUrl()),
                 "thumbnailUrl" => $media->getUrl("thumb"),
             ];
         });

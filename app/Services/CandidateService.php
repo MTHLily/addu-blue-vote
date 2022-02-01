@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Candidate;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class CandidateService
 {
@@ -51,7 +52,8 @@ class CandidateService
         (new MediaService())->attachOnlyOne(
             $candidate,
             Arr::get($request->validated(), "media"),
-            "candidate-profile-photos"
+            "candidate-profile-photos",
+            Str::slug($candidate->name)
         );
 
         // Handle Issue Stances

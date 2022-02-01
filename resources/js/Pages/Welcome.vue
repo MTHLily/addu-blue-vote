@@ -1,18 +1,29 @@
 <template>
-  <Head title="Welcome" />
+  <Head title="Voters' Registration Process">
+    <meta
+      name="description"
+      content="Ateneo Blue Vote is a website dedicated to the election process of the Philippines. Developed by AdDU ARISEn Labs."
+    />
+    <meta
+      name="keywords"
+      content="philippines, election, 2022, election news"
+    />
+  </Head>
   <GuestLayout>
     <div>
       <div class="w-100">
         <InformationCarousel :information="information"></InformationCarousel>
       </div>
-      <VoterRegistrationProcess></VoterRegistrationProcess>
+      <!-- voters education -->
+      <div class="container-md overflow-auto">
+        <ElectionProcessInfo></ElectionProcessInfo>
+        <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
+        <NewsDisplay :articles="articles"></NewsDisplay>
+      </div>
+
+      <VoterRegistrationProcess />
       <FAQs :faqs="faqs" />
-      <Map
-        :registrationSites="registrationSites"
-        :locations="locations"
-        :locationTree="locationTree"
-        :stack="true"
-      />
+      <PoIMap class="container-md" :locations="locations" />
     </div>
   </GuestLayout>
 </template>
@@ -24,9 +35,13 @@ import Map from "../Components/Map/Map.vue";
 import VoterRegistrationProcess from "../Components/VoterRegistrationProcess.vue";
 import FAQs from "../Components/FAQs/FAQList.vue";
 import InformationCarousel from "../Components/Information/InformationCarousel.vue";
+import PoIMap from "@/Components/PointsOfInterest/PoIMap.vue";
+import NewsDisplay from "../Components/News/NewsDisplay.vue";
+import ElectionProcessInfo from "../Components/ElectionProcessInfo.vue";
 
 export default {
   components: {
+    PoIMap,
     Head,
     Link,
     GuestLayout,
@@ -34,6 +49,8 @@ export default {
     FAQs,
     InformationCarousel,
     VoterRegistrationProcess,
+    NewsDisplay,
+    ElectionProcessInfo,
   },
   props: {
     faqs: {
@@ -44,16 +61,11 @@ export default {
       type: Array,
       default: [],
     },
-    districts: {
-      type: Array,
-      default: [],
-    },
-    registrationSites: {
-      type: Array,
-      default: [],
-    },
     locations: Array,
-    locationTree: Array,
+    articles: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 };
 </script>

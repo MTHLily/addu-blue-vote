@@ -41,7 +41,10 @@
               class="text-decoration-none text-black"
               @click="setCurrentVideo(featuredResource)"
             >
-              <VideoResourceCard :video-resource="featuredResource" />
+              <VideoResourceCard
+                :video-resource="featuredResource"
+                :active="featuredResource.id === currentVideo.id"
+              />
             </a>
           </template>
         </div>

@@ -1,10 +1,11 @@
 <template>
-  <div ref="wrapper"></div>
+  <div class="prose md:prose-lg" v-html="markdown" />
 </template>
 
 <script>
-import "@toast-ui/editor/dist/toastui-editor-viewer.css";
-import Viewer from "@toast-ui/editor/dist/toastui-editor-viewer";
+import marked from "marked";
+import { computed } from "vue";
+
 export default {
   props: {
     content: {
@@ -12,13 +13,12 @@ export default {
       default: "",
     },
   },
-  mounted() {
-    new Viewer({
-      el: this.$refs.wrapper,
-      initialValue: this.content,
-    });
+  setup(props) {
+    const markdown = computed(() => marked(props.content));
+
+    return {
+      markdown,
+    };
   },
 };
 </script>
-
-<style></style>

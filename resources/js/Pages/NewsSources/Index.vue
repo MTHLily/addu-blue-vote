@@ -2,7 +2,11 @@
   <Head title="News Sources"></Head>
   <DashboardLayout>
     <div class="flex flex-column container">
-      <BlueVoteTable :items="newsSources" :columns="columns" title="News Sources">
+      <BlueVoteTable
+        :items="newsSources"
+        :columns="columns"
+        title="News Sources"
+      >
         <template #footer>
           <Link
             class="btn btn-primary m-2 py-2 px-4"
@@ -19,7 +23,7 @@
               >
                 <i class="bi-pencil-square"></i>
               </Link>
-              <DeleteButton :item="item" route-name="news-sources.destroy" />
+              <!-- <DeleteButton :item="item" route-name="news-sources.destroy" /> -->
             </div>
           </div>
         </template>
@@ -47,11 +51,11 @@ export default {
         label: "Source",
         value: "name",
       },
-       {
+      {
         label: "Home URL",
         value: "home_url",
       },
-       {
+      {
         label: "Color",
         value: "color",
       },

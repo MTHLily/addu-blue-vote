@@ -58,6 +58,12 @@ export default () => {
       key: "voters-education",
       children: [
         {
+          label: renderLabel("Election Process", {
+            href: route("election-process-steps.index"),
+          }),
+          key: "election-process-steps",
+        },
+        {
           label: renderLabel("News", {
             href: route("news.index"),
           }),
@@ -113,6 +119,11 @@ export default () => {
         "information.index",
         "information.create",
         "information.edit",
+      ],
+      "election-process-steps": [
+        "election-process-steps.index",
+        "election-process-steps.create",
+        "election-process-steps.edit",
       ],
       faqs: ["faqs.index", "faqs.create", "faqs.edit"],
       "news-articles": ["news.index", "news.edit"],

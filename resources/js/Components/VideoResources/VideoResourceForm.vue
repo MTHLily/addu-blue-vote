@@ -14,7 +14,7 @@
     <div class="invalid-feedback">{{ form.errors.title }}</div>
   </div>
 
-    <div class="mb-2">
+  <div class="mb-2">
     <label for="videoDescription" class="form-label">Description</label>
     <input
       v-model="form.description"
@@ -29,7 +29,7 @@
     <div class="invalid-feedback">{{ form.errors.description }}</div>
   </div>
 
-    <div class="mb-3">
+  <div class="mb-3">
     <label for="videoInformation" class="form-label">Information</label>
     <textarea
       v-model="form.information"
@@ -44,7 +44,7 @@
     <div class="invalid-feedback">{{ form.errors.information }}</div>
   </div>
 
-    <div class="mb-3">
+  <div class="mb-3">
     <label for="videoGuests" class="form-label">Guests</label>
     <textarea
       v-model="form.guests"
@@ -59,7 +59,7 @@
     <div class="invalid-feedback">{{ form.errors.guests }}</div>
   </div>
 
-   <div class="mb-3">
+  <div class="mb-3">
     <label for="videoLink" class="form-label">Link</label>
     <textarea
       v-model="form.link"
@@ -98,5 +98,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

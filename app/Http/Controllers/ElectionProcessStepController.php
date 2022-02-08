@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreElectionProcessStepRequest;
 use App\Http\Requests\UpdateElectionProcessStepRequest;
 use App\Models\ElectionProcessStep;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class ElectionProcessStepController extends Controller
 {
@@ -15,7 +17,11 @@ class ElectionProcessStepController extends Controller
      */
     public function index()
     {
-        //
+        $steps = ElectionProcessStep::all();
+
+        return Inertia::render("ElectionProcessSteps/Index", [
+            "steps" => $steps,
+        ]);
     }
 
     /**
@@ -25,7 +31,7 @@ class ElectionProcessStepController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("ElectionProcessSteps/Create");
     }
 
     /**
@@ -36,7 +42,9 @@ class ElectionProcessStepController extends Controller
      */
     public function store(StoreElectionProcessStepRequest $request)
     {
-        //
+        ElectionProcessStep::create($request->validated());
+
+        return Redirect::route("election-process-steps.index");
     }
 
     /**
@@ -58,7 +66,9 @@ class ElectionProcessStepController extends Controller
      */
     public function edit(ElectionProcessStep $electionProcessStep)
     {
-        //
+        return Inertia::render("ElectionProcessSteps/Edit", [
+            "step" => $electionProcessStep,
+        ]);
     }
 
     /**
@@ -68,9 +78,13 @@ class ElectionProcessStepController extends Controller
      * @param  \App\Models\ElectionProcessStep  $electionProcessStep
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateElectionProcessStepRequest $request, ElectionProcessStep $electionProcessStep)
-    {
-        //
+    public function update(
+        UpdateElectionProcessStepRequest $request,
+        ElectionProcessStep $electionProcessStep
+    ) {
+        $electionProcessStep->update($request->validated());
+
+        return Redirect::route("election-process-steps.index");
     }
 
     /**

@@ -1,5 +1,5 @@
 <template>
-  <div ref="editor"></div>
+  <div ref="editor" />
 </template>
 
 <script>
@@ -19,7 +19,6 @@ export default {
       el: this.$refs.editor,
       // initialEditType: "wysiwyg",
       initialValue: this.value,
-      previewStyle: "vertical",
       toolbarItems: [
         ["heading", "bold", "italic", "strike"],
         ["hr", "quote"],

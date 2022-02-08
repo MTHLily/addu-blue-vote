@@ -8,6 +8,7 @@ use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\ElectionProcessStepController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LocationController;
@@ -46,6 +47,10 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("candidates", CandidateController::class);
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);
+        Route::resource(
+            "election-process-steps",
+            ElectionProcessStepController::class
+        )->except("show");
         Route::resource("news-sources", NewsSourceController::class)->only([
             "index",
             "create",

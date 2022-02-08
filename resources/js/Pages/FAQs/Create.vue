@@ -7,7 +7,7 @@
         <form @submit.prevent="faq.post('/dashboard/faqs')">
           <h1 class="p-3">Create Frequently Asked Question</h1>
           <div class="p-3">
-            <FAQForm v-model:faq="faq"></FAQForm>
+            <FAQForm v-model:form="faq"></FAQForm>
           </div>
           <div class="btn-group" role="group">
             <div class="p-3">

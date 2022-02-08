@@ -1,39 +1,45 @@
 <template>
-  <div style="background-color: #FFFFFF;">
+  <div style="background-color: #ffffff">
     <div class="mb-3 p-3">
       <label for="faqQuestion" class="form-label">Question</label>
       <input
-        v-model="faq.question"
+        v-model="form.question"
         type="text"
         class="form-control"
         :class="{
-          'is-invalid': faq.errors.question,
+          'is-invalid': form.errors.question,
         }"
         id="faqQuestion"
         placeholder="FAQ Question"
       />
-      <div class="invalid-feedback">{{ faq.errors.question }}</div>
+      <div class="invalid-feedback">{{ form.errors.question }}</div>
     </div>
     <div class="mb-3 p-3">
       <label for="faqAnswer" class="form-label">Answer</label>
       <MarkdownEditor
-        v-model:value="faq.answer"
-        :class="{ 'is-invalid': faq.errors.answer }"
+        v-model:value="form.answer"
+        :class="{ 'is-invalid': form.errors.answer }"
       ></MarkdownEditor>
-      <div class="invalid-feedback">{{ faq.errors.answer }}</div>
+      <div class="invalid-feedback">{{ form.errors.answer }}</div>
+    </div>
+    <div class="p-3">
+      <h2>Preview</h2>
+      <FAQItem :faq="form" />
     </div>
   </div>
 </template>
 
 <script>
 import MarkdownEditor from "../../Components/MarkdownEditor.vue";
+import FAQItem from "./FAQItem.vue";
 
 export default {
   components: {
     MarkdownEditor,
+    FAQItem,
   },
   props: {
-    faq: {
+    form: {
       type: Object,
       default: () => ({
         question: "",

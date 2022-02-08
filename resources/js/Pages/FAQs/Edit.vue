@@ -7,7 +7,7 @@
         <form @submit.prevent="faqForm.put(`/dashboard/faqs/${faq.id}`)">
           <h1 class="p-3">Edit Frequently Asked Question</h1>
           <div class="p-3">
-            <FAQForm v-model:faq="faqForm"></FAQForm>
+            <FAQForm v-model:form="faqForm"></FAQForm>
           </div>
           <div class="btn-group" role="group">
             <div class="p-3">

@@ -38,7 +38,7 @@ Route::middleware(["auth"])->group(function () {
         );
         Route::resource("faqs", FrequentlyAskedQuestionController::class);
         Route::resource("information", InformationSnippetController::class);
-        Route::resource("locations", LocationController::class);
+        Route::resource("locations", LocationController::class)->except("show");
         Route::resource("cities", CityController::class);
         Route::resource("districts", DistrictController::class);
         Route::resource("poi", PointOfInterestController::class);
@@ -46,7 +46,13 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("candidates", CandidateController::class);
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);
-        Route::resource("news-sources", NewsSourceController::class);
+        Route::resource("news-sources", NewsSourceController::class)->only([
+            "index",
+            "create",
+            "destroy",
+            "edit",
+            "update",
+        ]);
 
         Route::patch("video-resources/{videoResource}/check}", [
             VideoResourceController::class,

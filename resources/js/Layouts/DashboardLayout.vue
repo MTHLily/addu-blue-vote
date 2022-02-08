@@ -90,7 +90,6 @@ export default {
           icon: "bi-geo-alt-fill",
           route: "locations.index",
         },
-
         {
           title: "Points of Interest",
           icon: "bi-geo-fill",
@@ -115,10 +114,6 @@ export default {
           icon: "bi-info-circle-fill",
           items: [
             {
-              title: "Candidate Profiles",
-              route: "candidates.index",
-            },
-            {
               title: "News",
               route: "news.index",
             },
@@ -127,16 +122,27 @@ export default {
               route: "news-sources.index",
             },
             {
+              title: "Video Resources",
+              route: "video-resources.index",
+            },
+          ],
+        },
+        {
+          title: "Candidate Profiles",
+          icon: "bi-people-fill",
+          items: [
+            {
+              title: "Candidate Profiles",
+              route: "candidates.index",
+            },
+
+            {
               title: "Issues",
               route: "issues.index",
             },
             {
               title: "Political Parties",
               route: "political-parties.index",
-            },
-            {
-              title: "Video Resources",
-              route: "video-resources.index",
             },
           ],
         },

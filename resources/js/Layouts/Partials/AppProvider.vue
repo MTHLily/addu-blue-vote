@@ -1,6 +1,8 @@
 <template>
   <n-config-provider :theme-overrides="AdDUTheme">
-    <slot />
+    <n-theme-editor>
+      <slot />
+    </n-theme-editor>
   </n-config-provider>
 </template>
 

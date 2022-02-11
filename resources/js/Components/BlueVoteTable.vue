@@ -3,7 +3,14 @@
     <table class="table rounded m-0" style="table-layout: fixed">
       <thead>
         <tr v-show="title" class="bg-primary text-white">
-          <th :colspan="columns.length + 1">{{ title }}</th>
+          <th :colspan="columns.length + 1">
+            <div class="d-flex justify-content-between">
+              <div>{{ title }}</div>
+              <!-- <template v-if="$slots['header-extra']"> -->
+              <slot name="header-extra"></slot>
+              <!-- </template> -->
+            </div>
+          </th>
         </tr>
         <tr class="bg-info text-black text-center">
           <th v-for="column in columns" :key="column.value">

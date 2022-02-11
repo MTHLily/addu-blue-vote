@@ -17,7 +17,7 @@ class ElectionProcessStepController extends Controller
      */
     public function index()
     {
-        $steps = ElectionProcessStep::all();
+        $steps = ElectionProcessStep::sorted()->get();
 
         return Inertia::render("ElectionProcessSteps/Index", [
             "steps" => $steps,
@@ -102,6 +102,11 @@ class ElectionProcessStepController extends Controller
         ElectionProcessStep $item1,
         ElectionProcessStep $item2
     ) {
-        dd($item1, $item2);
+        $item1->moveBefore($item2);
+
+        return Redirect::back()->with(
+            "success",
+            "Changed Election Step Order!"
+        );
     }
 }

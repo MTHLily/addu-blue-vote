@@ -48,6 +48,11 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("candidates", CandidateController::class);
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);
+
+        Route::patch("election-process-steps/reorder/{item1}/{item2}", [
+            ElectionProcessStepController::class,
+            "reorder",
+        ])->name("election-process-steps.reorder");
         Route::resource(
             "election-process-steps",
             ElectionProcessStepController::class

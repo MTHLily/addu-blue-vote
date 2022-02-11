@@ -3,12 +3,25 @@
   <DashboardLayout>
     <div class="flex flex-column container">
       <BlueVoteTable
-        draggable-rows
+        :draggable-rows="canReorder"
         :on-drag-drop="onReorder"
         :items="steps"
         :columns="columns"
         title="Election Process Steps"
       >
+        <template #header-extra>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="changeOrder"
+              v-model="canReorder"
+            />
+            <label class="form-check-label" for="changeOrder">
+              Change Order
+            </label>
+          </div>
+        </template>
         <template #footer>
           <Link
             class="btn btn-primary m-2 py-2 px-4"
@@ -42,6 +55,8 @@ import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import BlueVoteTable from "@/Components/BlueVoteTable.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";
+import { Inertia } from "@inertiajs/inertia";
+import { ref } from "vue";
 
 export default {
   props: {
@@ -60,21 +75,26 @@ export default {
         label: "Description",
         value: "description",
       },
-      {
-        label: "Position",
-        value: "position",
-      },
+      // {
+      //   label: "Position",
+      //   value: "position",
+      // },
     ];
 
+    const canReorder = ref(false);
     const onReorder = (item1, item2) => {
-      Inertia.visit(
-        route("election-process-steps.reorder", item1.id, item2.id)
+      Inertia.patch(
+        route("election-process-steps.reorder", {
+          item1: item1.id,
+          item2: item2.id,
+        })
       );
     };
 
     return {
       columns,
       onReorder,
+      canReorder,
     };
   },
   components: { Link, Head, DashboardLayout, BlueVoteTable, DeleteButton },

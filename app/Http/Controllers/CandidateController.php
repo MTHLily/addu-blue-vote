@@ -8,6 +8,7 @@ use App\Models\CandidateBackgroundType;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\LocationType;
+use App\Models\NewsArticle;
 use App\Models\PoliticalParty;
 use App\Models\RunningPosition;
 use App\Services\CandidateService;
@@ -24,7 +25,10 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        $candidates = Candidate::all();
+        $candidates = Candidate::with("relatedArticles:id,url,title,date")
+            ->withCount("relatedArticles")
+            ->get();
+
         return Inertia::render("Candidates/Index", [
             "candidates" => $candidates,
         ]);
@@ -148,6 +152,16 @@ class CandidateController extends Controller
         return Redirect::back()->with(
             "message",
             $candidate->name . " has been deleted!"
+        );
+    }
+
+    public function unlink_article(Candidate $candidate, NewsArticle $article)
+    {
+        $candidate->relatedArticles()->detach($article->id);
+
+        return Redirect::back()->with(
+            "success",
+            "Unlinked article from candidate!"
         );
     }
 }

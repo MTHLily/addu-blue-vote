@@ -58,6 +58,11 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("districts", DistrictController::class);
         Route::resource("poi", PointOfInterestController::class);
         Route::resource("news", NewsArticleController::class);
+
+        Route::patch("/candidates/{candidate}/unlink-article/{article}", [
+            CandidateController::class,
+            "unlink_article",
+        ])->name("candidates.unlink-article");
         Route::resource("candidates", CandidateController::class);
         Route::resource("issues", IssueController::class);
         Route::resource("political-parties", PoliticalPartyController::class);

@@ -26,6 +26,12 @@
                 </div>
               </div>
             </template>
+            <template #related-articles="{ item }">
+              <div class="d-flex gap-2">
+                <span>{{ item.related_articles_count }} </span>
+                <RelatedArticles :candidate="item" />
+              </div>
+            </template>
             <template #footer>
               <Link
                 class="btn btn-primary m-2 py-2 px-4"
@@ -46,6 +52,7 @@ import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import { Inertia } from "@inertiajs/inertia";
 import BlueVoteTable from "../../Components/BlueVoteTable.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";
+import RelatedArticles from "@/Components/Candidates/RelatedArticles.vue";
 
 export default {
   props: {
@@ -64,6 +71,7 @@ export default {
     DashboardLayout,
     BlueVoteTable,
     DeleteButton,
+    RelatedArticles,
   },
   data: () => ({
     columns: [
@@ -76,6 +84,11 @@ export default {
         value: "slug",
         label: "Slug",
         class: "text-center align-middle",
+      },
+      {
+        value: "id",
+        label: "Related Articles",
+        slotName: "related-articles",
       },
     ],
   }),

@@ -16,10 +16,14 @@ class NewsArticleController extends Controller
      */
     public function index(Request $request)
     {
+        $articles = NewsArticle::orderByDesc("date")
+            ->with("newsSource")
+            ->with("relatedCandidates:id,name")
+            ->withCount("relatedCandidates")
+            ->paginate($request->itemsPerPage);
+
         return Inertia::render("News/Index", [
-            "articles" => NewsArticle::orderByDesc("date")
-                ->with("newsSource")
-                ->paginate($request->itemsPerPage),
+            "articles" => $articles,
         ]);
     }
 

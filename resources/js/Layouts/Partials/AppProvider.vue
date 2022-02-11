@@ -1,19 +1,22 @@
 <template>
   <n-config-provider :theme-overrides="AdDUTheme">
     <n-theme-editor>
-      <slot />
+      <n-dialog-provider>
+        <slot />
+      </n-dialog-provider>
     </n-theme-editor>
   </n-config-provider>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import { NConfigProvider, NThemeEditor } from "naive-ui";
+import { NConfigProvider, NThemeEditor, NDialogProvider } from "naive-ui";
 
 export default defineComponent({
   components: {
     NConfigProvider,
     NThemeEditor,
+    NDialogProvider,
   },
   setup() {
     const AdDUTheme = {

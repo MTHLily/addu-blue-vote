@@ -29,16 +29,17 @@ class NewscraperService
 
     private function getMetaDescriptionFromUrl(string $url): null|string
     {
+        $scraper = Goutte::request("GET", $url);
         $descriptionArr = [];
         array_push(
             $descriptionArr,
-            Goutte::request("GET", $url)
+            $scraper
                 ->filterXpath("//meta[@name='description']")
                 ->extract(["content"])
         );
         array_push(
             $descriptionArr,
-            Goutte::request("GET", $url)
+            $scraper
                 ->filterXpath("//meta[@property='og:description']")
                 ->extract(["content"])
         );
@@ -48,6 +49,19 @@ class NewscraperService
             }
         }
         return null;
+    }
+
+    public function getMetaKeywordsFromUrl(string $url): array
+    {
+        $scraper = Goutte::request("GET", $url);
+        $keywords = $scraper
+            ->filterXpath("//meta[@name='keywords']")
+            ->extract(["content"]);
+        if (empty($keywords)) {
+            return [];
+        }
+        $keywords = Str::of($keywords[0])->explode(",");
+        return $keywords->toArray();
     }
 
     public function abs_cbn(bool $getOnlyNew = true): array
@@ -261,7 +275,10 @@ class NewscraperService
                     $article->title = $node
                         ->filter(".list-group-item-heading")
                         ->text();
-                    $article->description = "A COMELEC announcement.";
+                    // $article->description = "A COMELEC announcement.";
+                    $article->description = $this->getMetaDescriptionFromUrl(
+                        "https://comelec.gov.ph/" . $node->attr("href")
+                    );
                     $article->date = $date;
                     $article->news_source_id = $this->sources_id["comelec"];
                     $article->save();
@@ -427,7 +444,7 @@ class NewscraperService
 
         // get all the candidate keywords
         $candidates = Candidate::all(["id", "name", "keywords"]);
-        $keywords = $candidates->map(function ($candidate) {
+        $candidates = $candidates->map(function ($candidate) {
             $name = Str::of($candidate->name)
                 ->upper()
                 ->explode(" ")
@@ -437,6 +454,7 @@ class NewscraperService
                 ->explode(",")
                 ->toArray();
             return [
+                "id" => $candidate->id,
                 "name" => $name,
                 "keywords" => $keys,
             ];
@@ -500,21 +518,36 @@ class NewscraperService
             $text = "";
         }
 
-        $keywords->each(function ($candidate) use ($text, $relatedCandidates) {
+        $articleKeywords = collect(
+            $this->getMetaKeywordsFromUrl($article->url)
+        )->map(fn($keyword) => Str::of($keyword)->upper());
+
+        $candidates->each(function ($candidate) use (
+            $text,
+            $articleKeywords,
+            $relatedCandidates
+        ) {
             $text = Str::of(Str::upper($text));
             if (
                 $text->contains($candidate["name"]) ||
                 $text->contains($candidate["keywords"])
             ) {
                 $relatedCandidates->push($candidate);
+                return false;
             }
+
+            $articleKeywords->each(function ($articleKeyword) use (
+                $candidate,
+                $relatedCandidates
+            ) {
+                if ($articleKeyword->contains($candidate["keywords"])) {
+                    $relatedCandidates->push($candidate);
+                    return false;
+                }
+            });
         });
 
-        // dump($relatedCandidates->pluck("name"));
-
         return $relatedCandidates;
-
-        // dd("Related Candidates: ", $relatedCandidates);
     }
 
     public function linkCandidates(int $limit = 0, bool $fresh = false): void

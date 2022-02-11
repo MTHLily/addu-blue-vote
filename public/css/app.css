@@ -1572,6 +1572,15 @@ select {
 .mr-1 {
   margin-right: 0.25rem;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.mb-0 {
+  margin-bottom: 0px;
+}
+.ml-auto {
+  margin-left: auto;
+}
 .block {
   display: block;
 }
@@ -1828,6 +1837,9 @@ select {
 }
 .pb-1 {
   padding-bottom: 0.25rem;
+}
+.pt-0 {
+  padding-top: 0px;
 }
 .text-center {
   text-align: center;

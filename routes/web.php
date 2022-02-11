@@ -19,6 +19,10 @@ use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\VideoResourceController;
 use App\Http\Controllers\SVGController;
+use App\Models\Candidate;
+use App\Models\NewsArticle;
+use App\Services\NewscraperService;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +34,15 @@ use App\Http\Controllers\SVGController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get("/test", function (NewscraperService $service) {
+    $article = NewsArticle::find(391);
+    // dd($article);
+    $keywords = $service->getMetaKeywordsFromUrl($article->url);
+    $related = $service->relatedCandidates($article);
+
+    dd($keywords, $related);
+});
 
 //admin resources
 Route::middleware(["auth"])->group(function () {

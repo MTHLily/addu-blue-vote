@@ -298,7 +298,9 @@ class NewscraperService
                         $article->title = $node
                             ->filter(".article-title-h4")
                             ->text();
-                        $article->description = "A Manila Times Article.";
+                        $article->description = $this->getMetaDescriptionFromUrl(
+                            $node->filter("a")->attr("href")
+                        );
                         $article->date = Carbon::now();
                         $article->news_source_id =
                             $this->sources_id["manila_times"];

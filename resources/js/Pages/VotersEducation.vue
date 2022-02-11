@@ -16,9 +16,9 @@
         :featured="featuredVideos"
         :videos="videoResources"
       />
-      <ElectionProcessInfo></ElectionProcessInfo>
+      <ElectionProcessInfo :election-process="electionSteps" />
       <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
-      <NewsDisplay :articles="articles"></NewsDisplay>
+      <NewsDisplay :articles="articles" />
     </div>
   </GuestLayout>
 </template>
@@ -47,6 +47,10 @@ export default defineComponent({
     },
     featuredVideos: Array,
     videoResources: Object,
+    electionSteps: {
+      type: Array,
+      default: () => [],
+    },
   },
 });
 </script>

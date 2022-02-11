@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c0427f0c2eebf14658c3d0cf225e579",
+    "content-hash": "136eceb5e7cd964be179c81e6c7b8421",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4156,6 +4156,63 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rutorika/sortable",
+            "version": "8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/boxfrommars/rutorika-sortable.git",
+                "reference": "e179f107238402c46515c31608eba326dc7811dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/boxfrommars/rutorika-sortable/zipball/e179f107238402c46515c31608eba326dc7811dd",
+                "reference": "e179f107238402c46515c31608eba326dc7811dd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~5|~6",
+                "phpunit/phpunit": "~8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Rutorika\\Sortable": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Groza",
+                    "email": "boxfrommars@gmail.com"
+                }
+            ],
+            "description": "Adds sortable behavior and ordering to Laravel Eloquent models. Grouping and many to many supported.",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "laravel4",
+                "laravel5",
+                "order",
+                "orderable",
+                "ordering",
+                "sort",
+                "sortable",
+                "sorting"
+            ],
+            "support": {
+                "issues": "https://github.com/boxfrommars/rutorika-sortable/issues",
+                "source": "https://github.com/boxfrommars/rutorika-sortable/tree/8.0.0"
+            },
+            "time": "2020-09-13T13:31:22+00:00"
         },
         {
             "name": "spatie/image",
@@ -10482,5 +10539,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

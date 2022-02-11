@@ -1,16 +1,20 @@
 <template>
-  <Head title="Edit News Source"></Head>
+  <Head title="Edit Election Step"></Head>
 
   <DashboardLayout>
     <div class="d-flex flex-column container">
       <form
-        @submit.prevent="form.put(route('news-sources.update', newsSource.id))"
+        @submit.prevent="
+          form.put(route('election-process-steps.update', step.id))
+        "
       >
-        <h1>Edit Source: {{ newsSource.name }}</h1>
-        <NewsSourceForm v-model:form="form"></NewsSourceForm>
+        <h1>Edit Step: {{ step.title }}</h1>
+        <ElectionProcessStepForm v-model:form="form" />
         <div class="btn-group mx-auto w-100" role="group">
           <button class="btn btn-primary">Save</button>
-          <Link :href="route('news-sources.index')" class="btn btn-danger"
+          <Link
+            :href="route('election-process-steps.index')"
+            class="btn btn-danger"
             >Cancel</Link
           >
         </div>
@@ -22,26 +26,28 @@
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
-import NewsSourceForm from "../../Components/NewsSources/NewsSourceForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
+import ElectionProcessStepForm from "@/Components/ElectionProcessSteps/ElectionProcessStepForm.vue";
 
 export default {
-  components: { Link, Head, DashboardLayout, NewsSourceForm },
+  components: { Link, Head, DashboardLayout, ElectionProcessStepForm },
   props: {
-    newsSource: Object,
+    step: Object,
   },
   data: () => ({
     form: useForm({
-      name: "",
-      home_url: "",
-      color: "#FFFFFF",
+      title: "",
+      description: "",
+      primary_color: "#EE4747",
+      secondary_color: "#2D8ACC",
     }),
   }),
   created() {
     this.form = useForm({
-      name: this.newsSource.name,
-      home_url: this.newsSource.home_url,
-      color: this.newsSource.color || "#FFFFFF",
+      title: this.step.title,
+      description: this.step.description,
+      primary_color: this.step.primary_color,
+      secondary_color: this.step.secondary_color,
     });
   },
 };

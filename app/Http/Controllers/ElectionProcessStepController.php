@@ -97,4 +97,11 @@ class ElectionProcessStepController extends Controller
     {
         //
     }
+
+    public function reorder(
+        ElectionProcessStep $item1,
+        ElectionProcessStep $item2
+    ) {
+        dd($item1, $item2);
+    }
 }

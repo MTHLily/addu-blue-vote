@@ -3,7 +3,9 @@
   <DashboardLayout>
     <div class="flex flex-column container">
       <BlueVoteTable
-        :items="newsSources"
+        draggable-rows
+        :on-drag-drop="onReorder"
+        :items="steps"
         :columns="columns"
         title="Election Process Steps"
       >
@@ -43,27 +45,38 @@ import DeleteButton from "@/Components/DeleteButton.vue";
 
 export default {
   props: {
-    newsSources: {
+    steps: {
       type: Array,
       default: () => [],
     },
   },
-  data: () => ({
-    columns: [
+  setup() {
+    const columns = [
       {
-        label: "Source",
-        value: "name",
+        label: "Title",
+        value: "title",
       },
       {
-        label: "Home URL",
-        value: "home_url",
+        label: "Description",
+        value: "description",
       },
       {
-        label: "Color",
-        value: "color",
+        label: "Position",
+        value: "position",
       },
-    ],
-  }),
+    ];
+
+    const onReorder = (item1, item2) => {
+      Inertia.visit(
+        route("election-process-steps.reorder", item1.id, item2.id)
+      );
+    };
+
+    return {
+      columns,
+      onReorder,
+    };
+  },
   components: { Link, Head, DashboardLayout, BlueVoteTable, DeleteButton },
 };
 </script>

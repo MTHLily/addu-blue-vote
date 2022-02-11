@@ -22,7 +22,14 @@
           </td>
         </tr>
         <template v-for="(item, ind) in tableItems" :key="ind">
-          <tr>
+          <tr
+            :draggable="draggableRows"
+            @dragstart="onDragStart($event, ind)"
+            @drop="onDrop($event, ind)"
+            @dragover.prevent
+            @dragenter.prevent="onDragEnter"
+            @dragleave.prevent="onDragLeave"
+          >
             <template v-for="column in columns" :key="column.value">
               <td v-if="!column.slotName" :class="column.class">
                 {{ item[column.value] }}
@@ -114,6 +121,7 @@
 import _ from "lodash";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
+import { computed } from "vue";
 
 export default {
   components: { Link },
@@ -132,43 +140,83 @@ export default {
     pagination: {
       type: Object,
     },
-  },
-  computed: {
-    tableItems() {
-      if (this.pagination === undefined) return this.items;
-      return this.pagination.data;
+    draggableRows: {
+      type: Boolean,
+      default: false,
     },
-    pages() {
-      if (this.pagination === undefined) return;
-      const pivot = this.pagination.current_page;
+    onDragDrop: {
+      type: Function,
+      default: (item1, item2) => {
+        console.log("Dragged: ", item1, " To:", item2);
+      },
+    },
+  },
+  setup(props) {
+    const tableItems = computed(() => {
+      if (props.pagination === undefined) return props.items;
+      return props.pagination.data;
+    });
+    const pages = computed(() => {
+      if (props.pagination === undefined) return;
+      const pivot = props.pagination.current_page;
       if (pivot <= 3)
-        return _.range(1, Math.min(this.pagination.last_page + 1, 6));
-      if (pivot >= this.pagination.last_page - 3)
+        return _.range(1, Math.min(props.pagination.last_page + 1, 6));
+      if (pivot >= props.pagination.last_page - 3)
         return _.range(
-          this.pagination.last_page - 4,
-          this.pagination.last_page + 1
+          props.pagination.last_page - 4,
+          props.pagination.last_page + 1
         );
       return _.range(pivot - 2, pivot + 3);
-    },
-  },
-  methods: {
-    changePage(page) {
+    });
+
+    const changePage = (page) => {
       Inertia.visit(
         route(route().current(), {
           page: page,
-          itemsPerPage: this.pagination.per_page,
+          itemsPerPage: props.pagination.per_page,
         })
       );
-    },
-    changePerPage(event) {
+    };
+    const changePerPage = (event) => {
       Inertia.visit(
         route(route().current(), {
           itemsPerPage: event.target.value,
         })
       );
-    },
+    };
+
+    const onDragStart = (event, ind) => {
+      event.dataTransfer.setData("item1", ind);
+    };
+
+    const onDragLeave = (event) => {
+      event.target.parentElement.classList.remove("bg-light");
+    };
+    const onDragEnter = (event) => {
+      event.target.parentElement.classList.add("bg-light");
+      // console.log(event);
+    };
+
+    const onDrop = (event, item2Ind) => {
+      event.target.parentElement.classList.remove("bg-light");
+      const item1Ind = event.dataTransfer.getData("item1");
+      if (item1Ind == item2Ind) return;
+
+      const item1 = tableItems.value[item1Ind];
+      const item2 = tableItems.value[item2Ind];
+      props.onDragDrop(item1, item2);
+    };
+
+    return {
+      pages,
+      tableItems,
+      changePage,
+      changePerPage,
+      onDrop,
+      onDragStart,
+      onDragLeave,
+      onDragEnter,
+    };
   },
 };
 </script>
-
-<style></style>

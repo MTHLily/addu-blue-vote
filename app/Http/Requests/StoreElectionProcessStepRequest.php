@@ -13,7 +13,7 @@ class StoreElectionProcessStepRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreElectionProcessStepRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "title" => ["string", "required"],
+            "description" => ["string", "required"],
+            "primary_color" => ["string", "required"],
+            "secondary_color" => ["string", "required"],
         ];
     }
 }

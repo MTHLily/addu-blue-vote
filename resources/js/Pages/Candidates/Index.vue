@@ -73,8 +73,8 @@ export default {
         class: "text-center align-middle",
       },
       {
-        value: "name",
-        label: "Name",
+        value: "slug",
+        label: "Slug",
         class: "text-center align-middle",
       },
     ],

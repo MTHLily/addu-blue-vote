@@ -8,7 +8,7 @@
               ? candidate.profile_photo_url.thumbnailUrl
               : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
           "
-          class="img-fluid rounded-start"
+          class="rounded-start h-full"
           :alt="candidate.name"
         />
       </div>

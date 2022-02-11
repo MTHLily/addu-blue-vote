@@ -14,7 +14,11 @@
       {{ processStep.title }}
     </div>
     <div class="text-white fs-6 mx-5 mb-4">
-      <MarkdownViewer class="text-white" :content="processStep.description" />
+      <MarkdownViewer
+        class="text-white"
+        :content="processStep.description"
+        size="lg"
+      />
     </div>
   </div>
 </template>

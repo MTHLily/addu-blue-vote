@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ElectionProcessStepController;
+use App\Http\Controllers\Frontend\VotersEducationController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LocationController;
@@ -67,10 +68,9 @@ Route::middleware(["auth"])->group(function () {
     });
 });
 
-Route::get("/voters-education", [
-    GuestController::class,
-    "voters_education",
-])->name("voters-education");
+Route::get("/voters-education", VotersEducationController::class)->name(
+    "voters-education"
+);
 
 Route::get("/", function () {
     return redirect()->route("voters-education");

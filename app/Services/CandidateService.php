@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Candidate;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class CandidateService
@@ -48,6 +49,11 @@ class CandidateService
             }
         });
 
+        $this->syncPlatforms(
+            $candidate,
+            Arr::get($request->validated(), "platforms", [])
+        );
+
         // Handle Profile Photos
         (new MediaService())->attachOnlyOne(
             $candidate,
@@ -64,6 +70,30 @@ class CandidateService
             ];
         });
         $candidate->stances()->sync($records);
+
+        return $candidate;
+    }
+
+    public function syncPlatforms(Candidate $candidate, array|Collection $data)
+    {
+        $data = collect($data);
+        $ids = $data
+            ->filter(fn($item) => Arr::get($item, "id", false))
+            ->pluck("id")
+            ->toArray();
+
+        $candidate
+            ->platforms()
+            ->whereNotIn("id", $ids)
+            ->delete();
+
+        $data->each(function ($platform) use ($candidate) {
+            $model = $candidate
+                ->platforms()
+                ->firstOrNew(["id" => Arr::get($platform, "id", null)]);
+            $model->fill(Arr::only($platform, ["title", "description"]));
+            $model->save();
+        });
 
         return $candidate;
     }

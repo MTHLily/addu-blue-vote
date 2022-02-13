@@ -107,7 +107,13 @@ class CandidateController extends Controller
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
 
-        $candidate->load(["media", "background", "stances", "runningPosition"]);
+        $candidate->load([
+            "media",
+            "background",
+            "stances",
+            "runningPosition",
+            "platforms",
+        ]);
         $candidate->append("mediaUrls");
 
         return Inertia::render("Candidates/Edit", [

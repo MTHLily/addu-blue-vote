@@ -48,6 +48,7 @@ class CandidateRequest extends FormRequest
             "background.*.description" => "required|string",
             "background.*.end_date" => "required",
             "background.*.start_date" => "required",
+            "platforms.*.id" => "sometimes",
             "platforms.*.title" => "required",
             "platforms.*.description" => "nullable",
             "media.file" => "image",

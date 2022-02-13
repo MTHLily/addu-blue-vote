@@ -59,6 +59,11 @@ class Candidate extends Model implements HasMedia
         return $this->belongsToMany(NewsArticle::class);
     }
 
+    public function platforms()
+    {
+        return $this->hasMany(CandidatePlatform::class);
+    }
+
     // Picture Conversions
     public function registerMediaConversions(?Media $media = null): void
     {

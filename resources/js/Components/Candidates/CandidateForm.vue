@@ -66,6 +66,7 @@
       <label for="candidateLocation" class="form-label">Running Location</label>
       <location-select
         v-model:value="form.location_id"
+        placeholder="National"
         :options="locationTree"
       ></location-select>
       <div class="invalid-feedback">{{ form.errors.location_id }}</div>
@@ -124,7 +125,7 @@
     </div>
     <div class="col-12 mb-3 p-3">
       <label class="form-label">Candidate Background</label>
-      <CandidateBackgroundSelector
+      <!-- <CandidateBackgroundSelector
         :class="{
           'is-invalid': backgroundErrors.message,
         }"
@@ -132,7 +133,8 @@
         :types="backgroundTypes"
         :errors="form.errors"
         error-key="background"
-      />
+      /> -->
+      <CandidateBackgroundForm v-model:background="form.background" />
       <div class="invalid-feedback">{{ backgroundErrors.message }}</div>
     </div>
     <div class="col-12 mb-3 p-3">
@@ -168,6 +170,7 @@ import IssueSelector from "./IssueSelector.vue";
 import LocationSelect from "../Locations/LocationSelect.vue";
 import CandidatePlatformForm from "./CandidatePlatformForm.vue";
 import { useInertiaFormItem } from "naive-inertia-components";
+import CandidateBackgroundForm from "./CandidateBackgroundForm.vue";
 
 export default defineComponent({
   components: {
@@ -176,6 +179,7 @@ export default defineComponent({
     CandidateBackgroundSelector,
     LocationSelect,
     CandidatePlatformForm,
+    CandidateBackgroundForm,
   },
   props: {
     form: Object,

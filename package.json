@@ -33,6 +33,7 @@
     "laravel-mix": "^6.0.6",
     "lodash": "^4.17.19",
     "marked": "^3.0.4",
+    "naive-inertia-components": "^0.0.9",
     "naive-ui": "^2.20.1",
     "postcss": "^8.4.5",
     "postcss-import": "^14.0.1",

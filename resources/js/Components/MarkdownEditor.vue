@@ -19,6 +19,7 @@ export default {
       el: this.$refs.editor,
       // initialEditType: "wysiwyg",
       initialValue: this.value,
+      height: "auto",
       toolbarItems: [
         ["heading", "bold", "italic", "strike"],
         ["hr", "quote"],
@@ -39,5 +40,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss"></style>

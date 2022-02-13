@@ -7,7 +7,7 @@
         :class="{
           'is-invalid': form.errors['media.file'],
         }"
-      ></ImageUploader>
+      />
       <div class="invalid-feedback">
         {{ form.errors["media.file"] }}
       </div>
@@ -27,7 +27,6 @@
         />
         <div class="invalid-feedback">{{ form.errors.name }}</div>
       </div>
-
       <div>
         <label for="candidateSlug" class="form-label">Candidate Slug</label>
         <input
@@ -111,26 +110,38 @@
         </div>
       </div>
     </div>
+
     <div class="col-12 mb-3 p-3">
       <label class="form-label">Stances on Issues</label>
       <IssueSelector
         v-model:stances="form.stances"
         :class="{
-          'is-invalid': issueFormErrors,
+          'is-invalid': issueErrors.message,
         }"
         :options="issues"
       ></IssueSelector>
-      <div class="invalid-feedback">{{ issueFormErrors }}</div>
+      <div class="invalid-feedback">{{ issueErrors.message }}</div>
     </div>
     <div class="col-12 mb-3 p-3">
       <label class="form-label">Candidate Background</label>
       <CandidateBackgroundSelector
+        :class="{
+          'is-invalid': backgroundErrors.message,
+        }"
         v-model:background="form.background"
         :types="backgroundTypes"
         :errors="form.errors"
         error-key="background"
-      ></CandidateBackgroundSelector>
-      <div class="invalid-feedback">{{ form.errors.description }}</div>
+      />
+      <div class="invalid-feedback">{{ backgroundErrors.message }}</div>
+    </div>
+    <div class="col-12 mb-3 p-3">
+      <label class="form-label">Candidate Platforms</label>
+      <CandidatePlatformForm
+        v-model:value="form.platforms"
+        :class="{ 'is-invalid': platformErrors.message }"
+      />
+      <div class="invalid-feedback">{{ platformErrors.message }}</div>
     </div>
     <div class="col-12 mb-3 p-3">
       <label class="form-label" for="keywords"
@@ -155,6 +166,8 @@ import ImageUploader from "../FileUploader.vue";
 import CandidateBackgroundSelector from "./CandidateBackgroundSelector.vue";
 import IssueSelector from "./IssueSelector.vue";
 import LocationSelect from "../Locations/LocationSelect.vue";
+import CandidatePlatformForm from "./CandidatePlatformForm.vue";
+import { useInertiaFormItem } from "naive-inertia-components";
 
 export default defineComponent({
   components: {
@@ -162,6 +175,7 @@ export default defineComponent({
     IssueSelector,
     CandidateBackgroundSelector,
     LocationSelect,
+    CandidatePlatformForm,
   },
   props: {
     form: Object,
@@ -182,6 +196,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const { getFormErrors } = useInertiaFormItem();
     // Computed
     const positionOptions = computed(() => {
       const type = props.locationTypes.find(
@@ -204,16 +219,23 @@ export default defineComponent({
       );
     });
 
-    const issueFormErrors = computed(() => {
-      let formError = null;
-
-      for (let x = 0; x < props.form.stances.length; x++) {
-        if (props.form.errors[`stances.${x}.issue_id`])
-          return props.form.errors[`stances.${x}.issue_id`];
-      }
-
-      return formError;
-    });
+    const issueErrors = computed(() =>
+      getFormErrors(props.form, "stances", ["issue_id"])
+    );
+    const backgroundErrors = computed(() =>
+      getFormErrors(props.form, "background", [
+        "candidate_background_type_id",
+        "place",
+        "occupation",
+        "position",
+        "description",
+        "end_date",
+        "start_date",
+      ])
+    );
+    const platformErrors = computed(() =>
+      getFormErrors(props.form, "platforms", ["description", "title"])
+    );
 
     // Watch
     watch(
@@ -234,7 +256,9 @@ export default defineComponent({
       currentLocation,
       locationOptions,
       positionOptions,
-      issueFormErrors,
+      issueErrors,
+      backgroundErrors,
+      platformErrors,
     };
   },
 });

@@ -83,6 +83,7 @@ export default defineComponent({
         issue_id: stance.id,
         positive: Boolean(stance.pivot.positive),
       })),
+      platforms: this.candidate?.platforms || [],
       background: this.candidate?.background,
       media: this.candidate.media
         ? this.candidate.mediaUrls?.map((img) => ({

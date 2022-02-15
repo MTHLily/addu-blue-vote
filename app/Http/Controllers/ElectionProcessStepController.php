@@ -95,7 +95,9 @@ class ElectionProcessStepController extends Controller
      */
     public function destroy(ElectionProcessStep $electionProcessStep)
     {
-        //
+        $electionProcessStep->delete();
+
+        return Redirect::back()->with("error", "Election step deleted!");
     }
 
     public function reorder(

@@ -80,7 +80,9 @@ export default {
           : "bi-exclamation-circle text-warning",
         title: this.$page.props.flash.success ? "Success" : "Warning",
         message:
-          this.$page.props.flash.success || this.$page.props.flash.message,
+          this.$page.props.flash.success ||
+          this.$page.props.flash.message ||
+          this.$page.props.flash.error,
       };
     },
     menuOptions() {

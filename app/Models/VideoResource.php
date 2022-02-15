@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class VideoResource extends Model
 {
+    
+    public function relatedCandidate()
+    {
+        return $this->belongsToMany(Candidate::class);
+    }  
+
     use HasFactory;
     protected $guarded = [];
     protected $casts = [

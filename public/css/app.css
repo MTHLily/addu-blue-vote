@@ -688,6 +688,18 @@ select {
 .-ml-px {
   margin-left: -1px;
 }
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -700,9 +712,6 @@ select {
 .ml-2 {
   margin-left: 0.5rem;
 }
-.mt-4 {
-  margin-top: 1rem;
-}
 .ml-4 {
   margin-left: 1rem;
 }
@@ -714,6 +723,9 @@ select {
 }
 .-mt-px {
   margin-top: -1px;
+}
+.mb-0 {
+  margin-bottom: 0px;
 }
 .-mr-0\.5 {
   margin-right: -0.125rem;

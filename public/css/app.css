@@ -650,6 +650,9 @@ select {
 .m-4 {
   margin: 1rem;
 }
+.m-1 {
+  margin: 0.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -657,6 +660,14 @@ select {
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+}
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 .mx-2 {
   margin-left: 0.5rem;
@@ -681,18 +692,6 @@ select {
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-.mx-8 {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-.mx-12 {
-  margin-left: 3rem;
-  margin-right: 3rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -912,9 +911,6 @@ select {
 }
 .border-b {
   border-bottom-width: 1px;
-}
-.border-none {
-  border-style: none;
 }
 .border-gray-300 {
   --tw-border-opacity: 1;

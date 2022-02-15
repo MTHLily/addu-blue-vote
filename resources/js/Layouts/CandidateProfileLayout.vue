@@ -59,6 +59,11 @@
               Voting Precints
             </Link>
           </li>
+          <li class="nav-item">
+            <Link class="nav-link">
+              About Us
+            </Link>
+          </li>
         </ul>
       </template>
     </ArisenHeader>

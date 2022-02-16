@@ -12,7 +12,7 @@
       </span>
     </h1>
     <div class="row">
-      <div class="col-12 col-md-8 d-flex flex-column" ref="currentVideoEl">
+      <div class="col-12 col-md-8 d-flex flex-column text-primary fs-1 fw-bold" ref="currentVideoEl">
         <h2>{{ currentVideo.title }}</h2>
         <div class="ratio ratio-16x9">
           <iframe
@@ -21,13 +21,22 @@
             allowfullscreen
           />
         </div>
-        <p class="lead">{{ currentVideo.information }}</p>
+        <p class="lead fs-4 fw-bold">{{ currentVideo.information }}</p>
         <p v-if="currentVideo.guests != ''" class="lead italic fs-6">
           Guests: {{ currentVideo.guests }}
         </p>
       </div>
       <div class="col-12 col-md-4 h-100">
-        <h2>Featured Videos</h2>
+        <span
+        class="badge text-wrap text-white fw-bolder p-3 fs-5 mb-2"
+        :style="{
+          'background-color': '#FAA728',
+          'border-radius': '30px',
+        }"
+      >
+        Featured Videos
+      </span>
+        <!-- <h2>Featured Videos</h2> -->
         <div
           class="d-flex flex-column gap-2 overflow-y-scroll"
           style="max-height: 29rem"
@@ -38,7 +47,7 @@
           >
             <a
               href="#video-resources"
-              class="text-decoration-none text-black"
+              class="text-decoration-none text-primary"
               @click="setCurrentVideo(featuredResource)"
             >
               <VideoResourceCard
@@ -51,7 +60,15 @@
       </div>
     </div>
     <div class="row">
-      <h2>More Videos</h2>
+      <span
+        class="flex flex-column badge text-wrap text-white fw-bolder p-3 fs-5 mt-3"
+        :style="{
+          'background-color': '#FAA728',
+          'border-radius': '30px',
+        }"
+      >
+        More Videos
+      </span>
       <PaginatedList :pagination="videos" page-key="videos">
         <template #list-item="{ item }">
           <a

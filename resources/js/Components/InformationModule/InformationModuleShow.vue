@@ -36,17 +36,25 @@
                 Related Videos
             </span>
         </div>
-            
+        <div class="Container">
+            <!-- <VideoResources
+            v-if="featuredVideos.length > 0 || videoResources.data.length > 0"
+            :featured="featuredVideos"
+            :videos="videoResources"
+            /> -->
+        </div>
     </div>
 
 </template>
 
 <script>
-import InfoModule from './InformationModules.vue'
+import InfoModule from './InformationModules.vue';
+import VideoResources from "@/Components/VideoResources/VideoResources.vue";
 
 export default {
     components: {
         InfoModule,
+        VideoResources, 
     },
     props:{
         module: {
@@ -59,6 +67,8 @@ export default {
                 file:"default.file"
             }),
         },
+        featuredVideos: Array,
+        videoResources: Object,
     },
 }
 

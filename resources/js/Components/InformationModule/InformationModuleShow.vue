@@ -36,13 +36,12 @@
                 Related Videos
             </span>
         </div>
-        <div class="Container">
-            <!-- <VideoResources
+        <!-- <div class="Container">
+            <VideoResources
             v-if="featuredVideos.length > 0 || videoResources.data.length > 0"
-            :featured="featuredVideos"
-            :videos="videoResources"
-            /> -->
-        </div>
+            :featured="videoResources"
+            />
+        </div> -->
     </div>
 
 </template>
@@ -67,8 +66,28 @@ export default {
                 file:"default.file"
             }),
         },
-        featuredVideos: Array,
-        videoResources: Object,
+        // featuredVideos: Array,
+        // videoResources: {
+        //     type: Array,
+        //     default:[
+        //     {
+        //         link: "https://www.youtube.com/embed/_UR-l3QI2nE",
+        //         title:"Default Title",
+        //         description: "Default Description",
+        //     },
+        //     {
+        //         link: "https://www.youtube.com/embed/_UR-l3QI2nE",
+        //         title:"Default Title",
+        //         description: "Default Description",
+        //     },
+        //     {
+        //         link: "https://www.youtube.com/embed/_UR-l3QI2nE",
+        //         title:"Default Title",
+        //         description: "Default Description",
+        //     },
+        //     ]
+        // },
+        
     },
 }
 

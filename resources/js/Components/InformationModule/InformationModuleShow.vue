@@ -13,7 +13,7 @@
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button text-white bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button text-white bg-primary fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     Downloadables
                     </button>
                 </h2>
@@ -21,7 +21,7 @@
                 <div id="collapseOne" class="accordion-collapse collapse show mx-8 gap-3" aria-labelledby="headingOne" data-bs-parent="#accordionExamples">
                     <!-- <template v-for="mod in modules" :key="mod.id"> -->
                         <a href="" target="_blank" class="text-decoration-none p-2">
-                            <h2 class="accordion-header text-primary bg-warning " id="headingOnes">
+                            <h2 class="accordion-header text-primary bg-warning fs-5" id="headingOnes">
                                 <!-- 🎬 Video.mp4 -->
                                 {{ module.icon }}{{ module.file }}
                             </h2>
@@ -31,7 +31,12 @@
             </div>
         </div>
         <!-- Related videos -->
-        
+        <div class="mt-3">
+            <span class="badge bg-danger w-100 p-3 fs-4">
+                Related Videos
+            </span>
+        </div>
+            
     </div>
 
 </template>

@@ -749,6 +749,9 @@ select {
 .mb-1 {
   margin-bottom: 0.25rem;
 }
+.mb-0 {
+  margin-bottom: 0px;
+}
 .block {
   display: block;
 }

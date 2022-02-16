@@ -111,7 +111,7 @@ export default {
           ],
         },
         {
-          title: "Voter's Education",
+          title: "Political Education",
           icon: "bi-info-circle-fill",
           items: [
             {

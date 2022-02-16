@@ -21,7 +21,7 @@
                 <div id="collapseOne" class="accordion-collapse collapse show mx-8 gap-3" aria-labelledby="headingOne" data-bs-parent="#accordionExamples">
                     <!-- <template v-for="mod in modules" :key="mod.id"> -->
                         <a href="" target="_blank" class="text-decoration-none p-2">
-                            <h2 class="accordion-header text-primary bg-warning fs-5" id="headingOnes">
+                            <h2 class="rounded-pill p-3 accordion-header text-primary bg-warning fs-5" id="headingOnes">
                                 <!-- 🎬 Video.mp4 -->
                                 {{ module.icon }}{{ module.file }}
                             </h2>

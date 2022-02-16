@@ -17,6 +17,7 @@ use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\VideoResourceController;
 use App\Http\Controllers\SVGController;
+use App\Http\Controllers\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,11 @@ Route::get("/voting-precints", [
     GuestController::class,
     "voting_precints",
 ])->name("voting-precints");
+
+Route::get("/about-us", [
+    AboutUsController::class,
+    "about_us",
+])->name("about-us");
 
 Route::prefix("candidate-profiles")->group(function () {
     Route::get(

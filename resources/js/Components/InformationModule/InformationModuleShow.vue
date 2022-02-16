@@ -18,12 +18,15 @@
                     </button>
                 </h2>
 
-                <div id="collapseOne" class="accordion-collapse collapse show mx-8 d-grid gap-3" aria-labelledby="headingOne" data-bs-parent="#accordionExamples">
-                    <a href="" target="_blank" class="text-decoration-none">
-                        <h2 class="accordion-header text-primary bg-warning " id="headingOnes">
-                            🎬 Video.mp4
-                        </h2>
-                    </a>
+                <div id="collapseOne" class="accordion-collapse collapse show mx-8 gap-3" aria-labelledby="headingOne" data-bs-parent="#accordionExamples">
+                    <!-- <template v-for="mod in modules" :key="mod.id"> -->
+                        <a href="" target="_blank" class="text-decoration-none p-2">
+                            <h2 class="accordion-header text-primary bg-warning " id="headingOnes">
+                                <!-- 🎬 Video.mp4 -->
+                                {{ module.icon }}{{ module.file }}
+                            </h2>
+                        </a>
+                    <!-- </template> -->
                 </div>
             </div>
         </div>
@@ -47,7 +50,8 @@ export default {
                 title: "Default Module Title",
                 img: "https://assets.tumblr.com/images/default_header/optica_pattern_01.png",
                 description: "Header Module Description  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                
+                icon:"🎬 ",
+                file:"default.file"
             }),
         },
     },

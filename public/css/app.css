@@ -638,6 +638,12 @@ select {
 .z-0 {
   z-index: 0;
 }
+.order-2 {
+  order: 2;
+}
+.order-1 {
+  order: 1;
+}
 .m-0 {
   margin: 0px;
 }
@@ -745,6 +751,15 @@ select {
 }
 .mr-1 {
   margin-right: 0.25rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
 }
 .block {
   display: block;

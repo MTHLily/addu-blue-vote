@@ -46,8 +46,8 @@ Route::get("/test", function (NewscraperService $service) {
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
-    // Route::domain("dashboard." . env("SHORT_URL"))->group(function () {
-    Route::prefix("dashboard")->group(function () {
+    Route::domain("dashboard." . env("SHORT_URL"))->group(function () {
+        // Route::prefix("dashboard")->group(function () {
         Route::get("/", [DashboardController::class, "index"])->name(
             "dashboard"
         );

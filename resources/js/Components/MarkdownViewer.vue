@@ -1,5 +1,5 @@
 <template>
-  <div class="prose" v-html="markdown" />
+  <div :class="sizeStyle" v-html="markdown" />
 </template>
 
 <script>
@@ -27,6 +27,7 @@ export default {
 
     return {
       markdown,
+      sizeStyle,
     };
   },
 };

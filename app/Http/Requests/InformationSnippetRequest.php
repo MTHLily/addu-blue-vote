@@ -13,7 +13,7 @@ class InformationSnippetRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -24,8 +24,10 @@ class InformationSnippetRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'conetent' => 'required',
+            "title" => "required",
+            "content" => "required",
+            "link" => "nullable|string",
+            "cover.file" => "image|nullable",
         ];
     }
 }

@@ -1,31 +1,27 @@
 <template>
   <Slide>
     <div
-      class="
-        d-flex
-        flex-column
-        justify-content-center
-        bg-primary
-        text-white
-        vw-100
-        p-5
-        info-slide
-      "
+      class="info-slide d-flex flex-column justify-content-center text-white w-full p-5 text-center min-h-screen mx-auto"
+      :style="{
+        background: coverImg
+          ? `linear-gradient(rgba(8, 34, 141, 0.5), rgba(8, 34, 141, 0.5)), url('${coverImg}') top left / cover no-repeat`
+          : `rgb(8, 34, 141)`,
+      }"
     >
       <h1 class="text-uppercase display-1" style="font-family: Montserrat">
         {{ info.title }}
       </h1>
-      <div
-        v-html="markedContent"
-        style="font-family: 'Josefin Sans'"
-        class="fs-4"
-      ></div>
 
-      <div>
-        <a href="https://www.facebook.com/AdDUBlueVote" target="_blank">
-          <button class="btn btn-primary btn-lg" role="button">
-            Learn More
-          </button>
+      <MarkdownViewer
+        style="font-family: 'Josefin Sans'"
+        class="text-white text-center w-full"
+        :content="markedContent"
+        size="lg"
+      />
+
+      <div v-if="info.link">
+        <a :href="info.link" class="btn btn-primary btn-lg" target="_blank">
+          Learn More
         </a>
       </div>
     </div>
@@ -35,9 +31,11 @@
 <script>
 import { Slide } from "vue3-carousel";
 import marked from "marked";
+import MarkdownViewer from "../MarkdownViewer.vue";
+import { computed } from "vue";
 
 export default {
-  components: { Slide },
+  components: { Slide, MarkdownViewer },
   props: {
     info: {
       type: Object,
@@ -46,11 +44,28 @@ export default {
         content: "Default content",
       }),
     },
-  },
-  computed: {
-    markedContent() {
-      return marked(this.info.content);
+    preview: {
+      type: Boolean,
+      default: false,
     },
+  },
+  setup(props) {
+    const markedContent = computed(() => marked(props.info.content));
+
+    const coverImg = props.preview
+      ? computed(() =>
+          props.info.cover?.file
+            ? URL.createObjectURL(props.info.cover.file)
+            : props.info.cover?.url
+        )
+      : props.info.cover_url;
+
+    console.log(coverImg);
+
+    return {
+      markedContent,
+      coverImg,
+    };
   },
 };
 </script>
@@ -60,8 +75,6 @@ export default {
 
 .info-slide {
   height: clamp(200px, 100vh, 1000px);
-  background: linear-gradient(rgba(8, 34, 141, 0.7), rgba(8, 34, 141, 0.7)),
-    url(https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/65932238_2354332941290721_9038293276070772736_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=973b4a&_nc_ohc=zGMPHZYV8E8AX-EcwRS&_nc_ht=scontent.fmnl8-2.fna&oh=fe3f8b351ab6dd028e4bc323b591cce1&oe=616D8039);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

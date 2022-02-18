@@ -16,11 +16,14 @@ class GuestController extends Controller
 {
     public function voters_registration(PointOfInterestService $service)
     {
+        $information = InformationSnippet::with("media")->get();
+        $information->append(["cover", "cover_url"]);
+
         $locations = $service->fetchPointsOfInterestByLocations(1);
 
         return Inertia::render("VotersRegistration", [
             "faqs" => FrequentlyAskedQuestion::all(),
-            "information" => InformationSnippet::all(),
+            "information" => $information,
             "locations" => $locations,
         ]);
     }

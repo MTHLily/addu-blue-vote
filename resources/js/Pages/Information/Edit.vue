@@ -6,12 +6,12 @@
       <div class="d-flex flex-column">
         <form
           @submit.prevent="
-            infoForm.put(route('information.update', information.id))
+            infoForm.post(route('information.update', information.id))
           "
         >
           <h1 class="p-3">Edit Information Snippet</h1>
           <div class="p-3">
-            <InformationForm v-model:info="infoForm"></InformationForm>
+            <InformationForm v-model:form="infoForm"></InformationForm>
           </div>
           <div class="btn-group" role="group">
             <div class="p-3">
@@ -53,6 +53,11 @@ export default {
     this.infoForm = useForm({
       title: this.information.title,
       content: this.information.content,
+      link: this.information.link,
+      cover: this.information.cover
+        ? { ...this.information.cover, status: "finished" }
+        : null,
+      _method: "PATCH",
     });
   },
   data: () => ({

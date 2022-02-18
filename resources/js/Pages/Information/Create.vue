@@ -10,7 +10,7 @@
         >
           <h1 class="p-3 w-100">Create Information Snippet</h1>
           <div class="p-3 w-100">
-            <InformationForm v-model:info="info"></InformationForm>
+            <InformationForm v-model:form="info"></InformationForm>
           </div>
           <div class="btn-group justify-self-center" role="group">
             <div class="p-3">
@@ -45,6 +45,8 @@ export default {
     info: useForm({
       title: "",
       content: "",
+      link: "",
+      cover: null,
     }),
   }),
 };

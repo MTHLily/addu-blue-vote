@@ -24,7 +24,7 @@ class VotersEducationController
             ->onEachSide(1)
             ->withQueryString();
 
-        $electionProcessSteps = ElectionProcessStep::all();
+        $electionProcessSteps = ElectionProcessStep::sorted()->get();
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,

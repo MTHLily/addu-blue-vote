@@ -6494,8 +6494,8 @@ textarea.form-control-lg {
 
 .btn-warning {
   color: #000;
-  background-color: #FAA728;
-  border-color: #FAA728;
+  background-color: #ffc107;
+  border-color: #ffc107;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .btn-warning:hover {
@@ -6525,8 +6525,8 @@ textarea.form-control-lg {
 
 .btn-danger {
   color: #fff;
-  background-color: #CE2029;
-  border-color: #CE2029;
+  background-color: #dc3545;
+  border-color: #dc3545;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .btn-danger:hover {

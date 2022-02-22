@@ -656,6 +656,9 @@ select {
 .m-2 {
   margin: 0.5rem;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -758,6 +761,9 @@ select {
 .mb-5 {
   margin-bottom: 1.25rem;
 }
+.mr-3 {
+  margin-right: 0.75rem;
+}
 .block {
   display: block;
 }
@@ -847,6 +853,9 @@ select {
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
 }
 .flex-wrap {
   flex-wrap: wrap;

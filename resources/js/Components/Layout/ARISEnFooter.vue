@@ -1,10 +1,13 @@
 <template>
   <footer class="text-white bg-primary p-3 mt-4 mb-0">
-    <div class="d-flex justify-content-between container">
+    <div class="d-flex container">
       <div>
-        <img src="images/logo2.png" class="mb-3" style="max-height: 90px"/>
-        <h6><b>Ateneo de Davao University Blue Vote</b></h6>
-        <p class="mb-0">Tel No: +63 (82) 221.2411 local 8262 <br> Fax: +63 (82) 226.4116 </p>
+        <img src="images/logo2.png" class="mr-3" width="480"/>
+      </div>
+      <div class="mt-3">
+        <h5><b>ATENEO DE DAVAO UNIVERSITY BLUE VOTE</b></h5>
+        <hr>
+        <p> <b>CONTACT US</b> <br> Tel No: +63 (82) 221.2411 local 8262 <br> Fax: +63 (82) 226.4116 </p>
       </div>
     </div>
     </footer>
@@ -12,7 +15,6 @@
     <div class="d-flex justify-content-between container">
       <div>
         Copyright © 2021 | Developed by <b>ARISEn Lab</b>
-       
       </div>
       <div class="d-flex gap-2">
         <a href="https://www.facebook.com/AdDUBlueVote/" target="_blank">

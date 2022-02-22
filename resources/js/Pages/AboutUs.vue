@@ -162,7 +162,7 @@ export default {
     partnerOffices: [
         {
             person: 1,
-            name: "Ignatian SpirtiIFSO",
+            name: "IFSO",
             img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
         },
         

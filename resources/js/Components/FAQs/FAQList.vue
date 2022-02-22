@@ -1,8 +1,8 @@
 <template>
-  <div id="faqs" class="page container-md mt-4" >
-    <div class="body row" style="margin-top:3%">
+  <div id="faqs" class="page container-md mt-4">
+    <div class="body row" style="margin-top: 3%">
       <div class="col-3 mx-auto text-primary">
-        <div>VOTERS REGISTRATION</div>
+        <div class="uppercase">{{ subtitle }}</div>
         <div class="h1 fw-bolder">FAQs</div>
       </div>
       <div class="col-9 d-flex flex-column">
@@ -34,6 +34,10 @@ export default {
         },
       ],
     },
+    subtitle: {
+      type: String,
+      default: "Voters' Registration",
+    },
   },
 };
 </script>
@@ -43,10 +47,10 @@ export default {
   margin-left: 52px;
   margin-bottom: 15px;
 }
-.page{
-  border-bottom: solid #08228D;
+.page {
+  border-bottom: solid #08228d;
 }
-.body{
+.body {
   margin-bottom: 5%;
 }
 </style>

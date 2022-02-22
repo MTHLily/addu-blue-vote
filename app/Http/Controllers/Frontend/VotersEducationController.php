@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\ElectionProcessStep;
+use App\Models\FrequentlyAskedQuestion;
 use App\Models\NewsArticle;
 use App\Models\VideoResource;
 use Inertia\Inertia;

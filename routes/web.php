@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ElectionProcessStepController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\VotersEducationController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\IssueController;
@@ -95,9 +96,7 @@ Route::get("/voters-education", VotersEducationController::class)->name(
     "voters-education"
 );
 
-Route::get("/", function () {
-    return redirect()->route("voters-education");
-});
+Route::get("/", HomeController::class);
 
 Route::get("/voting-precints", [
     GuestController::class,

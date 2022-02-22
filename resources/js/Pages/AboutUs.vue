@@ -17,7 +17,7 @@
                     </p>
                 </div>
                 <div class="col-12 col-md-7 order-1 order-sm-2">
-                    <img :src="image"  />
+                    <img src="images/blue vote logo.png"/>
                 </div>
             </div>
 
@@ -72,7 +72,6 @@
 <script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import GuestLayout from "../Layouts/Guest.vue";
-import image from "@/Components/assets/blue vote logo.png";
 import StepCard from "@/Components/AboutUs/VolunteerProcessCard.vue";
 import PeopleCard from "@/Components/AboutUs/PeopleBehindCard.vue";
 
@@ -83,11 +82,6 @@ export default {
         GuestLayout,
         StepCard,
         PeopleCard,
-    },
-    data: function () {
-        return {
-            image: image,
-        };
     },
     data: () => ({
     volunteerProcess: [

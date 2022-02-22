@@ -51,12 +51,24 @@
                 </div>
             </div>
             <div class="row g-0 mt-3 mb-3">
-                <h2 class="text-primary fw-bold">People Behind Blue Vote</h2>
+                <h2 class="text-primary fw-bold mb-4">People Behind Blue Vote</h2>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                     <template v-for="person in peopleBehind" :key="person.person">
                         <PeopleCard :people="person"></PeopleCard>
                     </template>
                 </div>
+                <h3 class="text-danger fw-bold mb-4">Volunteers</h3>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                    <template v-for="person in volunteers" :key="person.person">
+                        <PeopleCard :people="person"></PeopleCard>
+                    </template>
+                </div>
+                <h3 class="text-warning fw-bold mb-4">Partner Offices</h3>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                        <template v-for="person in partnerOffices" :key="person.person">
+                            <PeopleCard :people="person"></PeopleCard>
+                        </template>
+                </div>    
             </div>
             <div class="row g-0 mt-3 mb-3">
                 <h2 class="text-primary fw-bold">How to Volunteer</h2>
@@ -64,6 +76,7 @@
                 <template v-for="step in volunteerProcess" :key="step.step">
                     <StepCard :processStep="step"></StepCard>
                 </template>
+                
                 </div>
             </div>
         </div>
@@ -109,7 +122,7 @@ export default {
             primaryColor: "#379DD2",
             secondaryColor: "#FAA728",
         },
-        ],
+    ],
     peopleBehind: [
         {
             person: 1,
@@ -127,10 +140,52 @@ export default {
             name: "Coordinator",
             img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
         },
+    ],
+    volunteers: [
         {
-            person: 4,
+            person: 1,
             name: "Volunteer 1",
             img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
+        },
+        
+        {
+            person: 2,
+            name: "Volunteer 2",
+            img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
+        },
+        {
+            person: 3,
+            name: "Volunteer 3",
+            img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
+        },
+    ],
+    partnerOffices: [
+        {
+            person: 1,
+            name: "Ignatian SpirtiIFSO",
+            img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
+        },
+        
+        {
+            person: 2,
+            name: "ARRUPE",
+            img: "data:image/png;base64,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"
+        },
+        {
+            person: 3,
+            name: "APILA",
+            img: "https://www.addu.edu.ph/wp-content/uploads/2020/08/UniversitySeal240px.png"
+        },
+        {
+            person: 4,
+            name: "SAMAHAN",
+            img: "https://scontent.fcgy2-2.fna.fbcdn.net/v/t1.6435-9/36461372_1917336191676668_1892993890680569856_n.png?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_eui2=AeEimF17hFPS32l1L28QX7bOmapmJEa72zGZqmYkRrvbMRw31RRUx8yRwpL_JY5rJLyI7k0Him8LQTxSkc3BNjQq&_nc_ohc=M2M_kFjploUAX_smMnc&_nc_ht=scontent.fcgy2-2.fna&oh=00_AT8lA7GzgYwGV3S1-2lklYTLqHNUtnYdnHFCguE8OX-z-g&oe=623AABD5"
+        },
+        
+        {
+            person: 5,
+            name: "SAMAPULA",
+            img: "https://pbs.twimg.com/profile_images/1392445366419681281/Xv3PRSGu_400x400.jpg"
         },
     ]
     }),

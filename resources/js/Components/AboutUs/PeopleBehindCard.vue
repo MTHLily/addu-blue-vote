@@ -1,27 +1,16 @@
 <template>
-    <div class="m-3 text-primary bg-white">
-        <div class="row g-0">
+    <div>
+        <div class="row d-flex flex-column align-items-center">
         <n-card 
             :bordered="false" 
             v-bind:title="people.name" 
             class="text-center"
-            style="max-width:270px"
+            style="max-width:300px"
         >
             <template #cover>
-                <img v-bind:src="people.img"/> 
+                <img v-bind:src="people.img" class="rounded-circle"/> 
             </template>
         </n-card>
-        <!-- <div class="col col-md-4">
-            <img v-bind:src="people.img"/> 
-        </div>
-        <div class="col col-md-8">
-            <div class="card-body d-flex flex-column h-100">
-                <h5 class="card-title text-uppercase fw-bold lh-sm">
-                    {{ people.name }}
-                </h5>
-            </div>
-        </div>
-            <div class="card-action"></div> -->
         </div>
     </div>
 </template>

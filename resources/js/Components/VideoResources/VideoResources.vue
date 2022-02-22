@@ -4,7 +4,7 @@
       <span
         class="badge text-wrap text-white fw-bolder p-3 fs-5"
         :style="{
-          'background-color': '#CE2029',
+          'background-color': '#b5231b',
           'border-radius': '30px',
         }"
       >
@@ -30,7 +30,7 @@
         <span
         class="badge text-wrap text-white fw-bolder p-3 fs-5 mb-2"
         :style="{
-          'background-color': '#FAA728',
+          'background-color': '#fdb338',
           'border-radius': '30px',
         }"
       >
@@ -63,7 +63,7 @@
       <span
         class="flex flex-column badge text-wrap text-white fw-bolder p-3 fs-5 mt-3"
         :style="{
-          'background-color': '#FAA728',
+          'background-color': '#fdb338',
           'border-radius': '30px',
         }"
       >

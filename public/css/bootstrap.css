@@ -1421,12 +1421,12 @@ url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff?94eeade15e6b7fbed95b18ff3
   --bs-danger: #b5231b;
   --bs-light: lightblue;
   --bs-dark: #212529;
-  --bs-primary-rgb: 35, 101, 161;
+  --bs-primary-rgb: 6, 81, 148;
   --bs-secondary-rgb: 0, 255, 255;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 204, 223, 255;
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-danger-rgb: 220, 53, 69;
+  --bs-warning-rgb: 253, 179, 56;
+  --bs-danger-rgb: 181, 35, 27;
   --bs-light-rgb: 173, 216, 230;
   --bs-dark-rgb: 33, 37, 41;
   --bs-white-rgb: 255, 255, 255;

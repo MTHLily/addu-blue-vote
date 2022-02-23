@@ -4,9 +4,18 @@
         <!-- modules -->
         <InfoModule />
         <!-- module show -->
-        <h1 class="text-primary fw-bold my-5">Information Modules > {{ module.title }}</h1>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ul class="breadcrumb">
+                <li class="breadcrumb-item display-6 text-primary">Information Modules</li>
+                <li class="breadcrumb-item display-6 text-primary">
+                    <h1>{{ module.title }}</h1>
+                </li>
+            </ul>
+        </nav>
+        <!-- <h1 class="text-primary fw-bold my-5">Information Modules > {{ module.title }}</h1> -->
         <!-- image header -->
         <div class="container">
+            <h2>Description</h2>
             <img :src="module.img" class="img-fluid" alt="">
             <p class="p-3">{{module.description}}</p>
         </div>
@@ -20,12 +29,16 @@
 
                 <div id="collapseOne" class="accordion-collapse collapse show mx-8 gap-3" aria-labelledby="headingOne" data-bs-parent="#accordionExamples">
                     <!-- <template v-for="mod in modules" :key="mod.id"> -->
-                        <a href="" target="_blank" class="text-decoration-none p-2">
-                            <h2 class="rounded-pill p-3 accordion-header text-primary bg-warning fs-5" id="headingOnes">
-                                <!-- 🎬 Video.mp4 -->
-                                {{ module.icon }}{{ module.file }}
-                            </h2>
-                        </a>
+                        <ul class="list-group my-4">
+                            <li class="list-group-item">
+                                <a href="" target="_blank" class="text-decoration-none">
+                                    <span class="accordion-header text-primary  fs-5" id="headingOnes">
+                                        <!-- 🎬 Video.mp4 -->
+                                        {{ module.icon }}{{ module.file }}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
                     <!-- </template> -->
                 </div>
             </div>

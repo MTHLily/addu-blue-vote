@@ -71,6 +71,10 @@ class CandidateService
         });
         $candidate->stances()->sync($records);
 
+        $candidate
+            ->relatedArticles()
+            ->sync(Arr::get($request->validated(), "related_articles"));
+
         return $candidate;
     }
 

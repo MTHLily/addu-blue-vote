@@ -18,6 +18,7 @@
               :parties="parties"
               :issues="issues"
               :background-types="background_types"
+              :articles="articleOptions"
             ></CandidateForm>
           </div>
           <div class="btn-group mx-auto w-100" role="group">
@@ -53,9 +54,11 @@ export default defineComponent({
     positions: Object,
     parties: Array,
     issues: Array,
+    articles: Array,
     background_types: Array,
   },
   data: () => ({
+    articleOptions: [],
     form: useForm({
       name: null,
       slug: null,
@@ -70,6 +73,14 @@ export default defineComponent({
     }),
   }),
   created() {
+    // [{
+    //   value,
+    //   label
+    // }]
+    this.articleOptions = this.articles.map((article) => ({
+      value: article.id,
+      label: article.title,
+    }));
     this.form = useForm({
       _method: "PUT",
       name: this.candidate?.name,
@@ -94,6 +105,9 @@ export default defineComponent({
           }))[0]
         : null,
       keywords: this.candidate.keywords,
+      related_articles: this.candidate.related_articles.map(
+        (article) => article.id
+      ),
     });
   },
 });

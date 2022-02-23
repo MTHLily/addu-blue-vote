@@ -50,6 +50,7 @@ class CandidateController extends Controller
         $issues = Issue::all();
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
+        $articles = NewsArticle::all();
 
         return Inertia::render("Candidates/Create", [
             "location_types" => $locationTypes,
@@ -59,6 +60,7 @@ class CandidateController extends Controller
             "issues" => $issues,
             "parties" => $parties,
             "background_types" => $background_types,
+            "articles" => $articles,
         ]);
     }
 
@@ -104,6 +106,7 @@ class CandidateController extends Controller
             ->with("children.children.children")
             ->get();
         $issues = Issue::all();
+        $articles = NewsArticle::all();
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
 
@@ -113,6 +116,7 @@ class CandidateController extends Controller
             "stances",
             "runningPosition",
             "platforms",
+            "relatedArticles",
         ]);
         $candidate->append("mediaUrls");
 
@@ -125,6 +129,7 @@ class CandidateController extends Controller
             "issues" => $issues,
             "parties" => $parties,
             "background_types" => $background_types,
+            "articles" => $articles,
         ]);
     }
 

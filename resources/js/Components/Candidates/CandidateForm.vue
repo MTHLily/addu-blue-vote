@@ -157,6 +157,16 @@
       ></textarea>
       <div class="invalid-feedback">{{ form.errors.keywords }}</div>
     </div>
+    <div class="col-12 mb-3 p-3">
+      <label class="form-label" for="keywords"> Related Articles </label>
+      <NSelect
+        v-model:value="form.related_articles"
+        :options="articles"
+        multiple
+      />
+      {{ form.related_articles }}
+      <div class="invalid-feedback">{{ form.errors.keywords }}</div>
+    </div>
   </div>
 </template>
 
@@ -170,6 +180,7 @@ import IssueSelector from "./IssueSelector.vue";
 import LocationSelect from "../Locations/LocationSelect.vue";
 import CandidatePlatformForm from "./CandidatePlatformForm.vue";
 import { useInertiaFormItem } from "naive-inertia-components";
+import { NSelect } from "naive-ui";
 import CandidateBackgroundForm from "./CandidateBackgroundForm.vue";
 
 export default defineComponent({
@@ -180,6 +191,7 @@ export default defineComponent({
     LocationSelect,
     CandidatePlatformForm,
     CandidateBackgroundForm,
+    NSelect,
   },
   props: {
     form: Object,
@@ -189,6 +201,10 @@ export default defineComponent({
     positions: Object,
     parties: Array,
     issues: Array,
+    articles: {
+      type: Array,
+      default: [],
+    },
     backgroundTypes: {
       type: Array,
       default: [

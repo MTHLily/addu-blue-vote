@@ -1,0 +1,29 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+      -
+        handle: full_name
+        field:
+          type: text
+          validate:
+            - required
+          display: 'Full Name'
+          instructions_position: above
+          listable: hidden
+          input_type: text
+          antlers: false
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+title: Candidates

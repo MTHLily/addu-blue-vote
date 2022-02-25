@@ -1,0 +1,98 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+      -
+        handle: name
+        field:
+          type: text
+          validate:
+            - required
+          display: Name
+          instructions_position: above
+          listable: hidden
+          input_type: text
+          antlers: false
+      -
+        handle: description
+        field:
+          type: markdown
+          localizable: true
+          display: Description
+          instructions_position: above
+          listable: hidden
+          restrict: false
+          automatic_line_breaks: true
+          automatic_links: false
+          escape_markup: false
+          smartypants: false
+          antlers: false
+      -
+        handle: color
+        field:
+          theme: classic
+          lock_opacity: false
+          default_color_mode: HEXA
+          color_modes:
+            - hex
+          display: Color
+          type: color
+          icon: color
+          listable: hidden
+          instructions_position: above
+          validate:
+            - required
+      -
+        handle: parent_location
+        field:
+          max_items: 1
+          mode: default
+          create: true
+          collections:
+            - locations
+          display: 'Parent Location'
+          type: entries
+          icon: entries
+          listable: hidden
+          instructions_position: above
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+  map_location:
+    display: 'Map Location'
+    fields:
+      -
+        handle: longitude
+        field:
+          input_type: number
+          antlers: false
+          display: Longitude
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          validate:
+            - required
+      -
+        handle: latitude
+        field:
+          input_type: number
+          antlers: false
+          display: Latitude
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          validate:
+            - required
+title: Locations

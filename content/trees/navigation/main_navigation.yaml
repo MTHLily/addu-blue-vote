@@ -1,0 +1,10 @@
+tree:
+  -
+    id: eecd839d-8a41-4b2a-9388-45fd97a56626
+    title: 'Voters'' Registration'
+    url: /voters-registration
+    children:
+      -
+        id: c218c88e-5ece-4511-89e9-0a4709f08ca5
+        title: 'Registration Process'
+        url: '/voters-registration#registration-process'

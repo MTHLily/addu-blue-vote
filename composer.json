@@ -23,6 +23,7 @@
     "phpoffice/phpspreadsheet": "^1.19",
     "rutorika/sortable": "^8.0",
     "spatie/laravel-medialibrary": "^9.8",
+    "statamic/cms": "^3.2",
     "staudenmeir/laravel-adjacency-list": "^1.8",
     "tightenco/ziggy": "^1.0",
     "weidner/goutte": "^2.1",
@@ -52,9 +53,13 @@
     }
   },
   "scripts": {
+        "pre-update-cmd": [
+            "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
+        ],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
+      "@php artisan package:discover --ansi",
+      "@php artisan statamic:install --ansi"
     ],
     "post-update-cmd": [
       "@php artisan vendor:publish --tag=laravel-assets --ansi"
@@ -74,7 +79,10 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true

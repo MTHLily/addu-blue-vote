@@ -11,10 +11,6 @@
   </Head>
   <GuestLayout>
     <div>
-      <div class="w-100">
-        <InformationCarousel :information="information"></InformationCarousel>
-      </div>
-
       <VoterRegistrationProcess />
       <FAQs :faqs="faqs" />
       <div class="container-md mt-4">

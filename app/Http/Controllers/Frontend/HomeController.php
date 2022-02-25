@@ -13,7 +13,9 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $information_snippets = InformationSnippet::all();
+        $information_snippets = InformationSnippet::with("media")
+            ->get()
+            ->append("cover_url");
 
         $articles = NewsArticle::with("newsSource")
             ->orderByDesc("date")

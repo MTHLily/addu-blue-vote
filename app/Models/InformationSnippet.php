@@ -16,6 +16,9 @@ class InformationSnippet extends Model implements HasMedia
 
     public function getCoverAttribute()
     {
+        if ($this->media) {
+            return $this->media->first();
+        }
         return $this->media()->first();
     }
 

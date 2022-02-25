@@ -17,7 +17,7 @@
         </button>
         <div ref="collapseEl" class="w-100 mt-2 collapse">
           <div class="card card-body m-0">
-            <MarkdownViewer :content="markedAnswer" />
+            <MarkdownViewer :content="markedAnswer" size="sm" />
           </div>
         </div>
       </div>

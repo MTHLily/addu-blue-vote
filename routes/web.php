@@ -7,7 +7,7 @@ use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\DistrictController;
+// use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ElectionProcessStepController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\VotersEducationController;
@@ -55,8 +55,8 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("faqs", FrequentlyAskedQuestionController::class);
         Route::resource("information", InformationSnippetController::class);
         Route::resource("locations", LocationController::class)->except("show");
-        Route::resource("cities", CityController::class);
-        Route::resource("districts", DistrictController::class);
+        // Route::resource("cities", CityController::class);
+        // Route::resource("districts", DistrictController::class);
         Route::resource("poi", PointOfInterestController::class);
         Route::resource("news", NewsArticleController::class);
 

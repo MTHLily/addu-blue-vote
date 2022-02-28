@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <twitter>
-      <a class="twitter-timeline h-100" data-theme="light" :href="feedUrl"
-        >{{ title }}
-      </a>
+      <h1>
+        <a class="twitter-timeline h-100" data-theme="light" :href="feedUrl"
+          {{ title }}/>
+      </h1>
     </twitter>
   </div>
 </template>

@@ -8,9 +8,7 @@
           'is-invalid': form.errors['media.file'],
         }"
       ></ImageUploader>
-      <div class="invalid-feedback">
-        {{ form.errors["media.file"] }}
-      </div>
+
     </div>
     <div class="col mb-3 p-3">
       <div class="mb-3">
@@ -144,6 +142,13 @@
       ></textarea>
       <div class="invalid-feedback">{{ form.errors.keywords }}</div>
     </div>
+
+        <div class="col-12 mb-3 p-3">
+      <label class="form-label" for="related_videos"> </label>
+     <NSelect v-model:value="form.related_videos" :options="videos" multiple/>
+      
+      <div class="invalid-feedback">{{ form.errors.related_videos }}</div>
+    </div>
   </div>
 </template>
 
@@ -155,6 +160,7 @@ import ImageUploader from "../FileUploader.vue";
 import CandidateBackgroundSelector from "./CandidateBackgroundSelector.vue";
 import IssueSelector from "./IssueSelector.vue";
 import LocationSelect from "../Locations/LocationSelect.vue";
+import { NSelect } from "naive-ui"
 
 export default defineComponent({
   components: {
@@ -162,6 +168,7 @@ export default defineComponent({
     IssueSelector,
     CandidateBackgroundSelector,
     LocationSelect,
+    NSelect,
   },
   props: {
     form: Object,
@@ -180,6 +187,10 @@ export default defineComponent({
         },
       ],
     },
+    videos: {
+      type: Array,
+      default: [],
+    }, 
   },
   setup(props) {
     // Computed

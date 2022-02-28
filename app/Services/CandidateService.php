@@ -65,6 +65,10 @@ class CandidateService
         });
         $candidate->stances()->sync($records);
 
+        $candidate
+            ->relatedVideoResources()
+            ->sync(Arr::get($request->validated(), "related_videos"));
+
         return $candidate;
     }
 }

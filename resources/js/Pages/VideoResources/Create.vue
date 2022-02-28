@@ -30,7 +30,7 @@ export default {
       title: "",
       description: "",
       information: "",
-      guests: "",
+      //guests: "",
       link: "",
     }),
   }),

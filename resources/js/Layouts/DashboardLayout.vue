@@ -138,6 +138,10 @@ export default {
               title: "Video Resources",
               route: "video-resources.index",
             },
+            {
+              title: "Information Modules",
+              route: "information-modules.index",
+            },
           ],
         },
       ];

@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
+
+class InformationModule extends Model implements HasMedia
+{
+    use HasFactory, InteractsWithMedia;
+
+    protected $fillable = [
+        'description',
+        'speakers',
+        'featured',
+        'downloadables',
+    ];
+    protected $casts = [
+        "featured" => "boolean",
+    ];
+
+    public function relatedVideoResources()
+    {
+        return $this->belongsToMany(VideoResource::class);
+    }
+
+}

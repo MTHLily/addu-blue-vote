@@ -44,20 +44,7 @@
     <div class="invalid-feedback">{{ form.errors.information }}</div>
   </div>
 
-    <div class="mb-3">
-    <label for="videoGuests" class="form-label">Guests</label>
-    <textarea
-      v-model="form.guests"
-      type="text"
-      class="form-control"
-      :class="{
-        'is-invalid': form.errors.guests,
-      }"
-      id="videoGuests"
-      placeholder="Video Guests"
-    />
-    <div class="invalid-feedback">{{ form.errors.guests }}</div>
-  </div>
+    
 
    <div class="mb-3">
     <label for="videoLink" class="form-label">Link</label>
@@ -84,7 +71,7 @@ export default {
         title: "",
         description: "",
         information: "",
-        guests: "",
+       // guests: "",
         link: "",
         errors: {
           title: "",

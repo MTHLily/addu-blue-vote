@@ -13,6 +13,11 @@ class VideoResource extends Model
         return $this->belongsToMany(Candidate::class);
     }  
 
+    public function relatedInformationModule()
+    {
+        return $this->belongsToMany(InformationModule::class);
+    }  
+
     use HasFactory;
     protected $guarded = [];
     protected $casts = [

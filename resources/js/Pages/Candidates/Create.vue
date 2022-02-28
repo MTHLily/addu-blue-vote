@@ -16,6 +16,8 @@
               :parties="parties"
               :issues="issues"
               :background-types="background_types"
+              :videos="videoOptions"
+
             ></CandidateForm>
           </div>
           <div class="btn-group mx-auto w-100" role="group">
@@ -51,8 +53,10 @@ export default defineComponent({
     parties: Array,
     issues: Array,
     background_types: Array,
+    videos: Array,
   },
   data: () => ({
+    videoOptions:[],
     form: useForm({
       name: null,
       slug: null,
@@ -65,8 +69,18 @@ export default defineComponent({
       background: [],
       media: null,
       keywords: null,
+      related_videos: [],
+      //related_videos: this.candidate.related_video_resources.map(( video_resource ) => video_resource.id),
+
     }),
   }),
+
+  created(){
+    this.videoOptions = this.videos.map( video => ({
+      value: video.id,
+      label:video.title,
+    }));
+  },
 });
 </script>
 

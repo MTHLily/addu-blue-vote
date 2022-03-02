@@ -7,7 +7,7 @@
       <h1
         class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
         :style="{
-          'background-color': '#CE2029',
+          'background-color': '#b5231b',
           'border-radius': '30px',
         }"
       >

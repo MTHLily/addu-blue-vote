@@ -10,7 +10,7 @@
     />
   </Head>
   <GuestLayout>
-    <div class="container-md overflow-auto">
+    <div class="container-md overflow-auto" style="margin-top: 5%">
       <VideoResources
         v-if="featuredVideos.length > 0 || videoResources.data.length > 0"
         :featured="featuredVideos"

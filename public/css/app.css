@@ -765,6 +765,9 @@ select {
 .mr-1 {
   margin-right: 0.25rem;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .block {
   display: block;
 }

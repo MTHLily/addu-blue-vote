@@ -2,7 +2,7 @@
   <div class="d-flex flex-column gap-4 mt-4">
     <div>
       <span
-        class="badge text-wrap text-whitefw-bolder p-3 fs-5"
+        class="badge text-wrap text-white fw-bolder p-3 px-4 fs-5"
         :style="{
           'background-color': '#b5231b',
           'border-radius': '30px',

@@ -11,9 +11,9 @@
         <span class="input-group-text h-fit w-1/4">Platform Title</span>
         <input v-model="item.title" type="text" class="form-control h-fit" />
       </div>
-      <div class="input-group w-full">
-        <span class="input-group-text w-1/4">Platform Description</span>
-        <MarkdownEditor v-model:value="item.description" class="w-3/4 h-12" />
+      <div>
+        <span class="form-label">Platform Description</span>
+        <MarkdownEditor v-model:value="item.description" class="h-12" />
       </div>
     </div>
   </NDynamicInput>

@@ -16,7 +16,7 @@
               :parties="parties"
               :issues="issues"
               :background-types="background_types"
-              :articles="articleOptions"
+              :articles="articles"
             ></CandidateForm>
           </div>
           <div class="btn-group mx-auto w-100" role="group">
@@ -71,12 +71,6 @@ export default defineComponent({
       related_articles: [],
     }),
   }),
-  created() {
-    this.articleOptions = this.articles.map((article) => ({
-      value: article.id,
-      label: article.title,
-    }));
-  },
 });
 </script>
 

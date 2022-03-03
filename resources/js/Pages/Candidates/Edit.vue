@@ -18,7 +18,7 @@
               :parties="parties"
               :issues="issues"
               :background-types="background_types"
-              :articles="articleOptions"
+              :articles="articles"
             ></CandidateForm>
           </div>
           <div class="btn-group mx-auto w-100" role="group">
@@ -73,14 +73,6 @@ export default defineComponent({
     }),
   }),
   created() {
-    // [{
-    //   value,
-    //   label
-    // }]
-    this.articleOptions = this.articles.map((article) => ({
-      value: article.id,
-      label: article.title,
-    }));
     this.form = useForm({
       _method: "PUT",
       name: this.candidate?.name,

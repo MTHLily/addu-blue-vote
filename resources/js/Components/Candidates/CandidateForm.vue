@@ -159,12 +159,10 @@
     </div>
     <div class="col-12 mb-3 p-3">
       <label class="form-label" for="keywords"> Related Articles </label>
-      <NSelect
+      <ArticleSelect
         v-model:value="form.related_articles"
-        :options="articles"
-        multiple
+        :articles="articles"
       />
-      {{ form.related_articles }}
       <div class="invalid-feedback">{{ form.errors.keywords }}</div>
     </div>
   </div>
@@ -182,6 +180,7 @@ import CandidatePlatformForm from "./CandidatePlatformForm.vue";
 import { useInertiaFormItem } from "naive-inertia-components";
 import { NSelect } from "naive-ui";
 import CandidateBackgroundForm from "./CandidateBackgroundForm.vue";
+import ArticleSelect from "../News/ArticleSelect.vue";
 
 export default defineComponent({
   components: {
@@ -192,6 +191,7 @@ export default defineComponent({
     CandidatePlatformForm,
     CandidateBackgroundForm,
     NSelect,
+    ArticleSelect,
   },
   props: {
     form: Object,

@@ -25,12 +25,11 @@ class InformationModuleRequest extends FormRequest
     {
         return [
             "description" => "required",
-            "media.file" => "image",
-            "media.id" => "sometimes",
+            "media.*.file" => "file",
+            "media.*.id" => "sometimes",
             "related_videos" => ["array", "nullable"],
             "speakers" => "required",
             "featured" => "boolean",
-            "downloadables" => "nullable",
         ];
     }
 }

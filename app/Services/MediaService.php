@@ -3,14 +3,51 @@
 namespace App\Services;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class MediaService
 {
-    public function sync( InformationModule $module, $data, string $collectionName, string $fileName){
+    public function sync(
+        HasMedia $mediable,
+        $data,
+        string $collectionName,
+        string $baseFileName
+    ) {
+        $data = collect($data);
 
+        $idsIncluded = $data
+            ->filter(fn($item) => Arr::get($item, "id", false))
+            ->pluck("id")
+            ->toArray();
 
+        $mediable
+            ->media()
+            ->where("collection_name", $collectionName)
+            ->whereNotIn("id", $idsIncluded)
+            ->delete();
+
+        $data->each(function ($media) use (
+            $mediable,
+            $collectionName,
+            $baseFileName
+        ) {
+            $model = Media::find($media["id"]);
+            if ($model != null) {
+                return;
+            }
+            $uuid = Str::uuid();
+            $ext = $media["file"]->getClientOriginalExtension();
+            $mediable
+                ->addMedia($media["file"])
+                ->setFileName("$uuid.$ext")
+                ->toMediaCollection($collectionName);
+        });
+
+        return $mediable;
     }
-    
+
     public function attachOnlyOne(
         $mediable,
         $media,

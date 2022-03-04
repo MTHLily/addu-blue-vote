@@ -19,7 +19,9 @@ class InformationModuleService
         ]);
 
         if ($informationModule == null) {
-            $informationModule = InformationModule::create($informationModuleData);
+            $informationModule = InformationModule::create(
+                $informationModuleData
+            );
         } else {
             $informationModule->update($informationModuleData);
         }
@@ -28,12 +30,12 @@ class InformationModuleService
             ->relatedVideoResources()
             ->sync(Arr::get($request->validated(), "related_videos"));
 
-        (new relatedMediaService())->syncRelatedMedia(
+        (new MediaService())->sync(
             $informationModule,
-            Arr::get($request->validated(), "related_media"),
-            "infomation-module-files",
+            Arr::get($request->validated(), "media"),
+            "information-module-files",
+            "info-module"
         );
-
 
         return $informationModule;
     }

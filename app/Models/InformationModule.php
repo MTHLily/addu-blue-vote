@@ -13,10 +13,10 @@ class InformationModule extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'description',
-        'speakers',
-        'featured',
-        'downloadables',
+        "description",
+        "speakers",
+        "featured",
+        "downloadables",
     ];
     protected $casts = [
         "featured" => "boolean",
@@ -28,7 +28,7 @@ class InformationModule extends Model implements HasMedia
     }
 
     public function relatedMedia()
-    {   
+    {
         return $this->media();
     }
 
@@ -36,11 +36,7 @@ class InformationModule extends Model implements HasMedia
     {
         return $this->media
             ->map(function ($media) {
-                return [
-                    "id" => $media->id,
-                    "url" => asset($media->getUrl()),
-                    "thumbnailUrl" => $media->getUrl("thumb"),
-                ];
+                return $media->getUrl();
             })
             ->first();
     }
@@ -51,7 +47,6 @@ class InformationModule extends Model implements HasMedia
             return [
                 "id" => $media->id,
                 "url" => asset($media->getUrl()),
-                "thumbnailUrl" => $media->getUrl("thumb"),
             ];
         });
     }

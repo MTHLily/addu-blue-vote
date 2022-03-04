@@ -11,7 +11,6 @@ use App\Services\InformationModuleService;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
-
 class InformationModuleController extends Controller
 {
     /**
@@ -34,14 +33,10 @@ class InformationModuleController extends Controller
     public function create()
     {
         $videos = VideoResource::all();
-       // $media = Media::all();
 
         return Inertia::render("InformationModules/Create", [
             "videos" => $videos,
-            //"related_media" => $media,
-
-    ]);
-
+        ]);
     }
 
     /**
@@ -52,14 +47,15 @@ class InformationModuleController extends Controller
      */
     public function store(InformationModuleRequest $request)
     {
-        $informationModule = (new InformationModuleService())->updateOrCreate($request);
+        $informationModule = (new InformationModuleService())->updateOrCreate(
+            $request
+        );
 
         return Redirect::route("information-modules.index")->with(
             "success",
             $informationModule->description . " has been created!"
         );
     }
-    
 
     /**
      * Display the specified resource.
@@ -88,9 +84,8 @@ class InformationModuleController extends Controller
     {
         $videos = VideoResource::all();
         $media = RelatedMedia::all();
-        $informationModule->load(["relatedMedia", "relatedVideoResources"],);
+        $informationModule->load(["relatedMedia", "relatedVideoResources"]);
         $informationModule->append("mediaUrls");
-
 
         return Inertia::render("InformationModules/Edit", [
             "information_module" => $informationModule,
@@ -105,10 +100,15 @@ class InformationModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InformationModuleRequest $request, InformationModule $informationModule)
-    {
+    public function update(
+        InformationModuleRequest $request,
+        InformationModule $informationModule
+    ) {
         //$informationModule = (new InformationModuleService())->updateOrCreate($request, $informationModule);
-        $informationModule = (new InformationModuleService())->updateOrCreate($request, $informationModule);
+        $informationModule = (new InformationModuleService())->updateOrCreate(
+            $request,
+            $informationModule
+        );
 
         return Redirect::route("information-modules.index")->with(
             "success",
@@ -132,9 +132,13 @@ class InformationModuleController extends Controller
         );
     }
 
-    public function unlink_video(InformationModule $informationModule, VideoResource $video_resource)
-    {
-        $informationModule->relatedVideoResources()->detach($video_resource->id);
+    public function unlink_video(
+        InformationModule $informationModule,
+        VideoResource $video_resource
+    ) {
+        $informationModule
+            ->relatedVideoResources()
+            ->detach($video_resource->id);
 
         return Redirect::back()->with(
             "success",
@@ -142,4 +146,3 @@ class InformationModuleController extends Controller
         );
     }
 }
-

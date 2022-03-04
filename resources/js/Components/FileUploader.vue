@@ -5,7 +5,7 @@
       v-model:file-list="valueList"
       :max="multipleFiles ? undefined : 1"
       :on-update:file-list="handleFileListChange"
-      list-type="image-card"
+      :list-type="nonImage ? 'text' : 'image-card'"
     >
       <button class="btn btn-primary" type="button">Upload</button>
     </NUpload>
@@ -21,6 +21,10 @@ export default defineComponent({
   props: {
     value: Object,
     multipleFiles: {
+      type: Boolean,
+      default: false,
+    },
+    nonImage: {
       type: Boolean,
       default: false,
     },

@@ -6,14 +6,17 @@
       <form @submit.prevent="form.post(route('information-modules.store'))">
         <h1>Create Information Module</h1>
         <InformationModuleForm
-         v-model:form="form" 
-        :videos="videoOptions"
+          v-model:form="form"
+          :videos="videoOptions"
         ></InformationModuleForm>
         <div class="btn-group mx-auto w-100" role="group">
           <button class="btn btn-primary">Save</button>
-          <Link :href="route('information-modules.index')" class="btn btn-danger"
-            >Cancel</Link
+          <Link
+            :href="route('information-modules.index')"
+            class="btn btn-danger"
           >
+            Cancel
+          </Link>
         </div>
       </form>
     </div>
@@ -27,32 +30,28 @@ import InformationModuleForm from "../../Components/InformationModule/Informatio
 import { useForm } from "@inertiajs/inertia-vue3";
 import { defineComponent } from "@vue/runtime-core";
 
-
-export default {
+export default defineComponent({
   components: { Link, Head, DashboardLayout, InformationModuleForm },
   props: {
     videos: Array,
   },
   data: () => ({
-    videoOptions:[],
+    videoOptions: [],
     form: useForm({
       description: null,
-      related_media: null,
       related_videos: [],
       speakers: null,
-      downloadables: null,
+      media: [],
     }),
   }),
 
-  created(){
-    this.videoOptions = this.videos.map( video => ({
+  created() {
+    this.videoOptions = this.videos.map((video) => ({
       value: video.id,
       label: video.title,
     }));
   },
-
-
-};
+});
 </script>
 
 <style></style>

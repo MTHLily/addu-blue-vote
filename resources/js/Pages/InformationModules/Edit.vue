@@ -43,7 +43,7 @@ export default  defineComponent({
     videoOptions: [],
     form: useForm({
      description: null,
-     // related_media: "",
+     related_media: null,
      // related_video: [],
       speakers: null, 
       featured: null,
@@ -60,7 +60,18 @@ export default  defineComponent({
     this.form = useForm({
       _method: "PUT",
       description: this.information_module.description,
-      related_media: this.information_module.related_media,
+      related_media: this.information_module.media.map(img =>({
+        id: img.id,
+        status: "finished", 
+      })),
+     /*media: this.information_module.media
+        ? this.information_module.mediaUrls?.map((img) => ({
+            id: img.id,
+            url: img.url,
+            "preview-src": img.thumbnailUrl,
+            status: "finished",
+          }))[0]
+        : null,,*/
      //related_video: this.information_module.related_video,      
       related_videos: this.information_module.related_video_resources.map(( video_resource ) => video_resource.id),
       speakers: this.information_module.speakers,

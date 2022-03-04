@@ -37,7 +37,7 @@ export default {
     videoOptions:[],
     form: useForm({
       description: null,
-      //related_media: "",
+      related_media: null,
       related_videos: [],
       speakers: null,
       downloadables: null,

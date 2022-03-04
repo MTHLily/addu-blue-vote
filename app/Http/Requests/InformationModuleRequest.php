@@ -25,6 +25,8 @@ class InformationModuleRequest extends FormRequest
     {
         return [
             "description" => "required",
+            "media.file" => "image",
+            "media.id" => "sometimes",
             "related_videos" => ["array", "nullable"],
             "speakers" => "required",
             "featured" => "boolean",

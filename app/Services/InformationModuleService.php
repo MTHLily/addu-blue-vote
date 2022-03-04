@@ -28,6 +28,13 @@ class InformationModuleService
             ->relatedVideoResources()
             ->sync(Arr::get($request->validated(), "related_videos"));
 
+        (new relatedMediaService())->syncRelatedMedia(
+            $informationModule,
+            Arr::get($request->validated(), "related_media"),
+            "infomation-module-files",
+        );
+
+
         return $informationModule;
     }
 }

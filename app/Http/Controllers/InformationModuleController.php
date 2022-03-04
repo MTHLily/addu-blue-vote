@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests\InformationModuleRequest;
 use App\Models\InformationModule;
 use App\Models\VideoResource;
+use App\Models\RelatedMedia;
 use App\Services\InformationModuleService;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+
 
 class InformationModuleController extends Controller
 {
@@ -32,9 +34,12 @@ class InformationModuleController extends Controller
     public function create()
     {
         $videos = VideoResource::all();
+       // $media = Media::all();
 
         return Inertia::render("InformationModules/Create", [
             "videos" => $videos,
+            //"related_media" => $media,
+
     ]);
 
     }
@@ -82,12 +87,15 @@ class InformationModuleController extends Controller
     public function edit(InformationModule $informationModule)
     {
         $videos = VideoResource::all();
-        $informationModule->load(["media", "relatedVideoResources"],);
+        $media = RelatedMedia::all();
+        $informationModule->load(["relatedMedia", "relatedVideoResources"],);
+        $informationModule->append("mediaUrls");
+
 
         return Inertia::render("InformationModules/Edit", [
             "information_module" => $informationModule,
             "videos" => $videos,
-
+            "related_media" => $media,
         ]);
     }
     /**
@@ -130,7 +138,7 @@ class InformationModuleController extends Controller
 
         return Redirect::back()->with(
             "success",
-            $informationModule->id . " has been unlinked from module!"
+            $informationModule->id . " has been unlinked from resource!"
         );
     }
 }

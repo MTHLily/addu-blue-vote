@@ -17,14 +17,14 @@
 
     <div class="mb-3">
     <label for="informationModuleRelatedMedia" class="form-label">Related Media</label>
-         <!--   <RelatedMediaSelector
-        v-model:stances="form.stances"
+        <ImageUploader
+        multipleFiles
+        v-model:value="form.media"
         :class="{
-          'is-invalid': issueFormErrors,
+          'is-invalid': form.errors['media.file'],
         }"
-        :options="issues"
-      ></RelatedMediaSelector>
-    <div class="invalid-feedback">{{ form.errors.related_media }}</div>-->
+      > {{form.media}}</ImageUploader>
+
   </div>
 
     <div class="mb-3">
@@ -69,10 +69,14 @@ import { computed, defineComponent, ref, watch } from "@vue/runtime-core";
 import axios from "axios";
 import _ from "lodash";
 import { NSelect } from "naive-ui"
+import ImageUploader from "../FileUploader.vue";
+
 
 export default defineComponent({
   components:{
       NSelect,
+      ImageUploader,
+
       },
 
   /*props: {
@@ -103,8 +107,6 @@ export default defineComponent({
         downloadables: "",
         errors: {
             description: "",
-
-        
         },
       }),
      },
@@ -112,6 +114,10 @@ export default defineComponent({
       type: Array,
       default: [],
     },
+    multipleFiles:{
+      type: Boolean,
+      default: false,
+    }
   },
 
   

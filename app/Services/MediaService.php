@@ -6,6 +6,11 @@ use Illuminate\Support\Arr;
 
 class MediaService
 {
+    public function sync( InformationModule $module, $data, string $collectionName, string $fileName){
+
+
+    }
+    
     public function attachOnlyOne(
         $mediable,
         $media,

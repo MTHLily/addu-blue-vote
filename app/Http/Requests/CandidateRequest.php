@@ -55,6 +55,7 @@ class CandidateRequest extends FormRequest
             "media.id" => "sometimes",
             "keywords" => "nullable",
             "related_articles" => ["array", "nullable"],
+            "related_videos" => ["array", "nullable"],
         ];
     }
 }

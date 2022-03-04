@@ -84,7 +84,7 @@ export default {
         title: "",
         description: "",
         information: "",
-        guests: "",
+        // guests: "",
         link: "",
         errors: {
           title: "",

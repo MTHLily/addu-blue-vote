@@ -19,6 +19,7 @@ use App\Http\Controllers\NewsSourceController;
 use App\Http\Controllers\PointOfInterestController;
 use App\Http\Controllers\PoliticalPartyController;
 use App\Http\Controllers\VideoResourceController;
+use App\Http\Controllers\InformationModuleController;
 use App\Http\Controllers\SVGController;
 use App\Models\Candidate;
 use App\Models\NewsArticle;
@@ -83,6 +84,11 @@ Route::middleware(["auth"])->group(function () {
             "edit",
             "update",
         ]);
+        Route::resource("news-sources", NewsSourceController::class);
+        Route::resource(
+            "information-modules",
+            InformationModuleController::class
+        );
 
         Route::patch("video-resources/{videoResource}/check}", [
             VideoResourceController::class,

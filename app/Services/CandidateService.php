@@ -74,6 +74,9 @@ class CandidateService
         $candidate
             ->relatedArticles()
             ->sync(Arr::get($request->validated(), "related_articles"));
+        $candidate
+            ->relatedVideoResources()
+            ->sync(Arr::get($request->validated(), "related_videos"));
 
         return $candidate;
     }

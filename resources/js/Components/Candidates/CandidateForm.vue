@@ -214,6 +214,10 @@ export default defineComponent({
         },
       ],
     },
+    videos: {
+      type: Array,
+      default: [],
+    },
   },
   setup(props) {
     const { getFormErrors } = useInertiaFormItem();

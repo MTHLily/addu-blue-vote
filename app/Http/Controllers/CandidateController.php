@@ -7,6 +7,7 @@ use App\Models\Candidate;
 use App\Models\CandidateBackgroundType;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\VideoResource;
 use App\Models\LocationType;
 use App\Models\NewsArticle;
 use App\Models\PoliticalParty;
@@ -51,6 +52,7 @@ class CandidateController extends Controller
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
         $articles = NewsArticle::all();
+        $videos = VideoResource::all();
 
         return Inertia::render("Candidates/Create", [
             "location_types" => $locationTypes,
@@ -59,8 +61,9 @@ class CandidateController extends Controller
             "location_tree" => $location_tree,
             "issues" => $issues,
             "parties" => $parties,
-            "background_types" => $background_types,
             "articles" => $articles,
+            "background_types" => $background_types,
+            "videos" => $videos,
         ]);
     }
 
@@ -109,6 +112,7 @@ class CandidateController extends Controller
         $articles = NewsArticle::all();
         $parties = PoliticalParty::orderBy("name")->get();
         $background_types = CandidateBackgroundType::all();
+        $videos = VideoResource::all();
 
         $candidate->load([
             "media",
@@ -118,6 +122,7 @@ class CandidateController extends Controller
             "platforms",
             "relatedArticles",
         ]);
+
         $candidate->append("mediaUrls");
 
         return Inertia::render("Candidates/Edit", [
@@ -130,6 +135,7 @@ class CandidateController extends Controller
             "parties" => $parties,
             "background_types" => $background_types,
             "articles" => $articles,
+            "videos" => $videos,
         ]);
     }
 
@@ -142,7 +148,10 @@ class CandidateController extends Controller
      */
     public function update(CandidateRequest $request, Candidate $candidate)
     {
-        (new CandidateService())->updateOrCreate($request, $candidate);
+        $candidate = (new CandidateService())->updateOrCreate(
+            $request,
+            $candidate
+        );
 
         return Redirect::route("candidates.index")->with(
             "success",
@@ -156,6 +165,7 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Candidate $candidate)
     {
         $candidate->delete();
@@ -173,6 +183,19 @@ class CandidateController extends Controller
         return Redirect::back()->with(
             "success",
             "Unlinked article from candidate!"
+        );
+    }
+
+    public function unlink_video(
+        Candidate $candidate,
+        VideoResource $video_resource
+    ) {
+        // $candidate->delete();
+        $candidate->relatedVideoResources()->detach($video_resource->id);
+
+        return Redirect::back()->with(
+            "success",
+            $candidate->name . " has been unlinked from video!"
         );
     }
 }

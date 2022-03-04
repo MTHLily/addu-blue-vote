@@ -64,6 +64,11 @@ class Candidate extends Model implements HasMedia
         return $this->hasMany(CandidatePlatform::class);
     }
 
+    public function relatedVideoResources()
+    {
+        return $this->belongsToMany(VideoResource::class);
+    }
+
     // Picture Conversions
     public function registerMediaConversions(?Media $media = null): void
     {

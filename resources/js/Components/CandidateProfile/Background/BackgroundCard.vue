@@ -3,9 +3,9 @@
     class="card text-white mb-3"
     :style="{ 'background-color': primaryColor || 'blue' }"
   >
-    <div class="card-header text-uppercase border-0 fw-bold lh-sm p-3 fs-1">
+    <h1 class="card-header text-uppercase border-0 fw-bold lh-sm p-3 fs-1">
       {{ title }}
-    </div>
+    </h1>
     <div class="card-body">
       <div
         class="row row-cols-1"

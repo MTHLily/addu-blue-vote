@@ -25,6 +25,7 @@ use App\Models\Candidate;
 use App\Models\NewsArticle;
 use App\Services\NewscraperService;
 use Illuminate\Support\Str;
+use App\Http\Controllers\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +109,10 @@ Route::get("/voting-precints", [
     GuestController::class,
     "voting_precints",
 ])->name("voting-precints");
+
+Route::get("/about-us", [AboutUsController::class, "about_us"])->name(
+    "about-us"
+);
 
 Route::prefix("candidate-profiles")->group(function () {
     Route::get(

@@ -4,15 +4,15 @@
   </Head>
   <Layout class="candidate-profile-background">
     <div class="container" style="margin-top: 5%">
-      <span
+      <h1
         class="badge text-wrap text-white fw-bolder p-2 px-4 fs-5 mb-3"
         :style="{
-          'background-color': '#CE2029',
+          'background-color': '#b5231b',
           'border-radius': '30px',
         }"
       >
         National
-      </span>
+      </h1>
       <!-- <h1 class="fw-bolder">National</h1> -->
       <div>
         <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
@@ -39,7 +39,7 @@
                   class="btn btn-danger btn-lg p-4 px-5 w-100 h-100"
                   style="padding: 20px; border-radius: 10px"
                 >
-                  {{ region.name }}
+                  <h1>{{ region.name }}</h1>
                 </Link>
               </div>
             </template>

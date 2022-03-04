@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Page navigation" :key="pagination.per_page">
+  <nav class="mt-3" aria-label="Page navigation" :key="pagination.per_page">
     <ul
       class="pagination"
       :class="{

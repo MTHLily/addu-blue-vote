@@ -10,7 +10,7 @@
     />
   </Head>
   <GuestLayout>
-    <div class="container-md overflow-auto">
+    <div class="container-md overflow-auto" style="margin-top: 5%">
       <VideoResources
         v-if="featuredVideos.length > 0 || videoResources.data.length > 0"
         :featured="featuredVideos"
@@ -20,6 +20,8 @@
       <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
       <NewsDisplay :articles="articles" />
     </div>
+
+    <InfoMod />
   </GuestLayout>
 </template>
 
@@ -30,6 +32,8 @@ import ElectionProcessInfo from "../Components/ElectionProcessInfo.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import GuestLayout from "../Layouts/Guest.vue";
 import VideoResources from "@/Components/VideoResources/VideoResources.vue";
+import InfoMod from '../Components/InformationModule/InformationModuleShow.vue'
+
 
 export default defineComponent({
   components: {
@@ -38,6 +42,8 @@ export default defineComponent({
     GuestLayout,
     Head,
     VideoResources,
+    InfoMod,
+  
   },
 
   props: {
@@ -55,4 +61,7 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+
+
+</style>

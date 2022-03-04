@@ -7,12 +7,12 @@
         class="breadcrumb-item"
       >
         <template v-if="breadcrumb.route">
-          <a :href="breadcrumb.route" class="text-decoration-none">
-            {{ breadcrumb.label }}
-          </a>
+            <a :href="breadcrumb.route" class="text-decoration-none">
+              {{ breadcrumb.label }}
+            </a>
         </template>
         <template v-else>
-          {{ breadcrumb.label }}
+          <h5>{{ breadcrumb.label }}</h5>
         </template>
       </li>
     </ol>

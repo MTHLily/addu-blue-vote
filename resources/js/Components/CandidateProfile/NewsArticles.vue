@@ -1,8 +1,8 @@
 <template>
   <div class="container col-6 h-auto" style="background-color: #faa728">
-    <div class="card-title text-white p-3 text-uppercase fw-bold lh-sm fs-1">
+    <h1 class="card-title text-white p-3 text-uppercase fw-bold lh-sm fs-1">
       NEWS ARTICLES
-    </div>
+    </h1>
     <div class="d-flex flex-column gap-4">
       <template v-if="articles?.data.length">
         <template v-for="article in articles?.data" :key="article.id">

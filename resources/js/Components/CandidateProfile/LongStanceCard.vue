@@ -3,9 +3,9 @@
     class="card text-white mb-3"
     style="max-width: 100%; background-color: #CE2029"
   >
-    <div class="card-header border-0 text-center text-uppercase fw-bold lh-sm p-3 fs-1" style="background: #CE2029">
+    <h1 class="card-header border-0 text-center text-uppercase fw-bold lh-sm p-3 fs-1" style="background: #CE2029">
       Stances on Issues
-    </div>
+    </h1>
     <div
       class="
         row

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-center gap-2">
+  <div class="d-flex flex-column align-items-center gap-2 mt-3">
     <ul class="list-group w-100">
       <template v-for="item in pagination.data">
         <slot name="list-item" :item="item">

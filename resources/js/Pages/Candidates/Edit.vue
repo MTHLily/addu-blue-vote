@@ -108,9 +108,9 @@ export default defineComponent({
       related_articles: this.candidate.related_articles.map(
         (article) => article.id
       ),
-      related_videos: this.candidate.related_video_resources.map(
-        (video_resource) => video_resource.id
-      ),
+      // related_videos: this.candidate.related_video_resources.map(
+      //   (video_resource) => video_resource.id
+      // ),
     });
   },
 });

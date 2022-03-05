@@ -1,23 +1,14 @@
 <template>
-  <NSelect
-    :value="value"
-    :options="options"
-    multiple
-    filterable
-    :on-update:value="onUpdate"
-    :filter="onFilter"
-    :render-label="renderLabel"
-    :render-tag="renderTag"
-  />
+  <ExpandedSelect :options="options" :value="value" @update:value="onUpdate" />
 </template>
 
 <script>
-import { computed, defineComponent, h } from "vue";
-import { NSelect, NTag } from "naive-ui";
+import { computed, defineComponent } from "vue";
+import ExpandedSelect from "../Common/ExpandedSelect.vue";
 
 export default defineComponent({
   components: {
-    NSelect,
+    ExpandedSelect,
   },
   props: {
     articles: {
@@ -39,50 +30,13 @@ export default defineComponent({
       }))
     );
 
-    const renderLabel = (option, selected) =>
-      h("div", { class: "flex flex-column gap-2 py-2" }, [
-        h("div", { class: "flex gap-2" }, [
-          option.label,
-          h("a", { href: option.url }, "See Article"),
-        ]),
-        h("div", option.description),
-      ]);
-    const renderTag = ({ option, handleClose }) => {
-      return h(
-        NTag,
-        {
-          type: option.type,
-          closable: true,
-          onClose: (e) => {
-            e.stopPropagation();
-            handleClose();
-          },
-        },
-        { default: () => option.label }
-      );
-    };
-
-    const onUpdate = (value, option) => {
-      console.log(value, option);
+    const onUpdate = (value) => {
       emit("update:value", value);
-    };
-
-    const onFilter = (pattern, option) => {
-      if (
-        option.label.toUpperCase().includes(pattern.toUpperCase()) ||
-        option.description.toUpperCase().includes(pattern.toUpperCase())
-      )
-        return true;
-
-      return false;
     };
 
     return {
       options,
-      renderLabel,
-      renderTag,
       onUpdate,
-      onFilter,
     };
   },
 });

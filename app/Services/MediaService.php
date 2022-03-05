@@ -9,12 +9,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class MediaService
 {
-    public function sync(
-        HasMedia $mediable,
-        $data,
-        string $collectionName,
-        string $baseFileName
-    ) {
+    public function sync(HasMedia $mediable, $data, string $collectionName)
+    {
         $data = collect($data);
 
         $idsIncluded = $data
@@ -28,20 +24,14 @@ class MediaService
             ->whereNotIn("id", $idsIncluded)
             ->delete();
 
-        $data->each(function ($media) use (
-            $mediable,
-            $collectionName,
-            $baseFileName
-        ) {
+        $data->each(function ($media) use ($mediable, $collectionName) {
             $model = Media::find($media["id"]);
             if ($model != null) {
                 return;
             }
-            $uuid = Str::uuid();
-            $ext = $media["file"]->getClientOriginalExtension();
             $mediable
                 ->addMedia($media["file"])
-                ->setFileName("$uuid.$ext")
+                ->setFileName($media["name"])
                 ->toMediaCollection($collectionName);
         });
 
@@ -60,6 +50,7 @@ class MediaService
         if ($media !== null) {
             $mediable
                 ->media()
+                ->where("collection_name", $collectionName)
                 ->whereNotIn("id", Arr::wrap(Arr::get($media, "id")))
                 ->delete();
 
@@ -70,7 +61,10 @@ class MediaService
                     ->toMediaCollection($collectionName);
             }
         } else {
-            $mediable->media()->delete();
+            $mediable
+                ->media()
+                ->where("collection_name", $collectionName)
+                ->delete();
         }
 
         return $mediable;

@@ -7,7 +7,7 @@
         <h1>Create Information Module</h1>
         <InformationModuleForm
           v-model:form="form"
-          :videos="videoOptions"
+          :videos="videos"
         ></InformationModuleForm>
         <div class="btn-group mx-auto w-100" role="group">
           <button class="btn btn-primary">Save</button>
@@ -27,31 +27,22 @@
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import InformationModuleForm from "../../Components/InformationModule/InformationModuleForm.vue";
-import { useForm } from "@inertiajs/inertia-vue3";
 import { defineComponent } from "@vue/runtime-core";
+import useCRUD from "@/Composables/useCRUD";
 
 export default defineComponent({
   components: { Link, Head, DashboardLayout, InformationModuleForm },
   props: {
     videos: Array,
   },
-  data: () => ({
-    videoOptions: [],
-    form: useForm({
-      description: null,
-      related_videos: [],
-      speakers: null,
-      media: [],
-    }),
-  }),
+  setup(props) {
+    const { createInfoModuleForm } = useCRUD();
 
-  created() {
-    this.videoOptions = this.videos.map((video) => ({
-      value: video.id,
-      label: video.title,
-    }));
+    const form = createInfoModuleForm();
+
+    return {
+      form,
+    };
   },
 });
 </script>
-
-<style></style>

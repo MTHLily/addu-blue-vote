@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-column">
-    <h1 id="video-resources">
+  <div class="flex flex-column mt-1">
+    <h1 v-if="!noTitle" id="video-resources">
       <span
         class="badge text-wrap text-white fw-bolder p-3 px-4 fs-5"
         :style="{
@@ -11,8 +11,30 @@
         Video Resources
       </span>
     </h1>
-    <div class="row">
-      <div class="col-12 col-md-8 d-flex flex-column text-primary fs-1 fw-bold" ref="currentVideoEl">
+    <div v-if="noFeatured" class="row">
+      <div
+        class="d-flex flex-column text-primary fs-1 fw-bold"
+        ref="currentVideoEl"
+      >
+        <h2>{{ currentVideo.title }}</h2>
+        <div class="ratio ratio-16x9">
+          <iframe
+            :src="currentVideo.link"
+            :title="currentVideo.title"
+            allowfullscreen
+          />
+        </div>
+        <p class="lead fs-4 fw-bold">{{ currentVideo.information }}</p>
+        <p v-if="currentVideo.guests != ''" class="lead italic fs-6">
+          Guests: {{ currentVideo.guests }}
+        </p>
+      </div>
+    </div>
+    <div class="row" v-else>
+      <div
+        class="col-12 col-md-8 d-flex flex-column text-primary fs-1 fw-bold"
+        ref="currentVideoEl"
+      >
         <h2>{{ currentVideo.title }}</h2>
         <div class="ratio ratio-16x9">
           <iframe
@@ -28,14 +50,14 @@
       </div>
       <div class="col-12 col-md-4 h-100">
         <span
-        class="badge text-wrap text-white fw-bolder p-3 fs-5 mb-2"
-        :style="{
-          'background-color': '#fdb338',
-          'border-radius': '30px',
-        }"
-      >
-        Featured Videos
-      </span>
+          class="badge text-wrap text-white fw-bolder p-3 fs-5 mb-2"
+          :style="{
+            'background-color': '#fdb338',
+            'border-radius': '30px',
+          }"
+        >
+          Featured Videos
+        </span>
         <!-- <h2>Featured Videos</h2> -->
         <div
           class="d-flex flex-column gap-2 overflow-y-scroll"
@@ -100,6 +122,14 @@ export default defineComponent({
     videos: {
       type: Object,
       required: true,
+    },
+    noTitle: {
+      type: Boolean,
+      default: false,
+    },
+    noFeatured: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

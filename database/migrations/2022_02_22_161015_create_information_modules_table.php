@@ -13,14 +13,12 @@ class CreateInformationModulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('information_modules', function (Blueprint $table) {
+        Schema::create("information_modules", function (Blueprint $table) {
             $table->id();
+            $table->string("title");
             $table->string("description");
-            $table->string("related_media");
-            $table->string("related_video");
             $table->string("speakers");
             $table->boolean("featured")->default(0);
-            $table->string("downloadables");
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateInformationModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('information_modules');
+        Schema::dropIfExists("information_modules");
     }
 }

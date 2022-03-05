@@ -12,12 +12,7 @@ class InformationModule extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = [
-        "description",
-        "speakers",
-        "featured",
-        "downloadables",
-    ];
+    protected $fillable = ["title", "description", "speakers", "featured"];
     protected $casts = [
         "featured" => "boolean",
     ];
@@ -30,6 +25,14 @@ class InformationModule extends Model implements HasMedia
     public function relatedMedia()
     {
         return $this->media();
+    }
+
+    public function downloadables()
+    {
+        return $this->media()->where(
+            "collection_name",
+            "information-module-files"
+        );
     }
 
     public function getRelatedMediaUrlAttribute()

@@ -24,7 +24,9 @@ class InformationModuleRequest extends FormRequest
     public function rules()
     {
         return [
+            "title" => "required",
             "description" => "required",
+            "media.*.name" => "required",
             "media.*.file" => "file",
             "media.*.id" => "sometimes",
             "related_videos" => ["array", "nullable"],

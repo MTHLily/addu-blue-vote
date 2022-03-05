@@ -4,6 +4,13 @@
   </CandidateProfileLayout>
 </template>
 
-<script setup>
+<script>
+import { defineComponent } from "vue";
 import CandidateProfileLayout from "./CandidateProfileLayout.vue";
+
+export default defineComponent({
+  components: {
+    CandidateProfileLayout,
+  },
+});
 </script>

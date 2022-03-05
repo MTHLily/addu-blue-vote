@@ -13,9 +13,9 @@ class InformationModuleService
         InformationModule $informationModule = null
     ): InformationModule {
         $informationModuleData = Arr::only($request->validated(), [
+            "title",
             "description",
             "speakers",
-            "downloadables",
         ]);
 
         if ($informationModule == null) {

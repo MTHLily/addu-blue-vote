@@ -84,13 +84,10 @@ export default {
         title: "",
         description: "",
         information: "",
-        // guests: "",
         link: "",
         errors: {
           title: "",
           description: "",
-          //information: "",
-          //guests: "",
           link: "",
         },
       }),

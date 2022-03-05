@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\CandidateProfileController;
+use App\Http\Controllers\Frontend\CandidateProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrequentlyAskedQuestionController;
 use App\Http\Controllers\InformationSnippetController;
@@ -26,6 +26,7 @@ use App\Models\NewsArticle;
 use App\Services\NewscraperService;
 use Illuminate\Support\Str;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\Frontend\InformationModuleFrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,6 +145,17 @@ Route::prefix("candidate-profiles")->group(function () {
     Route::get("/", [CandidateProfileController::class, "index"])->name(
         "candidate-profiles.index"
     );
+});
+
+Route::prefix("information-modules")->group(function () {
+    Route::get("/", [
+        InformationModuleFrontendController::class,
+        "index",
+    ])->name("modules.index");
+    Route::get("/{informationModule}", [
+        InformationModuleFrontendController::class,
+        "show",
+    ])->name("modules.show");
 });
 
 Route::get("/login", [RegisteredUserController::class, "create"]);

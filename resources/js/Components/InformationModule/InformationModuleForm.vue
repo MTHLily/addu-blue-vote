@@ -1,5 +1,21 @@
 <template>
   <div class="mb-2">
+    <label for="informationModuleTitle" class="form-label"
+      >Information Module Title</label
+    >
+    <input
+      v-model="form.title"
+      type="text"
+      class="form-control"
+      :class="{
+        'is-invalid': form.errors.title,
+      }"
+      id="informationModuleTitle"
+      placeholder="Module Description"
+    />
+    <div class="invalid-feedback">{{ form.errors.title }}</div>
+  </div>
+  <div class="mb-2">
     <label for="informationModuleDescription" class="form-label"
       >Information Module Description</label
     >
@@ -31,10 +47,13 @@
   </div>
 
   <div class="mb-3">
-    <label for="informationModuleRelatedVideo" class="form-label"
-      >Related Video</label
-    >
-    <NSelect v-model:value="form.related_videos" :options="videos" multiple />
+    <label for="informationModuleRelatedVideo" class="form-label">
+      Related Video
+    </label>
+    <VideoResourceSelect
+      :video-resources="videos"
+      v-model:value="form.related_videos"
+    />
     <div class="invalid-feedback">{{ form.errors.downloadables }}</div>
   </div>
 
@@ -57,13 +76,13 @@
 <script>
 import { defineComponent } from "@vue/runtime-core";
 import _ from "lodash";
-import { NSelect } from "naive-ui";
 import ImageUploader from "../FileUploader.vue";
+import VideoResourceSelect from "../VideoResources/VideoResourceSelect.vue";
 
 export default defineComponent({
   components: {
-    NSelect,
     ImageUploader,
+    VideoResourceSelect,
   },
   props: {
     form: {

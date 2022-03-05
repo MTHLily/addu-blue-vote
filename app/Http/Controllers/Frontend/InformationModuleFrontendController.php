@@ -16,7 +16,11 @@ class InformationModuleFrontendController extends Controller
      */
     public function index()
     {
-        //
+        $information_modules = InformationModule::with("cover")->get();
+
+        return Inertia::render("Frontend/InformationModules/Index", [
+            "information_modules" => $information_modules,
+        ]);
     }
     /**
      * Display the specified resource.

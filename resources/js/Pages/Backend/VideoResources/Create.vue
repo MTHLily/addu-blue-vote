@@ -19,8 +19,8 @@
 
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
-import DashboardLayout from "../../Layouts/DashboardLayout.vue";
-import VideoResourceForm from "../../Components/VideoResources/VideoResourceForm.vue";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
+import VideoResourceForm from "@/Components/VideoResources/VideoResourceForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {

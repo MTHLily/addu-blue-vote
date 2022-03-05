@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
-
 class FrequentlyAskedQuestionController extends Controller
 {
     /**
@@ -18,8 +17,8 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function index()
     {
-        return Inertia::render( 'FAQs/Index', [
-            'faqs' => FrequentlyAskedQuestion::all()
+        return Inertia::render("Backend/FAQs/Index", [
+            "faqs" => FrequentlyAskedQuestion::all(),
         ]);
     }
 
@@ -30,8 +29,7 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function create()
     {
-        return Inertia::render('FAQs/Create');
-
+        return Inertia::render("Backend/FAQs/Create");
     }
 
     /**
@@ -42,9 +40,9 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function store(FrequentlyAnsweredQuestionRequest $request)
     {
-        FrequentlyAskedQuestion::create( $request->validated());
+        FrequentlyAskedQuestion::create($request->validated());
 
-        return Redirect::route('faqs.index')->with('success', 'FAQ Added!');
+        return Redirect::route("faqs.index")->with("success", "FAQ Added!");
     }
 
     /**
@@ -55,8 +53,8 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function show(FrequentlyAskedQuestion $faq)
     {
-        return Inertia::render("FAQs/Show", [
-            'faq' => $faq
+        return Inertia::render("Backend/FAQs/Show", [
+            "faq" => $faq,
         ]);
     }
 
@@ -68,8 +66,8 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function edit(FrequentlyAskedQuestion $faq)
     {
-        return Inertia::render('FAQs/Edit', [
-            'faq' => $faq
+        return Inertia::render("Backend/FAQs/Edit", [
+            "faq" => $faq,
         ]);
     }
 
@@ -80,14 +78,16 @@ class FrequentlyAskedQuestionController extends Controller
      * @param  \App\Models\FrequentlyAskedQuestion  $frequentlyAskedQuestion
      * @return \Illuminate\Http\Response
      */
-    public function update(FrequentlyAnsweredQuestionRequest $request, FrequentlyAskedQuestion $faq)
-    {
+    public function update(
+        FrequentlyAnsweredQuestionRequest $request,
+        FrequentlyAskedQuestion $faq
+    ) {
         $faq->update($request->validated());
 
-        return Redirect::route('faqs.index')->with('success', 'FAQ updated!');
+        return Redirect::route("faqs.index")->with("success", "FAQ updated!");
         // return redirect()->route('faqs.index')->with('success', 'FAQ updated!');
 
-        // return Inertia::render( 'FAQs/Index', [
+        // return Inertia::render( 'Backend/FAQs/Index', [
         //     'faqs' => FrequentlyAskedQuestion::all()
         // ])->with('success', 'FAQ updated!');
     }
@@ -101,8 +101,7 @@ class FrequentlyAskedQuestionController extends Controller
     public function destroy(FrequentlyAskedQuestion $faq)
     {
         $faq->delete();
-        
-        return Redirect::back()->with('message', 'FAQ deleted!');
-        
+
+        return Redirect::back()->with("message", "FAQ deleted!");
     }
 }

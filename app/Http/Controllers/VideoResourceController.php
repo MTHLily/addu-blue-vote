@@ -17,7 +17,7 @@ class VideoResourceController extends Controller
      */
     public function index()
     {
-        return Inertia::render("VideoResources/Index", [
+        return Inertia::render("Backend/VideoResources/Index", [
             "video_resources" => VideoResource::all(),
         ]);
     }
@@ -29,7 +29,7 @@ class VideoResourceController extends Controller
      */
     public function create()
     {
-        return Inertia::render("VideoResources/Create");
+        return Inertia::render("Backend/VideoResources/Create");
     }
 
     /**
@@ -73,7 +73,7 @@ class VideoResourceController extends Controller
      */
     public function edit(VideoResource $videoResource)
     {
-        return Inertia::render("VideoResources/Edit", [
+        return Inertia::render("Backend/VideoResources/Edit", [
             "video_resource" => $videoResource,
         ]);
     }
@@ -96,8 +96,6 @@ class VideoResourceController extends Controller
             $videoResource->title . " updated!"
         );
     }
-
-
 
     /**
      * Remove the specified resource from storage.

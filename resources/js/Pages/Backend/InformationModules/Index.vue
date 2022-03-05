@@ -1,11 +1,11 @@
 <template>
-  <Head title="Video Resources"></Head>
+  <Head title="Information Modules"></Head>
   <DashboardLayout>
     <div class="flex flex-column container">
       <BlueVoteTable
-        :items="video_resources"
+        :items="information_modules"
         :columns="columns"
-        title="Video Resources"
+        title="Information Modules"
       >
         <template #featured="{ item }">
           <div
@@ -23,7 +23,7 @@
         <template #footer>
           <Link
             class="btn btn-primary m-2 py-2 px-4"
-            :href="route('video-resources.create')"
+            :href="route('information-modules.create')"
             >Add</Link
           >
         </template>
@@ -31,12 +31,15 @@
           <div class="d-flex justify-content-center">
             <div class="btn-group">
               <Link
-                :href="route('video-resources.edit', item.id)"
+                :href="route('information-modules.edit', item.id)"
                 class="btn btn-success"
               >
                 <i class="bi-pencil-square"></i>
               </Link>
-              <DeleteButton :item="item" route-name="video-resources.destroy" />
+              <DeleteButton
+                :item="item"
+                route-name="information-modules.destroy"
+              />
             </div>
           </div>
         </template>
@@ -47,14 +50,14 @@
 
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
-import DashboardLayout from "../../Layouts/DashboardLayout.vue";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import BlueVoteTable from "@/Components/BlueVoteTable.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";
 import { Inertia } from "@inertiajs/inertia";
 
 export default {
   props: {
-    video_resources: {
+    information_modules: {
       type: Array,
       default: () => [],
     },
@@ -62,15 +65,11 @@ export default {
   data: () => ({
     columns: [
       {
-        label: "Title",
-        value: "title",
-      },
-      {
         label: "Description",
         value: "description",
       },
       {
-        label: "Featured",
+        label: "Featured (NOT DONE)",
         value: "featured",
         slotName: "featured",
       },
@@ -79,7 +78,12 @@ export default {
   components: { Link, Head, DashboardLayout, BlueVoteTable, DeleteButton },
   methods: {
     handleCheckFeatured(item) {
-      Inertia.patch(route("video-resources.check", item.id));
+      Inertia.patch(route("information-modules.check", item.id));
+    },
+
+    submitDelete(id) {
+      Inertia.delete(route("candidates.destroy", id));
+      Inertia.delete(route("candidates.unlink_video", id));
     },
   },
 };

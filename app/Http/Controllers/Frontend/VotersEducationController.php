@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\ElectionProcessStep;
 use App\Models\FrequentlyAskedQuestion;
+use App\Models\InformationModule;
 use App\Models\NewsArticle;
 use App\Models\VideoResource;
 use Inertia\Inertia;
@@ -26,12 +27,14 @@ class VotersEducationController
             ->withQueryString();
 
         $electionProcessSteps = ElectionProcessStep::sorted()->get();
+        $informationModules = InformationModule::with("cover")->get();
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,
             "featuredVideos" => $featuredVideos,
             "videoResources" => $videoResources,
             "electionSteps" => $electionProcessSteps,
+            "informationModules" => $informationModules,
         ]);
     }
 }

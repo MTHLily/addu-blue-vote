@@ -37,8 +37,8 @@
 
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
-import DashboardLayout from "../../Layouts/DashboardLayout.vue";
-import MarkdownViewer from "../../Components/MarkdownViewer.vue";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
+import MarkdownViewer from "@/Components/MarkdownViewer.vue";
 import { Inertia } from "@inertiajs/inertia";
 import BlueVoteTable from "@/Components/BlueVoteTable.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";

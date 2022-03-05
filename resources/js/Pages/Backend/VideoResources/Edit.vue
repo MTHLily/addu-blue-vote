@@ -21,11 +21,10 @@
   </DashboardLayout>
 </template>
 
-
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
-import DashboardLayout from "../../Layouts/DashboardLayout.vue";
-import VideoResourceForm from "../../Components/VideoResources/VideoResourceForm.vue";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
+import VideoResourceForm from "@/Components/VideoResources/VideoResourceForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -49,7 +48,6 @@ export default {
       information: this.video_resource.information,
       guests: this.video_resource.guests,
       link: this.video_resource.link,
-
     });
   },
 };

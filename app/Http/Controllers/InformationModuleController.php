@@ -20,7 +20,7 @@ class InformationModuleController extends Controller
      */
     public function index()
     {
-        return Inertia::render("InformationModules/Index", [
+        return Inertia::render("Backend/InformationModules/Index", [
             "information_modules" => InformationModule::all(),
         ]);
     }
@@ -34,7 +34,7 @@ class InformationModuleController extends Controller
     {
         $videos = VideoResource::all();
 
-        return Inertia::render("InformationModules/Create", [
+        return Inertia::render("Backend/InformationModules/Create", [
             "videos" => $videos,
         ]);
     }
@@ -90,7 +90,7 @@ class InformationModuleController extends Controller
             "downloadables"
         );
 
-        return Inertia::render("InformationModules/Edit", [
+        return Inertia::render("Backend/InformationModules/Edit", [
             "information_module" => $informationModule,
             "videos" => $videos,
         ]);

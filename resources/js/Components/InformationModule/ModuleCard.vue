@@ -1,20 +1,26 @@
 <template lang="">
-  <div class="card" style="width: 18rem">
-    <img :src="module.img" class="card-img-top" :alt="module.title" />
+  <div class="card">
+    <img :src="module.cover.url" class="card-img-top" :alt="module.title" />
     <div class="card-body">
-      <h3 class="card-title">{{ module.title }}</h3>
+      <h2 class="card-title">{{ module.title }}</h2>
       <p class="card-text">{{ module.description }}</p>
-      <a
-        href="#"
-        target="_blank"
+      <Link
+        :href="route('modules.show', module.id)"
         class="btn btn-primary text-white text-decoration-none"
-        >Learn More...</a
       >
+        Learn More...
+      </Link>
     </div>
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from "vue";
+import { Link } from "@inertiajs/inertia-vue3";
+
+export default defineComponent({
+  components: {
+    Link,
+  },
   props: {
     module: {
       type: Object,
@@ -25,6 +31,5 @@ export default {
       }),
     },
   },
-};
+});
 </script>
-<style lang=""></style>

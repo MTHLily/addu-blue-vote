@@ -4,7 +4,7 @@
     <Head title="Frequently Asked Questions"></Head>
 
     <DashboardLayout>
-      <div class="rounded" style="background-color: #FBD2B5;">
+      <div class="rounded" style="background-color: #fbd2b5">
         <div class="d-flex flex-column">
           <form @submit.prevent="faqForm.put(`/dashboard/faqs/${faq.id}`)">
             <h1 class="p-3">Frequently Asked Question Details</h1>
@@ -31,10 +31,10 @@
 
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
-import DashboardLayout from "../../Layouts/DashboardLayout.vue";
-import FAQForm from "../../Components/FAQs/FAQForm.vue";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
+import FAQForm from "@/Components/FAQs/FAQForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-import AdminLayout from "../../Layouts/admin";
+import AdminLayout from "@/Layouts/admin";
 
 export default {
   props: {
@@ -43,7 +43,7 @@ export default {
       default: () => ({}),
     },
   },
-  components: { Link, Head, DashboardLayout, FAQForm,AdminLayout, },
+  components: { Link, Head, DashboardLayout, FAQForm, AdminLayout },
   created() {
     this.faqForm = useForm({
       question: this.faq.question,

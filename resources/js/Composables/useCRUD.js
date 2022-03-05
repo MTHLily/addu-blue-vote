@@ -2,14 +2,17 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import _ from "lodash";
 
 export default () => {
-  const idMap = (model) => model.id;
+  const idMap = (model) => model?.id;
 
   const mediaMap = (media) => {
-    return {
-      id: media.id,
-      name: media.file_name,
-      status: "finished",
-    };
+    if (media)
+      return {
+        id: media.id,
+        name: media.file_name,
+        url: media.url,
+        status: "finished",
+      };
+    return null;
   };
 
   const createInfoModuleForm = (infoModule = null) => {
@@ -18,14 +21,16 @@ export default () => {
         title: "",
         description: "",
         speakers: "",
-        media: [],
+        downloadables: [],
+        cover: null,
         related_videos: [],
       });
     }
 
     const values = _.pick(infoModule, ["title", "description", "speakers"]);
     values._method = "PATCH";
-    values.media = infoModule.media.map(mediaMap);
+    values.cover = mediaMap(infoModule.cover);
+    values.downloadables = infoModule.downloadables?.map(mediaMap) || [];
     values.related_videos = infoModule.related_video_resources.map(idMap);
 
     return useForm(values);

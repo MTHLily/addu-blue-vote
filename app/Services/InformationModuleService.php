@@ -30,9 +30,16 @@ class InformationModuleService
             ->relatedVideoResources()
             ->sync(Arr::get($request->validated(), "related_videos"));
 
-        (new MediaService())->sync(
+        $mediaService = new MediaService();
+
+        $mediaService->attachOnlyOne(
             $informationModule,
-            Arr::get($request->validated(), "media"),
+            Arr::get($request->validated(), "cover"),
+            "information-module-covers"
+        );
+        $mediaService->sync(
+            $informationModule,
+            Arr::get($request->validated(), "downloadables"),
             "information-module-files",
             "info-module"
         );

@@ -83,7 +83,12 @@ class InformationModuleController extends Controller
     public function edit(InformationModule $informationModule)
     {
         $videos = VideoResource::all();
-        $informationModule->load("media", "relatedVideoResources");
+        $informationModule->load(
+            "media",
+            "relatedVideoResources",
+            "cover",
+            "downloadables"
+        );
 
         return Inertia::render("InformationModules/Edit", [
             "information_module" => $informationModule,

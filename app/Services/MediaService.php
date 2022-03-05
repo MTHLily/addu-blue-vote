@@ -42,7 +42,7 @@ class MediaService
         $mediable,
         $media,
         string $collectionName,
-        string $fileName
+        string $fileName = null
     ) {
         // // Handle Media
         // $media = Arr::get($request->validated(), "media", null);
@@ -54,10 +54,10 @@ class MediaService
                 ->whereNotIn("id", Arr::wrap(Arr::get($media, "id")))
                 ->delete();
 
-            if ($mediable->media()->count() === 0 && isset($media["file"])) {
+            if ($mediable->cover()->count() === 0 && isset($media["file"])) {
                 $mediable
                     ->addMedia($media["file"])
-                    ->usingName($fileName)
+                    ->usingName($fileName ? $fileName : $media["name"])
                     ->toMediaCollection($collectionName);
             }
         } else {

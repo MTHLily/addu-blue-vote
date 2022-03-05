@@ -5,6 +5,11 @@
       <Breadcrumb :breadcrumbs="breadcrumbs" />
       <h1 class="text-primary fw-bold my-4">{{ information_module.title }}</h1>
       <!-- image header -->
+      <img
+        class="information-module-cover"
+        :src="information_module.cover?.url"
+        :alt="`${information_module.title} Cover Image`"
+      />
       <div class="container">
         <h2>Description</h2>
         <p class="p-3">{{ information_module.description }}</p>

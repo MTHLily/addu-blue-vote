@@ -26,7 +26,7 @@ class InformationModuleFrontendController extends Controller
      */
     public function show(InformationModule $informationModule)
     {
-        $informationModule->load("media", "downloadables");
+        $informationModule->load("media", "downloadables", "cover");
 
         $videos = $informationModule->relatedVideoResources()->paginate();
 

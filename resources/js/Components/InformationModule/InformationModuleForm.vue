@@ -1,8 +1,29 @@
 <template>
   <div class="mb-2">
-    <label for="informationModuleTitle" class="form-label"
-      >Information Module Title</label
-    >
+    <img
+      class="information-module-cover"
+      :src="
+        form.cover?.file
+          ? URL.createObjectURL(form.cover.file)
+          : form.cover?.url
+      "
+      alt="Module Cover Preview"
+    />
+    <label for="informationModuleCover" class="form-label">
+      Information Module Cover
+    </label>
+    <FileUploader
+      v-model:value="form.cover"
+      :class="{
+        'is-invalid': form.errors['cover.file'],
+      }"
+    />
+    <div class="invalid-feedback">{{ form.errors["cover.file"] }}</div>
+  </div>
+  <div class="mb-2">
+    <label for="informationModuleTitle" class="form-label">
+      Information Module Title
+    </label>
     <input
       v-model="form.title"
       type="text"
@@ -36,10 +57,10 @@
     <label for="informationModuleRelatedMedia" class="form-label">
       Files
     </label>
-    <ImageUploader
+    <FileUploader
       multipleFiles
       non-image
-      v-model:value="form.media"
+      v-model:value="form.downloadables"
       :class="{
         'is-invalid': form.errors['media.file'],
       }"
@@ -76,12 +97,12 @@
 <script>
 import { defineComponent } from "@vue/runtime-core";
 import _ from "lodash";
-import ImageUploader from "../FileUploader.vue";
+import FileUploader from "../FileUploader.vue";
 import VideoResourceSelect from "../VideoResources/VideoResourceSelect.vue";
 
 export default defineComponent({
   components: {
-    ImageUploader,
+    FileUploader,
     VideoResourceSelect,
   },
   props: {
@@ -104,6 +125,11 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+  },
+  setup() {
+    return {
+      URL,
+    };
   },
 });
 </script>

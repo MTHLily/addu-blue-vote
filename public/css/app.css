@@ -1196,10 +1196,6 @@ select {
   margin-left: 1rem;
   margin-right: 1rem;
 }
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1694,6 +1690,15 @@ select {
 .n-button {
   background-color: var(--n-color) !important;
   font-weight: var(--n-font-weight) !important;
+}
+.information-module-cover {
+  height: clamp(100px, 40vh, 500px);
+  max-height: 300px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
 }
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1;

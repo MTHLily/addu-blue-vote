@@ -8,9 +8,9 @@
     <div class="d-flex flex-column h-100">
       <Link :href="route('dashboard')" class="text-decoration-none">
         <div
-          class="bg-white mx-auto mt-3 w-3/4 align-middle text-center p-3 d-flex rounded align-items-center"
+          class="bg-white mx-auto mt-3 w-full align-middle text-center p-3 d-flex rounded align-items-center"
         >
-          <img class="img" :src="logo" height="30" />
+          <img class="img w-1/2" :src="logo" height="30" />
           <div class="text-primary align-middle fw-bolder ps-sm-3">
             AdDU Blue Vote
           </div>

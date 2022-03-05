@@ -22,64 +22,9 @@ class NewsArticleController extends Controller
             ->withCount("relatedCandidates")
             ->paginate($request->itemsPerPage);
 
-        return Inertia::render("News/Index", [
+        return Inertia::render("Backend/News/Index", [
             "articles" => $articles,
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NewsArticle  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NewsArticle $news)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NewsArticle  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NewsArticle $news)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NewsArticle  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NewsArticle $news)
-    {
-        //
     }
 
     /**

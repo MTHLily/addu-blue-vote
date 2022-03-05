@@ -18,7 +18,7 @@
 </template>
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import NewsCard from "../../Components/News/NewsCard.vue";
+import NewsCard from "@/Components/News/NewsCard.vue";
 import Pagination from "../Pagination.vue";
 
 export default defineComponent({

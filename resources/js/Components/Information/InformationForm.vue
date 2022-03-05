@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import MarkdownEditor from "../../Components/MarkdownEditor.vue";
+import MarkdownEditor from "@/Components/MarkdownEditor.vue";
 import InformationSlide from "./InformationSlide.vue";
 import FileUploader from "../FileUploader.vue";
 

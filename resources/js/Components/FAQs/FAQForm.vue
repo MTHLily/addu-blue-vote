@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import MarkdownEditor from "../../Components/MarkdownEditor.vue";
+import MarkdownEditor from "@/Components/MarkdownEditor.vue";
 import FAQItem from "./FAQItem.vue";
 
 export default {

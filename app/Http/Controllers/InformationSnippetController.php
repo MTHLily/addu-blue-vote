@@ -20,7 +20,7 @@ class InformationSnippetController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Information/Index", [
+        return Inertia::render("Backend/Information/Index", [
             "info" => InformationSnippet::all(),
         ]);
     }
@@ -32,7 +32,7 @@ class InformationSnippetController extends Controller
      */
     public function create()
     {
-        return Inertia::render("Information/Create");
+        return Inertia::render("Backend/Information/Create");
     }
 
     /**
@@ -88,7 +88,7 @@ class InformationSnippetController extends Controller
      */
     public function show(InformationSnippet $information)
     {
-        return Inertia::render("Information/Show", [
+        return Inertia::render("Backend/Information/Show", [
             "information" => $information,
         ]);
     }
@@ -103,7 +103,7 @@ class InformationSnippetController extends Controller
     {
         $information->append("cover");
 
-        return Inertia::render("Information/Edit", [
+        return Inertia::render("Backend/Information/Edit", [
             "information" => $information,
         ]);
     }

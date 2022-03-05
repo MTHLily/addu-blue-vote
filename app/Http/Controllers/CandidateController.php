@@ -30,7 +30,7 @@ class CandidateController extends Controller
             ->withCount("relatedArticles")
             ->get();
 
-        return Inertia::render("Candidates/Index", [
+        return Inertia::render("Backend/Candidates/Index", [
             "candidates" => $candidates,
         ]);
     }
@@ -54,7 +54,7 @@ class CandidateController extends Controller
         $articles = NewsArticle::all();
         $videos = VideoResource::all();
 
-        return Inertia::render("Candidates/Create", [
+        return Inertia::render("Backend/Candidates/Create", [
             "location_types" => $locationTypes,
             "positions" => $positions,
             "locations" => $locations,
@@ -125,7 +125,7 @@ class CandidateController extends Controller
 
         $candidate->append("mediaUrls");
 
-        return Inertia::render("Candidates/Edit", [
+        return Inertia::render("Backend/Candidates/Edit", [
             "candidate" => $candidate,
             "location_types" => $locationTypes,
             "positions" => $positions,

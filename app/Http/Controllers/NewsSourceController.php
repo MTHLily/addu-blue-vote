@@ -18,7 +18,7 @@ class NewsSourceController extends Controller
     public function index()
     {
         $newsSources = NewsSource::all();
-        return Inertia::render("NewsSources/Index", [
+        return Inertia::render("Backend/NewsSources/Index", [
             "news-sources" => $newsSources,
         ]);
     }
@@ -30,7 +30,7 @@ class NewsSourceController extends Controller
      */
     public function create()
     {
-        return Inertia::render("NewsSources/Create");
+        return Inertia::render("Backend/NewsSources/Create");
     }
 
     /**
@@ -50,17 +50,6 @@ class NewsSourceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NewsSource  $newsSource
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NewsSource $newsSource)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\NewsSource  $newsSource
@@ -68,7 +57,7 @@ class NewsSourceController extends Controller
      */
     public function edit(NewsSource $newsSource)
     {
-        return Inertia::render("NewsSources/Edit", [
+        return Inertia::render("Backend/NewsSources/Edit", [
             "news-source" => $newsSource,
         ]);
     }

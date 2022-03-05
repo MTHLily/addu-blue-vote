@@ -6,7 +6,6 @@ use App\Http\Requests\LocationRequest;
 use App\Models\Location;
 use App\Models\LocationType;
 use App\Services\LocationService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -20,7 +19,7 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::with("type", "parent", "media")->paginate();
-        return Inertia::render("Locations/Index", compact("locations"));
+        return Inertia::render("Backend/Locations/Index", compact("locations"));
     }
 
     /**
@@ -32,7 +31,7 @@ class LocationController extends Controller
     {
         $types = LocationType::all();
         $locations = Location::all()->groupBy("location_type_id");
-        return Inertia::render("Locations/Create", [
+        return Inertia::render("Backend/Locations/Create", [
             "types" => $types,
             "locations" => $locations,
         ]);
@@ -55,16 +54,6 @@ class LocationController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Location $location)
-    {
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Location  $location
@@ -77,7 +66,7 @@ class LocationController extends Controller
 
         $location->load("media");
 
-        return Inertia::render("Locations/Edit", [
+        return Inertia::render("Backend/Locations/Edit", [
             "location" => $location,
             "types" => $types,
             "locations" => $locations,

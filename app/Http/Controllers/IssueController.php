@@ -17,7 +17,7 @@ class IssueController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Issues/Index", [
+        return Inertia::render("Backend/Issues/Index", [
             "issues" => Issue::all(),
         ]);
     }
@@ -29,7 +29,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        return Inertia::render("Issues/Create");
+        return Inertia::render("Backend/Issues/Create");
     }
 
     /**
@@ -49,17 +49,6 @@ class IssueController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Issue  $issue
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Issue $issue)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Issue  $issue
@@ -67,7 +56,7 @@ class IssueController extends Controller
      */
     public function edit(Issue $issue)
     {
-        return Inertia::render("Issues/Edit", [
+        return Inertia::render("Backend/Issues/Edit", [
             "issue" => $issue,
         ]);
     }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PoliticalPartyRequest;
 use App\Models\PoliticalParty;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -17,7 +16,7 @@ class PoliticalPartyController extends Controller
      */
     public function index()
     {
-        return Inertia::render("PoliticalParties/Index", [
+        return Inertia::render("Backend/PoliticalParties/Index", [
             "political_parties" => PoliticalParty::all(),
         ]);
     }
@@ -29,7 +28,7 @@ class PoliticalPartyController extends Controller
      */
     public function create()
     {
-        return Inertia::render("PoliticalParties/Create");
+        return Inertia::render("Backend/PoliticalParties/Create");
     }
 
     /**
@@ -49,17 +48,6 @@ class PoliticalPartyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PoliticalParty  $political_party
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PoliticalParty $political_party)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\PoliticalParty  $political_party
@@ -67,7 +55,7 @@ class PoliticalPartyController extends Controller
      */
     public function edit(PoliticalParty $political_party)
     {
-        return Inertia::render("PoliticalParties/Edit", [
+        return Inertia::render("Backend/PoliticalParties/Edit", [
             "political_party" => $political_party,
         ]);
     }

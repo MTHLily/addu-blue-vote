@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PointOfInterestRequest;
-use App\Models\District;
 use App\Models\Location;
 use App\Models\PointOfInterest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class PointOfInterestController extends Controller
@@ -20,7 +17,7 @@ class PointOfInterestController extends Controller
      */
     public function index()
     {
-        return Inertia::render("PointsOfInterest/Index", [
+        return Inertia::render("Backend/PointsOfInterest/Index", [
             "pois" => PointOfInterest::with(["location", "type"])->get(),
         ]);
     }
@@ -36,7 +33,7 @@ class PointOfInterestController extends Controller
             ->with("children.children.children")
             ->get();
 
-        return Inertia::render("PointsOfInterest/Create", [
+        return Inertia::render("Backend/PointsOfInterest/Create", [
             "locations" => $locations,
             "poi_types" => PointOfInterest::getTypes(),
         ]);
@@ -80,7 +77,7 @@ class PointOfInterestController extends Controller
         $locations = Location::regions()
             ->with("children.children.children")
             ->get();
-        return Inertia::render("PointsOfInterest/Edit", [
+        return Inertia::render("Backend/PointsOfInterest/Edit", [
             "poi" => $poi,
             "locations" => $locations,
             "poi_types" => PointOfInterest::getTypes(),

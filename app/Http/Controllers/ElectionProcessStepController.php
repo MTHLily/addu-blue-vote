@@ -19,7 +19,7 @@ class ElectionProcessStepController extends Controller
     {
         $steps = ElectionProcessStep::sorted()->get();
 
-        return Inertia::render("ElectionProcessSteps/Index", [
+        return Inertia::render("Backend/ElectionProcessSteps/Index", [
             "steps" => $steps,
         ]);
     }
@@ -31,7 +31,7 @@ class ElectionProcessStepController extends Controller
      */
     public function create()
     {
-        return Inertia::render("ElectionProcessSteps/Create");
+        return Inertia::render("Backend/ElectionProcessSteps/Create");
     }
 
     /**
@@ -66,7 +66,7 @@ class ElectionProcessStepController extends Controller
      */
     public function edit(ElectionProcessStep $electionProcessStep)
     {
-        return Inertia::render("ElectionProcessSteps/Edit", [
+        return Inertia::render("Backend/ElectionProcessSteps/Edit", [
             "step" => $electionProcessStep,
         ]);
     }

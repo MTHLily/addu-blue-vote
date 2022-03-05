@@ -1,32 +1,30 @@
 <?php
 
-use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ElectionProcessStepController;
+use App\Http\Controllers\Backend\InformationModuleController;
+use App\Http\Controllers\Backend\InformationSnippetController;
+use App\Http\Controllers\Backend\IssueController;
+use App\Http\Controllers\Backend\LocationController;
+use App\Http\Controllers\Backend\NewsArticleController;
+use App\Http\Controllers\Backend\NewsSourceController;
+use App\Http\Controllers\Backend\PointOfInterestController;
+use App\Http\Controllers\Backend\PoliticalPartyController;
+use App\Http\Controllers\Backend\VideoResourceController;
+use App\Http\Controllers\Backend\CandidateController;
+use App\Http\Controllers\Backend\FrequentlyAskedQuestionController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrequentlyAskedQuestionController;
-use App\Http\Controllers\InformationSnippetController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CityController;
-// use App\Http\Controllers\DistrictController;
-use App\Http\Controllers\ElectionProcessStepController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\InformationModuleFrontendController;
 use App\Http\Controllers\Frontend\VotersEducationController;
 use App\Http\Controllers\GuestController;
-use App\Http\Controllers\IssueController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\NewsArticleController;
-use App\Http\Controllers\NewsSourceController;
-use App\Http\Controllers\PointOfInterestController;
-use App\Http\Controllers\PoliticalPartyController;
-use App\Http\Controllers\VideoResourceController;
-use App\Http\Controllers\InformationModuleController;
 use App\Http\Controllers\SVGController;
 use App\Models\Candidate;
 use App\Models\NewsArticle;
 use App\Services\NewscraperService;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\Frontend\InformationModuleFrontendController;
 
 /*
 |--------------------------------------------------------------------------

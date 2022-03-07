@@ -101,6 +101,7 @@ class CandidateService
                 ->platforms()
                 ->firstOrNew(["id" => Arr::get($platform, "id", null)]);
             $model->fill(Arr::only($platform, ["title", "description"]));
+            unset($model->id);
             $model->save();
         });
 

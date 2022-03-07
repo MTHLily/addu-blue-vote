@@ -69,7 +69,7 @@ export default {
         value: "description",
       },
       {
-        label: "Featured (NOT DONE)",
+        label: "Featured",
         value: "featured",
         slotName: "featured",
       },
@@ -82,8 +82,8 @@ export default {
     },
 
     submitDelete(id) {
-      Inertia.delete(route("candidates.destroy", id));
-      Inertia.delete(route("candidates.unlink_video", id));
+      Inertia.delete(route("information-modules.destroy", id));
+      Inertia.delete(route("information-modules.unlink_video", id));
     },
   },
 };

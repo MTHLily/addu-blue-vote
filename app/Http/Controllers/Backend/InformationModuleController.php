@@ -58,14 +58,22 @@ class InformationModuleController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
+  /**
+     * Check the video resource as featured.
      *
-     * @param  int  $id
+     * @param  \App\Models\VideoResource  $videoResource
      * @return \Illuminate\Http\Response
      */
-    /*public function check(InfomationModule $informationModule)
+    public function check(InformationModule $informationModule)
     {
+       /* $isExist = InformationModule::select("featured")
+                        ->exists();
+        if ($isExist) {
+            dd('Record is available.');
+        }else{
+            dd('Record is not available.');s
+        }*/
+        //dd($informationModule);
         $informationModule->featured = !$informationModule->featured;
         $informationModule->save();
 
@@ -73,7 +81,7 @@ class InformationModuleController extends Controller
             "success",
             "Updated " . $informationModule->description
         );
-    }*/
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -115,7 +123,7 @@ class InformationModuleController extends Controller
 
         return Redirect::route("information-modules.index")->with(
             "success",
-            $informationModule->name . " has been updated!"
+            $informationModule->description . " has been updated!"
         );
     }
 

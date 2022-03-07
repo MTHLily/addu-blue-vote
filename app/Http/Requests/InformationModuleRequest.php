@@ -34,7 +34,6 @@ class InformationModuleRequest extends FormRequest
             "cover.id" => "sometimes",
             "related_videos" => ["array", "nullable"],
             "speakers" => "required",
-            "featured" => "boolean",
         ];
     }
 }

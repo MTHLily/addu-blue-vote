@@ -111,9 +111,9 @@ export default defineComponent({
       default: () => ({
         description: "",
         speakers: "",
-        downloadables: "",
         errors: {
           description: "",
+          speakers: "",
         },
       }),
     },

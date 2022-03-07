@@ -32,7 +32,11 @@ class MediaService
         }
 
         $data->each(function ($media) use ($mediable, $collectionName) {
-            $model = Media::find($media["id"]);
+            $model = null;
+            if (is_numeric($media["id"])) {
+                $model = Media::find($media["id"]);
+            }
+
             if ($model != null) {
                 return;
             }

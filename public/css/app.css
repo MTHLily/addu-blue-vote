@@ -1211,6 +1211,18 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
+.mb-0 {
+  margin-bottom: 0px;
+}
 .-mr-0\.5 {
   margin-right: -0.125rem;
 }

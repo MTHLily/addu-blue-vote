@@ -35,7 +35,7 @@
       >Related Video</label
     >
     <NSelect v-model:value="form.related_videos" :options="videos" multiple />
-    <div class="invalid-feedback">{{ form.errors.downloadables }}</div>
+    <div class="invalid-feedback">{{ form.errors.related_videos }}</div>
   </div>
 
   <div class="mb-3">
@@ -71,9 +71,9 @@ export default defineComponent({
       default: () => ({
         description: "",
         speakers: "",
-        downloadables: "",
         errors: {
           description: "",
+          speakers: "",
         },
       }),
     },

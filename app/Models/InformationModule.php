@@ -13,11 +13,12 @@ class InformationModule extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        "description",
+       "description",
         "speakers",
         "featured",
-        "downloadables",
     ];
+    //protected $guarded = [];
+
     protected $casts = [
         "featured" => "boolean",
     ];

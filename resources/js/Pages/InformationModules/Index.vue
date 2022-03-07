@@ -7,7 +7,7 @@
         :columns="columns"
         title="Information Modules"
       >
-        <template #featured="{ item }">
+     <template #featured="{ item }">
           <div
             class="form-check h-100 w-100 d-flex justify-center align-items-center"
           >
@@ -66,7 +66,7 @@ export default {
         value: "description",
       },
       {
-        label: "Featured (NOT DONE)",
+        label: "Featured",
         value: "featured",
         slotName: "featured",
       },
@@ -79,8 +79,8 @@ export default {
     },
 
     submitDelete(id) {
-      Inertia.delete(route("candidates.destroy", id));
-      Inertia.delete(route("candidates.unlink_video", id));
+      Inertia.delete(route("information-modules.destroy", id));
+      Inertia.delete(route("information-modules.unlink_video", id));
 
     },
   }

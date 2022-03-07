@@ -19,7 +19,7 @@ class CreateInformationModulesTable extends Migration
             $table->string("related_media");
             $table->string("related_video");
             $table->string("speakers");
-            $table->boolean("featured")->default(0);
+            $table->boolean("featured")->default(false);
             $table->string("downloadables");
             $table->timestamps();
         });

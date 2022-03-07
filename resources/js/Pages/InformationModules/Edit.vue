@@ -43,9 +43,9 @@ export default defineComponent({
   data: () => ({
     videoOptions: [],
     form: useForm({
-      description: null,
+      description: "",
       related_media: null,
-      speakers: null,
+      speakers: "",
       featured: null,
       media: null,
     }),

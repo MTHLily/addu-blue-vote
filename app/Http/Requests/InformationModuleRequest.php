@@ -27,9 +27,9 @@ class InformationModuleRequest extends FormRequest
             "description" => "required",
             "media.*.file" => "file",
             "media.*.id" => "sometimes",
-            "related_videos" => ["array", "nullable"],
+            "related_videos" => ["array", "nullable"], 
             "speakers" => "required",
-            "featured" => "boolean",
+             
         ];
     }
 }

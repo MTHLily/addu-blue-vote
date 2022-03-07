@@ -48,11 +48,13 @@ class MediaService
         // $media = Arr::get($request->validated(), "media", null);
 
         if ($media !== null) {
-            $mediable
-                ->media()
-                ->where("collection_name", $collectionName)
-                ->whereNotIn("id", Arr::wrap(Arr::get($media, "id", [])))
-                ->delete();
+            if ($mediable->where("collection_name")->count() > 0) {
+                $mediable
+                    ->media()
+                    ->where("collection_name", $collectionName)
+                    ->whereNotIn("id", Arr::wrap(Arr::get($media, "id", [])))
+                    ->delete();
+            }
 
             if ($mediable->media()->count() === 0 && isset($media["file"])) {
                 $mediable

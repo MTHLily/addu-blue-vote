@@ -69,6 +69,7 @@ export default defineComponent({
       twitter_timeline_feed_url: null,
       stances: [],
       background: [],
+      platforms: [],
       media: null,
       keywords: null,
       related_articles: [],

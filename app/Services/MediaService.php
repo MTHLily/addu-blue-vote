@@ -48,7 +48,12 @@ class MediaService
         // $media = Arr::get($request->validated(), "media", null);
 
         if ($media !== null) {
-            if ($mediable->where("collection_name")->count() > 0) {
+            if (
+                $mediable
+                    ->media()
+                    ->where("collection_name")
+                    ->count() > 0
+            ) {
                 $mediable
                     ->media()
                     ->where("collection_name", $collectionName)

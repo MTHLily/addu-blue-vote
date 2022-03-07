@@ -89,10 +89,12 @@ class CandidateService
             ->pluck("id")
             ->toArray();
 
-        $candidate
-            ->platforms()
-            ->whereNotIn("id", $ids)
-            ->delete();
+        if ($candidate->platforms()->count() > 0) {
+            $candidate
+                ->platforms()
+                ->whereNotIn("id", $ids)
+                ->delete();
+        }
 
         $data->each(function ($platform) use ($candidate) {
             $model = $candidate

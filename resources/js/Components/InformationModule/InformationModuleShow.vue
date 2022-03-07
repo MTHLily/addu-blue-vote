@@ -1,8 +1,7 @@
 <template>
   <!-- for information modules -->
   <div class="container mx-auto">
-    <h1>Featured Information Modules</h1>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
       <template v-for="infoMod in informationModules" :key="infoMod">
         <div class="col">
           <ModuleCard :module="infoMod" />

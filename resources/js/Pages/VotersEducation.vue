@@ -12,6 +12,13 @@
   <GuestLayout>
     <div class="container-md overflow-auto" style="margin-top: 5%">
       <ElectionProcessInfo :election-process="electionSteps" />
+
+      <h1 class="text-primary fw-bold my-5">
+        Featured Information Modules
+        <small class="fs-5">
+          <Link :href="route('modules.index')">See More</Link>
+        </small>
+      </h1>
       <InfoMod :information-modules="informationModules" />
       <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
       <NewsDisplay :articles="articles" />
@@ -32,9 +39,10 @@ import { Head } from "@inertiajs/inertia-vue3";
 import GuestLayout from "../Layouts/Guest.vue";
 import VideoResources from "@/Components/VideoResources/VideoResources.vue";
 import InfoMod from "../Components/InformationModule/InformationModuleShow.vue";
-
+import { Link } from "@inertiajs/inertia-vue3";
 export default defineComponent({
   components: {
+    Link,
     NewsDisplay,
     ElectionProcessInfo,
     GuestLayout,

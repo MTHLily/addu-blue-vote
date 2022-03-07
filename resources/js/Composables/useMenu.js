@@ -34,6 +34,25 @@ export default () => {
       key: "poi",
     },
     {
+      label: "Political Education",
+      icon: renderIcon("bi-megaphone-fill"),
+      key: "political-education",
+      children: [
+        {
+          label: renderLabel("Information Modules", {
+            href: route("information-modules.index"),
+          }),
+          key: "information-modules",
+        },
+        {
+          label: renderLabel("Video Resources", {
+            href: route("video-resources.index"),
+          }),
+          key: "video-resources",
+        },
+      ],
+    },
+    {
       label: "Voter's Registration",
       icon: renderIcon("bi-pen-fill"),
       key: "voters-registration",
@@ -58,12 +77,6 @@ export default () => {
       key: "voters-education",
       children: [
         {
-          label: renderLabel("Information Modules", {
-            href: route("information-modules.index"),
-          }),
-          key: "information-modules",
-        },
-        {
           label: renderLabel("Election Process", {
             href: route("election-process-steps.index"),
           }),
@@ -80,12 +93,6 @@ export default () => {
             href: route("news-sources.index"),
           }),
           key: "news-sources",
-        },
-        {
-          label: renderLabel("Video Resources", {
-            href: route("video-resources.index"),
-          }),
-          key: "video-resources",
         },
       ],
     },

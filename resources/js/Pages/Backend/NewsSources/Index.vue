@@ -7,13 +7,13 @@
         :columns="columns"
         title="News Sources"
       >
-        <template #footer>
+        <!-- <template #footer>
           <Link
             class="btn btn-primary m-2 py-2 px-4"
             :href="route('news-sources.create')"
             >Add</Link
           >
-        </template>
+        </template> -->
         <template #actions="{ item }">
           <div class="d-flex justify-content-center">
             <div class="btn-group">

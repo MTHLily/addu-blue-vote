@@ -27,7 +27,15 @@ class VotersEducationController
             ->withQueryString();
 
         $electionProcessSteps = ElectionProcessStep::sorted()->get();
-        $informationModules = InformationModule::with("cover")->get();
+        $informationModules = InformationModule::where("featured", true)
+            ->with("cover")
+            ->get();
+
+        if (count($informationModules) == 0) {
+            $informationModules = InformationModule::with("cover")
+                ->take(4)
+                ->get();
+        }
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,

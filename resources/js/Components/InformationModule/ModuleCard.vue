@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="card">
     <img :src="module.cover.url" class="card-img-top" :alt="module.title" />
     <div class="card-body">

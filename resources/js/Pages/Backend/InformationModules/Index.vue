@@ -65,6 +65,10 @@ export default {
   data: () => ({
     columns: [
       {
+        label: "Title",
+        value: "title",
+      },
+      {
         label: "Description",
         value: "description",
       },

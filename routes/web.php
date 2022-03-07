@@ -109,9 +109,7 @@ Route::get("/voting-precints", [
     "voting_precints",
 ])->name("voting-precints");
 
-Route::get("/about-us", [AboutUsController::class, "about_us"])->name(
-    "about-us"
-);
+Route::get("/about-us", AboutUsController::class)->name("about-us");
 
 Route::prefix("candidate-profiles")->group(function () {
     Route::get(

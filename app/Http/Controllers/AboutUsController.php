@@ -14,9 +14,8 @@ class AboutUsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function about_us()
+    public function __invoke()
     {
-        return Inertia::render("AboutUs", [
-        ]);
+        return Inertia::render("AboutUs", []);
     }
 }

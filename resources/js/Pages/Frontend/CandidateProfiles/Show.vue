@@ -35,13 +35,19 @@
             primary-color="#FAA728"
             secondary-color="#2365A1"
             :background="candidate.political_background"
-          ></BackgroundCard>
+          />
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <Stances :stances="candidate.stances"></Stances>
+          <CandidatePlatforms :platforms="candidate.platforms" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <Stances :stances="candidate.stances" />
         </div>
       </div>
       <div class="row mb-2 row-cols-1 row-cols-md-2">
@@ -73,6 +79,7 @@ import Layout from "@/Layouts/CandidateProfileLayout.vue";
 import NewsArticles from "@/Components/CandidateProfile/NewsArticles.vue";
 import Twitter from "@/Components/CandidateProfile/TwitterFeed.vue";
 import BackgroundCard from "@/Components/CandidateProfile/Background/BackgroundCard.vue";
+import CandidatePlatforms from "@/Components/CandidateProfile/CandidatePlatforms.vue";
 
 export default defineComponent({
   components: {
@@ -83,6 +90,7 @@ export default defineComponent({
     NewsArticles,
     Twitter,
     BackgroundCard,
+    CandidatePlatforms,
   },
   props: {
     candidate: Object,

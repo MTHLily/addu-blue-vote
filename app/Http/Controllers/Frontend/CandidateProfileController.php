@@ -44,6 +44,7 @@ class CandidateProfileController extends Controller
             "runningPosition",
             "professionalBackground",
             "location.ancestorsAndSelf",
+            "platforms",
             "stances",
             "media",
         ]);

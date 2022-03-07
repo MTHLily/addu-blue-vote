@@ -51,10 +51,10 @@ class MediaService
             $mediable
                 ->media()
                 ->where("collection_name", $collectionName)
-                ->whereNotIn("id", Arr::wrap(Arr::get($media, "id")))
+                ->whereNotIn("id", Arr::wrap(Arr::get($media, "id", [])))
                 ->delete();
 
-            if ($mediable->cover()->count() === 0 && isset($media["file"])) {
+            if ($mediable->media()->count() === 0 && isset($media["file"])) {
                 $mediable
                     ->addMedia($media["file"])
                     ->usingName($fileName ? $fileName : $media["name"])

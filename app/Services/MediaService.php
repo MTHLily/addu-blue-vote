@@ -18,11 +18,18 @@ class MediaService
             ->pluck("id")
             ->toArray();
 
-        $mediable
-            ->media()
-            ->where("collection_name", $collectionName)
-            ->whereNotIn("id", $idsIncluded)
-            ->delete();
+        if (
+            $mediable
+                ->media()
+                ->where("collection_name", $collectionName)
+                ->count() > 0
+        ) {
+            $mediable
+                ->media()
+                ->where("collection_name", $collectionName)
+                ->whereNotIn("id", $idsIncluded)
+                ->delete();
+        }
 
         $data->each(function ($media) use ($mediable, $collectionName) {
             $model = Media::find($media["id"]);

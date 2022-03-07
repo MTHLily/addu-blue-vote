@@ -16,9 +16,8 @@
 
   <div class="mb-2">
     <label for="videoDescription" class="form-label">Description</label>
-    <input
+    <textarea
       v-model="form.description"
-      type="text"
       class="form-control"
       :class="{
         'is-invalid': form.errors.description,
@@ -27,21 +26,6 @@
       placeholder="Video Description"
     />
     <div class="invalid-feedback">{{ form.errors.description }}</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="videoInformation" class="form-label">Information</label>
-    <textarea
-      v-model="form.information"
-      type="text"
-      class="form-control"
-      :class="{
-        'is-invalid': form.errors.information,
-      }"
-      id="videoInformation"
-      placeholder="Video Information"
-    />
-    <div class="invalid-feedback">{{ form.errors.information }}</div>
   </div>
 
   <div class="mb-3">
@@ -61,9 +45,9 @@
 
   <div class="mb-3">
     <label for="videoLink" class="form-label">Link</label>
-    <textarea
+    <input
       v-model="form.link"
-      type="string"
+      type="text"
       class="form-control"
       :class="{
         'is-invalid': form.errors.link,

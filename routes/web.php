@@ -48,8 +48,8 @@ Route::get("/test", function (NewscraperService $service) {
 
 //admin resources
 Route::middleware(["auth"])->group(function () {
-   // Route::domain("dashboard." . env("SHORT_URL"))->group(function () {
-        Route::prefix("dashboard")->group(function () {
+    // Route::domain("dashboard." . env("SHORT_URL"))->group(function () {
+    Route::prefix("dashboard")->group(function () {
         Route::get("/", [DashboardController::class, "index"])->name(
             "dashboard"
         );
@@ -85,7 +85,7 @@ Route::middleware(["auth"])->group(function () {
             "update",
         ]);
         Route::resource("news-sources", NewsSourceController::class);
-        
+
         Route::patch("video-resources/{videoResource}/check}", [
             VideoResourceController::class,
             "check",
@@ -96,7 +96,14 @@ Route::middleware(["auth"])->group(function () {
             InformationModuleController::class,
             "check",
         ])->name("information-modules.check");
-        Route::resource("information-modules", InformationModuleController::class);
+        Route::resource(
+            "information-modules",
+            InformationModuleController::class
+        );
+
+        Route::get("/about-us", [AboutUsController::class, "config"])->name(
+            "about-us.config"
+        );
     });
 });
 

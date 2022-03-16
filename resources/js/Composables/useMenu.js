@@ -4,7 +4,6 @@ import { Link } from "@inertiajs/inertia-vue3";
 import { values } from "lodash";
 
 export default () => {
-  /* <i :class="`bi ${item.icon} fs-4`"></i> */
   const renderIcon = (icon) => {
     return () => h(NIcon, null, () => h("i", { class: `bi ${icon}` }));
   };
@@ -120,6 +119,12 @@ export default () => {
           key: "political-parties",
         },
       ],
+    },
+    {
+      label: renderLabel("About Us", {
+        href: route("about-us.config"),
+      }),
+      icon: renderIcon("bi-people-fill"),
     },
   ]);
 

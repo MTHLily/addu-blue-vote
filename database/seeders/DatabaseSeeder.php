@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlueVoteInfo;
 use App\Models\PointOfInterestType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -32,8 +33,11 @@ class DatabaseSeeder extends Seeder
             "password" => bcrypt(config("admin.pass")),
         ]);
 
+        BlueVoteInfo::updateOrCreate([
+            "description" => "Lorem Ipsum",
+        ]);
+
         $this->call([
-            //DistrictSeeder::class,
             FrequentlyAskedQuestionSeeder::class,
             NewsSourceSeeder::class,
             LocationTypeSeeder::class,

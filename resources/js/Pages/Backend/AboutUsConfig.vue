@@ -18,7 +18,7 @@
         <label for="Previous Projects" class="form-label">
           <h1 class="text-primary">Previous Projects</h1>
         </label>
-        <PreviousProjectInput v-model:value="form.previous_projects" />
+        <PreviousProjectInput :projects="previous_projects" />
       </div>
       <div>
         <label for="Blue Vote People" class="form-label">
@@ -46,7 +46,7 @@ import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import IssueForm from "@/Components/Issues/IssueForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import MarkdownEditor from "@/Components/MarkdownEditor.vue";
-import PreviousProjectInput from "@/Components/AboutUs/PreviousProjectInput.vue";
+import PreviousProjectInput from "@/Components/AboutUs/PreviousProjects/PreviousProjectInput.vue";
 import BlueVotePeopleInput from "@/Components/AboutUs/BlueVotePeopleInput.vue";
 import PartnerOfficeInput from "@/Components/AboutUs/PartnerOfficeInput.vue";
 

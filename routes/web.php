@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUs\BlueVoteProjectController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ElectionProcessStepController;
@@ -101,9 +102,16 @@ Route::middleware(["auth"])->group(function () {
             InformationModuleController::class
         );
 
-        Route::get("/about-us", [AboutUsController::class, "config"])->name(
-            "about-us.config"
-        );
+        Route::prefix("/about-us")->group(function () {
+            Route::resource(
+                "previous-projects",
+                BlueVoteProjectController::class
+            );
+
+            Route::get("/", [AboutUsController::class, "config"])->name(
+                "about-us.config"
+            );
+        });
     });
 });
 

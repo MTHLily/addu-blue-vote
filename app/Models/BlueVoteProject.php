@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class BlueVoteProject extends Model
 {
     use HasFactory;
+    protected $fillable = ["link", "name"];
 }

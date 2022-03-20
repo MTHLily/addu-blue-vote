@@ -30,4 +30,13 @@ class StoreElectionProcessStepRequest extends FormRequest
             "secondary_color" => ["string", "required"],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "title.*" => "There is something wrong with the title.",
+            "description.*" => "Please enter a valid description.",
+            "title.*" => "There is something wrong with the title.",
+        ];
+    }
 }

@@ -24,13 +24,11 @@ class VideoResourceRequest extends FormRequest
     public function rules()
     {
         return [
-            
-                "title" => "required",
-                "description" => "required",
-                "information" => "nullable",
-                "guests" => "nullable",
-                "link" => "required",
-           
+            "title" => "required",
+            "description" => "required",
+            "information" => "nullable",
+            "guests" => "nullable",
+            "link" => "required",
         ];
     }
 }

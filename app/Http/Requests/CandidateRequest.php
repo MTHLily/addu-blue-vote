@@ -58,4 +58,11 @@ class CandidateRequest extends FormRequest
             "related_videos" => ["array", "nullable"],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "background.*" => "Please enter a valid background entry.",
+        ];
+    }
 }

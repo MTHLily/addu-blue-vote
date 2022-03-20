@@ -62,7 +62,15 @@ class CandidateRequest extends FormRequest
     public function messages()
     {
         return [
+            "name.*" => "Please enter a name.",
+            "slug.*" => "Please enter a valid slug.",
+            "political_party_id.*" => "Please enter a valid political party Id.",
+            "running_position_id.*" => "Please enter a valid running position Id.",  
+            "location_id.*" => "Please enter a valid location Id.",  
+            "twitter_timeline_feed_url.*" => "Please enter a valid twitter timeline feed url.", 
             "background.*" => "Please enter a valid background entry.",
+            "stances.*" => "Please enter a valid stance entry.",
+            "platforms.*" => "Please enter a valid platform entry.",
         ];
     }
 }

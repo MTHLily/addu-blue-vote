@@ -31,4 +31,15 @@ class VideoResourceRequest extends FormRequest
             "link" => "required",
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "title.*" => "There is something wrong with the title.",
+            "description.*" => "Please enter a valid description.",
+            "information.*" => "There is something wrong with the information.",
+            "guests.*" => "There is something wrong with the guests.",
+            "link.*" => "Please enter a valid link.",
+        ];
+    }
 }

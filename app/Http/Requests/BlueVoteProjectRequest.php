@@ -28,4 +28,12 @@ class BlueVoteProjectRequest extends FormRequest
             "name" => ["required", "string"],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "link.*" => "Please enter a valid Link.",
+            "name.*" => "Please enter a valid name.",
+        ];
+    }
 }

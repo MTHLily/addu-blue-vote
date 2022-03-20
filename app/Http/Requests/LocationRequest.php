@@ -36,4 +36,20 @@ class LocationRequest extends FormRequest
             "media.file" => "image",
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "name.*" => "There is something wrong with the name.",
+            "slug.*" => "Please enter a valid slug.",
+            "description.*" => "There is something wrong with the description.",
+            "color.*" => "There is something wrong with the color.",
+            "longitude.*" => "Please enter a longitude value.",
+            "latitude.*" => "Please enter a latitude value.",
+            "parent_location_id.*" => "There is something wrong with the location Id.",
+            "location_type_id.*" => "There is something wrong with the Location type.",
+            "media.*" => "There is something wrong with the media.",
+        ];
+    }
+
 }

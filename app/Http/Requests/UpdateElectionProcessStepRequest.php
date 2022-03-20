@@ -30,4 +30,15 @@ class UpdateElectionProcessStepRequest extends FormRequest
             "secondary_color" => ["string", "required"],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "title.*" => "There is something wrong with the title.",
+            "description.*" => "Please enter a valid description.",
+            "title.*" => "There is something wrong with the title.",
+            "primary_color.*" => "There is something wrong with the primary color.",
+            "secondary_color.*" => "There is something wrong with the secondary color.",
+        ];
+    }
 }

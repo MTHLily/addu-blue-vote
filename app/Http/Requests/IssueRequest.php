@@ -27,4 +27,10 @@ class IssueRequest extends FormRequest
             "name" => "required",
         ];
     }
+    public function messages()
+    {
+        return [
+            "name.*" => "There is something wrong with the name.",
+        ];
+    }
 }

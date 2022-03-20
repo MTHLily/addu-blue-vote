@@ -15,6 +15,23 @@ export default () => {
     return null;
   };
 
+  const createBlueVotePersonForm = (person = null) => {
+    if (person === null) {
+      return useForm({
+        name: "",
+        position: "",
+        volunteer: false,
+        profile_photo: null,
+      });
+    }
+    return useForm({
+      name: person.name,
+      position: person.position,
+      volunteer: person.volunteer,
+      profile_photo: mediaMap(person.profile_photo),
+    });
+  };
+
   const createInfoModuleForm = (infoModule = null) => {
     if (infoModule == null) {
       return useForm({
@@ -38,5 +55,6 @@ export default () => {
 
   return {
     createInfoModuleForm,
+    createBlueVotePersonForm,
   };
 };

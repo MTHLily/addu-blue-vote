@@ -125,6 +125,7 @@ export default () => {
         href: route("about-us.config"),
       }),
       icon: renderIcon("bi-people-fill"),
+      key: "about-us",
     },
   ]);
 
@@ -163,6 +164,13 @@ export default () => {
         "political-parties.edit",
       ],
       issues: ["issues.index", "issues.create", "issues.edit"],
+      "about-us": [
+        "about-us.config",
+        "previous-projects.create",
+        "previous-projects.edit",
+        "bluevote-people.create",
+        "bluevote-people.edit",
+      ],
     };
 
     for (const [key, value] of Object.entries(routeMap)) {

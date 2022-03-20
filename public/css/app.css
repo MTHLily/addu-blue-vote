@@ -1358,6 +1358,11 @@ select {
 .w-1\/2 {
   width: 50%;
 }
+.w-min {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
 .max-w-xl {
   max-width: 36rem;
 }
@@ -1484,10 +1489,6 @@ select {
 }
 .border-transparent {
   border-color: transparent;
-}
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;

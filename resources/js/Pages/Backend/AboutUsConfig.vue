@@ -24,7 +24,7 @@
         <label for="Blue Vote People" class="form-label">
           <h1 class="text-primary">Blue Vote People</h1>
         </label>
-        <BlueVotePeopleInput v-model:value="form.bluevote_people" />
+        <BlueVotePeopleInput :people="bluevote_people" />
       </div>
       <div>
         <label for="partner-offices-input" class="form-label">
@@ -47,7 +47,7 @@ import IssueForm from "@/Components/Issues/IssueForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import MarkdownEditor from "@/Components/MarkdownEditor.vue";
 import PreviousProjectInput from "@/Components/AboutUs/PreviousProjects/PreviousProjectInput.vue";
-import BlueVotePeopleInput from "@/Components/AboutUs/BlueVotePeopleInput.vue";
+import BlueVotePeopleInput from "@/Components/AboutUs/BlueVotePeople/BlueVotePeopleInput.vue";
 import PartnerOfficeInput from "@/Components/AboutUs/PartnerOfficeInput.vue";
 
 export default {

@@ -28,7 +28,8 @@ class AboutUsController extends Controller
     {
         $bluevote_info = BlueVoteInfo::first();
         $previous_projects = BlueVoteProject::all();
-        $bluevote_people = BlueVotePeople::all();
+        // $volunteers = BlueVotePeople
+        $bluevote_people = BlueVotePeople::with("profilePhoto")->get();
         $partner_offices = PartnerOffice::all();
         $volunteer_steps = VolunteerStep::all();
 

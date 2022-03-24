@@ -121,11 +121,34 @@ export default () => {
       ],
     },
     {
-      label: renderLabel("About Us", {
-        href: route("about-us.config"),
-      }),
+      label: "About Us",
       icon: renderIcon("bi-people-fill"),
-    },
+      key: "about-us-dropdown",
+      //label: renderLabel("About Us", {
+       // href: route("about-us.config"),
+        children: [
+          {
+            label: renderLabel("About Us", {
+              href: route("about-us.config"),
+            }),
+            key: "about-us",
+          },
+          {
+            label: renderLabel("Partner Offices", {
+              href: route("partner-offices.index"),
+            }),
+            key: "partner-offices",
+          },
+          {
+            label: renderLabel("Volunteer Process", {
+              href: route("volunteer-process-steps.index"),
+            }),
+            key: "volunteer-process-steps",
+          },
+        ],
+      }//),
+      
+    //},
   ]);
 
   const currentSiderKey = computed(() => {

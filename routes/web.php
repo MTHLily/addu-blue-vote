@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AboutUs\BlueVoteProjectController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\AboutUs\VolunteerProcessStepController;
+use App\Http\Controllers\AboutUs\PartnerOfficeController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ElectionProcessStepController;
 use App\Http\Controllers\Backend\InformationModuleController;
@@ -78,6 +80,7 @@ Route::middleware(["auth"])->group(function () {
             "election-process-steps",
             ElectionProcessStepController::class
         )->except("show");
+
         Route::resource("news-sources", NewsSourceController::class)->only([
             "index",
             "create",
@@ -111,6 +114,19 @@ Route::middleware(["auth"])->group(function () {
             Route::get("/", [AboutUsController::class, "config"])->name(
                 "about-us.config"
             );
+
+            Route::patch("volunteer-process-steps/reorder/{item1}/{item2}", [
+                VolunteerProcessStepController::class,
+                 "reorder",
+             ])->name("volunteer-process-steps.reorder");
+             Route::resource(
+                 "volunteer-process-steps",
+                 VolunteerProcessStepController::class
+             )->except("show");
+
+             Route::resource("partner-offices", PartnerOfficeController::class);
+
+    
         });
     });
 });

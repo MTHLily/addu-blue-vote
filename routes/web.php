@@ -79,6 +79,7 @@ Route::middleware(["auth"])->group(function () {
             "election-process-steps",
             ElectionProcessStepController::class
         )->except("show");
+
         Route::resource("news-sources", NewsSourceController::class)->only([
             "index",
             "create",
@@ -114,6 +115,17 @@ Route::middleware(["auth"])->group(function () {
             Route::get("/", [AboutUsController::class, "config"])->name(
                 "about-us.config"
             );
+
+            Route::patch("volunteer-process-steps/reorder/{item1}/{item2}", [
+                VolunteerProcessStepController::class,
+                "reorder",
+            ])->name("volunteer-process-steps.reorder");
+            Route::resource(
+                "volunteer-process-steps",
+                VolunteerProcessStepController::class
+            )->except("show");
+
+            Route::resource("partner-offices", PartnerOfficeController::class);
         });
     });
 });

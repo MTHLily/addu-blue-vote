@@ -156,6 +156,33 @@ export default {
             },
           ],
         },
+        {
+          title: "About Us",
+          icon: "bi-people-fill",
+          items: [
+            {
+              title: "About US",
+              route: "about-us.index",
+            },
+
+            {
+              title: "Partner Offices",
+              route: "partner-offices.index",
+            },
+            {
+              title: "Volunteer Process",
+              route: "volunteer-process.index",
+            },
+            {
+              title: "Video Resources",
+              route: "video-resources.index",
+            },
+            {
+              title: "Information Modules",
+              route: "information-modules.index",
+            },
+          ],
+        },
       ];
     },
   },

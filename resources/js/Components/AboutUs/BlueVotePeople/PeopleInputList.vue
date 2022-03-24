@@ -1,7 +1,7 @@
 <template>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-    <template v-for="person in people" :key="person.person">
-      <div>
+    <template v-for="person in people" :key="person.id">
+      <div class="col">
         <PeopleBehindCard :people="person" />
         <div class="d-flex">
           <Link
@@ -21,9 +21,10 @@
 import { defineComponent } from "vue";
 import PeopleBehindCard from "../PeopleBehindCard.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default defineComponent({
-  components: { PeopleBehindCard, DeleteButton },
+  components: { PeopleBehindCard, DeleteButton, Link },
   props: {
     people: {
       type: Array,

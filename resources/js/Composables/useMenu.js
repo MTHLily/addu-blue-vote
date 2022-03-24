@@ -1,7 +1,6 @@
 import { computed, h, ref } from "vue";
 import { NIcon } from "naive-ui";
 import { Link } from "@inertiajs/inertia-vue3";
-import { values } from "lodash";
 
 export default () => {
   const renderIcon = (icon) => {
@@ -121,31 +120,33 @@ export default () => {
       ],
     },
     {
-      label: "About Us",
+      label: renderLabel("About Us", {
+        href: route("about-us.config"),
+      }),
       icon: renderIcon("bi-people-fill"),
       key: "about-us",
       //label: renderLabel("About Us", {
       // href: route("about-us.config"),
-      children: [
-        {
-          label: renderLabel("About Us", {
-            href: route("about-us.config"),
-          }),
-          key: "about-us",
-        },
-        {
-          label: renderLabel("Partner Offices", {
-            href: route("partner-offices.index"),
-          }),
-          key: "partner-offices",
-        },
-        {
-          label: renderLabel("Volunteer Process", {
-            href: route("volunteer-process-steps.index"),
-          }),
-          key: "volunteer-process-steps",
-        },
-      ],
+      // children: [
+      //   {
+      //     label: renderLabel("About Us", {
+      //       href: route("about-us.config"),
+      //     }),
+      //     key: "about-us",
+      //   },
+      //   {
+      //     label: renderLabel("Partner Offices", {
+      //       href: route("partner-offices.index"),
+      //     }),
+      //     key: "partner-offices",
+      //   },
+      //   {
+      //     label: renderLabel("Volunteer Process", {
+      //       href: route("volunteer-process-steps.index"),
+      //     }),
+      //     key: "volunteer-process-steps",
+      //   },
+      // ],
     }, //),
 
     //},

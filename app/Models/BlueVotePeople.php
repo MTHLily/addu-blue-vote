@@ -21,4 +21,14 @@ class BlueVotePeople extends Model implements HasMedia
             "model"
         )->ofMany();
     }
+
+    public function scopeVolunteer($query)
+    {
+        return $query->where("volunteer", true);
+    }
+
+    public function scopeStaff($query)
+    {
+        return $query->where("volunteer", false);
+    }
 }

@@ -5,6 +5,7 @@
 <script>
 import Editor from "@toast-ui/editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
+import { toRef } from "vue";
 
 export default {
   props: {
@@ -15,7 +16,7 @@ export default {
   },
   data: () => ({ editor: null }),
   mounted() {
-    this.editor = new Editor({
+    const editor = new Editor({
       el: this.$refs.editor,
       // initialEditType: "wysiwyg",
       initialValue: this.value,
@@ -31,11 +32,15 @@ export default {
         change: this.onChange,
       },
     });
+    Object.freeze(editor);
+    this.editor = editor;
   },
   methods: {
     onChange() {
-      console.log(this.editor.getMarkdown());
       this.$emit("update:value", this.editor.getMarkdown());
+    },
+    setValue(value) {
+      this.editor.setMarkdown(value);
     },
   },
 };

@@ -20,9 +20,6 @@
 <script>
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "@/Layouts/DashboardLayout.vue";
-import { useForm } from "@inertiajs/inertia-vue3";
-import ElectionProcessStepForm from "@/Components/ElectionProcessSteps/ElectionProcessStepForm.vue";
-import PreviousProjectForm from "@/Components/AboutUs/PreviousProjects/PreviousProjectForm.vue";
 import BlueVotePersonForm from "@/Components/AboutUs/BlueVotePeople/BlueVotePersonForm.vue";
 import useCRUD from "@/Composables/useCRUD";
 
@@ -31,13 +28,15 @@ export default {
     Link,
     Head,
     DashboardLayout,
-    ElectionProcessStepForm,
-    PreviousProjectForm,
     BlueVotePersonForm,
   },
   setup() {
+    const volunteer = new URLSearchParams(window.location.search).get(
+      "volunteer"
+    );
+
     const { createBlueVotePersonForm } = useCRUD();
-    const form = createBlueVotePersonForm();
+    const form = createBlueVotePersonForm(null, volunteer);
 
     return {
       form,

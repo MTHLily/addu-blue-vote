@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutUs\PartnerOfficeController;
+use App\Http\Controllers\Backend\AboutUs\VolunteerProcessStepController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Backend\AboutUs\BlueVotePeopleController;
 use App\Http\Controllers\Backend\AboutUs\BlueVoteProjectController;
@@ -109,13 +111,7 @@ Route::middleware(["auth"])->group(function () {
                 "previous-projects",
                 BlueVoteProjectController::class
             );
-
             Route::resource("bluevote-people", BlueVotePeopleController::class);
-
-            Route::get("/", [AboutUsController::class, "config"])->name(
-                "about-us.config"
-            );
-
             Route::patch("volunteer-process-steps/reorder/{item1}/{item2}", [
                 VolunteerProcessStepController::class,
                 "reorder",
@@ -124,8 +120,16 @@ Route::middleware(["auth"])->group(function () {
                 "volunteer-process-steps",
                 VolunteerProcessStepController::class
             )->except("show");
-
             Route::resource("partner-offices", PartnerOfficeController::class);
+
+            Route::patch("/description/update", [
+                AboutUsController::class,
+                "update",
+            ])->name("about-us.update");
+
+            Route::get("/", [AboutUsController::class, "config"])->name(
+                "about-us.config"
+            );
         });
     });
 });

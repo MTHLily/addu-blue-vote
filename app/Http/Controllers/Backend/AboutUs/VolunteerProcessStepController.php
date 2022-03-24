@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AboutUs;
+namespace App\Http\Controllers\Backend\AboutUs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVolunteerProcessStepRequest;
@@ -20,7 +20,7 @@ class VolunteerProcessStepController extends Controller
     {
         $steps = VolunteerStep::sorted()->get();
 
-        return Inertia::render("Backend/VolunteerProcessSteps/Index", [
+        return Inertia::render("Backend/AboutUs/VolunteerProcessSteps/Index", [
             "steps" => $steps,
         ]);
     }
@@ -32,7 +32,7 @@ class VolunteerProcessStepController extends Controller
      */
     public function create()
     {
-        return Inertia::render("Backend/VolunteerProcessSteps/Create");
+        return Inertia::render("Backend/AboutUs/VolunteerProcessSteps/Create");
     }
 
     /**
@@ -45,7 +45,7 @@ class VolunteerProcessStepController extends Controller
     {
         VolunteerStep::create($request->validated());
 
-        return Redirect::route("volunteer-process-steps.index");
+        return Redirect::route("about-us.config");
     }
 
     /**
@@ -67,7 +67,7 @@ class VolunteerProcessStepController extends Controller
      */
     public function edit(VolunteerStep $volunteerProcessStep)
     {
-        return Inertia::render("Backend/VolunteerProcessSteps/Edit", [
+        return Inertia::render("Backend/AboutUs/VolunteerProcessSteps/Edit", [
             "step" => $volunteerProcessStep,
         ]);
     }
@@ -85,10 +85,7 @@ class VolunteerProcessStepController extends Controller
     ) {
         $volunteerProcessStep->update($request->validated());
 
-        return Redirect::route("volunteer-process-steps.index")->with(
-            "Update success!",
-          
-        );
+        return Redirect::route("about-us.config")->with("Update success!");
     }
 
     /**
@@ -104,10 +101,8 @@ class VolunteerProcessStepController extends Controller
         return Redirect::back()->with("error", "Volunteer step deleted!");
     }
 
-    public function reorder(
-        VolunteerStep $item1,
-        VolunteerStep $item2
-    ) {
+    public function reorder(VolunteerStep $item1, VolunteerStep $item2)
+    {
         $item1->moveBefore($item2);
 
         return Redirect::back()->with(

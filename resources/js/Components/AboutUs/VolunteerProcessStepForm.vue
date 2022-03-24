@@ -44,8 +44,6 @@
       <h2>Preview</h2>
       <VolunteerProcessCard :process-step="form" />
     </div>
-
-    {{ form }}
   </div>
 </template>
 

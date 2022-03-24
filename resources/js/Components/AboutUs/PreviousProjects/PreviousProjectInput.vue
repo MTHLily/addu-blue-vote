@@ -1,9 +1,11 @@
 <template>
-  <PreviousProjectInputList :projects="projects" />
-  <div class="row">
-    <Link class="btn btn-primary" :href="route('previous-projects.create')">
-      <i class="bi bi-plus" /> Add Project
-    </Link>
+  <div class="d-flex flex-column gap-2">
+    <PreviousProjectInputList :projects="projects" />
+    <div class="row">
+      <Link class="btn btn-primary" :href="route('previous-projects.create')">
+        <i class="bi bi-plus" /> Add Project
+      </Link>
+    </div>
   </div>
 </template>
 

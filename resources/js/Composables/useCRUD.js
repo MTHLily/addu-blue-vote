@@ -15,12 +15,13 @@ export default () => {
     return null;
   };
 
-  const createBlueVotePersonForm = (person = null) => {
+  const createBlueVotePersonForm = (person = null, volunteer = false) => {
+    console.log(volunteer);
     if (person === null) {
       return useForm({
         name: "",
         position: "",
-        volunteer: false,
+        volunteer: volunteer == 1 ? true : false,
         profile_photo: null,
       });
     }
@@ -29,6 +30,7 @@ export default () => {
       position: person.position,
       volunteer: person.volunteer,
       profile_photo: mediaMap(person.profile_photo),
+      _method: "PATCH",
     });
   };
 

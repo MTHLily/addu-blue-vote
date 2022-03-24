@@ -22,7 +22,24 @@ class AboutUsController extends Controller
      */
     public function __invoke()
     {
-        return Inertia::render("AboutUs", []);
+        $bluevote_info = BlueVoteInfo::first();
+        $previous_projects = BlueVoteProject::all();
+        $volunteers = BlueVotePeople::volunteer()
+            ->with("profilePhoto")
+            ->get();
+        $bluevote_people = BlueVotePeople::staff()
+            ->with("profilePhoto")
+            ->get();
+        $partner_offices = PartnerOffice::with("profilePhoto")->get();
+        $volunteer_steps = VolunteerStep::sorted()->get();
+        return Inertia::render("AboutUs", [
+            "bluevote_info" => $bluevote_info,
+            "previous_projects" => $previous_projects,
+            "volunteers" => $volunteers,
+            "bluevote_people" => $bluevote_people,
+            "partner_offices" => $partner_offices,
+            "volunteer_steps" => $volunteer_steps,
+        ]);
     }
 
     public function config()

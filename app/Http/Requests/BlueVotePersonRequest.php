@@ -31,4 +31,14 @@ class BlueVotePersonRequest extends FormRequest
             "profile_photo.id" => ["sometimes"],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "name.*" => "A name is required.",
+            "position.*" => "A position is required.",
+            "volunteer.*" => "Indicate if this person is a volunteer.",
+            "profile_photo.file.image" => "Profile photo must be an image.",
+        ];
+    }
 }

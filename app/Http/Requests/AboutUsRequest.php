@@ -27,4 +27,11 @@ class AboutUsRequest extends FormRequest
             "description" => ["required", "string"],
         ];
     }
+
+    public function message()
+    {
+        return [
+            "description.*" => "A description is required.",
+        ];
+    }
 }

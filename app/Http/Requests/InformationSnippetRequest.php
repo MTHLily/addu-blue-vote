@@ -30,4 +30,15 @@ class InformationSnippetRequest extends FormRequest
             "cover.file" => "image|nullable",
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "title.*" => "There is something wrong with the title.",
+            "content.*" => "Please enter a valid content.",
+            "link.*" => "There is something wrong with the link.",
+            "cover.*" => "There is something wrong with the cover.",
+
+        ];
+    }
 }

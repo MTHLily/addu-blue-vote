@@ -37,10 +37,14 @@ class PointOfInterestRequest extends FormRequest
     public function messages()
     {
         return [
+            "name.*" => "Please enter a name.",
+            "description.*" => "Please enter a description.",
             "point_of_interest_type_id.required" => "Please pick a type.",
             "district_id.required" => "Please pick a district.",
             "longitude.required" => "Please pick a location on the map.",
             "latitude.required" => "Please pick a location on the map.",
+            "location_id.*" => "Please enter a valid location Id.",
+            "image.*" => "Please enter a valid image.",
         ];
     }
 }

@@ -36,4 +36,16 @@ class InformationModuleRequest extends FormRequest
             "speakers" => "required",
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "title.*" => "There is something wrong with the title.",
+            "description.*" => "Please enter a valid description.",
+            "downloadables.*" => "There is something wrong with the downloadables.",
+            "cover.*" => "There is something wrong with the cover.",
+            "speakers.*" => "Please enter a speaker.",
+            "related_videos.*" => "Please select valid related video/s.",
+        ]; 
+    }
 }

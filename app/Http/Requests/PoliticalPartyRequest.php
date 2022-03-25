@@ -30,4 +30,12 @@ class PoliticalPartyRequest extends FormRequest
 
         ];
     }
+    public function messages()
+    {
+        return [
+            "name.*" => "Please enter a name.",
+            "abbreviation.*" => "Please enter an abbreviation.",
+            "representation.*" => "Please enter a representation.",
+        ];
+    }
 }

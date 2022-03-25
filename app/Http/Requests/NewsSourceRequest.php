@@ -29,4 +29,13 @@ class NewsSourceRequest extends FormRequest
             "color" => "required",
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "name.*" => "Please enter a name.",
+            "home_url.*" => "Please enter a valid url.",
+            "color.*" => "There is something wrong with the color.",
+        ];
+    }
 }

@@ -28,4 +28,12 @@ class FrequentlyAnsweredQuestionRequest extends FormRequest
             'answer' => 'required',
         ];
     }
+    
+    public function messages()
+    {
+        return [
+            "question.*" => "Please enter a question.",
+            "answer.*" => "Please enter an answer.",
+        ];
+    }
 }

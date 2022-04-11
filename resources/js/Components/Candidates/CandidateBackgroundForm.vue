@@ -4,7 +4,6 @@
       <label class="form-label">Highest Attained Education</label>
       <CandidateBackgroundFormItem
         v-model:value="educationalBackground"
-        :max="1"
         @update:value="handleUpdate($event, 0)"
         :type="1"
       />
@@ -91,4 +90,6 @@ export default defineComponent({
   },
   components: { CandidateBackgroundFormItem },
 });
+
+//:max="1"
 </script>

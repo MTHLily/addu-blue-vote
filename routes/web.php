@@ -24,11 +24,13 @@ use App\Http\Controllers\Frontend\InformationModuleFrontendController;
 use App\Http\Controllers\Frontend\VotersEducationController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\SVGController;
+use App\Imports\CandidateSeedImport;
 use App\Models\Candidate;
 use App\Models\NewsArticle;
 use App\Services\NewscraperService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +43,11 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::get("/test", function (NewscraperService $service) {
-    $article = NewsArticle::find(391);
-    // dd($article);
-    $keywords = $service->getMetaKeywordsFromUrl($article->url);
-    $related = $service->relatedCandidates($article);
-
-    dd($keywords, $related);
+Route::get("/test", function () {
+    $data = (new CandidateSeedImport())->import(
+        "data/AdDU Blue Vote Locations.xlsx"
+    );
+    dd($data);
 });
 
 //admin resources

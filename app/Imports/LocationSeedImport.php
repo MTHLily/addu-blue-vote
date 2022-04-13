@@ -19,7 +19,7 @@ class LocationSeedImport implements WithMultipleSheets
             "Region" => new LocationsImport(1, null),
             "Provinces" => new LocationsImport(2, 1),
             "Districts" => new LocationsImport(3, 2),
-            "Cities&Municipalities" => new LocationsImport(4, 3),
+            "Cities/Municipalities" => new LocationsImport(4, 3),
             "Sites" => new PoIImport(1),
         ];
     }

@@ -42,6 +42,7 @@ class CandidateProfileController extends Controller
             "educationalBackground",
             "politicalBackground",
             "runningPosition",
+            "politicalParty",
             "professionalBackground",
             "location.ancestorsAndSelf",
             "platforms",

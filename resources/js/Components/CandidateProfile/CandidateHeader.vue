@@ -18,13 +18,13 @@
           {{ candidate.name }}
         </h1>
         <div class="card-text text-muted fs-4 mb-3">
-          {{ candidate.partylist }}
+          {{ candidate.political_party?.name }}
         </div>
         <span
           class="badge py-2 px-3 fw-bold 1h-sm fs-6 w-50"
           style="background-color: #faa728; border-radius: 20px"
         >
-          {{ candidate.position }}
+          {{ candidate.running_position.name }}
         </span>
       </div>
     </div>
@@ -48,5 +48,3 @@ export default {
   },
 };
 </script>
-
-<style lang=""></style>

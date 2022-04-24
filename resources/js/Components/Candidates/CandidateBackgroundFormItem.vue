@@ -47,6 +47,17 @@
         </div>
         <div class="col">
           <div class="row">
+            <div class="col">
+              <label :for="`bg-timerange-${index}`">Time Range</label>
+              <input
+                :id="`bg-timerange-${index}`"
+                type="text"
+                class="form-control"
+                v-model="value.time_range"
+              />
+            </div>
+          </div>
+          <div class="row">
             <label>Start Date</label>
             <n-date-picker
               v-model:value="value.start_date"
@@ -135,6 +146,7 @@ export default defineComponent({
           occupation: null,
           position: null,
           description: null,
+          time_range: null,
         },
       ]);
     };

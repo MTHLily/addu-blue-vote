@@ -2,8 +2,9 @@
   <div class="container">
     <twitter>
       <h1>
-        <a class="twitter-timeline h-100" data-theme="light" :href="feedUrl"
-          {{ title }}/>
+        <a class="twitter-timeline h-100" data-theme="light" :href="feedUrl">
+          {{ title }}
+        </a>
       </h1>
     </twitter>
   </div>
@@ -11,7 +12,6 @@
 
 <script>
 import { twitter } from "vue-twitter";
-// import twitter from 'vue-twitter/lib/twttr.js'
 
 export default {
   components: {
@@ -36,4 +36,3 @@ export default {
   },
 };
 </script>
-<style lang=""></style>

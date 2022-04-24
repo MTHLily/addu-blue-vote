@@ -6,11 +6,11 @@
       </div>
       <div class="row">
         <div class="col">
-          <CandidateHeader :candidate="candidate"></CandidateHeader>
+          <CandidateHeader :candidate="candidate" />
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-2">
-        <div class="col">
+      <div class="d-flex gap-3">
+        <div v-if="candidate.educational_background.length > 0" class="w-full">
           <BackgroundCard
             title="Educational Background"
             primary-color="#2365A1"
@@ -18,7 +18,7 @@
             :background="candidate.educational_background"
           ></BackgroundCard>
         </div>
-        <div class="col">
+        <div v-if="candidate.professional_background.length > 0" class="w-full">
           <BackgroundCard
             title="Professional Background"
             primary-color="#CE2029"
@@ -27,7 +27,7 @@
           ></BackgroundCard>
         </div>
       </div>
-      <div class="row">
+      <div class="row" v-if="candidate.political_background.length > 0">
         <div class="col">
           <BackgroundCard
             horizontal
@@ -39,26 +39,26 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" v-if="candidate.platforms.length > 0">
         <div class="col">
           <CandidatePlatforms :platforms="candidate.platforms" />
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" v-if="candidate.stances.length > 0">
         <div class="col">
           <Stances :stances="candidate.stances" />
         </div>
       </div>
-      <div class="row mb-2 row-cols-1 row-cols-md-2">
-        <div class="col">
+      <div class="d-flex">
+        <div class="w-full">
           <NewsArticles
             class="w-100 h-100 mb-3"
             :articles="relatedArticles"
             :style="{ 'border-radius': '5px' }"
           ></NewsArticles>
         </div>
-        <div class="col">
+        <div class="w-full" v-if="candidate.twitter_timeline_feed_url">
           <Twitter
             class="twitterfeed"
             :candidate="candidate"

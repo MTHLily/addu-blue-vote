@@ -43,6 +43,10 @@ class PoIImport implements
      */
     public function model(array $row)
     {
+        if (!isset($row["name"])) {
+            return;
+        }
+
         $model = $this->points_of_interests
             ->where("name", $row["name"])
             ->first();

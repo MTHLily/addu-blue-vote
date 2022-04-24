@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div>
     <h5 class="card-title">
       <span
@@ -8,21 +8,23 @@
           'border-radius': '20px',
         }"
       >
-        <n-time :time="background.start_date" format="yyyy" />
+        {{ background.time_range }}
+        <!-- <n-time :time="background.start_date" format="yyyy" />
         -
-        <n-time :time="background.end_date" format="yyyy" />
+        <n-time :time="background.end_date" format="yyyy" /> -->
       </span>
     </h5>
-    <ul class="card-text mb-3 fw-bold">
-      {{
-        background.place
-      }}
-      <ul class="card-text mb-3 fw-normal">
-        {{
-          background.description
-        }}
-      </ul>
-    </ul>
+    <div class="card-text mb-3">
+      <div class="fw-bold">
+        {{ background.position }}
+      </div>
+      <div class="fw-bold">
+        {{ background.place }}
+      </div>
+      <div class="fw-normal">
+        {{ background.description }}
+      </div>
+    </div>
   </div>
 </template>
 <script>

@@ -18,10 +18,10 @@ class CreateCandidateBackgroundsTable extends Migration
             $table->foreignIdFor(Candidate::class)->constrained();
             $table->datetime("start_date");
             $table->datetime("end_date")->nullable();
-            $table->string("place");
-            $table->string("occupation");
-            $table->string("position");
-            $table->string("description");
+            $table->string("place")->nullable();
+            $table->string("occupation")->nullable();
+            $table->string("position")->nullable();
+            $table->string("description")->nullable();
 
         });
     }

@@ -23,7 +23,8 @@ class CandidateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+	    return [
+
             "name" => "required|string",
             "slug" => [
                 "required",
@@ -35,23 +36,23 @@ class CandidateRequest extends FormRequest
             "running_position_id" => "required|exists:running_positions,id",
             "location_id" => "nullable|exists:locations,id",
             "twitter_timeline_feed_url" => "nullable|string",
-            "stances" => "array",
+            "stances" => "nullable|array",
             "stances.*.issue_id" => "required|exists:issues,id",
             "stances.*.positive" => "required|boolean",
             "background" => "array",
             "background.*.candidate_background_type_id" =>
                 "required|exists:candidate_background_types,id",
             "background.*.id" => "sometimes|exists:candidate_backgrounds",
-            "background.*.place" => "required|string",
-            "background.*.occupation" => "required|string",
-            "background.*.position" => "required|string",
-            "background.*.description" => "required|string",
-            "background.*.end_date" => "required",
-            "background.*.start_date" => "required",
+            "background.*.place" => "nullable|string",
+            "background.*.occupation" => "nullable|string",
+            "background.*.position" => "nullable|string",
+            "background.*.description" => "nullable|string",
+            "background.*.end_date" => "nullable",
+            "background.*.start_date" => "nullable",
             "platforms.*.id" => "sometimes",
-            "platforms.*.title" => "required",
+            "platforms.*.title" => "nullable",
             "platforms.*.description" => "nullable",
-            "media.file" => "image",
+            "media.file" => "image|nullable",
             "media.id" => "sometimes",
             "keywords" => "nullable",
             "related_articles" => ["array", "nullable"],

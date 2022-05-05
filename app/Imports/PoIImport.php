@@ -5,14 +5,14 @@ namespace App\Imports;
 use App\Models\Location;
 use App\Models\PointOfInterest;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Arr;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class PoIImport implements
-    ToModel,
+    ToCollection,
     WithHeadingRow,
     WithChunkReading,
     ShouldQueue
@@ -36,6 +36,32 @@ class PoIImport implements
         return 1000;
     }
 
+    public function collection(Collection $rows)
+    {
+	foreach ($rows as $row)
+	{
+		if(!Arr::get($row, "site", false)){
+		continue;
+	}
+        $model = $this->points_of_interests
+            ->where("name", Arr::get($row, "site", "xxx"))
+            ->first();
+
+        $data = Arr::only($row->toArray(), [
+            "description",
+            "longitude",
+            "latitude",
+	]);
+	$data["name"] = $row["site"];
+
+        $data["point_of_interest_type_id"] = $this->type_id;
+        $loc = Location::where("name", Arr::get($row, "location_id", "xxx"))->first();
+	dump($row);
+	$data["location_id"] = $loc->id;
+	PointOfInterest::create($data);
+	}
+    }
+
     /**
      * @param array $row
      *
@@ -43,12 +69,9 @@ class PoIImport implements
      */
     public function model(array $row)
     {
-        if (!isset($row["name"])) {
-            return;
-        }
 
         $model = $this->points_of_interests
-            ->where("name", $row["name"])
+            ->where("name", Arr::get($row, "name", "xxx"))
             ->first();
         if ($model) {
             return $model;
@@ -63,8 +86,11 @@ class PoIImport implements
 
         $data["point_of_interest_type_id"] = $this->type_id;
 
-        $loc = Location::where("name", $row["location_name"])->first();
-        $data["location_id"] = $loc->id;
+        $loc = Location::where("name", Arr::get($row, "location_name", "xxx"))->first();
+	if(!$loc) {
+		return null;
+	}
+	$data["location_id"] = $loc->id;
 
         return new PointOfInterest($data);
     }

@@ -62,17 +62,19 @@ class CandidateBackgroundsImport implements
                 "description" => $row["description"] ?? "",
             ];
 
-            $time_range = implode(
+            $data['time_range'] = implode(
                 "-",
                 collect([$row["start_date_yyyy_mm"], $row["end_date_yyyy_mm"]])
                     ->filter(fn($date) => $date)
                     ->toArray()
-            );
+	    );
 
-            $bg = CandidateBackground::updateOrCreate(
-                [
-                    "time_range" => $time_range,
-                ],
+	    if($candidate_id == 19)
+		{
+			dump($data);
+	    }
+
+            $bg = CandidateBackground::create(
                 $data
             );
         }

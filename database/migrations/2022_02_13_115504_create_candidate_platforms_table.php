@@ -20,7 +20,7 @@ class CreateCandidatePlatformsTable extends Migration
                 ->foreignIdFor(Candidate::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string("title");
+            $table->string("title")->nullable();
             $table->text("description")->nullable();
             $table->timestamps();
         });

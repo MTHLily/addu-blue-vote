@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            FAQTypeSeeder::class,
             FrequentlyAskedQuestionSeeder::class,
             NewsSourceSeeder::class,
             LocationTypeSeeder::class,

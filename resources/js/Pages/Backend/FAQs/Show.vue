@@ -48,6 +48,8 @@ export default {
     this.faqForm = useForm({
       question: this.faq.question,
       answer: this.faq.answer,
+      faq_type: this.faq.faq_type,
+
     });
   },
   data: () => ({

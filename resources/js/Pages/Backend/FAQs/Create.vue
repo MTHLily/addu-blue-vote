@@ -38,6 +38,8 @@ export default {
     faq: useForm({
       question: "",
       answer: "",
+      faq_type: "",
+
     }),
   }),
 };

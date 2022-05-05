@@ -1,5 +1,19 @@
 <template>
   <div style="background-color: #ffffff">
+      <div class="mb-3 p-3">
+      <label for="faqtype" class="form-label">FAQ Type</label>
+      <select
+        v-model="form.type"
+        type="text"
+        class="form-control"
+        :class="{
+          'is-invalid': form.errors.type,
+        }"
+        id="faqQuestion"
+        placeholder="FAQ Question"
+      />
+      <div class="invalid-feedback">{{ form.errors.question }}</div>
+    </div>
     <div class="mb-3 p-3">
       <label for="faqQuestion" class="form-label">Question</label>
       <input
@@ -42,9 +56,11 @@ export default {
     form: {
       type: Object,
       default: () => ({
+        type: "",
         question: "",
         answer: "",
         errors: {
+          type: "",
           question: "",
           answer: "",
         },

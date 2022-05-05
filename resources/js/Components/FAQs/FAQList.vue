@@ -31,6 +31,8 @@ export default {
         {
           question: "default question",
           answer: "default answer",
+          faq_type: "choose category",
+
         },
       ],
     },

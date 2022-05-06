@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-white bg-primary p-3 mt-4 mb-0">
+  <footer class="text-white p-3 mt-4 mb-0" style="background-color: #083b74">
     <div class="d-flex container">
       <div>
         <img src="/images/logo2.png" class="mr-3" width="480" />

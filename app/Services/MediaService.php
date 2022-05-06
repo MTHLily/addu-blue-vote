@@ -51,7 +51,7 @@ class MediaService
 
     public function attachOnlyOne(
         HasMedia $mediable,
-        array $media,
+        ?array $media,
         string $collectionName,
         string $fileName = null
     ) {

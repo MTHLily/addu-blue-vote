@@ -50,6 +50,8 @@ class BlueVotePeopleController extends Controller
      */
     public function edit(BlueVotePeople $bluevotePerson)
     {
+        $bluevotePerson->load("profilePhoto");
+
         return Inertia::render("Backend/AboutUs/BlueVotePeople/Edit", [
             "person" => $bluevotePerson,
         ]);

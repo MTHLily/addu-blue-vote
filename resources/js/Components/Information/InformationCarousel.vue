@@ -1,23 +1,34 @@
 <template>
   <div id="information">
-    <Carousel :items-to-show="1">
+    <!-- <Carousel :items-to-show="1" :autoplay="100" :wrap-around="true">
       <InformationSlide
         v-for="info in information"
         :key="info.id"
         :info="info"
       ></InformationSlide>
-    </Carousel>
+    </Carousel> -->
+    <n-carousel
+      autoplay
+      draggable
+      show-arrow
+      :interval="5000"
+      dot-placement="top"
+    >
+      <n-carousel-item v-for="info in information" :key="info.id">
+        <InformationSlide :info="info"></InformationSlide>
+      </n-carousel-item>
+    </n-carousel>
   </div>
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css";
 import InformationSlide from "./InformationSlide.vue";
-import { Carousel } from "vue3-carousel";
+import { NCarousel, NCarouselItem } from "naive-ui";
 
 export default {
   components: {
-    Carousel,
+    NCarousel,
+    NCarouselItem,
     InformationSlide,
   },
   props: {

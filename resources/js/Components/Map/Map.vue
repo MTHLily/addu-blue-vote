@@ -107,12 +107,6 @@
               @poi-clicked="handlePoiClicked"
               @district-clicked="handleDistrictClicked"
             ></MapStack>
-            <MapCarousel
-              v-else
-              :pois="filteredPois"
-              @poi-clicked="handlePoiClicked"
-              @district-clicked="handleDistrictClicked"
-            ></MapCarousel>
           </div>
         </div>
       </div>
@@ -122,7 +116,6 @@
 
 <script>
 import DistrictLegend from "./DistrictLegend.vue";
-import MapCarousel from "./MapCarousel.vue";
 import MapStack from "./MapStack.vue";
 import MapCard from "./MapCard.vue";
 import { Modal } from "bootstrap";
@@ -131,7 +124,6 @@ import { NTreeSelect } from "naive-ui";
 export default {
   components: {
     DistrictLegend,
-    MapCarousel,
     MapCard,
     MapStack,
     NTreeSelect,

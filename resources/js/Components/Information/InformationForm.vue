@@ -49,7 +49,6 @@
       />
       <div class="invalid-feedback">{{ form.errors["cover.file"] }}</div>
     </div>
-    <pre>{{ form }}</pre>
     <div>
       <h2>Preview</h2>
       <InformationSlide preview :info="form" />

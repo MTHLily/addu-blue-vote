@@ -65,8 +65,6 @@
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import Card from "./MapCard";
 
 export default {
@@ -94,10 +92,6 @@ export default {
   },
   components: {
     Card,
-    Carousel,
-    Slide,
-    Pagination,
-    Navigation,
   },
   data: () => ({
     slideIndex: 1,

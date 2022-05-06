@@ -1,41 +1,38 @@
 <template>
-  <Slide>
-    <div
-      class="info-slide d-flex flex-column justify-content-center text-white w-full p-5 text-center min-h-screen mx-auto"
-      :style="{
-        background: coverImg
-          ? `linear-gradient(rgba(8, 34, 141, 0.5), rgba(8, 34, 141, 0.5)), url('${coverImg}') top left / cover no-repeat`
-          : `rgb(8, 34, 141)`,
-      }"
-    >
-      <h1 class="text-uppercase display-1" style="font-family: Montserrat">
-        {{ info.title }}
-      </h1>
+  <div
+    class="info-slide d-flex flex-column justify-content-center text-white w-full p-5 text-center min-h-screen mx-auto"
+    :style="{
+      background: coverImg
+        ? `linear-gradient(rgba(8, 34, 141, 0.5), rgba(8, 34, 141, 0.5)), url('${coverImg}') top left / cover no-repeat`
+        : `rgb(8, 34, 141)`,
+    }"
+  >
+    <h1 class="text-uppercase display-1" style="font-family: Montserrat">
+      {{ info.title }}
+    </h1>
 
-      <MarkdownViewer
-        style="font-family: 'Josefin Sans'"
-        class="text-white text-center w-full"
-        :content="markedContent"
-        size="lg"
-      />
+    <MarkdownViewer
+      style="font-family: 'Josefin Sans'"
+      class="text-white text-center w-full"
+      :content="markedContent"
+      size="lg"
+    />
 
-      <div v-if="info.link">
-        <a :href="info.link" class="btn btn-primary btn-lg" target="_blank">
-          Learn More
-        </a>
-      </div>
+    <div v-if="info.link">
+      <a :href="info.link" class="btn btn-primary btn-lg" target="_blank">
+        Learn More
+      </a>
     </div>
-  </Slide>
+  </div>
 </template>
 
 <script>
-import { Slide } from "vue3-carousel";
 import marked from "marked";
 import MarkdownViewer from "../MarkdownViewer.vue";
 import { computed } from "vue";
 
 export default {
-  components: { Slide, MarkdownViewer },
+  components: { MarkdownViewer },
   props: {
     info: {
       type: Object,

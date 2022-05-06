@@ -1707,13 +1707,13 @@ select {
   font-weight: var(--n-font-weight) !important;
 }
 .information-module-cover {
-  height: clamp(100px, 40vh, 500px);
+  height: clamp(100px, 50vh, 700px);
   max-height: 300px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center top;
-     object-position: center top;
+  -o-object-position: center;
+     object-position: center;
 }
 .candidate-name-image {
   height: 200px;

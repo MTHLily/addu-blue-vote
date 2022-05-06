@@ -1,6 +1,11 @@
 <template>
   <div class="card">
-    <img :src="module.cover.url" class="card-img-top" :alt="module.title" />
+    <img
+      :src="module.cover.url"
+      class="card-img-top"
+      :style="{ height: '300px', 'object-fit': 'cover' }"
+      :alt="module.title"
+    />
     <div class="card-body">
       <h2 class="card-title">{{ module.title }}</h2>
       <p class="card-text">{{ module.description }}</p>

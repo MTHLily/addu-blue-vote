@@ -8,11 +8,11 @@
 }
 
 .information-module-cover {
-  height: clamp(100px, 40vh, 500px);
+  height: clamp(100px, 50vh, 700px);
   max-height: 300px;
   width: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
 }
 
 .candidate-name-image {

@@ -104,3 +104,11 @@ $enable-shadows: true;
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
   background-color: #2365a1;
 }
+
+.bluevote-people-img {
+  height: 100%;
+  width: auto !important;
+  object-fit: cover;
+  border-radius: 50%;
+  // border: solid $primary 1px;
+}

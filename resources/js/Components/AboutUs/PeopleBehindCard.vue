@@ -10,9 +10,9 @@
           {{ people.name }}
         </template>
         <template #cover>
-          <div class="d-flex w-full justify-content-center">
+          <div class="d-flex w-full justify-content-center h-64">
             <img
-              class="h-64 w-64 rounded-full"
+              class="bluevote-people-img"
               v-bind:src="people.profile_photo?.url || defaultImageUrl"
             />
           </div>
@@ -26,12 +26,17 @@
       style="max-width: 300px"
     >
       <template #header>
-        {{ people.name }}
+        <div class="d-flex flex-column">
+          <span>{{ people.name }}</span>
+          <span v-if="people.position" class="text-muted">
+            {{ people.position }}
+          </span>
+        </div>
       </template>
       <template #cover>
-        <div class="d-flex w-full justify-content-center">
+        <div class="d-flex w-full justify-content-center h-64">
           <img
-            class="h-64 w-64 rounded-full"
+            class="bluevote-people-img"
             v-bind:src="people.profile_photo?.url || defaultImageUrl"
           />
         </div>
@@ -63,4 +68,3 @@ export default {
   },
 };
 </script>
-<style lang=""></style>

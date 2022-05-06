@@ -15008,3 +15008,11 @@ textarea.form-control-lg {
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
   background-color: #2365a1;
 }
+
+.bluevote-people-img {
+  height: 100%;
+  width: auto !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}

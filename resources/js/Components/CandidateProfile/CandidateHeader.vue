@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="row text-primary align-self-center"> -->
   <div class="row g-0 mb-3">
     <div class="col-12 col-md-4">
       <img
@@ -8,7 +7,7 @@
             ? candidate.profile_photo_url.url
             : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
         "
-        class="img-fluid rounded w-100"
+        class="candidate-header-photo"
         :alt="candidate.name"
       />
     </div>
@@ -29,7 +28,6 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -48,3 +46,11 @@ export default {
   },
 };
 </script>
+<style>
+.candidate-header-photo {
+  height: clamp(200px, 60vh, 800px);
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+</style>

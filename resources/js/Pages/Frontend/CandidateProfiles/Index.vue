@@ -14,19 +14,25 @@
         National
       </h1>
       <!-- <h1 class="fw-bolder">National</h1> -->
-      <div>
-        <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
-        <CandidateCarousel
-          :candidates="nationalPositions[0]?.candidates"
-        ></CandidateCarousel>
-        <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
-        <CandidateCarousel
-          :candidates="nationalPositions[1]?.candidates"
-        ></CandidateCarousel>
-        <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
-        <CandidateCarousel
-          :candidates="nationalPositions[2]?.candidates"
-        ></CandidateCarousel>
+      <div class="d-flex flex-column gap-12">
+        <div>
+          <h2 class="text-primary fw-bold">PRESIDENTIAL CANDIDATES</h2>
+          <CandidateCarousel
+            :candidates="nationalPositions[0]?.candidates"
+          ></CandidateCarousel>
+        </div>
+        <div>
+          <h2 class="text-danger fw-bold">VICE PRESIDENTIAL CANDIDATES</h2>
+          <CandidateCarousel
+            :candidates="nationalPositions[1]?.candidates"
+          ></CandidateCarousel>
+        </div>
+        <div>
+          <h2 class="text-warning fw-bold">SENATORIAL CANDIDATES</h2>
+          <CandidateCarousel
+            :candidates="nationalPositions[2]?.candidates"
+          ></CandidateCarousel>
+        </div>
       </div>
       <div class="row">
         <h2 class="fw-bold">Regions</h2>

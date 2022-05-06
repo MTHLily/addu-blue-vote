@@ -1,12 +1,5 @@
 <template>
   <div id="information">
-    <!-- <Carousel :items-to-show="1" :autoplay="100" :wrap-around="true">
-      <InformationSlide
-        v-for="info in information"
-        :key="info.id"
-        :info="info"
-      ></InformationSlide>
-    </Carousel> -->
     <n-carousel
       autoplay
       draggable

@@ -5,13 +5,15 @@
       processStep.primary_color || '#055094'
     }; border-radius: 20px`"
   >
-    <div
-      class="badge text-wrap text-white fw-bolder p-3 m-4 fs-4 col-6 col-md-4 col-lg-2"
-      :style="`background-color: ${
-        processStep.secondary_color || processStep.primary_color || '#ce2029'
-      }; border-radius: 30px`"
-    >
-      {{ processStep.title }}
+    <div class="m-4">
+      <span
+        class="text-wrap text-white fw-bolder px-3 py-2 fs-4"
+        :style="`background-color: ${
+          processStep.secondary_color || processStep.primary_color || '#ce2029'
+        }; border-radius: 30px; max-width: 75%; line-height: 1.65`"
+      >
+        {{ processStep.title }}
+      </span>
     </div>
     <div class="text-white fs-6 mx-5 mb-4">
       <MarkdownViewer

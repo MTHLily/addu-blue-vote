@@ -16,6 +16,6 @@
 }
 
 .candidate-name-image {
-  height: 100%;
+  height: 200px;
   object-fit: cover;
 }

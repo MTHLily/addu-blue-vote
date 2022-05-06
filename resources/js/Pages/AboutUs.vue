@@ -1,7 +1,7 @@
 <template>
   <Head title="About Us"></Head>
   <GuestLayout>
-    <div class="container-md mt-5">
+    <div class="container-md" style="margin-top: 5%">
       <div class="row g-0 mb-3">
         <div class="col-12 col-md-5 order-2 order-sm-1">
           <h1 class="text-primary fw-bold">What is Blue Vote?</h1>

@@ -14,15 +14,17 @@ class CreateCandidateBackgroundsTable extends Migration
      */
     public function up()
     {
-        Schema::create('candidate_backgrounds', function (Blueprint $table) {
-            $table->foreignIdFor(Candidate::class)->constrained();
+        Schema::create("candidate_backgrounds", function (Blueprint $table) {
+            $table
+                ->foreignIdFor(Candidate::class)
+                ->constrained()
+                ->cascadeOnDelete();
             $table->datetime("start_date");
             $table->datetime("end_date")->nullable();
             $table->string("place")->nullable();
             $table->string("occupation")->nullable();
             $table->string("position")->nullable();
             $table->string("description")->nullable();
-
         });
     }
 
@@ -33,6 +35,6 @@ class CreateCandidateBackgroundsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidate_backgrounds');
+        Schema::dropIfExists("candidate_backgrounds");
     }
 }

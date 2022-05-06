@@ -73,8 +73,8 @@ class Candidate extends Model implements HasMedia
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion("thumb")
-            ->width(100)
-            ->height(100)
+            ->width(200)
+            ->height(200)
             ->sharpen(10);
     }
 

@@ -50,19 +50,20 @@ class MediaService
     }
 
     public function attachOnlyOne(
-        $mediable,
-        $media,
+        HasMedia $mediable,
+        array $media,
         string $collectionName,
         string $fileName = null
     ) {
         // // Handle Media
         // $media = Arr::get($request->validated(), "media", null);
+        // dd($media);
 
         if ($media !== null) {
             if (
                 $mediable
                     ->media()
-                    ->where("collection_name")
+                    ->where("collection_name", $collectionName)
                     ->count() > 0
             ) {
                 $mediable
@@ -72,7 +73,13 @@ class MediaService
                     ->delete();
             }
 
-            if ($mediable->media()->count() === 0 && isset($media["file"])) {
+            if (
+                $mediable
+                    ->media()
+                    ->where("collection_name", $collectionName)
+                    ->count() === 0 &&
+                isset($media["file"])
+            ) {
                 $mediable
                     ->addMedia($media["file"])
                     ->usingName($fileName ? $fileName : $media["name"])

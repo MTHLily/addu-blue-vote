@@ -8,7 +8,7 @@
               ? candidate.profile_photo_url.thumbnailUrl
               : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'
           "
-          class="rounded-start h-full"
+          class="candidate-name-image"
           :alt="candidate.name"
         />
       </div>
@@ -61,4 +61,3 @@ export default {
   },
 };
 </script>
-<style lang=""></style>

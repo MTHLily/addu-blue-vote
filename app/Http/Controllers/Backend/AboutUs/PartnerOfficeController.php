@@ -31,6 +31,8 @@ class PartnerOfficeController extends Controller
 
     /**
      * Store a newly created resource in storag$request)
+     */
+    public function store(PartnerOfficeRequest $request)
     {
         $partnerOffice = (new PartnerOfficeService())->updateOrCreate($request);
 

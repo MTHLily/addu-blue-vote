@@ -20,7 +20,9 @@
         </small>
       </h1>
       <InfoMod :information-modules="informationModules" />
-      <h1 class="text-primary fw-bold my-5">Election News and Issues</h1>
+      <h1 class="text-primary fw-bold my-5" v-if="articles.total > 0">
+        Election News and Issues
+      </h1>
       <NewsDisplay :articles="articles" />
       <VideoResources
         v-if="featuredVideos.length > 0 || videoResources.data.length > 0"

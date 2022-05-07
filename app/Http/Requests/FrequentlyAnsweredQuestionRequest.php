@@ -24,11 +24,12 @@ class FrequentlyAnsweredQuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'question' => 'required',
-            'answer' => 'required',
+            "question" => "required",
+            "answer" => "required",
+            "faq_type_id" => ["required", "exists:faq_types,id"],
         ];
     }
-    
+
     public function messages()
     {
         return [

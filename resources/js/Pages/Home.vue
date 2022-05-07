@@ -24,7 +24,8 @@
       </div>
 
       <VoterRegistrationProcess />
-      <FAQs subtitle="Voters' Registration" :faqs="faqs" />
+      <FAQs subtitle="Voters' Education" :faqs="education_faqs" />
+      <FAQs subtitle="Voters' Registration" :faqs="registration_faqs" />
       <!-- <PoIMap class="container-md" :locations="locations" /> -->
     </div>
   </GuestLayout>
@@ -55,7 +56,11 @@ export default {
     ElectionProcessInfo,
   },
   props: {
-    faqs: {
+    registration_faqs: {
+      type: Array,
+      default: [],
+    },
+    education_faqs: {
       type: Array,
       default: [],
     },

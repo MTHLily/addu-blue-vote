@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FrequentlyAnsweredQuestionRequest;
+use App\Models\FaqType;
 use App\Models\FrequentlyAskedQuestion;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -17,8 +18,18 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function index()
     {
+        $faqs = FrequentlyAskedQuestion::query()
+            ->leftJoin(
+                "faq_types",
+                "frequently_asked_questions.faq_type_id",
+                "=",
+                "faq_types.id"
+            )
+            ->select("frequently_asked_questions.*", "faq_types.name as type")
+            ->get();
+
         return Inertia::render("Backend/FAQs/Index", [
-            "faqs" => FrequentlyAskedQuestion::all(),
+            "faqs" => $faqs,
         ]);
     }
 
@@ -29,7 +40,15 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function create()
     {
-        return Inertia::render("Backend/FAQs/Create");
+        $types = FaqType::all()->map(
+            fn($type) => [
+                "value" => $type->id,
+                "name" => $type->name,
+            ]
+        );
+        return Inertia::render("Backend/FAQs/Create", [
+            "types" => $types,
+        ]);
     }
 
     /**
@@ -66,8 +85,15 @@ class FrequentlyAskedQuestionController extends Controller
      */
     public function edit(FrequentlyAskedQuestion $faq)
     {
+        $types = FaqType::all()->map(
+            fn($type) => [
+                "value" => $type->id,
+                "name" => $type->name,
+            ]
+        );
         return Inertia::render("Backend/FAQs/Edit", [
             "faq" => $faq,
+            "types" => $types,
         ]);
     }
 

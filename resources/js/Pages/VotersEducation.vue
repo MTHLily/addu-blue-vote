@@ -12,7 +12,7 @@
   <GuestLayout>
     <div class="container-md overflow-auto" style="margin-top: 5%">
       <ElectionProcessInfo :election-process="electionSteps" />
-
+      <FAQList :faqs="faqs" />
       <h1 class="text-primary fw-bold my-5">
         Featured Information Modules
         <small class="fs-5">
@@ -40,6 +40,7 @@ import GuestLayout from "../Layouts/Guest.vue";
 import VideoResources from "@/Components/VideoResources/VideoResources.vue";
 import InfoMod from "../Components/InformationModule/InformationModuleShow.vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import FAQList from "@/Components/FAQs/FAQList.vue";
 export default defineComponent({
   components: {
     Link,
@@ -49,9 +50,14 @@ export default defineComponent({
     Head,
     VideoResources,
     InfoMod,
+    FAQList,
   },
 
   props: {
+    faqs: {
+      type: Array,
+      default: [],
+    },
     articles: {
       type: Object,
       default: () => ({}),

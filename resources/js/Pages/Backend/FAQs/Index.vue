@@ -10,7 +10,6 @@
         <BlueVoteTable :columns="columns" :items="faqs">
           <template #answer="{ item }">
             <MarkdownViewer :content="item.answer" size="sm" />
-
           </template>
           <template #actions="{ item }">
             <div class="d-flex justify-content-center">
@@ -68,6 +67,10 @@ export default {
   },
   setup() {
     const columns = [
+      {
+        value: "type",
+        label: "Type",
+      },
       {
         value: "question",
         label: "Question",

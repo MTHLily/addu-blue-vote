@@ -18,7 +18,7 @@ class VotersRegistrationController extends Controller
         $locations = $service->fetchPointsOfInterestByLocations(1);
 
         return Inertia::render("VotersRegistration", [
-            "faqs" => FrequentlyAskedQuestion::all(),
+            "faqs" => FrequentlyAskedQuestion::votersRegistration()->get(),
             "information" => $information,
             "locations" => $locations,
         ]);

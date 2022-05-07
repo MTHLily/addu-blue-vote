@@ -7,7 +7,7 @@
         <form @submit.prevent="faq.post('/dashboard/faqs')">
           <h1 class="p-3">Create Frequently Asked Question</h1>
           <div class="p-3">
-            <FAQForm v-model:form="faq"></FAQForm>
+            <FAQForm v-model:form="faq" :types="types"></FAQForm>
           </div>
           <div class="btn-group" role="group">
             <div class="p-3">
@@ -34,12 +34,17 @@ import AdminLayout from "@/Layouts/admin";
 
 export default {
   components: { Link, Head, DashboardLayout, FAQForm, AdminLayout },
+  props: {
+    types: {
+      type: Array,
+      required: true,
+    },
+  },
   data: () => ({
     faq: useForm({
       question: "",
       answer: "",
-      faq_type: "",
-
+      faq_type_id: "",
     }),
   }),
 };

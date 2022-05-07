@@ -7,7 +7,7 @@
         <form @submit.prevent="faqForm.put(`/dashboard/faqs/${faq.id}`)">
           <h1 class="p-3">Edit Frequently Asked Question</h1>
           <div class="p-3">
-            <FAQForm v-model:form="faqForm"></FAQForm>
+            <FAQForm v-model:form="faqForm" :types="types"></FAQForm>
           </div>
           <div class="btn-group" role="group">
             <div class="p-3">
@@ -32,10 +32,14 @@ import AdminLayout from "@/Layouts/admin";
 
 export default {
   props: {
+    types: {
+      type: Array,
+      default: [],
+    },
     faq: {
       type: Object,
       default: () => ({
-        type:"",
+        type: "",
         question: "",
         answer: "",
       }),
@@ -44,7 +48,7 @@ export default {
   components: { Link, Head, DashboardLayout, FAQForm, AdminLayout },
   created() {
     this.faqForm = useForm({
-      type:this.faq.type,
+      faq_type_id: this.faq.faq_type_id,
       question: this.faq.question,
       answer: this.faq.answer,
     });

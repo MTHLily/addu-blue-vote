@@ -1,18 +1,21 @@
 <template>
   <div style="background-color: #ffffff">
-      <div class="mb-3 p-3">
+    <div class="mb-3 p-3">
       <label for="faqtype" class="form-label">FAQ Type</label>
       <select
-        v-model="form.type"
-        type="text"
+        v-model="form.faq_type_id"
         class="form-control"
         :class="{
-          'is-invalid': form.errors.type,
+          'is-invalid': form.errors.faq_type_id,
         }"
-        id="faqQuestion"
-        placeholder="FAQ Question"
-      />
-      <div class="invalid-feedback">{{ form.errors.question }}</div>
+        id="faqtype"
+        placeholder="FAQ Type"
+      >
+        <option v-for="type in types" :key="type.value" :value="type.value">
+          {{ type.name }}
+        </option>
+      </select>
+      <div class="invalid-feedback">{{ form.errors.faq_type_id }}</div>
     </div>
     <div class="mb-3 p-3">
       <label for="faqQuestion" class="form-label">Question</label>
@@ -53,6 +56,10 @@ export default {
     FAQItem,
   },
   props: {
+    types: {
+      type: Array,
+      default: [],
+    },
     form: {
       type: Object,
       default: () => ({

@@ -36,9 +36,11 @@ class VotersEducationController
                 ->take(4)
                 ->get();
         }
+        $faqs = FrequentlyAskedQuestion::votersEducation()->get();
 
         return Inertia::render("VotersEducation", [
             "articles" => $articles,
+            "faqs" => $faqs,
             "featuredVideos" => $featuredVideos,
             "videoResources" => $videoResources,
             "electionSteps" => $electionProcessSteps,

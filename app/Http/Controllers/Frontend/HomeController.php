@@ -23,11 +23,17 @@ class HomeController extends Controller
             ->onEachSide(1)
             ->withQueryString();
 
-        $faqs = FrequentlyAskedQuestion::all();
+        $registration_faqs = FrequentlyAskedQuestion::votersRegistration()->get();
+        $education_faqs = FrequentlyAskedQuestion::votersEducation()->get();
 
         return Inertia::render(
             "Home",
-            compact("information_snippets", "articles", "faqs")
+            compact(
+                "information_snippets",
+                "articles",
+                "registration_faqs",
+                "education_faqs"
+            )
         );
     }
 }

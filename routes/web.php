@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\InformationModuleFrontendController;
 use App\Http\Controllers\Frontend\VotersEducationController;
+use App\Http\Controllers\Frontend\VotersRegistrationController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\SVGController;
 use App\Imports\CandidateSeedImport;
@@ -193,9 +194,8 @@ Route::prefix("information-modules")->group(function () {
 Route::get("/login", [RegisteredUserController::class, "create"]);
 Route::get("/svg/map_marker.svg", [SVGController::class, "create"]);
 
-Route::get("/voters-registration", [
-    GuestController::class,
-    "voters_registration",
-])->name("voters-registration");
+Route::get("/voters-registration", VotersRegistrationController::class)->name(
+    "voters-registration"
+);
 
 require __DIR__ . "/auth.php";

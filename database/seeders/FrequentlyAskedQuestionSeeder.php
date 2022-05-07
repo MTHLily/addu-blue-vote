@@ -22,6 +22,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                         and including the record in the book of voters upon approval by the Election Registration Board. 
                         <br><br>
                         To read more, please follow this *[link](https://comelec.gov.ph/index.html?r=VoterRegistration/WhatisVoterRegistration)* ',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -30,7 +31,8 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                         public officials will be. You also would not be able to run for public office if you are not a registered voter.
                         <br><br>
                         See *[Art. XII, Sec. 115, Batas Pambansa Blg. 881](https://comelec.gov.ph/index.html?r=References/RelatedLaws/OmnibusElectionCode/OECArt12)*',
-            ],
+                "faq_type_id" => 1,
+             ],
 
             [
                 "question" => "What are the requirements for registration?",
@@ -39,6 +41,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                         There are also certain disqualifications prescribed by [law](https://comelec.gov.ph/index.html?r=References/RelatedLaws/RegistrationLaws/RA8189#sec11) which you should not possess.
                         <br><br>
                         To read more, please follow this *[link]( https://comelec.gov.ph/index.html?r=VoterRegistration/WhatisVoterRegistration/RegistrationRequirements)* ',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -48,12 +51,14 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                         There are also satellite registration centers for Person with Disabilities (PWDs), Indigenous Cultural Communities (ICCs/IPs), Senior Citizens (SCs) and Internally Displaced Persons (IDPs), subject to certain conditions.
                         <br><br>
                         To read more, please follow this *[link]( https://comelec.gov.ph/index.html?r=VoterRegistration/WhatisVoterRegistration/RegistrationCenters)* ',
+                "faq_type_id" => 1,
             ],
             [
                 "question" => "How often do I need to register?",
                 "answer" => 'Under the present system of continuing registration, a qualified person needs to register only once. This registration is [permanent]( https://comelec.gov.ph/index.html?r=References/RelatedLaws/RegistrationLaws/RA8189#sec4), unless declared otherwise by law. Registering more than once constitutes an [election offence](https://comelec.gov.ph/index.html?r=References/RelatedLaws/OmnibusElectionCode/OECArt22#sec261y).
                             However, in cases when a voter transfers residence, he needs to apply for the transfer of his registration record.
                         There are also instances when a registration record may become deactivated due to some reasons stated by law, the most common of which is the failure to vote in two successive regular elections. When this happens, the concerned voter needs to apply for the reactivation of his registration record.',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -61,6 +66,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                     "I am already a registered voter. I voted in the last 2019 Elections. Do I need to register again in order to vote in the 2022 National and Local Elections (NLE)?",
                 "answer" => 'No. As stated in the [previous FAQ](https://comelec.gov.ph/index.html?r=VoterRegistration%2FWhatisVoterRegistration%2Fqnavr#faq5), registration needs to be done only once. Your registration is good for further elections as long as you keep it active by participating in the elections by voting.
                             If your registration record gets deactivated, that is another story.',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -69,6 +75,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                             However, for operational and logistical reasons, the COMELEC schedules the period for the conduct of this activity before a scheduled election. For the 09 May 2022 National and Local Elections, it has been scheduled to take place from 20 January 2020 to 30 September 2021
                             <br><br>
                             To read more, please follow this *[link](https://comelec.gov.ph/index.html?r=VoterRegistration/WhatisVoterRegistration/VoterRegistrationSchedule)* ',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -76,6 +83,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                     "When is the registration schedule for the 2022 National and Local Elections?",
                 "answer" =>
                     "The period for filing applications for registration for the 2022 NLE will be from 20 January 2020 to 30 September 2021 pursuant to [Section 5 of Resolution No. 10635](https://comelec.gov.ph/VoterRegistration/Resolutions/res10635).",
+                "faq_type_id" => 1,
             ],
 
             [
@@ -83,6 +91,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                     "How can I change my civil status in my registration record?",
                 "answer" => 'Voters who have gotten married after registering as a single person, or married voters whose marriage has been annulled or declared a nullity by a competent court, including those married voters whose spouses have died, may apply for a correction of entry in their registration voters.
                             Concerned female voters whose family name may have been affected by such events may also file for a change of their name in their registration record.',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -90,6 +99,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                     "My registration record/voter ID has typographical or clerical errors. How do I go about having the incorrect information corrected?",
                 "answer" => 'A registered voter whose registration record contains incorrect entries, including wrong or misspelled name, birth date, birth place or
                              typographical errors, may request for its correction at the concerned local COMELEC office.',
+                "faq_type_id" => 1,
             ],
 
             [
@@ -97,6 +107,7 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                     "I have already moved residence to another city/municipality. How do I transfer my registration record to my new place of residence?",
                 "answer" =>
                     "During the scheduled registration period, an application for the transfer of the concerned registration record may be filed with the local COMELEC office of the new place of residence.",
+                "faq_type_id" => 1,
             ],
 
             [
@@ -104,12 +115,15 @@ class FrequentlyAskedQuestionSeeder extends Seeder
                     "If a record was deactivated, how can a voter have it reactivated again?",
                 "answer" =>
                     "During the next scheduled registration record, a voter with a deactivated registration record may file for the reactivation of his (or her) registration record with the local COMELEC office of the city/municipality where he (or she) is registered.",
+                "faq_type_id" => 1,
             ],
         ];
+
+      
 
         DB::table("frequently_asked_questions")->truncate();
         foreach ($faqs as $faq) {
             DB::table("frequently_asked_questions")->insert($faq);
-        }
+        }  
     }
 }

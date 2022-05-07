@@ -38,6 +38,8 @@ export default {
         id: 0,
         question: "Default Question",
         answer: "Default Answer",
+        type: "Choose Category",
+
       }),
     },
   },

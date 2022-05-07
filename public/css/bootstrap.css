@@ -2366,15 +2366,25 @@ progress {
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
+<<<<<<< HEAD
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+=======
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+>>>>>>> origin/production-aacast
 }
 .row > * {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
+<<<<<<< HEAD
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
+=======
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+>>>>>>> origin/production-aacast
   margin-top: var(--bs-gutter-y);
 }
 
@@ -4319,15 +4329,25 @@ progress {
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
+<<<<<<< HEAD
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+=======
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+>>>>>>> origin/production-aacast
 }
 .row > * {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
+<<<<<<< HEAD
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
+=======
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+>>>>>>> origin/production-aacast
   margin-top: var(--bs-gutter-y);
 }
 
@@ -10195,6 +10215,7 @@ textarea.form-control-lg {
 }
 
 .ratio-4x3 {
+<<<<<<< HEAD
   --bs-aspect-ratio: 75%;
 }
 
@@ -10204,6 +10225,17 @@ textarea.form-control-lg {
 
 .ratio-21x9 {
   --bs-aspect-ratio: 42.8571428571%;
+=======
+  --bs-aspect-ratio: calc(3 / 4 * 100%);
+}
+
+.ratio-16x9 {
+  --bs-aspect-ratio: calc(9 / 16 * 100%);
+}
+
+.ratio-21x9 {
+  --bs-aspect-ratio: calc(9 / 21 * 100%);
+>>>>>>> origin/production-aacast
 }
 
 .fixed-top {
@@ -15008,6 +15040,7 @@ textarea.form-control-lg {
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
   background-color: #2365a1;
 }
+<<<<<<< HEAD
 
 .bluevote-people-img {
   height: 100%;
@@ -15016,3 +15049,5 @@ textarea.form-control-lg {
      object-fit: cover;
   border-radius: 50%;
 }
+=======
+>>>>>>> origin/production-aacast

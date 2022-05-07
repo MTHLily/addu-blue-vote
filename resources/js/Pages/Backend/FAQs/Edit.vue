@@ -35,6 +35,7 @@ export default {
     faq: {
       type: Object,
       default: () => ({
+        type:"",
         question: "",
         answer: "",
       }),
@@ -43,6 +44,7 @@ export default {
   components: { Link, Head, DashboardLayout, FAQForm, AdminLayout },
   created() {
     this.faqForm = useForm({
+      type:this.faq.type,
       question: this.faq.question,
       answer: this.faq.answer,
     });

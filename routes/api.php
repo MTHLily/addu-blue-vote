@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\InformationModuleDownloadablesController;
 use App\Models\Candidate;
 use App\Models\Location;
 use Illuminate\Http\Request;
@@ -48,3 +49,10 @@ Route::get("location/slug-valid/{string}", function (string $string) {
         "valid" => $valid,
     ]);
 })->name("locations.slug-valid");
+
+Route::middleware("auth")->group(function () {
+    Route::apiResource(
+        "information-modules.downloadables",
+        InformationModuleDownloadablesController::class
+    );
+});

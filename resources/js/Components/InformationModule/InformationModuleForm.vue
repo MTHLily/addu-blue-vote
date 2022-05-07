@@ -53,10 +53,11 @@
     <div class="invalid-feedback">{{ form.errors.description }}</div>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3" v-if="!create">
     <label for="informationModuleRelatedMedia" class="form-label">
       Files
     </label>
+    <!-- <InformationModuleFileUploads :form="form" /> -->
     <FileUploader
       multipleFiles
       non-image
@@ -99,11 +100,13 @@ import { defineComponent } from "@vue/runtime-core";
 import _ from "lodash";
 import FileUploader from "../FileUploader.vue";
 import VideoResourceSelect from "../VideoResources/VideoResourceSelect.vue";
+import InformationModuleFileUploads from "./InformationModuleFileUploads.vue";
 
 export default defineComponent({
   components: {
     FileUploader,
     VideoResourceSelect,
+    InformationModuleFileUploads,
   },
   props: {
     form: {
@@ -120,6 +123,10 @@ export default defineComponent({
     videos: {
       type: Array,
       default: [],
+    },
+    create: {
+      type: Boolean,
+      default: false,
     },
     multipleFiles: {
       type: Boolean,

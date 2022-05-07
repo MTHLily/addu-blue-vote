@@ -46,4 +46,20 @@ class InformationModuleService
 
         return $informationModule;
     }
+
+    public function storeDownloadable(
+        $request,
+        InformationModule $informationModule
+    ) {
+        if ($request->file("file")) {
+            $mediaService = new MediaService();
+            $media = $mediaService->store(
+                $informationModule,
+                $request->file("file"),
+                "information-module-files"
+            );
+            return $media;
+        }
+        return null;
+    }
 }

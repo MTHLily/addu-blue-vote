@@ -40,13 +40,17 @@ export default () => {
         title: "",
         description: "",
         speakers: "",
-        downloadables: [],
         cover: null,
         related_videos: [],
       });
     }
 
-    const values = _.pick(infoModule, ["title", "description", "speakers"]);
+    const values = _.pick(infoModule, [
+      "title",
+      "description",
+      "speakers",
+      "id",
+    ]);
     values._method = "PATCH";
     values.cover = mediaMap(infoModule.cover);
     values.downloadables = infoModule.downloadables?.map(mediaMap) || [];

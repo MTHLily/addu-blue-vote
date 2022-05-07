@@ -9,6 +9,15 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class MediaService
 {
+    public function store(
+        HasMedia $mediable,
+        $file,
+        string $collectionName = null
+    ) {
+        $media = $mediable->addMedia($file)->toMediaCollection($collectionName);
+        return $media;
+    }
+
     public function sync(HasMedia $mediable, $data, string $collectionName)
     {
         $data = collect($data);

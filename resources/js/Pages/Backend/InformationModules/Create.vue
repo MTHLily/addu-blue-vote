@@ -6,6 +6,7 @@
       <form @submit.prevent="form.post(route('information-modules.store'))">
         <h1>Create Information Module</h1>
         <InformationModuleForm
+          create
           v-model:form="form"
           :videos="videos"
         ></InformationModuleForm>

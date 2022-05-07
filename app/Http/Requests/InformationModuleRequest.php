@@ -33,7 +33,7 @@ class InformationModuleRequest extends FormRequest
             "cover.file" => "image",
             "cover.id" => "sometimes",
             "related_videos" => ["array", "nullable"],
-            "speakers" => "required",
+            "speakers" => "nullable",
         ];
     }
 
@@ -42,10 +42,11 @@ class InformationModuleRequest extends FormRequest
         return [
             "title.*" => "There is something wrong with the title.",
             "description.*" => "Please enter a valid description.",
-            "downloadables.*" => "There is something wrong with the downloadables.",
+            "downloadables.*" =>
+                "There is something wrong with the downloadables.",
             "cover.*" => "There is something wrong with the cover.",
             "speakers.*" => "Please enter a speaker.",
             "related_videos.*" => "Please select valid related video/s.",
-        ]; 
+        ];
     }
 }
